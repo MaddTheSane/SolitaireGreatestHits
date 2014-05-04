@@ -1,0 +1,58 @@
+/* 
+  Localizable.strings
+  Solitaire
+
+  Created by Sebi on 30.03.14.
+
+*/
+
+
+"Auto finish game" = "Spiel automatisch beenden";
+"Auto finish this game" = "Dieses Spiel automatisch beenden";
+"Auto finish" = "Automatisch beenden";
+"Cancel"	= "Abbrechen";
+"Change game preferences" = "Einstellungen ändern";
+"Choose a different game to play" = "Wähle ein anderes Spiel aus";
+"Choose game" = "Spiel auswählen";
+"ChooseDifferent" = "Wähle ein anderes Solitaire-Spiel aus...";
+"ChooseGame" = "Wähle ein Spiel aus...";
+"Game"	= "Spiel";
+"How to play" = "Spielanleitung";
+"Instructions on how to play this game" = "Anleitung für dieses Spiel";
+"New game" = "Neues Spiel";
+"No"	= "Nein";
+"Open a previous game" = "Ein gespeichertes Spiel laden";
+"Open game"	= "Spiel laden";
+"Play this game" = "Dieses Spiel spielen";
+"Preferences" = "Einstellungen";
+"Redo move" = "Zug erneut ausführen";
+"Redo" = "Erneut ausführen";
+"ReloadQuestion" = "Möchtest Du das Spiel von vorne beginnen?";
+"Restart game" = "Spiel neu starten";
+"Restart this game" = "Dieses Spiel von vorne beginnen";
+"RestartQuestion" = "Möchtest Du das Spiel beenden und ein neues starten?";
+"Save game" = "Spiel speichern";
+"Save your current game" = "Das laufende Spiel speichern";
+"Score: %li" = "Punkte: %li";
+"Start new game" = "Neues Spiel starten";
+"Start a new game" = "Ein neues Spiel starten";
+"Time: %@" = "Zeit: %@";
+"Undo last move" = "Letzen Zug zurücknehmen";
+"Undo" = "Zurücknehmen";
+"Yes"	= "Ja";
+"You won!" = "Du hast gewonnen!";
+"Your time was %@" = "Deine Zeit: %@";
+"%@\nYour score was %li" = "%@\nDeine Punkte: %li";
+
+"Aces Up" = "Aces Up";
+"Baker's Game" = "Baker's Game";
+"Canfield" = "Canfield";
+"Classic Klondike" = "Klassiches Klondike";
+"Forty Thieves" = "Forty Thieves";
+"Free Cell" = "Free Cell";
+"Single Card Klondike" = "Einzelkarten-Klondike";
+"Golf" = "Golf";
+"Pyramid" = "Pyramide";
+"Scorpian" = "Skorpion";
+"Spider" = "Spider";
+"Yukon" = "Yukon";
