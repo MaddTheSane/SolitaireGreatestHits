@@ -29,7 +29,7 @@
 @class SolitaireFoundation;
 @class SolitaireTableau;
 
-@interface SolitaireFortyThievesGame : SolitaireGame {
+@interface SolitaireFortyThievesGame : SolitaireGame <CALayerDelegate> {
 @private
     SolitaireStock* stock_;
     SolitaireWaste* waste_;

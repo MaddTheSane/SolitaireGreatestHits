@@ -45,7 +45,7 @@
 #include <time.h>
 
 // Private methods
-@interface SolitaireController(NSObject)
+@interface SolitaireController()
 -(void) requestDonation;
 -(void) selectGameWithRegistryIndex: (NSInteger)index;
 
@@ -55,7 +55,6 @@
 -(void) savePanelDidEnd: (NSSavePanel*)sheet returnCode: (int)returnCode contextInfo: (void*)contextInfo;
 -(void) openPanelDidEnd: (NSOpenPanel*)panel returnCode: (int)returnCode  contextInfo: (void*)contextInfo;
 -(void) preferencesSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
--(void) chooseGameAlertDidEnd: (NSAlert*)alert returnCode: (int)returnCode contextInfo: (void*)contextInfo;
 @end
 
 // Toolbar Item Identifier strings
@@ -312,9 +311,14 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     [alert setInformativeText: @"Do you want to end the current game and start a new one?"];
     [alert setAccessoryView: matrix];
     [alert setAlertStyle: NSInformationalAlertStyle];
-    
-    [alert beginSheetModalForWindow: self.window modalDelegate: self
-        didEndSelector: @selector(chooseGameAlertDidEnd:returnCode:contextInfo:) contextInfo: matrix];
+	
+	[alert beginSheetModalForWindow: self.window completionHandler: ^(NSModalResponse returnCode) {
+		if(returnCode == NSAlertFirstButtonReturn) {
+			NSInteger index = [matrix selectedRow];
+			[self selectGameWithRegistryIndex: index];
+			[self newGame];
+		}
+	}];
 }
 
 -(IBAction) onAbout: (id)sender {
@@ -578,15 +582,6 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
         [self.view.layer setNeedsDisplay];
     }    
     [sheet orderOut: self];
-}
-
--(void)chooseGameAlertDidEnd: (NSAlert*)alert returnCode: (int)returnCode contextInfo: (void*)contextInfo {
-    if(returnCode == NSAlertFirstButtonReturn) {
-        NSMatrix* matrix = contextInfo;
-        NSInteger index = [matrix selectedRow];
-        [self selectGameWithRegistryIndex: index];
-        [self newGame];
-    }
 }
 
 @end

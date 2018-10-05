@@ -32,16 +32,16 @@
 @class SolitaireCardContainer;
 @class SolitaireGame;
 
-@interface SolitaireView : NSView {
+@interface SolitaireView : NSView <CALayerDelegate> {
 @public
-    IBOutlet SolitaireController* controller;
+    IBOutlet SolitaireController* __weak controller;
 @private
     NSImage* backgroundImage_;
     NSColor* currentBackgroundColor_;
     SolitaireCard* selectedCard_;
 }
 
-@property SolitaireController* controller;
+@property (weak) SolitaireController* controller;
 
 -(void) reset;
 -(void) setTableBackground: (NSColor*)color;

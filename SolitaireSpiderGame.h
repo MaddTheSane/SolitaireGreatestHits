@@ -27,7 +27,7 @@
 @class SolitaireFoundation;
 @class SolitaireTableau;
 
-@interface SolitaireSpiderGame : SolitaireGame {
+@interface SolitaireSpiderGame : SolitaireGame <CALayerDelegate> {
 @private
     SolitaireStock* stock_;
     SolitaireFoundation* foundation_[8];

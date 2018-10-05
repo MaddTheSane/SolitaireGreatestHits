@@ -23,13 +23,10 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface SolitairePreferencesController : NSObject {
-    IBOutlet NSPanel* preferencesPanel;
-    IBOutlet NSColorWell* colorWell;
-}
+@interface SolitairePreferencesController : NSObject
 
-@property(assign) NSPanel* preferencesPanel;
-@property(assign) NSColorWell* colorWell;
+@property(weak) IBOutlet NSPanel* preferencesPanel;
+@property(weak) IBOutlet NSColorWell* colorWell;
 
 -(IBAction) onOkayClicked: (id)sender;
 -(IBAction) onCancelClicked: (id)sender;
