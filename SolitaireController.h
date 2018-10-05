@@ -51,6 +51,8 @@
 
 -(void) newGame;
 -(void) restartGame;
+-(BOOL) saveGameToURL:(NSURL*)filename error:(NSError**)error;
+-(BOOL) openGameFromURL:(NSURL*)filename error:(NSError**)error;
 -(void) saveGameWithFilename: (NSString*)filename;
 -(void) openGameWithFilename: (NSString*)filename;
 

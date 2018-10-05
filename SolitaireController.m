@@ -189,19 +189,47 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     [game_ startGame];
 }
 
--(void) saveGameWithFilename: (NSString*)filename {
+-(BOOL) saveGameToURL:(NSURL*)filename error:(NSError**)error
+{
     SolitaireSavedGameImage* gameImage = [game_ generateSavedGameImage];
     [gameImage archiveGameTime: [self.timer secondsEllapsed]];
     if([game_ keepsScore]) [gameImage archiveGameScore: [self.scoreKeeper score]];
-    
-    [NSKeyedArchiver archiveRootObject: gameImage toFile: filename];
+
+    NSData *dat;
+    if (@available(macOS 10.13, *)) {
+        dat = [NSKeyedArchiver archivedDataWithRootObject:gameImage requiringSecureCoding:NO error:error];
+        if (!dat) {
+            return NO;
+        }
+    } else {
+        // Fallback on earlier versions
+        dat = [NSKeyedArchiver archivedDataWithRootObject:gameImage];
+    }
+    return [dat writeToURL:filename options:0 error:error];
 }
 
--(void) openGameWithFilename: (NSString*)filename {
-    SolitaireSavedGameImage* gameImage = [NSKeyedUnarchiver unarchiveObjectWithFile: filename];
+-(BOOL) openGameFromURL:(NSURL*)filename error:(NSError**)error
+{
+    NSData *localData = [NSData dataWithContentsOfURL:filename options:NSDataReadingMappedIfSafe error:error];
+    if (!localData) {
+        return NO;
+    }
+    SolitaireSavedGameImage* gameImage;
+    if (@available(macOS 10.13, *)) {
+        gameImage = [NSKeyedUnarchiver unarchivedObjectOfClass:[SolitaireSavedGameImage class] fromData:localData error:error];
+        if (!gameImage) {
+            return NO;
+        }
+    } else {
+        // Fallback on earlier versions
+        gameImage = [NSKeyedUnarchiver unarchiveObjectWithData:localData];
+        if (!gameImage) {
+            return NO;
+        }
+    }
     SolitaireGame* newGame = [gameDictionary_ objectForKey: [gameImage gameName]];
     if(newGame != nil) {
-        [self.view reset];    
+        [self.view reset];
         [self selectGameWithRegistryIndex: [gameRegistry_ indexOfObject: newGame]];
         [game_ reset];
         
@@ -210,6 +238,19 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
         if([game_ keepsScore]) [self.scoreKeeper setInitialScore: [gameImage unarchiveGameScore]];
         
         [game_ layoutGameComponents];
+    }
+    return YES;
+}
+
+-(void) saveGameWithFilename: (NSString*)filename {
+    if (![self saveGameToURL:[NSURL fileURLWithPath:filename] error:NULL]) {
+        NSBeep();
+    }
+}
+
+-(void) openGameWithFilename: (NSString*)filename {
+    if (![self openGameFromURL:[NSURL fileURLWithPath:filename] error:NULL]) {
+        NSBeep();
     }
 }
 
