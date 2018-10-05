@@ -402,7 +402,7 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
         [toolbarItem setLabel: @"New Game"];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: @"Start a new game"];
-        [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"SolitaireIcon" ofType:@"icns"]]];
+        [toolbarItem setImage: [NSImage imageNamed:NSImageNameApplicationIcon]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onNewGame:)];
         [toolbarItem setEnabled: YES];
@@ -412,7 +412,7 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
         [toolbarItem setLabel: @"Restart Game"];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: @"Restart this game"];
-        [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"RestartIcon" ofType:@"icns"]]];
+        [toolbarItem setImage: [NSImage imageNamed:@"RestartIcon"]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onRestartGame:)];
         [toolbarItem setEnabled: YES];
@@ -422,7 +422,7 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
         [toolbarItem setLabel: @"Save Game"];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: @"Save your current game"];
-        [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"SaveIcon" ofType:@"icns"]]];
+        [toolbarItem setImage: [NSImage imageNamed:@"SaveIcon"]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onSaveGame:)];
         [toolbarItem setEnabled: YES];
@@ -432,7 +432,7 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
         [toolbarItem setLabel: @"Open Game"];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: @"Open a previous game"];
-        [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"OpenIcon" ofType:@"icns"]]];
+        [toolbarItem setImage: [NSImage imageNamed:@"OpenIcon"]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onOpenGame:)];
         [toolbarItem setEnabled: YES];
@@ -442,7 +442,7 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
         [toolbarItem setLabel: @"Preferences"];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: @"Change game preferences"];
-        [toolbarItem setImage: [NSImage imageNamed: @"NSPreferencesGeneral"]];
+        [toolbarItem setImage: [NSImage imageNamed: NSImageNamePreferencesGeneral]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onPreferences:)];
         [toolbarItem setEnabled: YES];
@@ -452,7 +452,7 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
         [toolbarItem setLabel: @"Choose Game"];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: @"Choose a different game to play"];
-        [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"ChooseGame" ofType:@"icns"]]];;
+        [toolbarItem setImage: [NSImage imageNamed:@"ChooseGame"]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onChooseGame:)];
         [toolbarItem setEnabled: YES];
@@ -462,7 +462,7 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
         [toolbarItem setLabel: @"Auto Finish"];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: @"Auto finish this game"];
-        [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"AutoIcon" ofType:@"icns"]]];
+        [toolbarItem setImage: [NSImage imageNamed:@"AutoIcon"]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onAutoFinish:)];
         [toolbarItem setEnabled: YES];
@@ -472,7 +472,7 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
         [toolbarItem setLabel: @"Undo"];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: @"Undo last move"];
-        [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"UndoIcon" ofType:@"icns"]]];
+        [toolbarItem setImage: [NSImage imageNamed:@"UndoIcon"]];
         [toolbarItem setTarget: [self.view undoManager]];
         [toolbarItem setAction: @selector(undo)];
         [toolbarItem setEnabled: YES];
@@ -482,7 +482,7 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
         [toolbarItem setLabel: @"Redo"];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: @"Redo move"];
-        [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"RedoIcon" ofType:@"icns"]]];
+        [toolbarItem setImage: [NSImage imageNamed:@"RedoIcon"]];
         [toolbarItem setTarget: [self.view undoManager]];
         [toolbarItem setAction: @selector(redo)];
         [toolbarItem setEnabled: YES];
@@ -492,7 +492,7 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
         [toolbarItem setLabel: @"How To Play"];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: @"Instructions on how to play this game"];
-        [toolbarItem setImage: [NSImage imageNamed: @"NSInfo"]];
+        [toolbarItem setImage: [NSImage imageNamed: NSImageNameInfo]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onInstructions:)];
         [toolbarItem setEnabled: YES];

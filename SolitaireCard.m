@@ -44,12 +44,10 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
     
     // Load singleton copies of the card images.
     if(cardsImage == nil) cardsImage =
-        [[NSImage alloc] initWithContentsOfFile:
-            [[NSBundle mainBundle] pathForResource:@"SolitaireCards" ofType:@"png"]];
+        [NSImage imageNamed:@"SolitaireCards"];
         
     if(flippedCardImage == nil) flippedCardImage =
-        [[NSImage alloc] initWithContentsOfFile:
-            [[NSBundle mainBundle] pathForResource:@"SolitaireCardBack" ofType:@"png"]];
+        [NSImage imageNamed:@"SolitaireCardBack"];
     
     if((self = [super init]) != nil) {
         suit_ = suit;

@@ -50,7 +50,7 @@ extern NSImage* flippedCardImage;
 
 -(id) initWithDeckCount: (NSInteger)deckCount {
     if(flippedCardImage == nil) flippedCardImage =
-        [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"SolitaireCardBack" ofType:@"png"]];
+        [NSImage imageNamed:@"SolitaireCardBack"];
 
     if((self = [super init]) != nil) {
         delegate_ = nil;
@@ -68,8 +68,8 @@ extern NSImage* flippedCardImage;
         [self reset];
         
         // Load images
-        reloadImage_ = [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Reload" ofType:@"png"]];
-        emptyImage_ = [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Empty" ofType:@"png"]];
+        reloadImage_ = [NSImage imageNamed:@"Reload"];
+        emptyImage_ = [NSImage imageNamed:@"Empty"];
     }
     return self;
 }
@@ -92,8 +92,8 @@ extern NSImage* flippedCardImage;
         self.shadowOpacity = 1.0f;
         
         // Load images
-        reloadImage_ = [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Reload" ofType:@"png"]];
-        emptyImage_ = [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Empty" ofType:@"png"]];
+        reloadImage_ = [NSImage imageNamed:@"Reload"];
+        emptyImage_ = [NSImage imageNamed:@"Empty"];
     }
     return self;
 }

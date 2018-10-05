@@ -11,7 +11,6 @@
 		3712A865100E1ED00001F6C5 /* RestartIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3712A864100E1ED00001F6C5 /* RestartIcon.icns */; };
 		3712A874100E21C50001F6C5 /* SaveIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3712A873100E21C50001F6C5 /* SaveIcon.icns */; };
 		3712A876100E21D30001F6C5 /* OpenIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3712A875100E21D30001F6C5 /* OpenIcon.icns */; };
-		3712A920100E3D7E0001F6C5 /* SolitaireIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3712A91F100E3D7E0001F6C5 /* SolitaireIcon.icns */; };
 		372CBAF5104A03C900D9BB11 /* AutoIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 372CBAF4104A03C900D9BB11 /* AutoIcon.icns */; };
 		37302452104CADF800B81460 /* Solitaire.help in Resources */ = {isa = PBXBuildFile; fileRef = 3730242C104CADF800B81460 /* Solitaire.help */; };
 		373293770FFC13F90058C186 /* SolitaireTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 373293760FFC13F90058C186 /* SolitaireTimer.m */; };
@@ -377,7 +376,6 @@
 				3712A865100E1ED00001F6C5 /* RestartIcon.icns in Resources */,
 				3712A874100E21C50001F6C5 /* SaveIcon.icns in Resources */,
 				3712A876100E21D30001F6C5 /* OpenIcon.icns in Resources */,
-				3712A920100E3D7E0001F6C5 /* SolitaireIcon.icns in Resources */,
 				372CBAF5104A03C900D9BB11 /* AutoIcon.icns in Resources */,
 				37302452104CADF800B81460 /* Solitaire.help in Resources */,
 			);
