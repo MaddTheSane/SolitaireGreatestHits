@@ -33,6 +33,8 @@
 @class SolitaireWaste;
 @class SolitaireStock;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface SolitaireGame : NSObject {
 @public
     __weak SolitaireController* controller;
@@ -44,22 +46,22 @@
 @property(weak) SolitaireController* controller;
 
 -(id) initWithController: (SolitaireController*)gameController;
--(SolitaireView*) view;
--(NSString*) name;
--(NSString*) localizedName;
--(NSUInteger) gameSeed;
+@property (readonly, nullable) SolitaireView *view;
+@property (readonly) NSString *name;
+@property (readonly) NSString *localizedName;
+@property (readonly) NSUInteger gameSeed;
 -(void) gameWithSeed: (NSUInteger)seed;
 -(void) initializeGame;
 -(void) layoutGameComponents;
 -(void) startGame;
--(BOOL) didWin;
--(BOOL) didLose;
+@property (readonly) BOOL didWin;
+@property (readonly) BOOL didLose;
 -(void) reset;
--(NSInteger) cardsInPlay;
+@property (readonly) NSInteger cardsInPlay;
 
 // Scoring
--(BOOL) keepsScore;
--(NSInteger) initialScore;
+@property (readonly) BOOL keepsScore;
+@property (readonly) NSInteger initialScore;
 -(NSInteger) scoreForCard: (SolitaireCard*)card movedFromContainer: (SolitaireCardContainer*) fromContainer
     toContainer: (SolitaireCardContainer*)toContainer;
 -(NSInteger) scoreForCardFlipped: (SolitaireCard*)card;
@@ -69,7 +71,7 @@
 -(void) loadSavedGameImage: (SolitaireSavedGameImage*)gameImage;
 
 // Auto-finish
--(BOOL) supportsAutoFinish;
+@property (readonly) BOOL supportsAutoFinish;
 -(void) autoFinishGame;
 
 -(void) dealNewGame;
@@ -88,13 +90,15 @@
 -(void) dropCard: (SolitaireCard*) card inWaste: (SolitaireWaste*) waste;
 -(void) dropCard: (SolitaireCard*) card inStock: (SolitaireStock*) stock;
 
--(void) onCard: (SolitaireCard*) card removedFromContainer: (SolitaireCardContainer*) container;
+-(void) onCard: (SolitaireCard*) card removedFromContainer: (nullable SolitaireCardContainer*) container;
 -(void) onCard: (SolitaireCard*) card removedFromTableau: (SolitaireTableau*) tableau;
 -(void) onCard: (SolitaireCard*) card removedFromFoundation: (SolitaireFoundation*) foundation;
 -(void) onCard: (SolitaireCard*) card removedFromCell: (SolitaireCell*) cell; 
 
 -(void) onGameWon;
 
--(SolitaireFoundation*) findFoundationForCard: (SolitaireCard*) card;
+-(nullable SolitaireFoundation*) findFoundationForCard: (SolitaireCard*) card;
 
 @end
+
+NS_ASSUME_NONNULL_END

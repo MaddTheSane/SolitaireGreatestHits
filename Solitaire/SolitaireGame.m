@@ -54,7 +54,7 @@
 
 -(NSString*) name {
     [self doesNotRecognizeSelector:_cmd];
-    return nil;
+    return @"";
 }
 
 -(NSString*) localizedName {
