@@ -77,8 +77,8 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     // Setup the defaults system.
     NSMutableDictionary* defaultValues = [[NSMutableDictionary alloc] initWithCapacity: 8];
 
-    [defaultValues setObject:[NSNumber numberWithInt: NSOffState] forKey: @"showScoreAndTime"];
-    [defaultValues setObject:[NSNumber numberWithInt: 0] forKey: @"selectedGameIndex"];
+    [defaultValues setObject:@(NSOffState) forKey: @"showScoreAndTime"];
+    [defaultValues setObject:@0 forKey: @"selectedGameIndex"];
 
     NSData* colorAsData = [NSKeyedArchiver archivedDataWithRootObject: 
         [NSColor colorWithCalibratedRed: 0.12f green: 0.64f blue: 0.33f alpha: 1.0f]];
@@ -95,8 +95,8 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
 -(void) awakeFromNib {
     
     // Create Bar at the bottom of the window.
-    [self.window setAutorecalculatesContentBorderThickness: YES forEdge: NSMinYEdge];
-    [self.window setContentBorderThickness: 22.0 forEdge: NSMinYEdge];
+    [self.window setAutorecalculatesContentBorderThickness: YES forEdge: NSRectEdgeMinY];
+    [self.window setContentBorderThickness: 22.0 forEdge: NSRectEdgeMinY];
     
     // Create Toolbar
     NSToolbar* toolbar = [[NSToolbar alloc] initWithIdentifier: @"SolitaireToolbar"];
@@ -417,14 +417,12 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
 	return YES;
 }
 
--(SolitaireGame*) game {
-    return game_;
-}
+@synthesize game=game_;
 
 // Toolbar delegate methods
 
 - (NSArray*) toolbarAllowedItemIdentifiers: (NSToolbar*) toolbar {
-    return [NSArray arrayWithObjects:
+    return @[
         SolitaireNewGameToolbarItemIdentifier,
         SolitaireRestartGameToolbarItemIdentifier,
         SolitaireSaveGameToolbarItemIdentifier,
@@ -437,11 +435,11 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         SolitaireInstructionsToolbarItemIdentifier,
         NSToolbarFlexibleSpaceItemIdentifier,
         NSToolbarSpaceItemIdentifier,
-        NSToolbarSeparatorItemIdentifier, nil];
+        NSToolbarSeparatorItemIdentifier];
 }
 
 -(NSArray*) toolbarDefaultItemIdentifiers: (NSToolbar *)toolbar {
-    return [NSArray arrayWithObjects:
+    return @[
         SolitaireNewGameToolbarItemIdentifier,
         SolitaireRestartGameToolbarItemIdentifier,
         SolitaireChooseGameToolbarItemIdentifier,
@@ -454,7 +452,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         SolitaireUndoToolbarItemIdentifier,
         SolitaireRedoToolbarItemIdentifier,
         NSToolbarFlexibleSpaceItemIdentifier,
-        SolitaireInstructionsToolbarItemIdentifier, nil];
+        SolitaireInstructionsToolbarItemIdentifier];
 }
 
 - (NSToolbarItem*)toolbar:(NSToolbar*)toolbar itemForItemIdentifier:(NSString*)itemIdentifier willBeInsertedIntoToolbar: (BOOL)flag {

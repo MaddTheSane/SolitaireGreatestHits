@@ -69,6 +69,6 @@
 
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication;
 
--(SolitaireGame*) game;
+@property (readonly, strong) SolitaireGame *game;
 
 @end

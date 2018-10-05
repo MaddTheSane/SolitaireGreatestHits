@@ -102,7 +102,6 @@
 		378CB0EB0E4774F900D95193 /* SolitaireController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireController.m; sourceTree = "<group>"; };
 		378CB1060E47777600D95193 /* SolitaireKlondikeGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireKlondikeGame.h; sourceTree = "<group>"; };
 		378CB1070E47777600D95193 /* SolitaireKlondikeGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireKlondikeGame.m; sourceTree = "<group>"; };
-		379CAAA00FD19512009A760B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		37AAB744100FF9630003CBE5 /* SolitaireSavedGameImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireSavedGameImage.h; sourceTree = "<group>"; };
 		37AAB745100FF9630003CBE5 /* SolitaireSavedGameImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireSavedGameImage.m; sourceTree = "<group>"; };
 		37CB1ACD10151E6E0076A591 /* SolitairePyramidGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitairePyramidGame.h; sourceTree = "<group>"; };
@@ -116,6 +115,7 @@
 		37ECE6AF103232A900AF20BB /* SolitaireScorpianGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireScorpianGame.m; sourceTree = "<group>"; };
 		37ECE7091032469F00AF20BB /* SolitaireYukonGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireYukonGame.h; sourceTree = "<group>"; };
 		37ECE70A1032469F00AF20BB /* SolitaireYukonGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireYukonGame.m; sourceTree = "<group>"; };
+		556821012168128400402D96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Solitaire Greatest Hits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Solitaire Greatest Hits.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		925E695E18F496010074BF00 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -346,6 +346,7 @@
 			knownRegions = (
 				en,
 				de,
+				Base,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Solitaire */;
 			projectDirPath = "";
@@ -425,8 +426,8 @@
 		379CAA9F0FD19512009A760B /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				379CAAA00FD19512009A760B /* en */,
 				92DD744518E4DA4300FFB2F8 /* de */,
+				556821012168128400402D96 /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
