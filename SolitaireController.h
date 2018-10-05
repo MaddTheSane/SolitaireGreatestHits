@@ -30,7 +30,7 @@
 
 @interface SolitaireController : NSObject <NSToolbarDelegate> {
 @public
-    SolitairePreferencesController* __weak preferences;
+    SolitairePreferencesController* preferences;
 
     IBOutlet NSWindow* __weak window;
     IBOutlet SolitaireView* __weak view;
@@ -46,7 +46,7 @@
 }
 
 @property (weak) NSWindow* window;
-@property (weak) SolitairePreferencesController* preferences;
+@property (strong) SolitairePreferencesController* preferences;
 @property (weak) SolitaireView* view;
 @property (weak) SolitaireTimer* timer;
 @property (weak) SolitaireScoreKeeper* scoreKeeper;
