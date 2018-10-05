@@ -8,12 +8,9 @@ build/*
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-*.xcworkspace
-!default.xcworkspace
-xcuserdata
+project.xcworkspace/
+default.xcworkspace/
+xcuserdata/
 profile
 *.moved-aside
 *.mode1
-# GNUstep
-obj
-Freecell.app
