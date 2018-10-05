@@ -23,6 +23,8 @@
 #import <Cocoa/Cocoa.h>
 #import "SolitaireCardContainer.h"
 
+NSString* Localized(NSString *key);
+
 @class SolitaireController;
 @class SolitaireView;
 @class SolitaireSavedGameImage;
@@ -35,17 +37,18 @@
 
 @interface SolitaireGame : NSObject {
 @public
-    SolitaireController* controller;
+    __weak SolitaireController* controller;
     
 @private
     NSUInteger gameSeed_;
 }
 
-@property SolitaireController* controller;
+@property(weak) SolitaireController* controller;
 
 -(id) initWithController: (SolitaireController*)gameController;
 -(SolitaireView*) view;
 -(NSString*) name;
+-(NSString*) localizedName;
 -(NSUInteger) gameSeed;
 -(void) gameWithSeed: (NSUInteger)seed;
 -(void) initializeGame;

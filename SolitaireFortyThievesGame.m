@@ -260,7 +260,8 @@
 
 -(BOOL) canDropCard: (SolitaireCard*) card inFoundation: (SolitaireFoundation*) foundation {
     if([card countCardsStackedOnTop] > 0) return NO;
-    if([foundation count] == 0 && [card faceValue] == SolitaireValueAce) return YES;
+    if([foundation count] == 0)
+	    return [card faceValue] == SolitaireValueAce;
     
     SolitaireCard* topCard = [foundation topCard];
     if([card faceValue] == [topCard faceValue] + 1 && [card suit] == [topCard suit])
@@ -281,9 +282,20 @@
 
 -(SolitaireFoundation*) findFoundationForCard: (SolitaireCard*) card {
     if (card == nil) return nil;
-    
-    int i;
-    for(i = 7; i >= 0; i--)
+
+    // Find best place so suits are ordered
+    SolitaireFoundation *preferredFoundation1 = foundation_[[card suit]];
+    if (card.container == preferredFoundation1) return nil;
+    SolitaireFoundation *preferredFoundation2 = foundation_[[card suit] + 4];
+    if (card.container == preferredFoundation2) return nil;
+
+    if ([self canDropCard: card inFoundation:preferredFoundation1])
+        return preferredFoundation1;
+    if ([self canDropCard: card inFoundation:preferredFoundation2])
+        return preferredFoundation2;
+
+    // Find another free place
+    for(int i = 7; i >= 0; i--)
         if(card.container == foundation_[i]) break;
         else if([self canDropCard: card inFoundation: foundation_[i]])
             return foundation_[i];

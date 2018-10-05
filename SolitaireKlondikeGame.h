@@ -33,7 +33,7 @@
 @interface SolitaireKlondikeGame : SolitaireGame {
 @protected
     SolitaireStock* stock_;
-    SolitaireMultiCardWaste* waste_;
+    SolitaireWaste* waste_;
     SolitaireFoundation* foundation_[4];
     SolitaireTableau* tableau_[7];
 }

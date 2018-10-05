@@ -44,18 +44,18 @@
 #include <stdlib.h>
 #include <time.h>
 
+NSString* Localized(NSString *key)
+{
+	return [[NSBundle mainBundle] localizedStringForKey:key value:@"" table:nil];
+}
+
 // Private methods
 @interface SolitaireController(NSObject)
 -(void) requestDonation;
 -(void) selectGameWithRegistryIndex: (NSInteger)index;
 
 // Sheet callbacks
--(void) newGameAlertDidEnd: (NSAlert*)alert returnCode: (int)returnCode contextInfo: (void*)contextInfo;
--(void) restartGameAlertDidEnd: (NSAlert*)alert returnCode: (int)returnCode contextInfo: (void*)contextInfo;
--(void) savePanelDidEnd: (NSSavePanel*)sheet returnCode: (int)returnCode contextInfo: (void*)contextInfo;
--(void) openPanelDidEnd: (NSOpenPanel*)panel returnCode: (int)returnCode  contextInfo: (void*)contextInfo;
 -(void) preferencesSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
--(void) chooseGameAlertDidEnd: (NSAlert*)alert returnCode: (int)returnCode contextInfo: (void*)contextInfo;
 @end
 
 // Toolbar Item Identifier strings
@@ -89,6 +89,7 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
         [NSColor colorWithCalibratedRed: 0.12f green: 0.64f blue: 0.33f alpha: 1.0f]];
         
     [defaultValues setObject: colorAsData forKey: @"backgroundColor"];
+    [defaultValues setObject:@"CardBack1" forKey: @"cardBack"];
 
     NSData* dateAsData = [NSKeyedArchiver archivedDataWithRootObject: [NSDate distantPast]];
     [defaultValues setObject: dateAsData forKey: @"lastDonateDate"];
@@ -97,9 +98,6 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
 }
 
 -(void) awakeFromNib {
-    
-    // About window is created upon request.
-    aboutWindow_ = nil;
     
     // Create Bar at the bottom of the window.
     [self.window setAutorecalculatesContentBorderThickness: YES forEdge: NSMinYEdge];
@@ -122,8 +120,6 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     // Load selected game
     NSNumber* selectedGameIndex = [[NSUserDefaults standardUserDefaults] objectForKey: @"selectedGameIndex"];
     [self selectGameWithRegistryIndex: [selectedGameIndex intValue]];
-    
-    self.preferences = nil;
 }
 
 -(void) windowDidBecomeKey: (NSNotification *)notification {
@@ -154,10 +150,10 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     [gameRegistry_ addObject: game];
     [gameDictionary_ setObject: game forKey: [game name]];
     
-    NSMenuItem* gameItem = [[NSMenuItem alloc] initWithTitle: [game name] action: @selector(onGameSelected:) keyEquivalent: @""];
+    NSMenuItem* gameItem = [[NSMenuItem alloc] initWithTitle: [game localizedName] action: @selector(onGameSelected:) keyEquivalent: @""];
 
     NSMenu* mainMenu = [[NSApplication sharedApplication] mainMenu];
-    NSMenu* gameMenu = [[mainMenu itemWithTitle: @"Game"] submenu];
+    NSMenu* gameMenu = [[mainMenu itemWithTitle: Localized(@"Game")] submenu];
     [gameMenu addItem: gameItem];
 
     [gameItem setState: NSOffState]; 
@@ -219,61 +215,87 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
 
 -(IBAction) onNewGame: (id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle: @"Yes"];
-    [alert addButtonWithTitle: @"Cancel"];
-    [alert setMessageText: @"New Game"];
-    [alert setInformativeText: @"Do you want to end the current game and start a new one?"];
+    [alert addButtonWithTitle: Localized(@"Yes")];
+    [alert addButtonWithTitle: Localized(@"Cancel")];
+    [alert setMessageText: Localized(@"New game")];
+    [alert setInformativeText: Localized(@"RestartQuestion")];
     [alert setAlertStyle: NSWarningAlertStyle];
-    
-    [alert beginSheetModalForWindow: self.window modalDelegate: self didEndSelector:@selector(newGameAlertDidEnd:returnCode:contextInfo:) contextInfo: nil];
+ 
+    [alert beginSheetModalForWindow:self.window completionHandler:
+     ^(NSInteger result)
+    {
+        if (result == NSAlertFirstButtonReturn)
+            [self newGame];
+    }];
 }
 
 -(IBAction) onRestartGame: (id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle: @"Yes"];
-    [alert addButtonWithTitle: @"Cancel"];
-    [alert setMessageText: @"Restart Game"];
-    [alert setInformativeText: @"Do you want to start the current game from the beginning?"];
+    [alert addButtonWithTitle: Localized(@"Yes")];
+    [alert addButtonWithTitle: Localized(@"Cancel")];
+    [alert setMessageText: Localized(@"Restart game")];
+    [alert setInformativeText: Localized(@"ReloadQuestion")];
     [alert setAlertStyle: NSWarningAlertStyle];
     
-    [alert beginSheetModalForWindow: self.window modalDelegate: self didEndSelector:@selector(restartGameAlertDidEnd:returnCode:contextInfo:) contextInfo: nil];
+    [alert beginSheetModalForWindow:self.window completionHandler:
+     ^(NSInteger result)
+    {
+         if (result == NSAlertFirstButtonReturn)
+             [self restartGame];
+    }];
 }
 
--(IBAction) onSaveGame: (id)sender {
-    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* documentsDirectory = [paths objectAtIndex: 0];
-
+-(IBAction) onSaveGame: (id)sender
+{
     NSSavePanel* savePanel = [NSSavePanel savePanel];
-    [savePanel setTitle: @"Save Game"];
+    [savePanel setTitle: Localized(@"Save Game")];
     [savePanel setExtensionHidden: YES];
-    [savePanel setRequiredFileType: @"sgh"];
-    [savePanel beginSheetForDirectory: documentsDirectory file: @"Untitled" modalForWindow: self.window modalDelegate: self
-        didEndSelector: @selector(savePanelDidEnd:returnCode:contextInfo:) contextInfo: nil];
+    [savePanel setAllowedFileTypes: [NSArray arrayWithObject:@"sgh"]];
+
+    [savePanel beginSheetModalForWindow:self.window completionHandler:
+	 ^(NSInteger result)
+    {
+		 if (result == NSFileHandlingPanelOKButton)
+		 {
+			 NSString *file = [[savePanel URL] path];
+			 [self saveGameWithFilename:file];
+		 }
+    }];
 }
 
--(IBAction) onOpenGame: (id)sender {
-    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* documentsDirectory = [paths objectAtIndex: 0];
-
+-(IBAction) onOpenGame: (id)sender
+{
     NSOpenPanel* openPanel = [NSOpenPanel openPanel];
-    [openPanel setTitle: @"Open Game"];
+    [openPanel setTitle: Localized(@"Open Game")];
     [openPanel setExtensionHidden: YES];
     [openPanel setCanChooseFiles: YES];
     [openPanel setCanChooseDirectories: NO];
     [openPanel setAllowsMultipleSelection: NO];
 
-    [openPanel beginSheetForDirectory: documentsDirectory file: nil types: [NSArray arrayWithObject: @"sgh"]
-        modalForWindow: self.window modalDelegate: self
-            didEndSelector: @selector(openPanelDidEnd:returnCode:contextInfo:) contextInfo: nil];
+    [openPanel beginSheetModalForWindow:self.window completionHandler:
+     	^(NSInteger result)
+    {
+	    if (result == NSFileHandlingPanelOKButton)
+	    {
+		    NSString *file = [[openPanel URL] path];
+		    [self openGameWithFilename:file];
+	    }
+    }];
 }
 
--(IBAction) onPreferences: (id)sender {
-    if(self.preferences == nil) {
-        SolitairePreferencesController* controller = [[SolitairePreferencesController alloc] init];
-        [NSBundle loadNibNamed: @"Preferences" owner: controller];
-        self.preferences = controller;
-    }
-    
+-(IBAction) onPreferences: (id)sender
+{
+    [preferences data2Controls];
+
+    // From OSX 10.9:
+    /*[self.window beginSheet:self.preferences.preferencesPanel completionHandler:^(NSModalResponse returnCode)
+    {
+        if (returnCode == NSOKButton)
+        {
+            [self.view setTableBackground: [self.preferences.colorWell color]];
+            [self.view.layer setNeedsDisplay];
+        }
+    }];*/
     [NSApp beginSheet: self.preferences.preferencesPanel modalForWindow: self.window modalDelegate: self
         didEndSelector: @selector(preferencesSheetDidEnd:returnCode:contextInfo:) contextInfo: nil];
 }
@@ -283,9 +305,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
 
     // Create a matrix of radio buttons
     NSButtonCell *prototype = [[NSButtonCell alloc] init];
-    [prototype setTitle: @"Choose a Game..."];
+    [prototype setTitle: Localized(@"ChooseGame")];
     [prototype setButtonType: NSRadioButton];
-    NSRect matrixRect = NSMakeRect(0.0, 0.0, 300.0, 225.0);
+    NSRect matrixRect = NSMakeRect(0.0, 0.0, 300.0, 240.0);
     NSMatrix* matrix = [[NSMatrix alloc] initWithFrame: matrixRect
                                                     mode: NSRadioModeMatrix
                                                prototype: (NSCell*)prototype
@@ -299,33 +321,44 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     NSArray *cellArray = [matrix cells];
     for(SolitaireGame* game in games) {
         NSCell* cell = [cellArray objectAtIndex: index];
-        [cell setTitle: [game name]];
+        [cell setTitle: [game localizedName]];
         if(game == game_) [matrix selectCellAtRow: index column: 0];
         index++;
     }
 
     // Create an alert sheet.
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle: @"Play This Game"];
-    [alert addButtonWithTitle: @"Cancel"];
-    [alert setMessageText: @"Choose a different Solitaire game..."];
-    [alert setInformativeText: @"Do you want to end the current game and start a new one?"];
+    [alert addButtonWithTitle: Localized(@"Play this game")];
+    [alert addButtonWithTitle: Localized(@"Cancel")];
+    [alert setMessageText: Localized(@"ChooseDifferent")];
+    [alert setInformativeText: Localized(@"RestartQuestion")];
     [alert setAccessoryView: matrix];
     [alert setAlertStyle: NSInformationalAlertStyle];
     
-    [alert beginSheetModalForWindow: self.window modalDelegate: self
-        didEndSelector: @selector(chooseGameAlertDidEnd:returnCode:contextInfo:) contextInfo: matrix];
+    [alert beginSheetModalForWindow:self.window completionHandler:
+     ^(NSInteger result)
+    {
+         if (result == NSAlertFirstButtonReturn)
+         {
+             NSInteger index = [matrix selectedRow];
+             [self selectGameWithRegistryIndex: index];
+             [self newGame];
+         }
+    }];
 }
 
 -(IBAction) onAbout: (id)sender {
-    if(!aboutWindow_) [NSBundle loadNibNamed: @"About" owner: self];
-    [aboutWindow_ orderFront: self];
+	
+	NSString * rtfFilePath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"rtf"];
+	[infoView_ readRTFDFromFile:rtfFilePath];
+	
+	[aboutWindow_ makeKeyAndOrderFront: self];
 }
 
 -(IBAction) onGameSelected: (NSMenuItem*)sender {
     // Uncheck current game item.
     NSMenu* mainMenu = [[NSApplication sharedApplication] mainMenu];
-    NSMenu* gameMenu = [[mainMenu itemWithTitle: @"Game"] submenu];
+    NSMenu* gameMenu = [[mainMenu itemWithTitle: Localized(@"Game")] submenu];
     
     [self selectGameWithRegistryIndex: [gameMenu indexOfItem: sender]];
     [self newGame];
@@ -340,6 +373,11 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
 
 -(IBAction) onAutoFinish: (id)sender {
     if([game_ supportsAutoFinish]) [game_ autoFinishGame];
+}
+
+- (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication
+{
+	return YES;
 }
 
 -(SolitaireGame*) game {
@@ -387,9 +425,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     NSToolbarItem* toolbarItem = nil; 
     if([itemIdentifier isEqualTo: SolitaireNewGameToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: @"New Game"];
+        [toolbarItem setLabel: Localized(@"New game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: @"Start a new game"];
+        [toolbarItem setToolTip: Localized(@"Start a new game")];
         [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"SolitaireIcon" ofType:@"icns"]]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onNewGame:)];
@@ -397,9 +435,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if([itemIdentifier isEqualTo: SolitaireRestartGameToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: @"Restart Game"];
+        [toolbarItem setLabel: Localized(@"Restart game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: @"Restart this game"];
+        [toolbarItem setToolTip: Localized(@"Restart this game")];
         [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"RestartIcon" ofType:@"icns"]]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onRestartGame:)];
@@ -407,9 +445,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if([itemIdentifier isEqualTo: SolitaireSaveGameToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: @"Save Game"];
+        [toolbarItem setLabel: Localized(@"Save game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: @"Save your current game"];
+        [toolbarItem setToolTip: Localized(@"Save your current game")];
         [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"SaveIcon" ofType:@"icns"]]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onSaveGame:)];
@@ -417,9 +455,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if([itemIdentifier isEqualTo: SolitaireOpenGameToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: @"Open Game"];
+        [toolbarItem setLabel: Localized(@"Open game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: @"Open a previous game"];
+        [toolbarItem setToolTip: Localized(@"Open a previous game")];
         [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"OpenIcon" ofType:@"icns"]]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onOpenGame:)];
@@ -427,19 +465,19 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if ([itemIdentifier isEqualTo: SolitairePreferencesToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: @"Preferences"];
+        [toolbarItem setLabel: Localized(@"Preferences")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: @"Change game preferences"];
-        [toolbarItem setImage: [NSImage imageNamed: @"NSPreferencesGeneral"]];
+        [toolbarItem setToolTip: Localized(@"Change game preferences")];
+        [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"SettingsIcon" ofType:@"icns"]]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onPreferences:)];
         [toolbarItem setEnabled: YES];
     }
     else if ([itemIdentifier isEqualTo: SolitaireChooseGameToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: @"Choose Game"];
+        [toolbarItem setLabel: Localized(@"Choose game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: @"Choose a different game to play"];
+        [toolbarItem setToolTip: Localized(@"Choose a different game to play")];
         [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"ChooseGame" ofType:@"icns"]]];;
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onChooseGame:)];
@@ -447,9 +485,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if ([itemIdentifier isEqualTo: SolitaireAutoToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: @"Auto Finish"];
+        [toolbarItem setLabel: Localized(@"Auto finish")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: @"Auto finish this game"];
+        [toolbarItem setToolTip: Localized(@"Auto finish this game")];
         [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"AutoIcon" ofType:@"icns"]]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onAutoFinish:)];
@@ -457,9 +495,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if ([itemIdentifier isEqualTo: SolitaireUndoToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: @"Undo"];
+        [toolbarItem setLabel: Localized(@"Undo")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: @"Undo last move"];
+        [toolbarItem setToolTip: Localized(@"Undo last move")];
         [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"UndoIcon" ofType:@"icns"]]];
         [toolbarItem setTarget: [self.view undoManager]];
         [toolbarItem setAction: @selector(undo)];
@@ -467,9 +505,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if ([itemIdentifier isEqualTo: SolitaireRedoToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: @"Redo"];
+        [toolbarItem setLabel: Localized(@"Redo")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: @"Redo move"];
+        [toolbarItem setToolTip: Localized(@"Redo move")];
         [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"RedoIcon" ofType:@"icns"]]];
         [toolbarItem setTarget: [self.view undoManager]];
         [toolbarItem setAction: @selector(redo)];
@@ -477,10 +515,10 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if ([itemIdentifier isEqualTo: SolitaireInstructionsToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: @"How To Play"];
+        [toolbarItem setLabel: Localized(@"How to play")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: @"Instructions on how to play this game"];
-        [toolbarItem setImage: [NSImage imageNamed: @"NSInfo"]];
+        [toolbarItem setToolTip: Localized(@"Instructions on how to play this game")];
+        [toolbarItem setImage: [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"HelpIcon" ofType:@"icns"]]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onInstructions:)];
         [toolbarItem setEnabled: YES];
@@ -496,9 +534,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
 }
 
 -(BOOL) validateMenuItem: (NSMenuItem*)menuItem {
-    if([[menuItem title] isEqualToString: @"Auto Finish Game"]) {
-        if(![game_ supportsAutoFinish]) return NO;
-    }
+	if ([menuItem action] == @selector(onAutoFinish:)
+	&& ![game_ supportsAutoFinish])
+		return NO;
     return YES;
 }
 
@@ -527,11 +565,11 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
 
 -(void) selectGameWithRegistryIndex: (NSInteger)index {
     NSMenu* mainMenu = [[NSApplication sharedApplication] mainMenu];
-    NSMenu* gameMenu = [[mainMenu itemWithTitle: @"Game"] submenu];
+    NSMenu* gameMenu = [[mainMenu itemWithTitle: Localized(@"Game")] submenu];
     
     // Clear the check from the old game.
     if(game_ != nil) {
-        NSMenuItem* currentGameItem = [gameMenu itemWithTitle: [game_ name]];
+        NSMenuItem* currentGameItem = [gameMenu itemWithTitle: [game_ localizedName]];
         [currentGameItem setState: NSOffState];
     }
     
@@ -545,48 +583,34 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     [[NSUserDefaults standardUserDefaults] setInteger: index forKey: @"selectedGameIndex"];
     
     // Put the name of the game in the title of the window.
-    [self.window setTitle: [NSString stringWithFormat: @"Solitaire Greatest Hits: %@", [game_ name]]];
+    [self.window setTitle: [NSString stringWithFormat: @"Solitaire Greatest Hits: %@", [game_ localizedName]]];
 }
 
 // Sheet Delegate methods
-
--(void)newGameAlertDidEnd: (NSAlert*)alert returnCode: (int)returnCode contextInfo: (void*)contextInfo {
-    if(returnCode == NSAlertFirstButtonReturn) [self newGame];
-}
-
--(void)restartGameAlertDidEnd: (NSAlert*)alert returnCode: (int)returnCode contextInfo: (void*)contextInfo {
-    if(returnCode == NSAlertFirstButtonReturn) [self restartGame];
-}
-
--(void) savePanelDidEnd: (NSSavePanel*)sheet returnCode: (int)returnCode contextInfo: (void*)contextInfo {
-    if(returnCode == NSOKButton) {
-        NSString* filename = [sheet filename];
-        [self saveGameWithFilename: filename];
-    }
-}
-
--(void) openPanelDidEnd: (NSOpenPanel*)panel returnCode: (int)returnCode  contextInfo: (void*)contextInfo {
-    if(returnCode == NSOKButton) {
-        NSString* filename = [panel filename];
-        [self openGameWithFilename: filename];
-    }
-}
-
 - (void)preferencesSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
-    if(returnCode == NSOKButton) {
-        [self.view setTableBackground: [self.preferences.colorWell color]];
-        [self.view.layer setNeedsDisplay];
-    }    
-    [sheet orderOut: self];
-}
+    if(returnCode == NSOKButton)
+    {
+        NSColor *color = [self.preferences selectedColor];
+        [self.view setTableBackground: color];
+        
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:color];
+        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"backgroundColor"];
 
--(void)chooseGameAlertDidEnd: (NSAlert*)alert returnCode: (int)returnCode contextInfo: (void*)contextInfo {
-    if(returnCode == NSAlertFirstButtonReturn) {
-        NSMatrix* matrix = contextInfo;
-        NSInteger index = [matrix selectedRow];
-        [self selectGameWithRegistryIndex: index];
-        [self newGame];
+        NSString *cardBack = [self.preferences selectedCardBack];
+        if (![cardBack isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"cardBack"]])
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:cardBack forKey:@"cardBack"];
+            LoadFlippedCardImage(YES);
+
+            NSArray *sprites = [[self view] sprites];
+            for (SolitaireSprite *sprite in sprites)
+                [sprite setNeedsDisplay];
+        }
+
+        [self.view.layer setNeedsDisplay];
     }
+    
+    [sheet orderOut: self];
 }
 
 @end

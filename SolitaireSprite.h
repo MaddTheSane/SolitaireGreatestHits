@@ -26,11 +26,11 @@
 @class SolitaireView;
 
 @interface SolitaireSprite : CALayer {
-SolitaireView* view;
+__weak SolitaireView* view;
 BOOL selected;
 }
 
-@property(readwrite) SolitaireView* view;
+@property(weak) SolitaireView* view;
 @property(readwrite) BOOL selected;
 
 -(id) init;

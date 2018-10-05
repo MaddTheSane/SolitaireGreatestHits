@@ -29,9 +29,7 @@
 }
 
 - (void) dealloc {
-    [target_ release];
     target_ = nil;
-    [super dealloc];
 }
 
 -(void)forwardInvocation: (NSInvocation*)invocation {

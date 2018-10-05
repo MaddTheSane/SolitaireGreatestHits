@@ -49,8 +49,7 @@ extern NSImage* flippedCardImage;
 }
 
 -(id) initWithDeckCount: (NSInteger)deckCount {
-    if(flippedCardImage == nil) flippedCardImage =
-        [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"SolitaireCardBack" ofType:@"png"]];
+    LoadFlippedCardImage(YES);
 
     if((self = [super init]) != nil) {
         delegate_ = nil;
@@ -234,7 +233,7 @@ extern NSImage* flippedCardImage;
             [oval stroke];
         
             cardCountRect.size.height -= 5;
-            NSString* countString = [NSString stringWithFormat: @"%i", [self count]];
+            NSString* countString = [NSString stringWithFormat: @"%li", (long)[self count]];
             NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
             [style setAlignment: NSCenterTextAlignment];
             NSDictionary *attributes = [[NSDictionary alloc] initWithObjectsAndKeys:

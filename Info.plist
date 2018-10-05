@@ -6,8 +6,10 @@
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIconFile</key>
-	<string>SolitaireIcon</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>SolitaireHelp</string>
+	<key>CFBundleHelpBookName</key>
+	<string>Solitaire Greatest Hits Help</string>
 	<key>CFBundleIdentifier</key>
 	<string>fontaine.Solitaire2</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -16,17 +18,17 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.1</string>
 	<key>CFBundleSignature</key>
 	<string>DANF</string>
 	<key>CFBundleVersion</key>
-	<string>2.0</string>
+	<string>2.1</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.card-games</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>CFBundleHelpBookFolder</key>
-	<string>SolitaireHelp</string>
-	<key>CFBundleHelpBookName</key>
-	<string>Solitaire Greatest Hits Help</string>
 </dict>
 </plist>

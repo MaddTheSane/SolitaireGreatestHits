@@ -28,6 +28,20 @@
 NSImage* cardsImage = nil;
 NSImage* flippedCardImage = nil;
 
+void LoadFlippedCardImage(BOOL reload)
+{
+    if (flippedCardImage == nil || reload)
+    {
+        NSString *cardBack = [[NSUserDefaults standardUserDefaults] objectForKey:@"cardBack"];
+        if (cardBack == nil)
+            cardBack = @"CardBack1";
+    
+        flippedCardImage = [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource:cardBack ofType:@"png"]];
+    }
+    return flippedCardImage;
+}
+
+
 id suitStringTable__[] = {@"Diamonds", @"Hearts", @"Spades", @"Clubs"};
 id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"Jack", @"Queen", @"King"};
 
@@ -46,10 +60,8 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
     if(cardsImage == nil) cardsImage =
         [[NSImage alloc] initWithContentsOfFile:
             [[NSBundle mainBundle] pathForResource:@"SolitaireCards" ofType:@"png"]];
-        
-    if(flippedCardImage == nil) flippedCardImage =
-        [[NSImage alloc] initWithContentsOfFile:
-            [[NSBundle mainBundle] pathForResource:@"SolitaireCardBack" ofType:@"png"]];
+    
+    LoadFlippedCardImage(NO);
     
     if((self = [super init]) != nil) {
         suit_ = suit;
@@ -79,7 +91,6 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
         [cardsImage unlockFocus];
     
         [frontImage_ addRepresentation: bitmap];
-        backImage_ = flippedCardImage;
         
         self.delegate = self;
     }
@@ -118,7 +129,6 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
         [cardsImage unlockFocus];
     
         [frontImage_ addRepresentation: bitmap];
-        backImage_ = flippedCardImage;
         
         self.delegate = self;
     }
@@ -181,7 +191,7 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
         [frontImage_ drawInRect: dstRect fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0f];
     }
     else {
-        [backImage_ drawInRect: dstRect fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0f];
+        [flippedCardImage drawInRect: dstRect fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0f];
     }
     
     // Highlight card.

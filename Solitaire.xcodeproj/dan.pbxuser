@@ -1,0 +1,1311 @@
+// !$*UTF8*$!
+{
+	089C165DFE840E0CC02AAC07 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {517, 120}}";
+			sepNavSelRange = "{96, 0}";
+			sepNavVisRange = "{0, 98}";
+			sepNavWindowFrame = "{{474, 174}, {828, 675}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeArchitecturePreference = i386;
+		activeBuildConfigurationName = Release;
+		activeExecutable = 376BFD3B0E456BD6008B5923 /* Solitaire */;
+		activeTarget = 8D1107260486CEB800E47090 /* Solitaire */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* Solitaire */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = 376BFD4A0E456BDA008B5923 /* Code sense */;
+		executables = (
+			376BFD3B0E456BD6008B5923 /* Solitaire */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					575,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 273852048;
+			PBXWorkspaceStateSaveDate = 273852048;
+		};
+		perUserProjectItems = {
+			3704452D1029EBD5003B2EA8 /* PBXTextBookmark */ = 3704452D1029EBD5003B2EA8 /* PBXTextBookmark */;
+			3707C9B41006BDEC00A497C3 /* PBXTextBookmark */ = 3707C9B41006BDEC00A497C3 /* PBXTextBookmark */;
+			370F12CB102E11EB006BC8F5 /* PBXBookmark */ = 370F12CB102E11EB006BC8F5 /* PBXBookmark */;
+			372C39311051682000DA0AFD /* PBXTextBookmark */ = 372C39311051682000DA0AFD /* PBXTextBookmark */;
+			372C39321051682000DA0AFD /* PBXTextBookmark */ = 372C39321051682000DA0AFD /* PBXTextBookmark */;
+			372C39331051682000DA0AFD /* PBXTextBookmark */ = 372C39331051682000DA0AFD /* PBXTextBookmark */;
+			372C399010529A2500DA0AFD /* PBXTextBookmark */ = 372C399010529A2500DA0AFD /* PBXTextBookmark */;
+			372C39A910529ADC00DA0AFD /* PBXTextBookmark */ = 372C39A910529ADC00DA0AFD /* PBXTextBookmark */;
+			372C39BD10529ED100DA0AFD /* PBXTextBookmark */ = 372C39BD10529ED100DA0AFD /* PBXTextBookmark */;
+			372C39BE10529ED100DA0AFD /* PBXTextBookmark */ = 372C39BE10529ED100DA0AFD /* PBXTextBookmark */;
+			372C39BF10529ED100DA0AFD /* PBXTextBookmark */ = 372C39BF10529ED100DA0AFD /* PBXTextBookmark */;
+			372C39C010529ED100DA0AFD /* PBXTextBookmark */ = 372C39C010529ED100DA0AFD /* PBXTextBookmark */;
+			372C39C110529ED100DA0AFD /* PBXTextBookmark */ = 372C39C110529ED100DA0AFD /* PBXTextBookmark */;
+			372C39C210529ED100DA0AFD /* PBXTextBookmark */ = 372C39C210529ED100DA0AFD /* PBXTextBookmark */;
+			372C39C310529ED100DA0AFD /* PBXTextBookmark */ = 372C39C310529ED100DA0AFD /* PBXTextBookmark */;
+			372CBAFD104A051700D9BB11 /* PBXBookmark */ = 372CBAFD104A051700D9BB11 /* PBXBookmark */;
+			374492CD1009056D00BAC138 /* PBXBookmark */ = 374492CD1009056D00BAC138 /* PBXBookmark */;
+			374493001009136D00BAC138 /* PBXBookmark */ = 374493001009136D00BAC138 /* PBXBookmark */;
+			3781E3DF1003AE4600B421E0 /* PBXBookmark */ = 3781E3DF1003AE4600B421E0 /* PBXBookmark */;
+			3795F3401050489A00985288 /* PBXTextBookmark */ = 3795F3401050489A00985288 /* PBXTextBookmark */;
+			3795F3411050489A00985288 /* PBXTextBookmark */ = 3795F3411050489A00985288 /* PBXTextBookmark */;
+			3795F3421050489A00985288 /* PBXTextBookmark */ = 3795F3421050489A00985288 /* PBXTextBookmark */;
+			3795F3431050489A00985288 /* PBXTextBookmark */ = 3795F3431050489A00985288 /* PBXTextBookmark */;
+			3795F3451050489A00985288 /* PBXTextBookmark */ = 3795F3451050489A00985288 /* PBXTextBookmark */;
+			3795F3461050489A00985288 /* PBXTextBookmark */ = 3795F3461050489A00985288 /* PBXTextBookmark */;
+			3795F3471050489A00985288 /* PBXTextBookmark */ = 3795F3471050489A00985288 /* PBXTextBookmark */;
+			3795F34A1050489A00985288 /* PBXTextBookmark */ = 3795F34A1050489A00985288 /* PBXTextBookmark */;
+			3795F34B1050489A00985288 /* PBXTextBookmark */ = 3795F34B1050489A00985288 /* PBXTextBookmark */;
+			3795F34D1050489A00985288 /* PBXTextBookmark */ = 3795F34D1050489A00985288 /* PBXTextBookmark */;
+			3795F34E1050489A00985288 /* PBXTextBookmark */ = 3795F34E1050489A00985288 /* PBXTextBookmark */;
+			3795F34F1050489A00985288 /* PBXTextBookmark */ = 3795F34F1050489A00985288 /* PBXTextBookmark */;
+			37B12D151052A6DE00549A8E /* PBXTextBookmark */ = 37B12D151052A6DE00549A8E /* PBXTextBookmark */;
+			37CFDCCB103B18670090F321 /* PBXBookmark */ = 37CFDCCB103B18670090F321 /* PBXBookmark */;
+			37CFDCCC103B18670090F321 /* PlistBookmark */ = 37CFDCCC103B18670090F321 /* PlistBookmark */;
+			37D7947910362520007027E7 /* PBXTextBookmark */ = 37D7947910362520007027E7 /* PBXTextBookmark */;
+			37E6136A10348199003448C8 /* PBXTextBookmark */ = 37E6136A10348199003448C8 /* PBXTextBookmark */;
+			37EA2E45104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E45104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E46104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E46104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E47104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E47104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E48104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E48104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E49104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E49104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E4A104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E4A104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E4B104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E4B104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E4C104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E4C104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E4D104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E4D104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E4E104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E4E104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E50104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E50104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E51104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E51104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E52104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E52104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E58104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E58104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E5F104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E5F104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E60104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E60104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E64104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E64104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E67104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E67104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E68104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E68104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E6B104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E6B104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E6D104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E6D104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E70104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E70104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E71104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E71104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E74104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E74104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E75104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E75104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E76104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E76104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E77104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E77104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E79104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E79104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E7A104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E7A104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2E7B104F15E600E85AFE /* PBXTextBookmark */ = 37EA2E7B104F15E600E85AFE /* PBXTextBookmark */;
+			37EA2EA2104F1C2400E85AFE /* PBXTextBookmark */ = 37EA2EA2104F1C2400E85AFE /* PBXTextBookmark */;
+			37F4732B1052A5AB007279E1 /* PBXTextBookmark */ = 37F4732B1052A5AB007279E1 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 376BFD490E456BDA008B5923 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	370444E0102900F3003B2EA8 /* SolitaireHelp.html */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text.html;
+		name = SolitaireHelp.html;
+		path = "/Users/dan/Projects/Solitaire-2.0/SolitaireHelp/SolitaireHelp.html";
+		sourceTree = "<absolute>";
+	};
+	3704452D1029EBD5003B2EA8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 370444E0102900F3003B2EA8 /* SolitaireHelp.html */;
+		name = "SolitaireHelp.html: 52";
+		rLen = 0;
+		rLoc = 2126;
+		rType = 0;
+		vrLen = 624;
+		vrLoc = 0;
+	};
+	3707C9A41006B81100A497C3 /* SolitaireFortyThievesGame.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {761, 884}}";
+			sepNavSelRange = "{1405, 194}";
+			sepNavVisRange = "{892, 920}";
+			sepNavWindowFrame = "{{75, 157}, {844, 716}}";
+		};
+	};
+	3707C9A51006B81100A497C3 /* SolitaireFortyThievesGame.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {845, 3991}}";
+			sepNavSelRange = "{4465, 0}";
+			sepNavVisRange = "{4178, 541}";
+			sepNavWindowFrame = "{{419, 115}, {828, 675}}";
+		};
+	};
+	3707C9B41006BDEC00A497C3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 089C165DFE840E0CC02AAC07 /* English */;
+		name = "InfoPlist.strings: 3";
+		rLen = 0;
+		rLoc = 96;
+		rType = 0;
+		vrLen = 98;
+		vrLoc = 0;
+	};
+	370F12CB102E11EB006BC8F5 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 37DBE943102CC2BE00428F02 /* ClassicKlondikeBoard.png */;
+	};
+	372C39311051682000DA0AFD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37ECE70A1032469F00AF20BB /* SolitaireYukonGame.m */;
+		name = "SolitaireYukonGame.m: 243";
+		rLen = 0;
+		rLoc = 7073;
+		rType = 0;
+		vrLen = 892;
+		vrLoc = 3025;
+	};
+	372C39321051682000DA0AFD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37ECE6AF103232A900AF20BB /* SolitaireScorpianGame.m */;
+		name = "SolitaireScorpianGame.m: 55";
+		rLen = 0;
+		rLoc = 1811;
+		rType = 0;
+		vrLen = 934;
+		vrLoc = 1133;
+	};
+	372C39331051682000DA0AFD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3707C9A41006B81100A497C3 /* SolitaireFortyThievesGame.h */;
+		name = "SolitaireFortyThievesGame.h: 48";
+		rLen = 194;
+		rLoc = 1405;
+		rType = 0;
+		vrLen = 920;
+		vrLoc = 892;
+	};
+	372C399010529A2500DA0AFD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3707C9A51006B81100A497C3 /* SolitaireFortyThievesGame.m */;
+		name = "SolitaireFortyThievesGame.m: 149";
+		rLen = 2;
+		rLoc = 4465;
+		rType = 0;
+		vrLen = 947;
+		vrLoc = 3793;
+	};
+	372C39A910529ADC00DA0AFD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3759D48F0E55DE71003B9CB8 /* SolitaireSpiderGame.m */;
+		name = "SolitaireSpiderGame.m: 231";
+		rLen = 0;
+		rLoc = 6914;
+		rType = 0;
+		vrLen = 1155;
+		vrLoc = 6507;
+	};
+	372C39BD10529ED100DA0AFD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 376BFD610E457157008B5923 /* SolitaireCard.m */;
+		name = "SolitaireCard.m: 314";
+		rLen = 0;
+		rLoc = 11721;
+		rType = 0;
+		vrLen = 880;
+		vrLoc = 11187;
+	};
+	372C39BE10529ED100DA0AFD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 376BFD4E0E456C4C008B5923 /* SolitaireView.m */;
+		name = "SolitaireView.m: 60";
+		rLen = 0;
+		rLoc = 2015;
+		rType = 0;
+		vrLen = 985;
+		vrLoc = 255;
+	};
+	372C39BF10529ED100DA0AFD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 373F97800E490766006A7BC9 /* SolitaireWaste.h */;
+		name = "SolitaireWaste.h: 66";
+		rLen = 85;
+		rLoc = 1977;
+		rType = 0;
+		vrLen = 727;
+		vrLoc = 1625;
+	};
+	372C39C010529ED100DA0AFD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 378CB08E0E476B8000D95193 /* SolitaireTableau.h */;
+		name = "SolitaireTableau.h: 38";
+		rLen = 0;
+		rLoc = 1201;
+		rType = 0;
+		vrLen = 740;
+		vrLoc = 591;
+	};
+	372C39C110529ED100DA0AFD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 378491570E47CFC600107526 /* SolitaireFoundation.m */;
+		name = "SolitaireFoundation.m: 73";
+		rLen = 0;
+		rLoc = 1913;
+		rType = 0;
+		vrLen = 712;
+		vrLoc = 644;
+	};
+	372C39C210529ED100DA0AFD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 373F97810E490766006A7BC9 /* SolitaireWaste.m */;
+		name = "SolitaireWaste.m: 175";
+		rLen = 670;
+		rLoc = 5268;
+		rType = 0;
+		vrLen = 890;
+		vrLoc = 5242;
+	};
+	372C39C310529ED100DA0AFD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 378CB08F0E476B8000D95193 /* SolitaireTableau.m */;
+		name = "SolitaireTableau.m: 49";
+		rLen = 0;
+		rLoc = 1639;
+		rType = 0;
+		vrLen = 774;
+		vrLoc = 977;
+	};
+	372CBAFD104A051700D9BB11 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 372CBAF4104A03C900D9BB11 /* AutoIcon.icns */;
+	};
+	373293750FFC13F90058C186 /* SolitaireTimer.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 598}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1101}";
+			sepNavWindowFrame = "{{123, 115}, {844, 716}}";
+		};
+	};
+	373293760FFC13F90058C186 /* SolitaireTimer.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {929, 1092}}";
+			sepNavSelRange = "{2158, 0}";
+			sepNavVisRange = "{0, 1165}";
+			sepNavWindowFrame = "{{409, 110}, {828, 675}}";
+		};
+	};
+	373F97800E490766006A7BC9 /* SolitaireWaste.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 1027}}";
+			sepNavSelRange = "{1977, 85}";
+			sepNavVisRange = "{1625, 727}";
+			sepNavWindowFrame = "{{478, 173}, {828, 675}}";
+		};
+	};
+	373F97810E490766006A7BC9 /* SolitaireWaste.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {831, 4810}}";
+			sepNavSelRange = "{5268, 670}";
+			sepNavVisRange = "{5242, 890}";
+			sepNavWindowFrame = "{{439, 154}, {828, 675}}";
+		};
+	};
+	3744928C1008FAAA00BAC138 /* SolitaireSingleCardKlondikeGame.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 472}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1050}";
+			sepNavWindowFrame = "{{457, 101}, {844, 716}}";
+		};
+	};
+	3744928D1008FAAA00BAC138 /* SolitaireSingleCardKlondikeGame.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 845}}";
+			sepNavSelRange = "{1768, 0}";
+			sepNavVisRange = "{0, 1293}";
+			sepNavWindowFrame = "{{517, 144}, {828, 675}}";
+		};
+	};
+	374492CD1009056D00BAC138 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 379CAAC50FD1A433009A760B /* UndoIcon.icns */;
+	};
+	374493001009136D00BAC138 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 374492C01008FFD800BAC138 /* SolitaireBanner.png */;
+	};
+	374493C410093D2900BAC138 /* SolitaireScoreKeeper.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 572}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1135}";
+			sepNavWindowFrame = "{{146, 94}, {844, 716}}";
+		};
+	};
+	374493C510093D2900BAC138 /* SolitaireScoreKeeper.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 793}}";
+			sepNavSelRange = "{1055, 0}";
+			sepNavVisRange = "{0, 1199}";
+			sepNavWindowFrame = "{{524, 144}, {828, 675}}";
+		};
+	};
+	3755A897104AD069006CB30B /* SolitaireDelayedPerformer.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 494}}";
+			sepNavSelRange = "{781, 0}";
+			sepNavVisRange = "{0, 1095}";
+			sepNavWindowFrame = "{{15, 190}, {752, 683}}";
+		};
+	};
+	3755A898104AD069006CB30B /* SolitaireDelayedPerformer.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 1014}}";
+			sepNavSelRange = "{781, 0}";
+			sepNavVisRange = "{0, 1131}";
+		};
+	};
+	3759D4660E55DB98003B9CB8 /* SolitaireFreeCellGame.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 936}}";
+			sepNavSelRange = "{1679, 0}";
+			sepNavVisRange = "{0, 1224}";
+			sepNavWindowFrame = "{{342, 186}, {828, 675}}";
+		};
+	};
+	3759D4670E55DB98003B9CB8 /* SolitaireFreeCellGame.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {901, 4212}}";
+			sepNavSelRange = "{9576, 0}";
+			sepNavVisRange = "{8671, 1123}";
+			sepNavWindowFrame = "{{525, 143}, {828, 675}}";
+		};
+	};
+	3759D48E0E55DE71003B9CB8 /* SolitaireSpiderGame.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {761, 819}}";
+			sepNavSelRange = "{1373, 27}";
+			sepNavVisRange = "{936, 1113}";
+			sepNavWindowFrame = "{{404, 134}, {828, 675}}";
+		};
+	};
+	3759D48F0E55DE71003B9CB8 /* SolitaireSpiderGame.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {663, 3835}}";
+			sepNavSelRange = "{6914, 0}";
+			sepNavVisRange = "{6699, 597}";
+			sepNavWindowFrame = "{{563, 90}, {828, 675}}";
+		};
+	};
+	375EB77B0E4DCA7400D66CFF /* SolitaireCell.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 494}}";
+			sepNavSelRange = "{1132, 0}";
+			sepNavVisRange = "{0, 1138}";
+			sepNavWindowFrame = "{{203, 100}, {844, 716}}";
+		};
+	};
+	375EB77C0E4DCA7400D66CFF /* SolitaireCell.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 741}}";
+			sepNavSelRange = "{1486, 0}";
+			sepNavVisRange = "{0, 1156}";
+			sepNavWindowFrame = "{{274, 129}, {828, 675}}";
+		};
+	};
+	376BFD3B0E456BD6008B5923 /* Solitaire */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Solitaire;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	376BFD490E456BDA008B5923 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	376BFD4A0E456BDA008B5923 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	376BFD4D0E456C4C008B5923 /* SolitaireView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 754}}";
+			sepNavSelRange = "{1567, 80}";
+			sepNavVisRange = "{0, 1165}";
+			sepNavWindowFrame = "{{265, 144}, {828, 675}}";
+		};
+	};
+	376BFD4E0E456C4C008B5923 /* SolitaireView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 3731}}";
+			sepNavSelRange = "{2015, 0}";
+			sepNavVisRange = "{255, 985}";
+			sepNavWindowFrame = "{{222, 123}, {828, 675}}";
+		};
+	};
+	376BFD5B0E457114008B5923 /* SolitaireSprite.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 546}}";
+			sepNavSelRange = "{1037, 0}";
+			sepNavVisRange = "{0, 1128}";
+			sepNavWindowFrame = "{{472, 112}, {828, 675}}";
+		};
+	};
+	376BFD5C0E457114008B5923 /* SolitaireSprite.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {803, 663}}";
+			sepNavSelRange = "{1504, 0}";
+			sepNavVisRange = "{0, 1107}";
+			sepNavWindowFrame = "{{301, 19}, {828, 675}}";
+		};
+	};
+	376BFD600E457157008B5923 /* SolitaireCard.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {789, 1326}}";
+			sepNavSelRange = "{720, 0}";
+			sepNavVisRange = "{1995, 1077}";
+			sepNavWindowFrame = "{{483, 140}, {828, 675}}";
+		};
+	};
+	376BFD610E457157008B5923 /* SolitaireCard.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1363, 4355}}";
+			sepNavSelRange = "{7674, 0}";
+			sepNavVisRange = "{6832, 1531}";
+			sepNavWindowFrame = "{{133, 81}, {828, 675}}";
+		};
+	};
+	376C398910097C6500C653BE /* Empty.png */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{99, 136}, {844, 716}}";
+		};
+	};
+	377E77C70FD1D3D5002EFBCC /* SolitairePreferencesController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 494}}";
+			sepNavSelRange = "{1121, 0}";
+			sepNavVisRange = "{3, 1205}";
+			sepNavWindowFrame = "{{593, 132}, {828, 675}}";
+		};
+	};
+	377E77C80FD1D3D5002EFBCC /* SolitairePreferencesController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 507}}";
+			sepNavSelRange = "{1017, 0}";
+			sepNavVisRange = "{40, 1212}";
+			sepNavWindowFrame = "{{553, 159}, {828, 675}}";
+		};
+	};
+	3781E3DF1003AE4600B421E0 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 376BFD670E4573D6008B5923 /* SolitaireCards.png */;
+	};
+	3781E3F91003AE6C00B421E0 /* SolitaireAcesUpGame.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {761, 858}}";
+			sepNavSelRange = "{1372, 193}";
+			sepNavVisRange = "{912, 1054}";
+			sepNavWindowFrame = "{{226, 164}, {828, 675}}";
+		};
+	};
+	3781E3FA1003AE6C00B421E0 /* SolitaireAcesUpGame.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {929, 3302}}";
+			sepNavSelRange = "{5845, 0}";
+			sepNavVisRange = "{2983, 864}";
+			sepNavWindowFrame = "{{539, 111}, {828, 675}}";
+		};
+	};
+	3781E4221003D73C00B421E0 /* SolitaireBakersGame.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 472}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1272}";
+			sepNavWindowFrame = "{{77, 157}, {844, 716}}";
+		};
+	};
+	3781E4231003D73C00B421E0 /* SolitaireBakersGame.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {901, 1261}}";
+			sepNavSelRange = "{859, 0}";
+			sepNavVisRange = "{0, 1170}";
+			sepNavWindowFrame = "{{454, 172}, {828, 675}}";
+		};
+	};
+	378491560E47CFC600107526 /* SolitaireFoundation.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 520}}";
+			sepNavSelRange = "{1187, 0}";
+			sepNavVisRange = "{0, 1187}";
+			sepNavWindowFrame = "{{494, 161}, {828, 675}}";
+		};
+	};
+	378491570E47CFC600107526 /* SolitaireFoundation.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 975}}";
+			sepNavSelRange = "{1913, 0}";
+			sepNavVisRange = "{644, 712}";
+			sepNavWindowFrame = "{{449, 136}, {828, 675}}";
+		};
+	};
+	378CB0750E475EC300D95193 /* SolitaireCardContainer.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 767}}";
+			sepNavSelRange = "{1091, 0}";
+			sepNavVisRange = "{0, 1135}";
+			sepNavWindowFrame = "{{420, 122}, {828, 675}}";
+		};
+	};
+	378CB0760E475EC300D95193 /* SolitaireCardContainer.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {831, 2418}}";
+			sepNavSelRange = "{2906, 0}";
+			sepNavVisRange = "{0, 1290}";
+			sepNavWindowFrame = "{{362, 149}, {828, 675}}";
+		};
+	};
+	378CB08C0E476B8000D95193 /* SolitaireStock.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 1027}}";
+			sepNavSelRange = "{1627, 85}";
+			sepNavVisRange = "{0, 1243}";
+			sepNavWindowFrame = "{{124, 127}, {828, 675}}";
+		};
+	};
+	378CB08D0E476B8000D95193 /* SolitaireStock.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {922, 4069}}";
+			sepNavSelRange = "{3673, 0}";
+			sepNavVisRange = "{0, 1242}";
+			sepNavWindowFrame = "{{542, 181}, {828, 675}}";
+		};
+	};
+	378CB08E0E476B8000D95193 /* SolitaireTableau.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 624}}";
+			sepNavSelRange = "{1201, 0}";
+			sepNavVisRange = "{591, 740}";
+			sepNavWindowFrame = "{{210, -31}, {828, 675}}";
+		};
+	};
+	378CB08F0E476B8000D95193 /* SolitaireTableau.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 1183}}";
+			sepNavSelRange = "{1639, 0}";
+			sepNavVisRange = "{977, 774}";
+			sepNavWindowFrame = "{{390, 152}, {828, 675}}";
+		};
+	};
+	378CB0D20E4772C100D95193 /* SolitaireGame.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {761, 1339}}";
+			sepNavSelRange = "{2054, 66}";
+			sepNavVisRange = "{0, 1188}";
+			sepNavWindowFrame = "{{323, 109}, {828, 675}}";
+		};
+	};
+	378CB0D30E4772C100D95193 /* SolitaireGame.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {761, 3757}}";
+			sepNavSelRange = "{2904, 0}";
+			sepNavVisRange = "{2574, 424}";
+			sepNavWindowFrame = "{{447, 46}, {828, 675}}";
+		};
+	};
+	378CB0EA0E4774F900D95193 /* SolitaireController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 975}}";
+			sepNavSelRange = "{1625, 95}";
+			sepNavVisRange = "{0, 1230}";
+			sepNavWindowFrame = "{{306, 169}, {828, 675}}";
+		};
+	};
+	378CB0EB0E4774F900D95193 /* SolitaireController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1566, 7722}}";
+			sepNavSelRange = "{22420, 0}";
+			sepNavVisRange = "{24490, 1491}";
+			sepNavWindowFrame = "{{478, 88}, {828, 675}}";
+		};
+	};
+	378CB1060E47777600D95193 /* SolitaireKlondikeGame.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {761, 923}}";
+			sepNavSelRange = "{1471, 249}";
+			sepNavVisRange = "{1206, 1003}";
+			sepNavWindowFrame = "{{496, 100}, {828, 675}}";
+		};
+	};
+	378CB1070E47777600D95193 /* SolitaireKlondikeGame.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 3744}}";
+			sepNavSelRange = "{8200, 0}";
+			sepNavVisRange = "{7432, 990}";
+			sepNavWindowFrame = "{{202, 106}, {828, 675}}";
+		};
+	};
+	3795F3401050489A00985288 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37E0102610330A8D004196F6 /* SolitaireCanfieldGame.h */;
+		name = "SolitaireCanfieldGame.h: 62";
+		rLen = 0;
+		rLoc = 1934;
+		rType = 0;
+		vrLen = 1154;
+		vrLoc = 1147;
+	};
+	3795F3411050489A00985288 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37E0102710330A8D004196F6 /* SolitaireCanfieldGame.m */;
+		name = "SolitaireCanfieldGame.m: 327";
+		rLen = 33;
+		rLoc = 10027;
+		rType = 0;
+		vrLen = 1124;
+		vrLoc = 9162;
+	};
+	3795F3421050489A00985288 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37ECE626103216B800AF20BB /* SolitaireGolfGame.m */;
+		name = "SolitaireGolfGame.m: 200";
+		rLen = 0;
+		rLoc = 5684;
+		rType = 0;
+		vrLen = 1226;
+		vrLoc = 5201;
+	};
+	3795F3431050489A00985288 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3759D4670E55DB98003B9CB8 /* SolitaireFreeCellGame.m */;
+		name = "SolitaireFreeCellGame.m: 313";
+		rLen = 0;
+		rLoc = 9576;
+		rType = 0;
+		vrLen = 1123;
+		vrLoc = 8671;
+	};
+	3795F3451050489A00985288 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 378CB1070E47777600D95193 /* SolitaireKlondikeGame.m */;
+		name = "SolitaireKlondikeGame.m: 275";
+		rLen = 0;
+		rLoc = 8200;
+		rType = 0;
+		vrLen = 990;
+		vrLoc = 7432;
+	};
+	3795F3461050489A00985288 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3781E3FA1003AE6C00B421E0 /* SolitaireAcesUpGame.m */;
+		name = "SolitaireAcesUpGame.m: 197";
+		rLen = 0;
+		rLoc = 5845;
+		rType = 0;
+		vrLen = 864;
+		vrLoc = 2983;
+	};
+	3795F3471050489A00985288 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3781E3F91003AE6C00B421E0 /* SolitaireAcesUpGame.h */;
+		name = "SolitaireAcesUpGame.h: 46";
+		rLen = 193;
+		rLoc = 1372;
+		rType = 0;
+		vrLen = 1054;
+		vrLoc = 912;
+	};
+	3795F34A1050489A00985288 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3759D48E0E55DE71003B9CB8 /* SolitaireSpiderGame.h */;
+		name = "SolitaireSpiderGame.h: 47";
+		rLen = 27;
+		rLoc = 1373;
+		rType = 0;
+		vrLen = 1113;
+		vrLoc = 936;
+	};
+	3795F34B1050489A00985288 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37CB1ACD10151E6E0076A591 /* SolitairePyramidGame.h */;
+		name = "SolitairePyramidGame.h: 51";
+		rLen = 0;
+		rLoc = 1481;
+		rType = 0;
+		vrLen = 1112;
+		vrLoc = 1034;
+	};
+	3795F34D1050489A00985288 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37ECE625103216B800AF20BB /* SolitaireGolfGame.h */;
+		name = "SolitaireGolfGame.h: 19";
+		rLen = 0;
+		rLoc = 774;
+		rType = 0;
+		vrLen = 950;
+		vrLoc = 554;
+	};
+	3795F34E1050489A00985288 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 378CB1060E47777600D95193 /* SolitaireKlondikeGame.h */;
+		name = "SolitaireKlondikeGame.h: 49";
+		rLen = 249;
+		rLoc = 1471;
+		rType = 0;
+		vrLen = 1003;
+		vrLoc = 1206;
+	};
+	3795F34F1050489A00985288 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37ECE7091032469F00AF20BB /* SolitaireYukonGame.h */;
+		name = "SolitaireYukonGame.h: 55";
+		rLen = 0;
+		rLoc = 1750;
+		rType = 0;
+		vrLen = 1014;
+		vrLoc = 935;
+	};
+	37AAB744100FF9630003CBE5 /* SolitaireSavedGameImage.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 702}}";
+			sepNavSelRange = "{779, 0}";
+			sepNavVisRange = "{0, 1197}";
+			sepNavWindowFrame = "{{493, 151}, {844, 716}}";
+		};
+	};
+	37AAB745100FF9630003CBE5 /* SolitaireSavedGameImage.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 1105}}";
+			sepNavSelRange = "{779, 0}";
+			sepNavVisRange = "{0, 1320}";
+			sepNavWindowFrame = "{{492, 147}, {844, 716}}";
+		};
+	};
+	37B12D151052A6DE00549A8E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37CB1ACE10151E6E0076A591 /* SolitairePyramidGame.m */;
+		name = "SolitairePyramidGame.m: 156";
+		rLen = 0;
+		rLoc = 4406;
+		rType = 0;
+		vrLen = 614;
+		vrLoc = 3947;
+	};
+	37CB1ACD10151E6E0076A591 /* SolitairePyramidGame.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {761, 936}}";
+			sepNavSelRange = "{1481, 0}";
+			sepNavVisRange = "{1034, 1112}";
+			sepNavWindowFrame = "{{304, 102}, {844, 716}}";
+		};
+	};
+	37CB1ACE10151E6E0076A591 /* SolitairePyramidGame.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {929, 5239}}";
+			sepNavSelRange = "{4406, 0}";
+			sepNavVisRange = "{3947, 614}";
+			sepNavWindowFrame = "{{216, 112}, {844, 716}}";
+		};
+	};
+	37CFDCCB103B18670090F321 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 376BFD660E4573D6008B5923 /* SolitaireCardBack.png */;
+	};
+	37CFDCCC103B18670090F321 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleInfoDictionaryVersion,
+		);
+		name = "/Users/dan/Projects/Solitaire-2.0/Info.plist";
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	37D7947910362520007027E7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37E613AF10350A0B003448C8 /* FortyThieves.html */;
+		name = "FortyThieves.html: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 537;
+		vrLoc = 0;
+	};
+	37DBE943102CC2BE00428F02 /* ClassicKlondikeBoard.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = ClassicKlondikeBoard.png;
+		path = "/Users/dan/Projects/Solitaire-2.0/SolitaireHelp/gfx/ClassicKlondikeBoard.png";
+		sourceTree = "<absolute>";
+	};
+	37E0102610330A8D004196F6 /* SolitaireCanfieldGame.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {761, 975}}";
+			sepNavSelRange = "{1934, 0}";
+			sepNavVisRange = "{1147, 1154}";
+			sepNavWindowFrame = "{{206, 57}, {844, 698}}";
+		};
+	};
+	37E0102710330A8D004196F6 /* SolitaireCanfieldGame.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {803, 4381}}";
+			sepNavSelRange = "{10027, 33}";
+			sepNavVisRange = "{9162, 1124}";
+			sepNavWindowFrame = "{{502, 81}, {844, 698}}";
+		};
+	};
+	37E010B710337887004196F6 /* SingleCardKlondike.html */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text.html;
+		name = SingleCardKlondike.html;
+		path = "/Users/dan/Projects/Solitaire-2.0/SolitaireHelp/pgs/SingleCardKlondike.html";
+		sourceTree = "<absolute>";
+	};
+	37E6136A10348199003448C8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37E010B710337887004196F6 /* SingleCardKlondike.html */;
+		name = "SingleCardKlondike.html: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 432;
+		vrLoc = 1356;
+	};
+	37E613AF10350A0B003448C8 /* FortyThieves.html */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text.html;
+		name = FortyThieves.html;
+		path = "/Users/dan/Projects/Solitaire-2.0/SolitaireHelp/pgs/FortyThieves.html";
+		sourceTree = "<absolute>";
+	};
+	37EA2E45104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3755A898104AD069006CB30B /* SolitaireDelayedPerformer.m */;
+		name = "SolitaireDelayedPerformer.m: 18";
+		rLen = 0;
+		rLoc = 781;
+		rType = 0;
+		vrLen = 1131;
+		vrLoc = 0;
+	};
+	37EA2E46104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3755A897104AD069006CB30B /* SolitaireDelayedPerformer.h */;
+		name = "SolitaireDelayedPerformer.h: 18";
+		rLen = 0;
+		rLoc = 781;
+		rType = 0;
+		vrLen = 1095;
+		vrLoc = 0;
+	};
+	37EA2E47104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37AAB745100FF9630003CBE5 /* SolitaireSavedGameImage.m */;
+		name = "SolitaireSavedGameImage.m: 18";
+		rLen = 0;
+		rLoc = 779;
+		rType = 0;
+		vrLen = 1320;
+		vrLoc = 0;
+	};
+	37EA2E48104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37AAB744100FF9630003CBE5 /* SolitaireSavedGameImage.h */;
+		name = "SolitaireSavedGameImage.h: 18";
+		rLen = 0;
+		rLoc = 779;
+		rType = 0;
+		vrLen = 1197;
+		vrLoc = 0;
+	};
+	37EA2E49104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 374493C510093D2900BAC138 /* SolitaireScoreKeeper.m */;
+		name = "SolitaireScoreKeeper.m: 30";
+		rLen = 0;
+		rLoc = 1055;
+		rType = 0;
+		vrLen = 1199;
+		vrLoc = 0;
+	};
+	37EA2E4A104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 374493C410093D2900BAC138 /* SolitaireScoreKeeper.h */;
+		name = "SolitaireScoreKeeper.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1135;
+		vrLoc = 0;
+	};
+	37EA2E4B104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 373293760FFC13F90058C186 /* SolitaireTimer.m */;
+		name = "SolitaireTimer.m: 81";
+		rLen = 0;
+		rLoc = 2158;
+		rType = 0;
+		vrLen = 1165;
+		vrLoc = 0;
+	};
+	37EA2E4C104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 373293750FFC13F90058C186 /* SolitaireTimer.h */;
+		name = "SolitaireTimer.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1101;
+		vrLoc = 0;
+	};
+	37EA2E4D104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 376BFD5C0E457114008B5923 /* SolitaireSprite.m */;
+		name = "SolitaireSprite.m: 48";
+		rLen = 0;
+		rLoc = 1504;
+		rType = 0;
+		vrLen = 1107;
+		vrLoc = 0;
+	};
+	37EA2E4E104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 376BFD5B0E457114008B5923 /* SolitaireSprite.h */;
+		name = "SolitaireSprite.h: 33";
+		rLen = 0;
+		rLoc = 1037;
+		rType = 0;
+		vrLen = 1128;
+		vrLoc = 0;
+	};
+	37EA2E50104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 376BFD4D0E456C4C008B5923 /* SolitaireView.h */;
+		name = "SolitaireView.h: 55";
+		rLen = 80;
+		rLoc = 1567;
+		rType = 0;
+		vrLen = 1165;
+		vrLoc = 0;
+	};
+	37EA2E51104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 378CB0D30E4772C100D95193 /* SolitaireGame.m */;
+		name = "SolitaireGame.m: 247";
+		rLen = 0;
+		rLoc = 7635;
+		rType = 0;
+		vrLen = 1286;
+		vrLoc = 0;
+	};
+	37EA2E52104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 378CB0D20E4772C100D95193 /* SolitaireGame.h */;
+		name = "SolitaireGame.h: 70";
+		rLen = 66;
+		rLoc = 2054;
+		rType = 0;
+		vrLen = 1188;
+		vrLoc = 0;
+	};
+	37EA2E58104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37ECE6AE103232A900AF20BB /* SolitaireScorpianGame.h */;
+		name = "SolitaireScorpianGame.h: 18";
+		rLen = 0;
+		rLoc = 777;
+		rType = 0;
+		vrLen = 1192;
+		vrLoc = 0;
+	};
+	37EA2E5F104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3781E4231003D73C00B421E0 /* SolitaireBakersGame.m */;
+		name = "SolitaireBakersGame.m: 21";
+		rLen = 0;
+		rLoc = 859;
+		rType = 0;
+		vrLen = 1170;
+		vrLoc = 0;
+	};
+	37EA2E60104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3781E4221003D73C00B421E0 /* SolitaireBakersGame.h */;
+		name = "SolitaireBakersGame.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1272;
+		vrLoc = 0;
+	};
+	37EA2E64104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3759D4660E55DB98003B9CB8 /* SolitaireFreeCellGame.h */;
+		name = "SolitaireFreeCellGame.h: 56";
+		rLen = 0;
+		rLoc = 1679;
+		rType = 0;
+		vrLen = 1224;
+		vrLoc = 0;
+	};
+	37EA2E67104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3744928D1008FAAA00BAC138 /* SolitaireSingleCardKlondikeGame.m */;
+		name = "SolitaireSingleCardKlondikeGame.m: 55";
+		rLen = 0;
+		rLoc = 1768;
+		rType = 0;
+		vrLen = 1293;
+		vrLoc = 0;
+	};
+	37EA2E68104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3744928C1008FAAA00BAC138 /* SolitaireSingleCardKlondikeGame.h */;
+		name = "SolitaireSingleCardKlondikeGame.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1050;
+		vrLoc = 0;
+	};
+	37EA2E6B104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 378CB0EA0E4774F900D95193 /* SolitaireController.h */;
+		name = "SolitaireController.h: 54";
+		rLen = 95;
+		rLoc = 1625;
+		rType = 0;
+		vrLen = 1230;
+		vrLoc = 0;
+	};
+	37EA2E6D104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 378491560E47CFC600107526 /* SolitaireFoundation.h */;
+		name = "SolitaireFoundation.h: 38";
+		rLen = 0;
+		rLoc = 1187;
+		rType = 0;
+		vrLen = 1187;
+		vrLoc = 0;
+	};
+	37EA2E70104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 375EB77C0E4DCA7400D66CFF /* SolitaireCell.m */;
+		name = "SolitaireCell.m: 55";
+		rLen = 0;
+		rLoc = 1486;
+		rType = 0;
+		vrLen = 1156;
+		vrLoc = 0;
+	};
+	37EA2E71104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 375EB77B0E4DCA7400D66CFF /* SolitaireCell.h */;
+		name = "SolitaireCell.h: 36";
+		rLen = 0;
+		rLoc = 1132;
+		rType = 0;
+		vrLen = 1138;
+		vrLoc = 0;
+	};
+	37EA2E74104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 378CB08D0E476B8000D95193 /* SolitaireStock.m */;
+		name = "SolitaireStock.m: 99";
+		rLen = 0;
+		rLoc = 3673;
+		rType = 0;
+		vrLen = 1242;
+		vrLoc = 0;
+	};
+	37EA2E75104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 378CB08C0E476B8000D95193 /* SolitaireStock.h */;
+		name = "SolitaireStock.h: 57";
+		rLen = 85;
+		rLoc = 1627;
+		rType = 0;
+		vrLen = 1243;
+		vrLoc = 0;
+	};
+	37EA2E76104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 378CB0760E475EC300D95193 /* SolitaireCardContainer.m */;
+		name = "SolitaireCardContainer.m: 82";
+		rLen = 0;
+		rLoc = 2906;
+		rType = 0;
+		vrLen = 1290;
+		vrLoc = 0;
+	};
+	37EA2E77104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 378CB0750E475EC300D95193 /* SolitaireCardContainer.h */;
+		name = "SolitaireCardContainer.h: 36";
+		rLen = 0;
+		rLoc = 1091;
+		rType = 0;
+		vrLen = 1135;
+		vrLoc = 0;
+	};
+	37EA2E79104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 376BFD600E457157008B5923 /* SolitaireCard.h */;
+		name = "SolitaireCard.h: 19";
+		rLen = 0;
+		rLoc = 720;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 1995;
+	};
+	37EA2E7A104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 377E77C70FD1D3D5002EFBCC /* SolitairePreferencesController.h */;
+		name = "SolitairePreferencesController.h: 33";
+		rLen = 0;
+		rLoc = 1121;
+		rType = 0;
+		vrLen = 1205;
+		vrLoc = 3;
+	};
+	37EA2E7B104F15E600E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 377E77C80FD1D3D5002EFBCC /* SolitairePreferencesController.m */;
+		name = "SolitairePreferencesController.m: 28";
+		rLen = 0;
+		rLoc = 1017;
+		rType = 0;
+		vrLen = 1212;
+		vrLoc = 40;
+	};
+	37EA2EA2104F1C2400E85AFE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 378CB0EB0E4774F900D95193 /* SolitaireController.m */;
+		name = "SolitaireController.m: 499";
+		rLen = 0;
+		rLoc = 22420;
+		rType = 0;
+		vrLen = 1491;
+		vrLoc = 24490;
+	};
+	37ECE625103216B800AF20BB /* SolitaireGolfGame.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {761, 780}}";
+			sepNavSelRange = "{774, 0}";
+			sepNavVisRange = "{554, 950}";
+			sepNavWindowFrame = "{{182, 20}, {844, 698}}";
+		};
+	};
+	37ECE626103216B800AF20BB /* SolitaireGolfGame.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {761, 3068}}";
+			sepNavSelRange = "{5684, 0}";
+			sepNavVisRange = "{5201, 1226}";
+			sepNavWindowFrame = "{{124, 129}, {844, 698}}";
+		};
+	};
+	37ECE6AE103232A900AF20BB /* SolitaireScorpianGame.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 741}}";
+			sepNavSelRange = "{777, 0}";
+			sepNavVisRange = "{0, 1192}";
+			sepNavWindowFrame = "{{473, 105}, {844, 698}}";
+		};
+	};
+	37ECE6AF103232A900AF20BB /* SolitaireScorpianGame.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {753, 3055}}";
+			sepNavSelRange = "{1811, 0}";
+			sepNavVisRange = "{1133, 934}";
+			sepNavWindowFrame = "{{416, 87}, {844, 698}}";
+		};
+	};
+	37ECE7091032469F00AF20BB /* SolitaireYukonGame.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {761, 845}}";
+			sepNavSelRange = "{1750, 0}";
+			sepNavVisRange = "{935, 1014}";
+			sepNavWindowFrame = "{{460, 121}, {844, 698}}";
+		};
+	};
+	37ECE70A1032469F00AF20BB /* SolitaireYukonGame.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {761, 3458}}";
+			sepNavSelRange = "{7073, 0}";
+			sepNavVisRange = "{3025, 892}";
+			sepNavWindowFrame = "{{405, 158}, {844, 698}}";
+		};
+	};
+	37F4732B1052A5AB007279E1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37CB1ACE10151E6E0076A591 /* SolitairePyramidGame.m */;
+		name = "SolitairePyramidGame.m: 156";
+		rLen = 0;
+		rLoc = 4406;
+		rType = 0;
+		vrLen = 661;
+		vrLoc = 3900;
+	};
+	8D1107260486CEB800E47090 /* Solitaire */ = {
+		activeExec = 0;
+		executables = (
+			376BFD3B0E456BD6008B5923 /* Solitaire */,
+		);
+	};
+	8D1107310486CEB800E47090 /* Info.plist */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {624, 462}}";
+			sepNavSelRange = "{947, 28}";
+			sepNavVisRange = "{555, 447}";
+			sepNavWindowFrame = "{{344, 121}, {844, 716}}";
+		};
+	};
+}

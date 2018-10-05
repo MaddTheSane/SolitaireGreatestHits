@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment defaultVersion="1090" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application">
+            <connections>
+                <outlet property="delegate" destination="441" id="cpr-6O-LpQ"/>
+            </connections>
+        </customObject>
+        <menu title="AMainMenu" systemMenu="main" id="29" userLabel="MainMenu">
+            <items>
+                <menuItem title="Solitaire Greatest Hits" id="56">
+                    <menu key="submenu" title="Solitaire Greatest Hits" systemMenu="apple" id="57">
+                        <items>
+                            <menuItem title="Über Solitaire Greatest Hits" id="58">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="onAbout:" target="441" id="484"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="236">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Einstellungen …" keyEquivalent="," id="129" userLabel="121">
+                                <connections>
+                                    <action selector="onPreferences:" target="441" id="518"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="143">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Dienste" id="131">
+                                <menu key="submenu" title="Dienste" systemMenu="services" id="130"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="144">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Solitaire Greatest Hits ausblenden" keyEquivalent="h" id="134">
+                                <connections>
+                                    <action selector="hide:" target="-1" id="367"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Andere ausblenden" keyEquivalent="h" id="145">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="hideOtherApplications:" target="-1" id="368"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Alle einblenden" id="150">
+                                <connections>
+                                    <action selector="unhideAllApplications:" target="-1" id="370"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="149">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Solitaire Greatest Hits beenden" keyEquivalent="q" id="136" userLabel="1111">
+                                <connections>
+                                    <action selector="terminate:" target="-1" id="369"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Ablage" id="83">
+                    <menu key="submenu" title="Ablage" id="81">
+                        <items>
+                            <menuItem title="Neues Spiel" keyEquivalent="n" id="82" userLabel="9">
+                                <connections>
+                                    <action selector="onNewGame:" target="441" id="450"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Spiel neu starten" keyEquivalent="r" id="511">
+                                <connections>
+                                    <action selector="onRestartGame:" target="441" id="512"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Spiel laden …" keyEquivalent="o" id="72">
+                                <connections>
+                                    <action selector="onOpenGame:" target="441" id="514"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Zuletzt geladen" id="124">
+                                <menu key="submenu" title="Zuletzt geladen" systemMenu="recentDocuments" id="125">
+                                    <items>
+                                        <menuItem title="Clear Menu" id="126">
+                                            <connections>
+                                                <action selector="clearRecentDocuments:" target="-1" id="127"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="79" userLabel="7">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Schließen" keyEquivalent="w" id="73" userLabel="1">
+                                <connections>
+                                    <action selector="performClose:" target="-1" id="193"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Spiel speichern …" keyEquivalent="s" id="75" userLabel="3">
+                                <connections>
+                                    <action selector="onSaveGame:" target="441" id="513"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="74" userLabel="2">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Seite einrichten …" keyEquivalent="P" id="77" userLabel="5">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                <connections>
+                                    <action selector="runPageLayout:" target="-1" id="87"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Drucken …" keyEquivalent="p" id="78" userLabel="6">
+                                <connections>
+                                    <action selector="print:" target="-1" id="86"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Bearbeiten" id="217">
+                    <menu key="submenu" title="Bearbeiten" id="205">
+                        <items>
+                            <menuItem title="Rückgängig" keyEquivalent="z" id="207">
+                                <connections>
+                                    <action selector="undo:" target="-1" id="223"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Wiederholen" keyEquivalent="Z" id="215">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                <connections>
+                                    <action selector="redo:" target="-1" id="231"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="206">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Spiel automatisch beenden" keyEquivalent="f" id="516">
+                                <connections>
+                                    <action selector="onAutoFinish:" target="441" id="517"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="515"/>
+                            <menuItem title="Ausschneiden" keyEquivalent="x" id="199">
+                                <connections>
+                                    <action selector="cut:" target="-1" id="228"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Kopieren" keyEquivalent="c" id="197">
+                                <connections>
+                                    <action selector="copy:" target="-1" id="224"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Einsetzen" keyEquivalent="v" id="203">
+                                <connections>
+                                    <action selector="paste:" target="-1" id="226"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Löschen" id="202">
+                                <connections>
+                                    <action selector="delete:" target="-1" id="235"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Alles auswählen" keyEquivalent="a" id="198">
+                                <connections>
+                                    <action selector="selectAll:" target="-1" id="232"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Spiel" id="377">
+                    <menu key="submenu" title="Spiel" id="378"/>
+                </menuItem>
+                <menuItem title="Ansicht" id="295">
+                    <menu key="submenu" title="Ansicht" id="296">
+                        <items>
+                            <menuItem title="Symbolleiste ein-/ausblenden" keyEquivalent="t" id="297">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="toggleToolbarShown:" target="-1" id="366"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Symbolleiste bearbeiten …" id="298">
+                                <connections>
+                                    <action selector="runToolbarCustomizationPalette:" target="-1" id="365"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Fenster" id="19">
+                    <menu key="submenu" title="Fenster" systemMenu="window" id="24">
+                        <items>
+                            <menuItem title="Im Dock ablegen" keyEquivalent="m" id="23">
+                                <connections>
+                                    <action selector="performMiniaturize:" target="-1" id="37"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Zoomen" id="239">
+                                <connections>
+                                    <action selector="performZoom:" target="-1" id="240"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="92">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Alle nach vorne bringen" id="5">
+                                <connections>
+                                    <action selector="arrangeInFront:" target="-1" id="39"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Hilfe" id="103" userLabel="1">
+                    <menu key="submenu" title="Hilfe" id="106" userLabel="2">
+                        <items>
+                            <menuItem title="Solitaire Hilfe" keyEquivalent="?" id="111">
+                                <connections>
+                                    <action selector="showHelp:" target="-1" id="360"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+            <connections>
+                <outlet property="delegate" destination="441" id="449"/>
+            </connections>
+        </menu>
+        <window title="Solitaire Greatest Hits" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="MainWindow" animationBehavior="default" id="371">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="335" y="75" width="900" height="625"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <view key="contentView" id="372">
+                <rect key="frame" x="0.0" y="0.0" width="900" height="625"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <customView wantsLayer="YES" id="487" customClass="SolitaireView">
+                        <rect key="frame" x="0.0" y="22" width="900" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <connections>
+                            <outlet property="controller" destination="441" id="510"/>
+                        </connections>
+                    </customView>
+                    <textField verticalHuggingPriority="750" id="493">
+                        <rect key="frame" x="6" y="2" width="131" height="17"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Zeit: 0:00" id="494">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="495">
+                        <rect key="frame" x="111" y="2" width="141" height="17"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Punkte:" id="496">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="441" id="448"/>
+            </connections>
+        </window>
+        <userDefaultsController representsSharedInstance="YES" id="397"/>
+        <customObject id="441" customClass="SolitaireController">
+            <connections>
+                <outlet property="aboutWindow_" destination="jS2-Cy-KOn" id="7kf-kB-qOw"/>
+                <outlet property="infoView_" destination="nbC-c7-OVJ" id="2QO-kg-xhr"/>
+                <outlet property="preferences" destination="vVf-tP-UBW" id="dFA-cw-9p8"/>
+                <outlet property="scoreKeeper" destination="501" id="503"/>
+                <outlet property="timer" destination="500" id="504"/>
+                <outlet property="view" destination="487" id="506"/>
+                <outlet property="window" destination="371" id="507"/>
+            </connections>
+        </customObject>
+        <customObject id="500" customClass="SolitaireTimer">
+            <connections>
+                <outlet property="timeField_" destination="493" id="502"/>
+            </connections>
+        </customObject>
+        <customObject id="501" customClass="SolitaireScoreKeeper">
+            <connections>
+                <outlet property="scoreField_" destination="495" id="505"/>
+                <outlet property="view_" destination="487" id="509"/>
+            </connections>
+        </customObject>
+        <window title="Einstellungen" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="SFV-No-Oky" userLabel="Preferences" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="407" width="399" height="296"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <view key="contentView" id="aJ8-KI-YsA">
+                <rect key="frame" x="0.0" y="0.0" width="399" height="296"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <colorWell id="eQL-4P-d7C">
+                        <rect key="frame" x="141" y="253" width="44" height="23"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <color key="color" red="0.12156863" green="0.63921570999999999" blue="0.32941176999999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </colorWell>
+                    <textField verticalHuggingPriority="750" id="sJn-9Q-wuR">
+                        <rect key="frame" x="17" y="256" width="114" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hintergrundfarbe" id="HYC-j4-4Q8">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" id="ZU5-ta-JHL">
+                        <rect key="frame" x="289" y="13" width="96" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dHQ-Bv-5Pz">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="onOkayClicked:" target="vVf-tP-UBW" id="vJl-H7-B3q"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="jam-bt-gHA">
+                        <rect key="frame" x="181" y="13" width="108" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Abbrechen" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ahL-9L-91L">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="onCancelClicked:" target="vVf-tP-UBW" id="2Md-DE-xRN"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="h62-wT-b9K">
+                        <rect key="frame" x="14" y="13" width="131" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Standardwerte" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gUh-cK-wsK">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="onDefaultClicked:" target="vVf-tP-UBW" id="fqN-Bt-Gtw"/>
+                        </connections>
+                    </button>
+                    <popUpButton verticalHuggingPriority="750" id="d3k-cU-9Gq">
+                        <rect key="frame" x="139" y="213" width="184" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="lus-c3-Mpk" id="8pA-0d-1iX">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" title="OtherViews" id="sm7-ma-Juf">
+                                <items>
+                                    <menuItem state="on" id="lus-c3-Mpk"/>
+                                    <menuItem title="Item 2" id="UYp-nP-7Ty"/>
+                                    <menuItem title="Item 3" id="OpE-G0-Xck"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <textField verticalHuggingPriority="750" id="g7n-lO-Fpl">
+                        <rect key="frame" x="18" y="218" width="102" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Kartenrückseite" id="fik-TK-NGn">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="initialFirstResponder" destination="ZU5-ta-JHL" id="hFe-bS-kXe"/>
+            </connections>
+        </window>
+        <window title="Über Solitaire Greatest Hits" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="jS2-Cy-KOn">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" fullScreenAuxiliary="YES"/>
+            <rect key="contentRect" x="196" y="110" width="590" height="540"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <view key="contentView" id="cHm-D6-bfw">
+                <rect key="frame" x="0.0" y="0.0" width="590" height="540"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView id="IET-eB-L5V">
+                        <rect key="frame" x="20" y="431" width="550" height="99"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="SolitaireBanner" id="gDC-Kp-ftX"/>
+                    </imageView>
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="28h-qp-qWV">
+                        <rect key="frame" x="20" y="20" width="550" height="403"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <clipView key="contentView" id="v6c-Ne-pHy">
+                            <rect key="frame" x="1" y="1" width="548" height="401"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textView importsGraphics="NO" findStyle="panel" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="nbC-c7-OVJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="548" height="401"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <size key="minSize" width="548" height="401"/>
+                                    <size key="maxSize" width="550" height="10000000"/>
+                                    <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <size key="minSize" width="548" height="401"/>
+                                    <size key="maxSize" width="550" height="10000000"/>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="y4q-mu-41r">
+                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="y1f-T5-LoU">
+                            <rect key="frame" x="533" y="1" width="16" height="401"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                </subviews>
+            </view>
+        </window>
+        <customObject id="vVf-tP-UBW" customClass="SolitairePreferencesController">
+            <connections>
+                <outlet property="_backgroundPopup" destination="d3k-cU-9Gq" id="olj-Sh-ndU"/>
+                <outlet property="colorWell" destination="eQL-4P-d7C" id="NoW-Ct-bLh"/>
+                <outlet property="preferencesPanel" destination="SFV-No-Oky" id="8Oq-OV-hEd"/>
+            </connections>
+        </customObject>
+    </objects>
+    <resources>
+        <image name="SolitaireBanner" width="550" height="99"/>
+    </resources>
+</document>

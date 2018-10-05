@@ -143,6 +143,14 @@
     return cards;
 }
 
+-(NSArray*) sprites {
+    NSMutableArray* sprites = [[NSMutableArray alloc] initWithCapacity: 64];
+    for(CALayer* layer in self.layer.sublayers) {
+        if([layer isKindOfClass: [SolitaireSprite class]]) [sprites addObject: layer];
+    }
+    return sprites;
+}
+
 -(SolitaireGame*) game {
     return [self.controller game];
 }
@@ -157,11 +165,11 @@
 
 -(void) showWinSheet {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle:@"Start New Game"];
-    [alert setMessageText:@"You Won!"];
+    [alert addButtonWithTitle:Localized(@"Start new game")];
+    [alert setMessageText:Localized(@"You won!")];
     
-    NSString* info = [NSString stringWithFormat: @"Your time was %@", [self.controller.timer timeString]];
-    if([[self game] keepsScore]) info = [NSString stringWithFormat: @"%@\nYour score was %i", info, self.controller.scoreKeeper.score];
+    NSString* info = [NSString stringWithFormat: Localized(@"Your time was %@"), [self.controller.timer timeString]];
+    if([[self game] keepsScore]) info = [NSString stringWithFormat: Localized(@"%@\nYour score was %li"), info, (long)self.controller.scoreKeeper.score];
     
     [alert setInformativeText: info];
     [alert setAlertStyle: NSInformationalAlertStyle];

@@ -34,14 +34,14 @@
 
 @interface SolitaireView : NSView {
 @public
-    IBOutlet SolitaireController* controller;
+    IBOutlet __weak SolitaireController* controller;
 @private
     NSImage* backgroundImage_;
     NSColor* currentBackgroundColor_;
     SolitaireCard* selectedCard_;
 }
 
-@property SolitaireController* controller;
+@property(weak) SolitaireController* controller;
 
 -(void) reset;
 -(void) setTableBackground: (NSColor*)color;
@@ -49,6 +49,7 @@
 -(void) removeSprite: (SolitaireSprite*)sprite;
 -(NSArray*) containers;
 -(NSArray*) cards;
+-(NSArray*) sprites;
 -(SolitaireGame*) game;
 -(void) showWinSheet;
 

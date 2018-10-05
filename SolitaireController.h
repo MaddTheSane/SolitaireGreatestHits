@@ -28,9 +28,11 @@
 @class SolitaireTimer;
 @class SolitaireScoreKeeper;
 
-@interface SolitaireController : NSObject {
+@interface SolitaireController : NSObject <NSApplicationDelegate, NSToolbarDelegate>
+{
 @public
-    SolitairePreferencesController* preferences;
+
+    IBOutlet SolitairePreferencesController* preferences;
 
     IBOutlet NSWindow* window;
     IBOutlet SolitaireView* view;
@@ -38,18 +40,19 @@
     IBOutlet SolitaireScoreKeeper* scoreKeeper;
 
 @private
-    IBOutlet NSWindow* aboutWindow_;
+	IBOutlet NSWindow* aboutWindow_;
+	IBOutlet NSTextView *infoView_;
 
     NSMutableArray* gameRegistry_;
     NSMutableDictionary* gameDictionary_;
     SolitaireGame* game_;
 }
 
-@property NSWindow* window;
-@property SolitairePreferencesController* preferences;
-@property SolitaireView* view;
-@property SolitaireTimer* timer;
-@property SolitaireScoreKeeper* scoreKeeper;
+@property(readonly) NSWindow* window;
+@property(readonly) SolitairePreferencesController* preferences;
+@property(readonly) SolitaireView* view;
+@property(readonly) SolitaireTimer* timer;
+@property(readonly) SolitaireScoreKeeper* scoreKeeper;
 
 -(void) registerGames;
 -(void) registerGame: (SolitaireGame*)game; 
@@ -70,6 +73,8 @@
 -(IBAction) onGameSelected: (NSMenuItem*)sender;
 -(IBAction) onInstructions: (id)sender;
 -(IBAction) onAutoFinish: (id)sender;
+
+- (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication;
 
 -(SolitaireGame*) game;
 

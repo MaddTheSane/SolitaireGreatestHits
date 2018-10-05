@@ -24,14 +24,21 @@
 
 
 @interface SolitairePreferencesController : NSObject {
-    IBOutlet NSPanel* preferencesPanel;
-    IBOutlet NSColorWell* colorWell;
+    IBOutlet __weak NSPanel*        preferencesPanel;
+    IBOutlet __weak NSColorWell*    colorWell;
+    IBOutlet __weak NSPopUpButton*  _backgroundPopup;
+    
+    NSArray *cardBackFiles_;
 }
 
-@property(assign) NSPanel* preferencesPanel;
-@property(assign) NSColorWell* colorWell;
+@property(weak) NSPanel* preferencesPanel;
 
+-(void) data2Controls;
 -(IBAction) onOkayClicked: (id)sender;
 -(IBAction) onCancelClicked: (id)sender;
+-(IBAction) onDefaultClicked: (id)sender;
+
+-(NSColor*)     selectedColor;
+-(NSString*)    selectedCardBack;
 
 @end
