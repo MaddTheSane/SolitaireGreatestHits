@@ -49,8 +49,7 @@ extern NSImage* flippedCardImage;
 }
 
 -(id) initWithDeckCount: (NSInteger)deckCount {
-    if(flippedCardImage == nil) flippedCardImage =
-        [NSImage imageNamed:@"SolitaireCardBack"];
+    LoadFlippedCardImage(YES);
 
     if((self = [super init]) != nil) {
         delegate_ = nil;

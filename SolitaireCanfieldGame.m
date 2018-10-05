@@ -266,9 +266,10 @@
     SolitaireCard* foundationCard = [stock_ dealCard];
     foundationCard.hidden = NO;
     foundationCard.flipped = NO;
-    foundationCard.position = [foundation_[3] nextLocation];
+    int index = [foundationCard suit];
+    foundationCard.position = [foundation_[index] nextLocation];
     [foundationCard setNeedsDisplay];
-    [foundation_[3] addCard: foundationCard];
+    [foundation_[index] addCard: foundationCard];
     foundationStartingValue_ = [foundationCard faceValue];
     
     // Set the foundation text
@@ -326,8 +327,14 @@
 -(SolitaireFoundation*) findFoundationForCard: (SolitaireCard*) card {
     if (card == nil) return nil;
     
-    int i;
-    for(i = 3; i >= 0; i--)
+    // Find best place so suits are ordered
+	SolitaireFoundation *preferredFoundation = foundation_[[card suit]];
+	if (card.container == preferredFoundation) return nil;
+	if ([self canDropCard: card inFoundation:preferredFoundation])
+		return preferredFoundation;
+
+    // Find another free place
+    for (int i = 3; i >= 0; i--)
         if(card.container == foundation_[i]) break;
         else if([self canDropCard: card inFoundation: foundation_[i]])
             return foundation_[i];

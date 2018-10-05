@@ -56,30 +56,31 @@ typedef NS_ENUM(int, SolitaireSuitColor) {
 #define kCardWidth 79
 #define kCardHeight 123
 
+void LoadFlippedCardImage(BOOL reload);
+
 @class SolitaireView;
 @class SolitaireCardContainer;
 
 @interface SolitaireCard : SolitaireSprite <NSCoding, CAAnimationDelegate, CALayerDelegate> {
 @public
-    __unsafe_unretained SolitaireCard* nextCard;        // pointer to the card stacked on top of this one.
+    __weak SolitaireCard* nextCard;        // pointer to the card stacked on top of this one.
     BOOL flipped;                   // This variable indicates if the card is flipped to display its back side.
     BOOL draggable;
     BOOL dragging;
-    __unsafe_unretained SolitaireCardContainer* container;
+    __weak SolitaireCardContainer* container;
     CGPoint homeLocation;
 
 @private
     SolitaireSuit suit_;
     SolitaireFaceValue faceValue_;
     NSImage* frontImage_;
-    NSImage* backImage_;
 }
 
-@property(readwrite, assign) SolitaireCard* nextCard;
+@property(readwrite, weak) SolitaireCard* nextCard;
 @property(readwrite) BOOL flipped;
 @property(readwrite) BOOL draggable;
 @property(readwrite) BOOL dragging;
-@property(readwrite, assign) SolitaireCardContainer* container;
+@property(readwrite, weak) SolitaireCardContainer* container;
 @property(readwrite) CGPoint homeLocation;
 
 -(id) initWithSuit: (SolitaireSuit)suit faceValue: (SolitaireFaceValue)faceValue;

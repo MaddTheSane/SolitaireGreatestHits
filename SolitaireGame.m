@@ -57,6 +57,10 @@
     return nil;
 }
 
+-(NSString*) localizedName {
+    return Localized([self name]);
+}
+
 -(NSUInteger) gameSeed {
     return gameSeed_;
 }

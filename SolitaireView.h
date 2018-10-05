@@ -47,6 +47,7 @@
 -(void) removeSprite: (SolitaireSprite*)sprite;
 -(NSArray*) containers;
 -(NSArray*) cards;
+-(NSArray*) sprites;
 -(SolitaireGame*) game;
 -(void) showWinSheet;
 

@@ -31,8 +31,6 @@
 	<string>SolitaireHelp</string>
 	<key>CFBundleHelpBookName</key>
 	<string>Solitaire Greatest Hits Help</string>
-	<key>CFBundleIconFile</key>
-	<string>SolitaireIcon</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -41,10 +39,14 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.1</string>
 	<key>CFBundleSignature</key>
 	<string>DANF</string>
 	<key>CFBundleVersion</key>
-	<string>2.0</string>
+	<string>2.1</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.card-games</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

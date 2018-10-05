@@ -28,9 +28,11 @@
 @class SolitaireTimer;
 @class SolitaireScoreKeeper;
 
-@interface SolitaireController : NSObject <NSToolbarDelegate> {
+@interface SolitaireController : NSObject <NSApplicationDelegate, NSToolbarDelegate>
+{
 @public
-    SolitairePreferencesController* preferences;
+
+    IBOutlet SolitairePreferencesController* preferences;
 
     IBOutlet NSWindow* __weak window;
     IBOutlet SolitaireView* __weak view;
@@ -38,7 +40,8 @@
     IBOutlet SolitaireScoreKeeper* __weak scoreKeeper;
 
 @private
-    IBOutlet NSWindow* aboutWindow_;
+	IBOutlet NSWindow* aboutWindow_;
+	IBOutlet NSTextView *infoView_;
 
     NSMutableArray* gameRegistry_;
     NSMutableDictionary* gameDictionary_;
@@ -70,6 +73,8 @@
 -(IBAction) onGameSelected: (NSMenuItem*)sender;
 -(IBAction) onInstructions: (id)sender;
 -(IBAction) onAutoFinish: (id)sender;
+
+- (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication;
 
 -(SolitaireGame*) game;
 

@@ -61,8 +61,8 @@
     NSInteger secs = secs_ - hrs * 3600 - mins * 60;
     
     NSString* time;
-    if(hrs == 0) time = [NSString stringWithFormat: @"%d:%02d", mins, secs];
-    else time = [NSString stringWithFormat: @"%d:%02d:%02d", hrs, mins, secs];
+    if(hrs == 0) time = [NSString stringWithFormat: @"%ld:%02ld", (long)mins, (long)secs];
+    else time = [NSString stringWithFormat: @"%ld:%02ld:%02ld", (long)hrs, (long)mins, (long)secs];
     return time;  
 }
 
@@ -74,7 +74,7 @@
 }
 
 -(void) updateTime {
-    [timeField_ setStringValue: [NSString stringWithFormat: @"Time: %@", [self timeString]]];
+    [timeField_ setStringValue: [NSString stringWithFormat: Localized(@"Time: %@"), [self timeString]]];
 }
 
 -(void) timerFired {

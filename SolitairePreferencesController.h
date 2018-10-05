@@ -23,12 +23,21 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface SolitairePreferencesController : NSObject
+@interface SolitairePreferencesController : NSObject {
+    IBOutlet __weak NSPopUpButton*  _backgroundPopup;
+    
+    NSArray *cardBackFiles_;
+}
 
 @property(weak) IBOutlet NSPanel* preferencesPanel;
 @property(weak) IBOutlet NSColorWell* colorWell;
 
+-(void) data2Controls;
 -(IBAction) onOkayClicked: (id)sender;
 -(IBAction) onCancelClicked: (id)sender;
+-(IBAction) onDefaultClicked: (id)sender;
+
+-(NSColor*)     selectedColor;
+-(NSString*)    selectedCardBack;
 
 @end

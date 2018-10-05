@@ -177,7 +177,7 @@
     int i;
     for(i = 0; i < 4; i++) {
         SolitaireCard* topCard = [tableau_[i] topCard];
-        if(card == topCard || [card faceValue] == SolitaireValueAce) continue;
+        if(topCard == nil || card == topCard || [card faceValue] == SolitaireValueAce) continue;
         if([card suit] == [topCard suit] && 
             ([card faceValue] < [topCard faceValue] || [topCard faceValue] == SolitaireValueAce)) return YES;
     }
