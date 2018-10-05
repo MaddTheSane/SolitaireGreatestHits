@@ -77,16 +77,25 @@
     int h = backgroundImage_.size.height;
     
     int k;
+    NSColor *ourColor = color;
+    if (@available(macOS 10.13, *)) {
+        if (color.type != NSColorTypeComponentBased) {
+            NSColor *ourColor2 = [color colorUsingType:NSColorTypeComponentBased];
+            if (ourColor2) {
+                ourColor = ourColor2;
+            }
+        }
+    }
     for(k = 0; k < grainCount; k++) {
         // Set grain color
-        float r = 1.0 + (0.1 - 0.2 * (float)rand()/RAND_MAX); // Color variation
-        [[NSColor colorWithCalibratedRed: color.redComponent * r green: color.greenComponent * r blue: color.blueComponent * r alpha: 1.0f] set];
+        CGFloat r = 1.0 + (0.1 - 0.2 * (CGFloat)rand()/RAND_MAX); // Color variation
+        [[NSColor colorWithCalibratedRed: ourColor.redComponent * r green: ourColor.greenComponent * r blue: ourColor.blueComponent * r alpha: 1.0f] set];
         
         // Pick grain position
-        int grainX = (int)((float)rand()/RAND_MAX * w);
-        int grainY = (int)((float)rand()/RAND_MAX * h);
+        int grainX = (int)((CGFloat)rand()/RAND_MAX * w);
+        int grainY = (int)((CGFloat)rand()/RAND_MAX * h);
         NSBezierPath* path = [NSBezierPath bezierPath];
-        NSRect bounds = NSMakeRect(grainX, grainY, (float)rand()/RAND_MAX * 5, (float)rand()/RAND_MAX * 5);
+        NSRect bounds = NSMakeRect(grainX, grainY, (CGFloat)rand()/RAND_MAX * 5, (CGFloat)rand()/RAND_MAX * 5);
         [path appendBezierPathWithOvalInRect: bounds];
         [path fill];
     }
@@ -94,7 +103,7 @@
     // Paint Gradient
     NSGradient* gradient = [[NSGradient alloc] initWithStartingColor: [NSColor colorWithCalibratedRed: 1.0f green: 1.0f blue: 1.0f alpha: 0.5f]
         endingColor: [NSColor colorWithCalibratedRed: 0.0f green: 0.0f blue: 0.0f alpha: 0.5f]];
-    [gradient drawInRect: rect relativeCenterPosition: NSMakePoint(0.0f, 0.0f)];
+    [gradient drawInRect: rect relativeCenterPosition: NSZeroPoint];
     
     [backgroundImage_ unlockFocus];
     
