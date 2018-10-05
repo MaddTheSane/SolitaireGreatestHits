@@ -4,12 +4,37 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>sgh</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>ChooseGame</string>
+			<key>CFBundleTypeName</key>
+			<string>Saved Solitaire Game</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>fontaine.Solitaire2.saveGame</string>
+			</array>
+			<key>LSTypeIsPackage</key>
+			<integer>0</integer>
+		</dict>
+	</array>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>SolitaireHelp</string>
+	<key>CFBundleHelpBookName</key>
+	<string>Solitaire Greatest Hits Help</string>
 	<key>CFBundleIconFile</key>
 	<string>SolitaireIcon</string>
 	<key>CFBundleIdentifier</key>
-	<string>fontaine.Solitaire2</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -24,9 +49,27 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>CFBundleHelpBookFolder</key>
-	<string>SolitaireHelp</string>
-	<key>CFBundleHelpBookName</key>
-	<string>Solitaire Greatest Hits Help</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Saved Solitaire Game</string>
+			<key>UTTypeIconFile</key>
+			<string>ChooseGame</string>
+			<key>UTTypeIdentifier</key>
+			<string>fontaine.Solitaire2.saveGame</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>sgh</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

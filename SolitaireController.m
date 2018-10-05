@@ -50,11 +50,9 @@
 -(void) selectGameWithRegistryIndex: (NSInteger)index;
 
 // Sheet callbacks
--(void) newGameAlertDidEnd: (NSAlert*)alert returnCode: (int)returnCode contextInfo: (void*)contextInfo;
--(void) restartGameAlertDidEnd: (NSAlert*)alert returnCode: (int)returnCode contextInfo: (void*)contextInfo;
--(void) savePanelDidEnd: (NSSavePanel*)sheet returnCode: (int)returnCode contextInfo: (void*)contextInfo;
--(void) openPanelDidEnd: (NSOpenPanel*)panel returnCode: (int)returnCode  contextInfo: (void*)contextInfo;
--(void) preferencesSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
+-(void) newGameAlertDidEnd: (NSAlert*)alert returnCode: (NSModalResponse)returnCode contextInfo: (void*)contextInfo;
+-(void) restartGameAlertDidEnd: (NSAlert*)alert returnCode: (NSModalResponse)returnCode contextInfo: (void*)contextInfo;
+-(void) preferencesSheetDidEnd:(NSWindow *)sheet returnCode:(NSModalResponse)returnCode contextInfo:(void *)contextInfo;
 @end
 
 // Toolbar Item Identifier strings
@@ -239,31 +237,41 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
 }
 
 -(IBAction) onSaveGame: (id)sender {
-    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* documentsDirectory = [paths objectAtIndex: 0];
+    //NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    //NSString* documentsDirectory = [paths objectAtIndex: 0];
 
     NSSavePanel* savePanel = [NSSavePanel savePanel];
     [savePanel setTitle: @"Save Game"];
     [savePanel setExtensionHidden: YES];
-    [savePanel setRequiredFileType: @"sgh"];
-    [savePanel beginSheetForDirectory: documentsDirectory file: @"Untitled" modalForWindow: self.window modalDelegate: self
-        didEndSelector: @selector(savePanelDidEnd:returnCode:contextInfo:) contextInfo: nil];
+    //[savePanel setDirectoryURL:[NSURL fileURLWithPath:documentsDirectory]];
+    [savePanel setAllowedFileTypes: @[@"sgh"]];
+    [savePanel beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse result) {
+        if(result == NSOKButton) {
+            NSURL* filename = [savePanel URL];
+            [self saveGameWithFilename: filename.path];
+        }
+    }];
 }
 
 -(IBAction) onOpenGame: (id)sender {
-    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* documentsDirectory = [paths objectAtIndex: 0];
+    //NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    //NSString* documentsDirectory = [paths objectAtIndex: 0];
 
     NSOpenPanel* openPanel = [NSOpenPanel openPanel];
     [openPanel setTitle: @"Open Game"];
     [openPanel setExtensionHidden: YES];
+    //[openPanel setDirectoryURL:[NSURL fileURLWithPath:documentsDirectory]];
     [openPanel setCanChooseFiles: YES];
     [openPanel setCanChooseDirectories: NO];
     [openPanel setAllowsMultipleSelection: NO];
+    [openPanel setAllowedFileTypes: @[@"sgh"]];
 
-    [openPanel beginSheetForDirectory: documentsDirectory file: nil types: [NSArray arrayWithObject: @"sgh"]
-        modalForWindow: self.window modalDelegate: self
-            didEndSelector: @selector(openPanelDidEnd:returnCode:contextInfo:) contextInfo: nil];
+    [openPanel beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse result) {
+        if(result == NSOKButton) {
+            NSURL* filename = [openPanel URL];
+            [self openGameWithFilename: filename.path];
+        }
+    }];
 }
 
 -(IBAction) onPreferences: (id)sender {
@@ -554,29 +562,15 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
 
 // Sheet Delegate methods
 
--(void)newGameAlertDidEnd: (NSAlert*)alert returnCode: (int)returnCode contextInfo: (void*)contextInfo {
+-(void)newGameAlertDidEnd: (NSAlert*)alert returnCode: (NSModalResponse)returnCode contextInfo: (void*)contextInfo {
     if(returnCode == NSAlertFirstButtonReturn) [self newGame];
 }
 
--(void)restartGameAlertDidEnd: (NSAlert*)alert returnCode: (int)returnCode contextInfo: (void*)contextInfo {
+-(void)restartGameAlertDidEnd: (NSAlert*)alert returnCode: (NSModalResponse)returnCode contextInfo: (void*)contextInfo {
     if(returnCode == NSAlertFirstButtonReturn) [self restartGame];
 }
 
--(void) savePanelDidEnd: (NSSavePanel*)sheet returnCode: (int)returnCode contextInfo: (void*)contextInfo {
-    if(returnCode == NSOKButton) {
-        NSString* filename = [sheet filename];
-        [self saveGameWithFilename: filename];
-    }
-}
-
--(void) openPanelDidEnd: (NSOpenPanel*)panel returnCode: (int)returnCode  contextInfo: (void*)contextInfo {
-    if(returnCode == NSOKButton) {
-        NSString* filename = [panel filename];
-        [self openGameWithFilename: filename];
-    }
-}
-
-- (void)preferencesSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+- (void)preferencesSheetDidEnd:(NSWindow *)sheet returnCode:(NSModalResponse)returnCode contextInfo:(void *)contextInfo {
     if(returnCode == NSOKButton) {
         [self.view setTableBackground: [self.preferences.colorWell color]];
         [self.view.layer setNeedsDisplay];
