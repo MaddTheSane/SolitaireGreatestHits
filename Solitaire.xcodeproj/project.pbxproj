@@ -139,7 +139,7 @@
 		92C5A1C218FF2ECA001AFE0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Info.rtf; sourceTree = "<group>"; };
 		92C5A1C418FF2ED3001AFE0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = de.lproj/Info.rtf; sourceTree = "<group>"; };
 		92DD744518E4DA4300FFB2F8 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		92DF2AD119070BED0049377D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Solitaire/Images.xcassets; sourceTree = "<group>"; };
+		92DF2AD119070BED0049377D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		92DF2AD3190719740049377D /* HelpIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = HelpIcon.icns; sourceTree = "<group>"; };
 		92DF2AD5190719740049377D /* SettingsIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = SettingsIcon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -211,9 +211,7 @@
 		29B97314FDCFA39411CA2CEA /* Solitaire */ = {
 			isa = PBXGroup;
 			children = (
-				080E96DDFE201D6D7F000001 /* Classes */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				29B97317FDCFA39411CA2CEA /* Resources */,
+				556820FE2167E77300402D96 /* Solitaire */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -233,17 +231,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				556821002167E95F00402D96 /* Icons */,
 				92DF2AD119070BED0049377D /* Images.xcassets */,
 				3730242C104CADF800B81460 /* Solitaire.help */,
-				372CBAF4104A03C900D9BB11 /* AutoIcon.icns */,
-				92DF2AD3190719740049377D /* HelpIcon.icns */,
-				92DF2AD5190719740049377D /* SettingsIcon.icns */,
-				3712A875100E21D30001F6C5 /* OpenIcon.icns */,
-				3712A873100E21C50001F6C5 /* SaveIcon.icns */,
-				3712A864100E1ED00001F6C5 /* RestartIcon.icns */,
-				37DC2DAE100D11E100504D65 /* RedoIcon.icns */,
-				37D499CE100BAD2D00591FB8 /* ChooseGame.icns */,
-				379CAAC50FD1A433009A760B /* UndoIcon.icns */,
 				92C5A1C118FF2ECA001AFE0D /* Info.rtf */,
 				379CAA9F0FD19512009A760B /* MainMenu.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -291,7 +281,7 @@
 				37E0102610330A8D004196F6 /* SolitaireCanfieldGame.h */,
 				37E0102710330A8D004196F6 /* SolitaireCanfieldGame.m */,
 			);
-			name = Games;
+			path = Games;
 			sourceTree = "<group>";
 		};
 		37D499E2100BB5CF00591FB8 /* Controllers */ = {
@@ -324,6 +314,32 @@
 				378491570E47CFC600107526 /* SolitaireFoundation.m */,
 			);
 			name = "Game Components";
+			sourceTree = "<group>";
+		};
+		556820FE2167E77300402D96 /* Solitaire */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+			);
+			path = Solitaire;
+			sourceTree = "<group>";
+		};
+		556821002167E95F00402D96 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				372CBAF4104A03C900D9BB11 /* AutoIcon.icns */,
+				92DF2AD3190719740049377D /* HelpIcon.icns */,
+				92DF2AD5190719740049377D /* SettingsIcon.icns */,
+				3712A875100E21D30001F6C5 /* OpenIcon.icns */,
+				3712A873100E21C50001F6C5 /* SaveIcon.icns */,
+				3712A864100E1ED00001F6C5 /* RestartIcon.icns */,
+				37DC2DAE100D11E100504D65 /* RedoIcon.icns */,
+				37D499CE100BAD2D00591FB8 /* ChooseGame.icns */,
+				379CAAC50FD1A433009A760B /* UndoIcon.icns */,
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -494,9 +510,9 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Solitaire_Prefix.pch;
+				GCC_PREFIX_HEADER = Solitaire/Solitaire_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = Solitaire/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_BUNDLE_IDENTIFIER = fontaine.Solitaire2;
 				PRODUCT_NAME = "Solitaire Greatest Hits";
@@ -510,9 +526,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Solitaire_Prefix.pch;
+				GCC_PREFIX_HEADER = Solitaire/Solitaire_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = Solitaire/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_BUNDLE_IDENTIFIER = fontaine.Solitaire2;
 				PRODUCT_NAME = "Solitaire Greatest Hits";
