@@ -31,21 +31,31 @@
 @class SolitaireCell;
 
 @interface SolitaireFreeCellGame : SolitaireGame {
+@protected
     SolitaireStock* stock_;
     SolitaireTableau* tableau_[8];
     SolitaireFoundation* foundation_[4];
     SolitaireCell* cell_[4];
 }
 
--(id) initWithView: (SolitaireView*)view;
+-(id) initWithController: (SolitaireController*)gameController;
 -(void) initializeGame;
--(void) startGame;
--(void) viewResized:(NSSize)size;
+-(NSString*) name;
+-(void) layoutGameComponents;
 -(BOOL) didWin;
 -(BOOL) didLose;
 -(void) reset;
 -(NSInteger) cardsInPlay;
--(void) dealCards;
+
+// Saving and loading game
+-(SolitaireSavedGameImage*) generateSavedGameImage;
+-(void) loadSavedGameImage: (SolitaireSavedGameImage*)gameImage;
+
+// Auto-finish
+-(BOOL) supportsAutoFinish;
+-(void) autoFinishGame;
+
+-(void) dealNewGame;
 -(NSInteger) freeCellCount;
 -(NSInteger) freeTableauCount;
 

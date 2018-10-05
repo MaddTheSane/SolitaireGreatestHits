@@ -25,10 +25,9 @@
 
 @class SolitaireCard;
 
-@interface SolitaireFoundation : SolitaireCardContainer {
-}
+@interface SolitaireFoundation : SolitaireCardContainer
 
--(id) initWithView: (SolitaireView*)gameView;
+-(id) init;
 -(BOOL) acceptsDroppedCards;
 -(CGPoint) nextLocation;
 -(void) addCard: (SolitaireCard*) card;
@@ -36,6 +35,5 @@
 
 -(BOOL) isEmpty;
 -(BOOL) isFilled;
--(void) drawSprite;
 
 @end

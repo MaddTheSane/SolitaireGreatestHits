@@ -23,7 +23,9 @@
 #import <Cocoa/Cocoa.h>
 #import "SolitaireCardContainer.h"
 
+@class SolitaireController;
 @class SolitaireView;
+@class SolitaireSavedGameImage;
 @class SolitaireCard;
 @class SolitaireTableau;
 @class SolitaireFoundation;
@@ -32,32 +34,58 @@
 @class SolitaireStock;
 
 @interface SolitaireGame : NSObject {
+@public
+    SolitaireController* controller;
+    
 @private
-    SolitaireView* view_;
+    NSUInteger gameSeed_;
 }
 
--(id) initWithView: (SolitaireView*)view;
+@property SolitaireController* controller;
+
+-(id) initWithController: (SolitaireController*)gameController;
 -(SolitaireView*) view;
+-(NSString*) name;
+-(NSUInteger) gameSeed;
+-(void) gameWithSeed: (NSUInteger)seed;
 -(void) initializeGame;
+-(void) layoutGameComponents;
 -(void) startGame;
--(void) viewResized:(NSSize)size;
 -(BOOL) didWin;
 -(BOOL) didLose;
 -(void) reset;
 -(NSInteger) cardsInPlay;
 
+// Scoring
+-(BOOL) keepsScore;
+-(NSInteger) initialScore;
+-(NSInteger) scoreForCard: (SolitaireCard*)card movedFromContainer: (SolitaireCardContainer*) fromContainer
+    toContainer: (SolitaireCardContainer*)toContainer;
+-(NSInteger) scoreForCardFlipped: (SolitaireCard*)card;
+
+// Saving and loading game
+-(SolitaireSavedGameImage*) generateSavedGameImage;
+-(void) loadSavedGameImage: (SolitaireSavedGameImage*)gameImage;
+
+// Auto-finish
+-(BOOL) supportsAutoFinish;
+-(void) autoFinishGame;
+
+-(void) dealNewGame;
+
 -(BOOL) canDropCard: (SolitaireCard*) card inContainer: (SolitaireCardContainer*) container;
 -(BOOL) canDropCard: (SolitaireCard*) card inTableau: (SolitaireTableau*) tableau;
 -(BOOL) canDropCard: (SolitaireCard*) card inFoundation: (SolitaireFoundation*) foundation;
 -(BOOL) canDropCard: (SolitaireCard*) card inCell: (SolitaireCell*) cell;
+-(BOOL) canDropCard: (SolitaireCard*) card inWaste: (SolitaireWaste*) waste;
 
 -(void) dropCard: (SolitaireCard*) card inContainer: (SolitaireCardContainer*) container;
 -(void) dropCard: (SolitaireCard*) card inTableau: (SolitaireTableau*) tableau;
 -(void) dropCard: (SolitaireCard*) card inFoundation: (SolitaireFoundation*) foundation;
 -(void) dropCard: (SolitaireCard*) card inCell: (SolitaireCell*) cell;
 
--(void) dropCard: (SolitaireCard*) card inWaste: (SolitaireWaste*) waste; // Used by the undo manager.
--(void) dropCard: (SolitaireCard*) card inStock: (SolitaireStock*) stock; // Used by the undo manager.
+-(void) dropCard: (SolitaireCard*) card inWaste: (SolitaireWaste*) waste;
+-(void) dropCard: (SolitaireCard*) card inStock: (SolitaireStock*) stock;
 
 -(void) onCard: (SolitaireCard*) card removedFromContainer: (SolitaireCardContainer*) container;
 -(void) onCard: (SolitaireCard*) card removedFromTableau: (SolitaireTableau*) tableau;

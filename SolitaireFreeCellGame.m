@@ -22,6 +22,7 @@
 
 #import "SolitaireFreeCellGame.h"
 #import "SolitaireView.h"
+#import "SolitaireSavedGameImage.h"
 #import "SolitaireCard.h"
 #import "SolitaireFoundation.h"
 #import "SolitaireTableau.h"
@@ -30,88 +31,75 @@
 
 @implementation SolitaireFreeCellGame
 
--(id) initWithView: (SolitaireView*)view {
-    if((self = [super initWithView: view]) != nil) {
+-(id) initWithController: (SolitaireController*)gameController {
+    if((self = [super initWithController: gameController]) != nil) {
         [self reset];
     }
     return self;
 }
 
 -(void) initializeGame {
-    CGFloat viewWidth = [[self view] frame].size.width;
-    CGFloat viewHeight = [[self view] frame].size.height;
-
     // Init Stock
-    stock_ = [[SolitaireStock alloc] initWithView: [self view]];
+    stock_ = [[SolitaireStock alloc] init];
+    [stock_ onAddedToView: [self view]]; // Called explicitly since we don't actually add the stock to the view,
+                                         // but we still want its cards added to the view.
     
     // Init Foundations
     int i;
-    CGFloat foundationX = viewWidth - CARD_WIDTH - viewWidth / 25.0f;
-    CGFloat foundationY = (viewHeight - CARD_HEIGHT) - viewHeight / 25.0f;
-
     for(i = 3; i >= 0; i--) {
-        foundation_[i] = [[SolitaireFoundation alloc] initWithView: [self view]];
-        foundation_[i].position = CGPointMake(foundationX - i * (5.0f / 4.0f * CARD_WIDTH), foundationY);
+        foundation_[i] = [[SolitaireFoundation alloc] init];
+        foundation_[i].text = @"A";
         [[self view] addSprite: foundation_[i]];
     }
     
     // Init Cells
-    CGFloat cellX = viewWidth / 25.0f;
-    CGFloat cellY = (viewHeight - CARD_HEIGHT) - viewHeight / 25.0f;
 
     for(i = 3; i >= 0; i--) {
-        cell_[i] = [[SolitaireCell alloc] initWithView: [self view]];
-        cell_[i].position = CGPointMake(cellX + i * (5.0f / 4.0f * CARD_WIDTH), cellY);
+        cell_[i] = [[SolitaireCell alloc] init];
         [[self view] addSprite: cell_[i]];
     }
     
     // Init Tableau
-    CGFloat tableauX = viewWidth / 25.0f;
-    CGFloat tableauY = foundationY - (3.0f / 2.0f * CARD_HEIGHT) - viewHeight / 25.0f;
-    CGFloat tableauSpacing = (viewWidth - 8 * CARD_WIDTH - 2 * (viewWidth / 25.0f)) / 7.0f;
-
     for(i = 0; i < 8; i++) {
-        tableau_[i] = [[SolitaireTableau alloc] initWithView: [self view]];
-        tableau_[i].position = CGPointMake(tableauX + i * (CARD_WIDTH + tableauSpacing), tableauY);
+        tableau_[i] = [[SolitaireTableau alloc] init];
         [[self view] addSprite: tableau_[i]];
     }
 }
 
--(void) startGame {
-    [self dealCards];
-    [[self view] setNeedsDisplay: YES];
+-(NSString*) name {
+    return @"Free Cell";
 }
 
--(void) viewResized:(NSSize)size {
-    CGFloat viewWidth = size.width;
-    if(viewWidth < 9.0f * CARD_WIDTH) viewWidth = 9.0f * CARD_WIDTH;
+-(void) layoutGameComponents {
+    CGFloat viewWidth = [self view].frame.size.width;
+    if(viewWidth < 9.0f * kCardWidth) viewWidth = 9.0f * kCardWidth;
     
-    CGFloat viewHeight = size.height;
+    CGFloat viewHeight = [self view].frame.size.height;
 
-    // Init Foundations
+    // Layout Foundations
     int i;
-    CGFloat foundationX = viewWidth - CARD_WIDTH - viewWidth / 25.0f;
-    CGFloat foundationY = (viewHeight - CARD_HEIGHT) - viewHeight / 25.0f;
+    CGFloat foundationX = viewWidth - kCardWidth - viewWidth / 25.0f;
+    CGFloat foundationY = (viewHeight - kCardHeight) - viewHeight / 25.0f;
 
     for(i = 3; i >= 0; i--) {
-        foundation_[i].position = CGPointMake(foundationX - i * (5.0f / 4.0f * CARD_WIDTH), foundationY);
+        foundation_[i].position = CGPointMake(foundationX - i * (5.0f / 4.0f * kCardWidth), foundationY);
     }
     
-    // Init Cells
+    // Layout Cells
     CGFloat cellX = viewWidth / 25.0f;
-    CGFloat cellY = (viewHeight - CARD_HEIGHT) - viewHeight / 25.0f;
+    CGFloat cellY = (viewHeight - kCardHeight) - viewHeight / 25.0f;
 
     for(i = 3; i >= 0; i--) {
-        cell_[i].position = CGPointMake(cellX + i * (5.0f / 4.0f * CARD_WIDTH), cellY);
+        cell_[i].position = CGPointMake(cellX + i * (5.0f / 4.0f * kCardWidth), cellY);
     }
     
-    // Init Tableau
+    // Layout Tableau
     CGFloat tableauX = viewWidth / 25.0f;
-    CGFloat tableauY = foundationY - (3.0f / 2.0f * CARD_HEIGHT) - viewHeight / 25.0f;
-    CGFloat tableauSpacing = (viewWidth - 8 * CARD_WIDTH - 2 * (viewWidth / 25.0f)) / 7.0f;
+    CGFloat tableauY = foundationY - (5.0f / 4.0f * kCardHeight);
+    CGFloat tableauSpacing = (viewWidth - 8 * kCardWidth - 2 * (viewWidth / 25.0f)) / 7.0f;
 
     for(i = 0; i < 8; i++) {
-        tableau_[i].position = CGPointMake(tableauX + i * (CARD_WIDTH + tableauSpacing), tableauY);
+        tableau_[i].position = CGPointMake(tableauX + i * (kCardWidth + tableauSpacing), tableauY);
     }
 }
 
@@ -140,7 +128,92 @@
     return 0;
 }
 
--(void) dealCards {
+// Saving and loading game
+-(SolitaireSavedGameImage*) generateSavedGameImage {
+    SolitaireSavedGameImage* gameImage = [super generateSavedGameImage]; 
+            
+    // Archive Stock
+    [gameImage archiveGameObject: stock_ forKey: @"stock_"];
+    
+    // Archive Foundations
+    int i;
+    for(i = 0; i < 4; i++) {
+        [gameImage archiveGameObject: foundation_[i] forKey: [NSString stringWithFormat: @"foundation_%i", i]];
+    }
+    
+    // Archive Tableau
+    for(i = 0; i < 8; i++) {
+        [gameImage archiveGameObject: tableau_[i] forKey: [NSString stringWithFormat: @"tableau_%i", i]];
+    }
+    
+    // Archive Cells
+    for(i = 0; i < 4; i++) {
+        [gameImage archiveGameObject: cell_[i] forKey: [NSString stringWithFormat: @"cell_%i", i]];
+    }
+    
+    return gameImage;
+}
+
+-(void) loadSavedGameImage: (SolitaireSavedGameImage*)gameImage {
+    [super loadSavedGameImage: gameImage];
+
+    // Unarchive Stock
+    stock_ = [gameImage unarchiveGameObjectForKey: @"stock_"];
+    [[self view] addSprite: stock_];
+        
+    // Unarchive Foundations
+    int i;
+    for(i = 0; i < 4; i++) {
+        foundation_[i] = [gameImage unarchiveGameObjectForKey: [NSString stringWithFormat: @"foundation_%i", i]];
+        [[self view] addSprite: foundation_[i]];
+    }
+    
+    // Unarchive Tableau
+    for(i = 0; i < 8; i++) {
+        tableau_[i] = [gameImage unarchiveGameObjectForKey: [NSString stringWithFormat: @"tableau_%i", i]];
+        [[self view] addSprite: tableau_[i]];
+    }
+    
+    // Unarchive Cells
+    for(i = 0; i < 4; i++) {
+        cell_[i] = [gameImage unarchiveGameObjectForKey: [NSString stringWithFormat: @"cell_%i", i]];
+        [[self view] addSprite: cell_[i]];
+    }
+}
+
+// Auto-finish
+-(BOOL) supportsAutoFinish {
+    return YES;
+}
+
+-(void) autoFinishGame {
+    int i;
+    // Tableau
+    for(i = 0; i < 8; i++) {
+        SolitaireCard* card = [tableau_[i] topCard];
+        if(card == nil) continue;
+        SolitaireFoundation* foundation = [self findFoundationForCard: card];
+        if(foundation != nil) {
+            [self dropCard: card inContainer: foundation];
+            [self performSelector: @selector(autoFinishGame) withObject: nil afterDelay: 0.2f];
+            return;
+        }
+    }
+    
+    // Cells
+    for(i = 0; i < 4; i++) {
+        SolitaireCard* card = [cell_[i] topCard];
+        if(card == nil) continue;
+        SolitaireFoundation* foundation = [self findFoundationForCard: card];
+        if(foundation != nil) {
+            [self dropCard: card inContainer: foundation];
+            [self performSelector: @selector(autoFinishGame) withObject: nil afterDelay: 0.2f];
+            return;
+        }
+    }
+}
+
+-(void) dealNewGame {
     int pos = 0;
     while(![stock_ isEmpty]) {
         [stock_ dealCardToTableau: tableau_[pos] faceDown: NO];
@@ -194,7 +267,7 @@
 }
 
 -(BOOL) canDropCard: (SolitaireCard*) card inFoundation: (SolitaireFoundation*) foundation {
-    if([card countCardsStackedOnTop] > [self freeCellCount] + [self freeTableauCount]) return NO;
+    if([card countCardsStackedOnTop] > 0) return NO;
 
     if([foundation count] == 0) {
         if([card faceValue] == SolitaireValueAce) return YES;
@@ -231,11 +304,14 @@
         SolitaireCard* card = [tableau cardAtPosition: pos];
         if(([card.nextCard faceValue] == [card faceValue] - 1) &&
             ([card.nextCard suitColor] != [card suitColor]) && card.nextCard.draggable) card.draggable = YES;
+        else card.draggable = NO;
         pos--;
     }
 }
 
 -(SolitaireFoundation*) findFoundationForCard: (SolitaireCard*) card {
+    if (card == nil) return nil;
+
     int i;
     for(i = 3; i >= 0; i--)
         if(card.container == foundation_[i]) break;

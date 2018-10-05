@@ -25,9 +25,9 @@
 
 @implementation SolitaireCell
 
--(id) initWithView: (SolitaireView*)gameView {
-    if((self = [super initWithView: gameView]) != nil) {
-        self.bounds = CGRectMake(0.0f, 0.0f, CARD_WIDTH + 4, CARD_HEIGHT + 4);
+-(id) init {
+    if((self = [super init]) != nil) {
+        self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth + 4, kCardHeight + 4);
     }
     return self;
 }
@@ -51,25 +51,6 @@
 
 -(BOOL) isEmpty {
     return [cards_ count] == 0;
-}
-
--(void) drawSprite {
-    NSRect dstRect = NSRectFromCGRect(CGRectMake(self.bounds.origin.x + 2.0f,
-    self.bounds.origin.y + 2.0f, CARD_WIDTH, CARD_HEIGHT));
-    
-    NSBezierPath* path = [NSBezierPath bezierPath];
-    [path setLineWidth: 2.0f];
-    [path appendBezierPathWithRoundedRect: dstRect xRadius: 9.0f yRadius: 9.0f];
-    
-    NSColor* borderColor = [NSColor colorWithCalibratedRed: 0.85f green: 0.85f blue: 0.85f alpha: 0.5f];
-    [borderColor setStroke];
-    [path stroke];
-        
-    if(self.selected) {
-        NSColor* backgroundColor = [NSColor colorWithCalibratedRed: 0.85f green: 0.85f blue: 0.85f alpha: 0.15f];
-        [backgroundColor setFill];
-        [path fill];
-    }
 }
 
 @end

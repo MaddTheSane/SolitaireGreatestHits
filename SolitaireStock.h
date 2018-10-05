@@ -31,11 +31,11 @@
 @protocol SolitaireStockDelegate
 -(void) onStock: (SolitaireStock*) stock clicked: (NSInteger)clickCount;
 -(void) onRefillStock: (SolitaireStock*)stock;
+-(BOOL) canRefillStock;
 @end
 
-@interface SolitaireStock : SolitaireSprite {
+@interface SolitaireStock : SolitaireSprite <NSCoding> {
 @public
-    NSString* text;
     BOOL disableRestock;
     NSTimeInterval reclickDelay;
 
@@ -44,14 +44,19 @@
     NSInteger deckCount_;
     BOOL blockReclick_;
     id delegate_;
+    
+    NSImage* reloadImage_;
+    NSImage* emptyImage_;
 }
 
-@property(readwrite, copy) NSString* text;
 @property(readwrite) BOOL disableRestock;
 @property(readwrite) NSTimeInterval reclickDelay;
 
--(id) initWithView: (SolitaireView*)gameView;
--(id) initWithView: (SolitaireView*)gameView withDeckCount: (NSInteger)deckCount;
+-(id) init;
+-(id) initWithDeckCount: (NSInteger)deckCount;
+-(id) initWithCoder: (NSCoder*) decoder;
+-(void) encodeWithCoder: (NSCoder*) encoder;
+
 -(id) delegate;
 -(void) setDelegate: (id)delegate;
 -(BOOL) isEmpty;
@@ -65,6 +70,7 @@
 -(void) removeCards: (NSArray*)cards;
 -(void) drawSprite;
 -(void) spriteClicked: (NSUInteger)clickCount;
+-(void) onAddedToView: (SolitaireView*)gameView;
 
 -(SolitaireCard*) dealCard;
 -(void) dealCardToTableau: (SolitaireTableau*) tableau faceDown: (BOOL) flipped;

@@ -26,12 +26,6 @@
 
 @synthesize preferencesPanel;
 @synthesize colorWell;
-@synthesize showTimerButton;
-
--(BOOL) shouldShowTimer {
-    if([self.showTimerButton state] == NSOnState) return YES;
-    return NO;
-}
 
 -(IBAction) onOkayClicked: (id)sender {
     [NSApp endSheet: self.preferencesPanel returnCode: NSOKButton];

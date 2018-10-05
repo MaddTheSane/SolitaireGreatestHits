@@ -31,19 +31,17 @@
 @class SolitaireCard;
 @class SolitaireCardContainer;
 @class SolitaireGame;
-@class SolitaireTimer;
 
 @interface SolitaireView : NSView {
+@public
+    IBOutlet SolitaireController* controller;
 @private
     NSImage* backgroundImage_;
     NSColor* currentBackgroundColor_;
     SolitaireCard* selectedCard_;
-    SolitaireTimer* timer;
-    
-    IBOutlet SolitaireController* controller_;
 }
 
-@property(copy, readonly) SolitaireTimer* timer;
+@property SolitaireController* controller;
 
 -(void) reset;
 -(void) setTableBackground: (NSColor*)color;
@@ -53,7 +51,6 @@
 -(NSArray*) cards;
 -(SolitaireGame*) game;
 -(void) showWinSheet;
--(void) showTimer: (BOOL)value;
 
 -(SolitaireCardContainer*) findContainerIntersectingCard: (SolitaireCard*)card;
 

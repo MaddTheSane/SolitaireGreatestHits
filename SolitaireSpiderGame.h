@@ -24,26 +24,36 @@
 #import "SolitaireGame.h"
 
 @class SolitaireStock;
-@class SolitaireWaste;
 @class SolitaireFoundation;
 @class SolitaireTableau;
 
 @interface SolitaireSpiderGame : SolitaireGame {
 @private
-SolitaireStock* stock_;
-SolitaireFoundation* foundation_[8];
-SolitaireTableau* tableau_[10];
+    SolitaireStock* stock_;
+    SolitaireFoundation* foundation_[8];
+    SolitaireTableau* tableau_[10];
 }
 
--(id) initWithView: (SolitaireView*)view;
+-(id) initWithController: (SolitaireController*)gameController;
+-(NSString*) name;
 -(void) initializeGame;
--(void) startGame;
--(void) viewResized: (NSSize)size;
+-(void) layoutGameComponents;
 -(BOOL) didWin;
 -(BOOL) didLose;
 -(void) reset;
 
--(void) dealCards;
+// Scoring
+-(BOOL) keepsScore;
+-(NSInteger) initialScore;
+-(NSInteger) scoreForCard: (SolitaireCard*)card movedFromContainer: (SolitaireCardContainer*) fromContainer
+    toContainer: (SolitaireCardContainer*)toContainer;
+-(NSInteger) scoreForCardFlipped: (SolitaireCard*)card;
+
+// Saving and loading game
+-(SolitaireSavedGameImage*) generateSavedGameImage;
+-(void) loadSavedGameImage: (SolitaireSavedGameImage*)gameImage;
+
+-(void) dealNewGame;
 
 -(BOOL) canDropCard: (SolitaireCard*) card inTableau: (SolitaireTableau*) tableau;
 -(BOOL) canDropCard: (SolitaireCard*) card inFoundation: (SolitaireFoundation*) foundation;

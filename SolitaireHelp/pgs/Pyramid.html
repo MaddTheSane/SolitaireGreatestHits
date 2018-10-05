@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+    <head>
+        <title>Solitaire Greatest Hits - How to Play Pyramid</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+        
+        <style type="text/css">
+        
+        #main {
+            position: absolute;
+            left: 50%;
+            width: 700px;			
+            height: 1350px;
+            margin-left: -350px;
+            padding-top: 8px;
+            background-color: #FFFFFF;
+        }
+        
+        #content {
+            position: absolute;
+            left: 50%;
+            width: 640px;			
+            height: 1170px;
+            margin-left: -350px;
+            margin-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-size: 12pt;
+            color: black;
+            background-color: #EFEFEF;
+            border: 2px solid green;
+        }
+        
+        h1 {
+            color: #22AA22;
+            font-size: 16pt;
+        }
+        
+        h2 {
+            color: #2222AA;
+            font-size: 14pt;
+        }
+        
+        a {
+            color: #6666CC;
+            font-size: 14pt;
+            text-decoration: none;
+        }
+        
+        </style>
+    </head>
+
+    <body>
+        <a name="Pyramid"></a>
+    
+        <div id="main">
+        
+            <!-- Banner -->
+            <div style="text-align: center;">
+                <img src="../gfx/SolitaireBanner.png" style="width: 650px;"></img>
+            </div>
+    
+            <div id="content">
+                <h1>How to Play Pyramid</h1><br/>
+                
+                <h2>Game Setup</h2>
+                <div>
+                	<b>Pyramid</b>: The Pyramid consists of the 7 rows of cards arranged in a pyramid shape in the center of the table.<br/><br/>
+                    <b>Stock</b>: The stock is the pile of face down cards in the bottom left corner of the board. When the player
+                        clicks on the stock, a face up card is dealt immediately to the right of the stock.<br/><br/>
+                    <b>Waste</b>: The waste is the pile of face up cards to the right of both the stock and the face up card.<br/><br/>
+                    <b>Foundation</b>: The foundation is the area in the bottom right hand corner of the table.
+                        Initially the foundation is empty, but as the game progresses the foundaion will be filled with cards from
+                        the pyramid and waste.<br/><br/>
+                    <br/>
+                    <img src="../gfx/PyramidBoard.png"></img>
+                </div>
+                <br/>
+                
+                <h2>Rules</h2>
+                <div style="position: relative; float: left;">
+                    Pyramid is played with a single deck of cards. The goal of the game is to place all the cards in the pyramid
+                    into the foundation. Cards may be placed into the foundation in pairs summing to 13. A card is considered
+                    "in play" if it was just dealt as a face up card from the stock, it is the top card in the waste
+                    or it is a pyramid cards that is completely uncovered. Note that if a card is covered by a another card
+                    that it could be paired with, it is still not in play (since it is covered) and the cards may not be paired.<br/>
+                    <br/>
+                    Numbered cards are worth their face value and Ace = 1, Jack = 11, Queen = 12 and King = 13. Therefore, Kings don't need to
+                    be paired with any other card and can be immediately moved to the foundation once in play. The face up card may also be
+                    paired with the card on top of the waste for purposes of uncovering cards buried in the waste.<br/>
+                    <br/>
+                    In the image above, we have a couple of options for moving the 6 of diamonds into the foundation. We may pair it with
+                    either the 7 of clubs (in the pyramid) or the 7 of spades (on top of the waste). Similarly, we may match the Jack of
+                    Diamonds with the 2 of Hearts. Cards are paired by dragging one on top of the other.<br/>
+                    <br/>
+                    You may only make one pass through the stock.<br/>
+                    <br/>
+
+				</div>
+
+                <h2>Scoring</h2>
+                <div>
+                    You begin the game with a score of 140 and 5 points are subtracted for every card removed from the pyramid.
+                </div>
+                
+            </div>
+    
+        </div>
+    </body>
+</html>

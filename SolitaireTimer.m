@@ -21,38 +21,19 @@
 //
 
 #import "SolitaireTimer.h"
-#import "SolitaireView.h"
+#import "SolitaireController.h"
 
 // Private methods
 @interface SolitaireTimer(NSObject)
 -(void) timerFired;
 @end
 
-
-
 @implementation SolitaireTimer
 
--(id) initWithView: (SolitaireView*)gameView {
-    if((self = [super initWithView: gameView]) != nil) {
-        self.anchorPoint = CGPointMake(0.0f, 0.0f);
-        self.needsDisplayOnBoundsChange = YES;
-        self.bounds = CGRectMake(0, 0, 140, 40);
-        self.zPosition = DRAGGING_LAYER + 1;
-        self.position = CGPointMake(10, 0);
-        
-        timer_ = nil;
-    }
-    return self;
-}
-
--(void) drawSprite {
-    NSString* time = [self timeString];
-    NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
-        [style setAlignment: NSLeftTextAlignment];
-    NSDictionary *attributes = [[NSDictionary alloc] initWithObjectsAndKeys:
-        [NSFont fontWithName: @"Papyrus" size: 24], NSFontAttributeName,
-        [NSColor whiteColor], NSForegroundColorAttributeName, style, NSParagraphStyleAttributeName, nil];
-    [time drawInRect: NSMakeRect(0, 0, self.bounds.size.width, self.bounds.size.height) withAttributes: attributes];
+-(void) awakeFromNib {
+    timer_ = nil;
+    [[timeField_ cell] setBackgroundStyle: NSBackgroundStyleRaised]; 
+    [self resetTimer];
 }
 
 -(void) startTimer {
@@ -64,32 +45,39 @@
 }
 
 -(void) resetTimer {
-    sec_ = 0;
-    min_ = 0;
-    hrs_ = 0;
+    secs_ = 0;
     [self stopTimer];
     
     timer_ = [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self selector: @selector(timerFired) userInfo: nil repeats: YES];
 }
 
 -(NSString*) timeString {
+    NSInteger hrs = secs_ / 3600;
+    NSInteger mins = (secs_ - hrs * 3600) / 60;
+    NSInteger secs = secs_ - hrs * 3600 - mins * 60;
+    
     NSString* time;
-    if(hrs_ == 0) time = [NSString stringWithFormat: @"%d:%02d", min_, sec_];
-    else time = [NSString stringWithFormat: @"%d:%02d:%02d", hrs_, min_, sec_];
+    if(hrs == 0) time = [NSString stringWithFormat: @"%d:%02d", mins, secs];
+    else time = [NSString stringWithFormat: @"%d:%02d:%02d", hrs, mins, secs];
     return time;  
 }
 
+-(NSInteger) secondsEllapsed {
+    return secs_;
+}
+
+-(void) setSecondsEllapsed: (NSInteger)secs {
+    secs_ = secs;
+    [self updateTime];
+}
+
+-(void) updateTime {
+    [timeField_ setStringValue: [NSString stringWithFormat: @"Time: %@", [self timeString]]];
+}
+
 -(void) timerFired {
-    sec_++;
-    if(sec_ >= 60) {
-        sec_ = 0;
-        min_++;
-    }
-    if(min_ >= 60) {
-        min_ = 0;
-        hrs_++;
-    }
-    [self setNeedsDisplay];
+    secs_++;
+    [self updateTime];
 }
 
 @end

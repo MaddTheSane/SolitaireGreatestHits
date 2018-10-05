@@ -26,14 +26,10 @@
 @interface SolitairePreferencesController : NSObject {
     IBOutlet NSPanel* preferencesPanel;
     IBOutlet NSColorWell* colorWell;
-    IBOutlet NSButton* showTimerButton;
 }
 
 @property(assign) NSPanel* preferencesPanel;
 @property(assign) NSColorWell* colorWell;
-@property(assign) NSButton* showTimerButton;
-
--(BOOL) shouldShowTimer;
 
 -(IBAction) onOkayClicked: (id)sender;
 -(IBAction) onCancelClicked: (id)sender;

@@ -22,32 +22,83 @@
 
 #import "SolitaireCardContainer.h"
 #import "SolitaireCard.h"
-
-// Specify delegate methods
-@interface NSObject (SolitaireCardContainerDelegateMethods)
-    -(void) onCard: (SolitaireCard*)card addedToContainer: (SolitaireCardContainer*) container;
-    -(void) onCard: (SolitaireCard*)card removedFromContainer: (SolitaireCardContainer*) container;
-@end
+#import "SolitaireView.h"
 
 @implementation SolitaireCardContainer
 
--(id) initWithView: (SolitaireView*)gameView {
-    if((self = [super initWithView: gameView]) != nil) {
-        cards_ = [[NSMutableArray alloc] initWithCapacity: 16];
-        delegate_ = nil;
-        self.frame = CGRectMake(0.0f, 0.0f, CARD_WIDTH, CARD_HEIGHT);
+@synthesize text;
+
+-(id) init {
+    if((self = [super init]) != nil) {
+        self.position = CGPointMake(0.0f, 0.0f);
+        self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth, kCardHeight);
         self.anchorPoint = CGPointMake(0.0f, 0.0f);
         self.zPosition = 0;
+        self.hidden = NO;
+
+        cards_ = [[NSMutableArray alloc] initWithCapacity: 16];
+        self.text = nil;
     }
     return self;
 }
 
--(id) delegate {
-    return delegate_;
+-(id) initWithCoder: (NSCoder*) decoder {
+    if((self = [self init]) != nil) {
+        self.position = NSPointToCGPoint([decoder decodePointForKey: @"position"]);
+        self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth, kCardHeight);
+        self.anchorPoint = CGPointMake(0.0f, 0.0f);
+        self.zPosition = [decoder decodeIntForKey: @"zPosition"];
+        self.hidden = [decoder decodeIntForKey: @"hidden"];
+
+        cards_ = [decoder decodeObjectForKey: @"cards_"];
+        self.text = [decoder decodeObjectForKey: @"text"];
+    }
+    return self;
 }
 
--(void) setDelegate: (id)delegate {
-    delegate_ = delegate;
+-(void) encodeWithCoder: (NSCoder*) encoder {
+    [encoder encodeObject: cards_ forKey: @"cards_"];
+    [encoder encodeObject: self.text forKey: @"text"];
+    [encoder encodePoint: NSPointFromCGPoint(self.position) forKey: @"position"];
+    [encoder encodeInt: self.hidden forKey: @"hidden"];
+    [encoder encodeInt: self.zPosition forKey: @"zPosition"];
+}
+
+-(NSArray*) cards {
+    return [cards_ copy];
+}
+
+-(void) drawSprite {
+        NSRect dstRect = NSRectFromCGRect(CGRectMake(self.bounds.origin.x + 2,
+            self.bounds.origin.y + 2, kCardWidth - 2, kCardHeight - 2));
+    
+        NSBezierPath* path = [NSBezierPath bezierPath];
+        [path setLineWidth: 2.0f];
+        [path appendBezierPathWithRoundedRect: dstRect xRadius: 9.0f yRadius: 9.0f];
+        
+        NSColor* borderColor = [NSColor colorWithCalibratedRed: 0.85f green: 0.85f blue: 0.85f alpha: 0.5f];
+        [borderColor setStroke];
+        [path stroke];
+        
+        if(self.selected) {
+            NSColor* backgroundColor = [NSColor colorWithCalibratedRed: 0.85f green: 0.85f blue: 0.85f alpha: 0.15f];
+            [backgroundColor setFill];
+            [path fill];
+        }
+    
+        if(self.text != nil) {
+            NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
+            [style setAlignment: NSCenterTextAlignment];
+            NSDictionary *attributes = [[NSDictionary alloc] initWithObjectsAndKeys:
+                [NSFont fontWithName:@"Helvetica" size: 48], NSFontAttributeName,
+                borderColor, NSForegroundColorAttributeName, style, NSParagraphStyleAttributeName, nil];
+    
+            CGFloat newHeight = 4.0f * dstRect.size.height / 10.0f;
+            dstRect.size.height = newHeight;
+            dstRect.origin.y += newHeight;
+        
+            [self.text drawInRect: dstRect withAttributes: attributes];
+        }
 }
 
 -(BOOL) acceptsDroppedCards {
@@ -75,18 +126,16 @@
     return [cards_ count];
 }
 
--(void) addCard: (SolitaireCard*) card {
+-(void) addCard: (SolitaireCard*) card {    
     // Remove card from previous container.
     if(card.container) [card.container removeCard: card];
     
     if([self topCard] != nil) [self topCard].nextCard = card;
-    card.zPosition = [cards_ count] + 1;
+    
+    card.zPosition = self.zPosition + [cards_ count] + 1;
     card.homeLocation = [self nextLocation];
     card.container = self;
     [cards_ addObject: card];
-    
-    if([delegate_ respondsToSelector:@selector(onCard:addedToContainer:)])
-        [delegate_ onCard: card addedToContainer: self];
         
     if(card.nextCard) [self addCard: card.nextCard];
 }
@@ -102,9 +151,6 @@
         [self topCard].nextCard = nil;
         if(![self topCard].flipped) [self topCard].draggable = YES;
     }
-
-    if([delegate_ respondsToSelector:@selector(onCard:removedFromContainer:)])
-        [delegate_ onCard: card removedFromContainer: self];
 }
 
 -(BOOL) containsCard: (SolitaireCard*) card {
@@ -117,6 +163,13 @@
 
 -(CGFloat) cardHorizSpacing {
     return 0.0;
+}
+
+-(void) onAddedToView: (SolitaireView*)gameView {
+    // We need to add our cards to the view.
+    for(SolitaireCard* card in cards_) {
+        [gameView addSprite: card];
+    }
 }
 
 // Force cards to move when the container moves.

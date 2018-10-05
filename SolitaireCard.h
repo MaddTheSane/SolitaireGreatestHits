@@ -49,13 +49,14 @@ typedef int SolitaireFaceValue;
 #define SolitaireBlack 1;
 typedef int SolitaireSuitColor;
 
-#define CARD_WIDTH 79
-#define CARD_HEIGHT 123
+#define kCardWidth 79
+#define kCardHeight 123
 
 @class SolitaireView;
 @class SolitaireCardContainer;
 
-@interface SolitaireCard : SolitaireSprite {
+@interface SolitaireCard : SolitaireSprite <NSCoding> {
+@public
     SolitaireCard* nextCard;        // pointer to the card stacked on top of this one.
     BOOL flipped;                   // This variable indicates if the card is flipped to display its back side.
     BOOL draggable;
@@ -70,11 +71,22 @@ typedef int SolitaireSuitColor;
     NSImage* backImage_;
 }
 
--(id) initWithSuit: (SolitaireSuit)suit faceValue: (SolitaireFaceValue)faceValue inView: (SolitaireView*)gameView;
+@property(readwrite, assign) SolitaireCard* nextCard;
+@property(readwrite) BOOL flipped;
+@property(readwrite) BOOL draggable;
+@property(readwrite) BOOL dragging;
+@property(readwrite, assign) SolitaireCardContainer* container;
+@property(readwrite) CGPoint homeLocation;
+
+-(id) initWithSuit: (SolitaireSuit)suit faceValue: (SolitaireFaceValue)faceValue;
+-(id) initWithCoder: (NSCoder*) decoder;
+-(void) encodeWithCoder: (NSCoder*) encoder;
+
 -(SolitaireFaceValue) faceValue;
 -(SolitaireSuit) suit;
 -(SolitaireSuitColor) suitColor;
 -(NSString*) name;
+-(NSString*) faceValueAbbreviation;
 
 -(void) drawSprite;
 -(void) spriteClicked: (NSUInteger)clickCount;
@@ -84,11 +96,6 @@ typedef int SolitaireSuitColor;
 -(NSInteger) countCardsStackedOnTop;
 -(NSComparisonResult) compareFaceValue: (SolitaireCard*)card;
 
-@property(readwrite, assign) SolitaireCard* nextCard;
-@property(readwrite) BOOL flipped;
-@property(readwrite) BOOL draggable;
-@property(readwrite) BOOL dragging;
-@property(readwrite, assign) SolitaireCardContainer* container;
-@property(readwrite) CGPoint homeLocation;
+
 
 @end

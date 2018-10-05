@@ -23,21 +23,53 @@
 #import <Cocoa/Cocoa.h>
 #import "SolitaireCardContainer.h"
 #import "SolitaireView.h"
+#import "SolitaireStock.h"
 
 @class SolitaireCard;
-@class SolitaireStock;
 
-@interface SolitaireWaste : SolitaireCardContainer {
+// Abstract base class
+@interface SolitaireWaste : SolitaireCardContainer <SolitaireStockDelegate> {
+    BOOL acceptsDroppedCards;
+}
+
+@property(readwrite) BOOL acceptsDroppedCards;
+
+-(void) onStock: (SolitaireStock*) stock clicked: (NSInteger)clickCount;
+-(void) onRefillStock: (SolitaireStock*)stock;
+-(BOOL) canRefillStock;
+
+@end
+
+// Simple Waste is a single card waste.
+@interface SolitaireSimpleWaste : SolitaireWaste
+
+-(void) addCard: (SolitaireCard*) card;
+-(void) removeCard: (SolitaireCard*) card;
+-(void) onStock: (SolitaireStock*) stock clicked: (NSInteger)clickCount;
+-(void) onRefillStock: (SolitaireStock*)stock;
+
+@end
+
+// Multi-Card Waste draws multiple cards but hides previously visible cards.
+@interface SolitaireMultiCardWaste : SolitaireWaste {    
+@public
     NSMutableArray* visibleCards;
+    
+@private
+    NSInteger drawCount_;
+    NSInteger currentPos_;
 }
 
 @property(copy, readonly) NSMutableArray* visibleCards;
 
--(id) initWithView: (SolitaireView*)gameView;
--(BOOL) acceptsDroppedCards;
+-(id) initWithDrawCount: (NSInteger)drawCount;
+-(id) initWithCoder: (NSCoder*) decoder;
+-(void) encodeWithCoder: (NSCoder*) encoder;
+
+-(CGPoint) topLocation;
+-(CGPoint) nextLocation;
 -(void) addCard: (SolitaireCard*) card;
 -(void) removeCard: (SolitaireCard*) card;
--(void) showCards: (NSMutableArray*)cards animated: (BOOL)animated;
 -(CGFloat) cardHorizSpacing;
 
 -(void) onStock: (SolitaireStock*) stock clicked: (NSInteger)clickCount;

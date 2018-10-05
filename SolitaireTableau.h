@@ -27,19 +27,21 @@
 @class SolitaireCard;
 
 @interface SolitaireTableau : SolitaireCardContainer {
-    char tableauCharacter_;
+    BOOL acceptsDroppedCards;
 }
 
--(id) initWithView: (SolitaireView*)gameView;
+@property(readwrite) BOOL acceptsDroppedCards;
+
+-(id) init;
+-(id) initWithCoder: (NSCoder*) decoder;
+-(void) encodeWithCoder: (NSCoder*) encoder;
+
 -(BOOL) isEmpty;
 -(CGPoint) topLocation;
 -(CGPoint) nextLocation;
--(BOOL) acceptsDroppedCards;
 -(CGFloat) cardVertSpacing;
+-(CGFloat) cardFlippedVertSpacing;
 
--(void) drawSprite;
-
--(void) setTableauCharacter: (char)c;
 -(SolitaireCard*) cardAtPosition: (NSInteger) index;
 
 @end

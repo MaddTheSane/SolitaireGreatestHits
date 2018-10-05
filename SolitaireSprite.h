@@ -30,12 +30,12 @@ SolitaireView* view;
 BOOL selected;
 }
 
-@property(assign) SolitaireView* view;
+@property(readwrite) SolitaireView* view;
 @property(readwrite) BOOL selected;
 
--(id) initWithView: (SolitaireView*)gameView;
-
+-(id) init;
 -(void) drawSprite;
 -(void) spriteClicked: (NSUInteger)clickCount;
+-(void) onAddedToView: (SolitaireView*)gameView;
 
 @end

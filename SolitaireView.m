@@ -26,10 +26,11 @@
 #import "SolitaireCardContainer.h"
 #import "SolitaireFoundation.h"
 #import "SolitaireTimer.h"
+#import "SolitaireScoreKeeper.h"
 
 @implementation SolitaireView
 
-@synthesize timer;
+@synthesize controller;
 
 -(void) awakeFromNib {
     [[self window] makeFirstResponder:self];
@@ -43,16 +44,10 @@
     self.layer.frame = NSRectToCGRect(self.bounds);
     self.layer.delegate = self;
     self.layer.needsDisplayOnBoundsChange = YES;
-    
+        
     NSData* colorAsData = [[NSUserDefaults standardUserDefaults] objectForKey: @"backgroundColor"];
     NSColor* backgroundColor = [NSKeyedUnarchiver unarchiveObjectWithData: colorAsData];
     [self setTableBackground: backgroundColor];
-
-    timer = [[SolitaireTimer alloc] initWithView: self];
-    NSNumber* shouldShowTimer = [[NSUserDefaults standardUserDefaults] objectForKey: @"showTimer"];
-    [self showTimer: [shouldShowTimer boolValue]];
-    [self addSprite: timer];
-    [timer startTimer];
     
     [self.layer setNeedsDisplay];
 }
@@ -62,12 +57,7 @@
     self.layer.frame = NSRectToCGRect(self.bounds);
     self.layer.delegate = self;
     self.layer.needsDisplayOnBoundsChange = YES;
-    
-    [[self undoManager] removeAllActions];
-    
-    [timer resetTimer];
-    [self addSprite: timer];
-    
+    [[self undoManager] removeAllActions];    
     [self.layer setNeedsDisplay];
 }
 
@@ -112,12 +102,14 @@
 }
 
 -(void) addSprite: (SolitaireSprite*)sprite {
-    [sprite setNeedsDisplay];
-    [self.layer addSublayer: sprite];
-    
-    if([sprite isKindOfClass: [SolitaireCard class]]) {
-        CAAnimation* animation = [selectedCard_ animationForKey: @"setPosition"];
-        [animation setDelegate: self];
+    if(![[self.layer sublayers] containsObject: sprite]) {
+        [self.layer addSublayer: sprite];
+        sprite.view = self;
+        [sprite onAddedToView: self];
+        [sprite setNeedsDisplay];
+    }
+    else {
+        NSLog(@"Warning: Tried to add existing sublayer.");
     }
 }
 
@@ -139,7 +131,7 @@
     
     [CATransaction begin];
     [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];
-    [[controller_ game] viewResized: newSize];
+    [[self game] layoutGameComponents];
     [CATransaction commit];
 }
 
@@ -152,7 +144,7 @@
 }
 
 -(SolitaireGame*) game {
-    return [controller_ game];
+    return [self.controller game];
 }
 
 -(NSArray*) containers {
@@ -167,22 +159,21 @@
     NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:@"Start New Game"];
     [alert setMessageText:@"You Won!"];
-    NSString* info = [NSString stringWithFormat: @"Your time was %@", [timer timeString]];
+    
+    NSString* info = [NSString stringWithFormat: @"Your time was %@", [self.controller.timer timeString]];
+    if([[self game] keepsScore]) info = [NSString stringWithFormat: @"%@\nYour score was %i", info, self.controller.scoreKeeper.score];
+    
     [alert setInformativeText: info];
     [alert setAlertStyle: NSInformationalAlertStyle];
-    [alert beginSheetModalForWindow: [self window] modalDelegate: controller_
+    [alert beginSheetModalForWindow: [self window] modalDelegate: self.controller
         didEndSelector: @selector(newGame) contextInfo: nil];
-}
-
--(void) showTimer: (BOOL)value {
-    timer.hidden = !value;
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
     selectedCard_ = nil;
 
     // Find which sprite was clicked.
-    NSPoint location = [self convertPoint: [theEvent locationInWindow] fromView: self];
+    NSPoint location = [self convertPoint: [theEvent locationInWindow] fromView: [[self window] contentView]];
     CALayer* layer = [self.layer hitTest: NSPointToCGPoint(location)];
     if([layer isKindOfClass: [SolitaireSprite class]]) {
         SolitaireSprite* sprite = (SolitaireSprite*)layer;
@@ -197,10 +188,9 @@
         
     // If the card is double clicked, move it into a foundation.
     if([theEvent clickCount] == 2 && selectedCard_.nextCard == nil) {
-        SolitaireFoundation* foundation = [[controller_ game] findFoundationForCard: selectedCard_];
-        if(foundation != nil) {
-            [[[self undoManager] prepareWithInvocationTarget: [controller_ game]] dropCard: selectedCard_ inContainer: selectedCard_.container];
-            [[controller_ game] dropCard: selectedCard_ inContainer: foundation];
+        SolitaireFoundation* foundation = [[self game] findFoundationForCard: selectedCard_];
+        if(foundation != nil) {            
+            [[self game] dropCard: selectedCard_ inContainer: foundation];
         }
         selectedCard_ = nil;
     }
@@ -228,9 +218,8 @@
     
         // See if we are dropping card into a new container.
         SolitaireCardContainer* container = [self findContainerIntersectingCard: selectedCard_];
-        if(container != nil && container != selectedCard_.container && [[controller_ game] canDropCard: selectedCard_ inContainer: container]) {
-            [[[self undoManager] prepareWithInvocationTarget: [controller_ game]] dropCard: selectedCard_ inContainer: selectedCard_.container];
-            [[controller_ game] dropCard: selectedCard_ inContainer: container];
+        if(container != nil && container != selectedCard_.container && [[self game] canDropCard: selectedCard_ inContainer: container]) {                        
+            [[self game] dropCard: selectedCard_ inContainer: container];
         }
         else selectedCard_.position = selectedCard_.homeLocation;
     }
@@ -241,7 +230,7 @@
 
 - (void)mouseMoved:(NSEvent *)theEvent {
     static SolitaireSprite* hoveringSprite = nil;
-    NSPoint location = [self convertPoint: [theEvent locationInWindow] fromView: self];
+    NSPoint location = [self convertPoint: [theEvent locationInWindow] fromView: [[self window] contentView]];
     CALayer* layer = [self.layer hitTest: NSPointToCGPoint(location)];
     if([layer isKindOfClass: [SolitaireSprite class]]) {
         SolitaireSprite* sprite = (SolitaireSprite*)layer;
@@ -272,7 +261,7 @@
     NSRect cardRect = NSRectFromCGRect(card.frame);
 
     for(SolitaireCardContainer* container in [self containers]) {
-        if(container == card.container) continue;
+        if(container == card.container || ![container acceptsDroppedCards]) continue;
         NSRect containerRect = NSRectFromCGRect([container topRect]);
         NSRect intersectRect = NSIntersectionRect(cardRect, containerRect);
         if(!NSEqualRects(intersectRect, NSZeroRect)) {

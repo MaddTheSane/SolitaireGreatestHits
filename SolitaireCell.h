@@ -25,15 +25,13 @@
 
 @class SolitaireCard;
 
-@interface SolitaireCell : SolitaireCardContainer {
-}
+@interface SolitaireCell : SolitaireCardContainer
 
--(id) initWithView: (SolitaireView*)gameView;
+-(id) init;
 -(BOOL) acceptsDroppedCards;
 -(void) addCard: (SolitaireCard*) card;
 -(void) removeCard: (SolitaireCard*) card;
 
 -(BOOL) isEmpty;
--(void) drawSprite;
 
 @end

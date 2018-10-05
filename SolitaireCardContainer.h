@@ -26,15 +26,21 @@
 @class SolitaireView;
 @class SolitaireCard;
 
-@interface SolitaireCardContainer : SolitaireSprite {
+@interface SolitaireCardContainer : SolitaireSprite <NSCoding> {
+    NSString* text;
+
 @protected
     NSMutableArray* cards_;
-    id delegate_;
 }
 
--(id) initWithView: (SolitaireView*)gameView;
--(id) delegate;
--(void) setDelegate: (id)delegate;
+@property(nonatomic, copy) NSString* text;
+
+-(id) init;
+-(id) initWithCoder: (NSCoder*) decoder;
+-(void) encodeWithCoder: (NSCoder*) encoder;
+
+-(NSArray*) cards;
+
 -(BOOL) acceptsDroppedCards;
 -(SolitaireCard*) topCard;
 -(CGPoint) topLocation;
@@ -46,5 +52,7 @@
 -(BOOL) containsCard: (SolitaireCard*) card;
 -(CGFloat) cardVertSpacing;
 -(CGFloat) cardHorizSpacing;
+
+-(void) onAddedToView: (SolitaireView*)gameView;
 
 @end

@@ -23,32 +23,48 @@
 #import <Cocoa/Cocoa.h>
 #import "SolitaireGame.h"
 
+@class SolitaireSavedGameImage;
 @class SolitaireStock;
 @class SolitaireWaste;
+@class SolitaireMultiCardWaste;
 @class SolitaireFoundation;
 @class SolitaireTableau;
 
 @interface SolitaireKlondikeGame : SolitaireGame {
-@private
-SolitaireStock* stock_;
-SolitaireWaste* waste_;
-SolitaireFoundation* foundation_[4];
-SolitaireTableau* tableau_[7];
+@protected
+    SolitaireStock* stock_;
+    SolitaireMultiCardWaste* waste_;
+    SolitaireFoundation* foundation_[4];
+    SolitaireTableau* tableau_[7];
 }
 
--(id) initWithView: (SolitaireView*)view;
+-(id) initWithController: (SolitaireController*)gameController;
+-(NSString*) name;
 -(void) initializeGame;
--(void) startGame;
--(void) viewResized: (NSSize)size;
+-(void) layoutGameComponents;
 -(BOOL) didWin;
 -(BOOL) didLose;
 -(void) reset;
 
--(void) dealCards;
+// Scoring
+-(BOOL) keepsScore;
+-(NSInteger) scoreForCard: (SolitaireCard*)card movedFromContainer: (SolitaireCardContainer*) fromContainer
+    toContainer: (SolitaireCardContainer*)toContainer;
+-(NSInteger) scoreForCardFlipped: (SolitaireCard*)card;
 
-//-(BOOL) canDropCard: (SolitaireCard*) card inTableau: (SolitaireTableau*) tableau;
-//-(BOOL) canDropCard: (SolitaireCard*) card inFoundation: (SolitaireFoundation*) foundation;
+// Saving and loading game
+-(SolitaireSavedGameImage*) generateSavedGameImage;
+-(void) loadSavedGameImage: (SolitaireSavedGameImage*)gameImage;
 
-//-(SolitaireFoundation*) findFoundationForCard: (SolitaireCard*) card;
+// Auto-finish
+-(BOOL) supportsAutoFinish;
+-(void) autoFinishGame;
+
+-(void) dealNewGame;
+
+-(BOOL) canDropCard: (SolitaireCard*) card inTableau: (SolitaireTableau*) tableau;
+-(BOOL) canDropCard: (SolitaireCard*) card inFoundation: (SolitaireFoundation*) foundation;
+
+-(SolitaireFoundation*) findFoundationForCard: (SolitaireCard*) card;
 
 @end

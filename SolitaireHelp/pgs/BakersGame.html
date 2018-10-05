@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+    <head>
+        <title>Solitaire Greatest Hits - How to Play Baker's Game</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+        
+        <style type="text/css">
+        
+        #main {
+            position: absolute;
+            left: 50%;
+            width: 700px;			
+            height: 1200px;
+            margin-left: -350px;
+            padding-top: 8px;
+            background-color: #FFFFFF;
+        }
+        
+        #content {
+            position: absolute;
+            left: 50%;
+            width: 640px;			
+            height: 1010px;
+            margin-left: -350px;
+            margin-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-size: 12pt;
+            color: black;
+            background-color: #EFEFEF;
+            border: 2px solid green;
+        }
+        
+        h1 {
+            color: #22AA22;
+            font-size: 16pt;
+        }
+        
+        h2 {
+            color: #2222AA;
+            font-size: 14pt;
+        }
+        
+        a {
+            color: #6666CC;
+            font-size: 14pt;
+            text-decoration: none;
+        }
+        
+        </style>
+    </head>
+
+    <body>
+        <a name="BakersGame"></a>
+    
+        <div id="main">
+        
+            <!-- Banner -->
+            <div style="text-align: center;">
+                <img src="../gfx/SolitaireBanner.png" style="width: 650px;"></img>
+            </div>
+    
+            <div id="content">
+                <h1>How to Play Baker's Game</h1><br/>
+                
+                <h2>Game Setup</h2>
+                <div>
+                    <b>Cells</b>: The cells are the 4 areas in the top left hand corner of the table. Cells can only
+                        contain one card at a time and any card may be placed in an empty cell.<br/><br/>
+                    <b>Foundations</b>: The foundations are the 4 areas in the top right hand corner of the table.
+                        Initially the foundations are empty, but as the game progresses the foundations will be built up by suit.<br/><br/>
+                    <b>Tableau</b>: The tableau are the 8 piles of cards stacked along the bottom of the table.
+                        The tableau begin with all cards face up. The tableau may be built down by suit.<br/>
+                    <br/>
+                    <img src="../gfx/FreeCellBoard.png"></img>
+                </div>
+                <br/>
+                
+                <h2>Rules</h2>
+                <div>
+                    <img src="../gfx/CardsBySuit.png" style="position: relative; float: right; height: 200px;"></img>
+                    <div style="position: relative; float: left; width: 535px;">
+                    Baker's Game is played with a single deck of cards. The goal of the game is to place all 52 cards into the
+                    foundations. The foundations are built up by suit, meaning that a foundation contains cards of the same suit
+                    piled up from Ace on the bottom to King on top.<br/>
+                    <br/>
+                    The tabluea are used to organize columns of cards until it becomes possible to place them 
+                    into the foundations. Columns can be built down on the tableau by suit as illustrated.
+                    Cards may also be moved from the tableau into an open cell. Each cell can only hold one card at a time.<br/>
+                    <br/>
+                    The traditional rules of Baker's Game only allow one card to be moved at a time. Since this can get tedious,
+                    this implementations allows groups of cards to be moved as long as they are built down correctly and there exists
+                    enough empty spaces(empty cells and empty tableau) so that it would have been possible to move the cards one at a time.
+                    This doesn't alter the rules of the game, it just allows for quicker play.
+                    </div>
+                </div>
+                <br/>
+                
+            </div>
+    
+        </div>
+    </body>
+</html>

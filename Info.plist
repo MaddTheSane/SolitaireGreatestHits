@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string>SolitaireIcon</string>
 	<key>CFBundleIdentifier</key>
-	<string>fontaine.Solitaire</string>
+	<string>fontaine.Solitaire2</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -17,12 +17,16 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
-	<string>DLF</string>
+	<string>DANF</string>
 	<key>CFBundleVersion</key>
-	<string>1.1.5</string>
+	<string>2.0</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>SolitaireHelp</string>
+	<key>CFBundleHelpBookName</key>
+	<string>Solitaire Greatest Hits Help</string>
 </dict>
 </plist>

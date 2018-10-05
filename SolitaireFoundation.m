@@ -25,9 +25,9 @@
 
 @implementation SolitaireFoundation
 
--(id) initWithView: (SolitaireView*)gameView {
-    if((self = [super initWithView: gameView]) != nil) {
-        self.frame = CGRectMake(0.0f, 0.0f, CARD_WIDTH + 4, CARD_HEIGHT + 4);
+-(id) init {
+    if((self = [super init]) != nil) {
+        self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth + 4, kCardHeight + 4);
     }
     return self;
 }
@@ -69,38 +69,6 @@
 
 -(BOOL) isFilled {
     return [cards_ count] == 13;
-}
-
--(void) drawSprite {
-        NSRect dstRect = NSRectFromCGRect(CGRectMake(self.bounds.origin.x + 2.0f,
-            self.bounds.origin.y + 2.0f, CARD_WIDTH, CARD_HEIGHT));
-                
-        NSBezierPath* path = [NSBezierPath bezierPath];
-        [path setLineWidth: 2.0f];
-        [path appendBezierPathWithRoundedRect: dstRect xRadius: 9.0f yRadius: 9.0f];
-        
-        NSColor* borderColor = [NSColor colorWithCalibratedRed: 0.85f green: 0.85f blue: 0.85f alpha: 0.5f];
-        [borderColor setStroke];
-        [path stroke];
-    
-        if(selected) {
-            NSColor* backgroundColor = [NSColor colorWithCalibratedRed: 0.85f green: 0.85f blue: 0.85f alpha: 0.15f];
-            [backgroundColor setFill];
-            [path fill];
-        }
-    
-        NSString* letter = @"A";
-        NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
-        [style setAlignment: NSCenterTextAlignment];
-        NSDictionary *attributes = [[NSDictionary alloc] initWithObjectsAndKeys:
-            [NSFont fontWithName:@"Helvetica" size: 52], NSFontAttributeName,
-            borderColor, NSForegroundColorAttributeName, style, NSParagraphStyleAttributeName, nil];
-    
-        CGFloat newHeight = 4.0f * dstRect.size.height / 10.0f;
-        dstRect.size.height = newHeight;
-        dstRect.origin.y += newHeight;
-    
-        [letter drawInRect: dstRect withAttributes: attributes];
 }
 
 @end

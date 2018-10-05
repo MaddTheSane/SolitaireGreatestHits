@@ -22,6 +22,7 @@
 
 #import "SolitaireCard.h"
 #import "SolitaireView.h"
+#import "SolitaireScoreKeeper.h"
 
 // Singleton copy of the cards image.
 NSImage* cardsImage = nil;
@@ -32,7 +33,14 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
 
 @implementation SolitaireCard
 
--(id) initWithSuit: (SolitaireSuit)suit faceValue: (SolitaireFaceValue)faceValue inView: (SolitaireView*)gameView {
+@synthesize nextCard;
+@synthesize flipped;
+@synthesize draggable;
+@synthesize dragging;
+@synthesize container;
+@synthesize homeLocation;
+
+-(id) initWithSuit: (SolitaireSuit)suit faceValue: (SolitaireFaceValue)faceValue {
     
     // Load singleton copies of the card images.
     if(cardsImage == nil) cardsImage =
@@ -43,24 +51,30 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
         [[NSImage alloc] initWithContentsOfFile:
             [[NSBundle mainBundle] pathForResource:@"SolitaireCardBack" ofType:@"png"]];
     
-    if((self = [super initWithView: gameView]) != nil) {
+    if((self = [super init]) != nil) {
         suit_ = suit;
         faceValue_ = faceValue;
-        self.nextCard = nil;
+        self.homeLocation = CGPointMake(0.0f, 0.0f);
+        self.position = homeLocation;
         self.flipped = NO;
         self.draggable = YES;
+        self.container = nil;
+        self.zPosition = 1;
+        self.hidden = NO;
+        self.nextCard = nil;
+        
+        self.dragging = NO;
         self.anchorPoint = CGPointMake(0.0f, 0.0f);
         self.needsDisplayOnBoundsChange = YES;
-        self.bounds = CGRectMake(0, 0, CARD_WIDTH, CARD_HEIGHT);
-        self.zPosition = 1;
+        self.bounds = CGRectMake(0, 0, kCardWidth, kCardHeight);
         self.doubleSided = NO;
         self.shadowRadius = 6.0f;
         self.shadowOpacity = 0.75f;
         
          // Create image.
-        frontImage_ = [[NSImage alloc] initWithSize: NSMakeSize(CARD_WIDTH, CARD_HEIGHT)];
+        frontImage_ = [[NSImage alloc] initWithSize: NSMakeSize(kCardWidth, kCardHeight)];
         [cardsImage lockFocus];
-        NSRect srcRect = NSMakeRect(faceValue * CARD_WIDTH, suit * CARD_HEIGHT, CARD_WIDTH, CARD_HEIGHT);
+        NSRect srcRect = NSMakeRect(faceValue_ * kCardWidth, suit_ * kCardHeight, kCardWidth, kCardHeight);
         NSBitmapImageRep* bitmap = [[NSBitmapImageRep alloc] initWithFocusedViewRect: srcRect];
         [cardsImage unlockFocus];
     
@@ -70,6 +84,57 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
         self.delegate = self;
     }
     return self;
+}
+
+-(id) initWithCoder: (NSCoder*) decoder {
+
+    // Card images should already be loaded.
+
+    if((self = [super init]) != nil) {
+        suit_ = [decoder decodeIntForKey: @"suit_"];
+        faceValue_ = [decoder decodeIntForKey: @"faceValue_"];
+        self.homeLocation = NSPointToCGPoint([decoder decodePointForKey: @"homeLocation"]);
+        self.position = self.homeLocation;
+        self.flipped = [decoder decodeBoolForKey: @"flipped"];
+        self.draggable = [decoder decodeBoolForKey: @"draggable"];
+        self.container = [decoder decodeObjectForKey: @"container"];
+        self.zPosition = [decoder decodeIntForKey: @"zPosition"];
+        self.hidden = [decoder decodeBoolForKey: @"hidden"];
+        self.nextCard = [decoder decodeObjectForKey: @"nextCard"];
+        
+        self.dragging = NO;
+        self.anchorPoint = CGPointMake(0.0f, 0.0f);
+        self.needsDisplayOnBoundsChange = YES;
+        self.bounds = CGRectMake(0, 0, kCardWidth, kCardHeight);
+        self.doubleSided = NO;
+        self.shadowRadius = 6.0f;
+        self.shadowOpacity = 0.75f;
+        
+         // Create image.
+        frontImage_ = [[NSImage alloc] initWithSize: NSMakeSize(kCardWidth, kCardHeight)];
+        [cardsImage lockFocus];
+        NSRect srcRect = NSMakeRect(faceValue_ * kCardWidth, suit_ * kCardHeight, kCardWidth, kCardHeight);
+        NSBitmapImageRep* bitmap = [[NSBitmapImageRep alloc] initWithFocusedViewRect: srcRect];
+        [cardsImage unlockFocus];
+    
+        [frontImage_ addRepresentation: bitmap];
+        backImage_ = flippedCardImage;
+        
+        self.delegate = self;
+    }
+    return self;
+}
+
+-(void) encodeWithCoder: (NSCoder*) encoder {
+    [encoder encodeInt: suit_ forKey: @"suit_"];
+    [encoder encodeInt: faceValue_ forKey: @"faceValue_"];
+    [encoder encodeBool: self.flipped forKey: @"flipped"];
+    [encoder encodeBool: self.draggable forKey: @"draggable"];
+    [encoder encodeConditionalObject: self.container forKey: @"container"];
+    [encoder encodeInt: self.zPosition forKey: @"zPosition"];
+    [encoder encodeBool: self.hidden forKey: @"hidden"];
+    [encoder encodePoint: NSPointFromCGPoint(self.homeLocation) forKey: @"homeLocation"];
+    [encoder encodeConditionalObject: self.nextCard forKey: @"nextCard"];    
 }
 
 -(SolitaireFaceValue) faceValue {
@@ -89,8 +154,27 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
     return cardName;
 }
 
+-(NSString*) faceValueAbbreviation {
+    switch([self faceValue]) {
+        case SolitaireValueAce: return @"A";
+        case SolitaireValue2: return @"2";
+        case SolitaireValue3: return @"3";
+        case SolitaireValue4: return @"4";
+        case SolitaireValue5: return @"5";
+        case SolitaireValue6: return @"6";
+        case SolitaireValue7: return @"7";
+        case SolitaireValue8: return @"8";
+        case SolitaireValue9: return @"9";
+        case SolitaireValue10: return @"10";
+        case SolitaireValueJack: return @"J";
+        case SolitaireValueQueen: return @"Q";
+        case SolitaireValueKing: return @"K";
+    }
+    return nil;
+}
+
 -(void) drawSprite {
-    NSRect dstRect = NSMakeRect(3, 3, CARD_WIDTH, CARD_HEIGHT);
+    NSRect dstRect = NSRectFromCGRect(self.bounds);
    
     // Draw Card
     if(!flipped) {
@@ -103,9 +187,9 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
     // Highlight card.
     if(self.selected && self.draggable) {
         NSBezierPath* path = [NSBezierPath bezierPath];
-        [path setLineWidth: 2.0f];
-        NSRect highlightRect = NSMakeRect(5, 5, CARD_WIDTH - 4.0f, CARD_HEIGHT - 4.0f);
-        [path appendBezierPathWithRoundedRect: highlightRect xRadius: 9.0f yRadius: 9.0f];
+        [path setLineWidth: 3.0f];
+        NSRect highlightRect = NSMakeRect(self.bounds.origin.x, self.bounds.origin.x, self.bounds.size.width, self.bounds.size.height);//NSMakeRect(5, 5, kCardWidth - 4.0f, kCardHeight - 4.0f);
+        [path appendBezierPathWithRoundedRect: highlightRect xRadius: 12.0f yRadius: 12.0f];
         
         NSColor* fillColor = [NSColor colorWithCalibratedRed: 1.0f green: 1.0f blue: 1.0f alpha: 0.25f];
         [fillColor setFill];
@@ -119,31 +203,7 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
 
 -(void) spriteClicked: (NSUInteger)clickCount {
     if(self.flipped && self.nextCard == nil) {
-        [[[self.view undoManager] prepareWithInvocationTarget: self] flipCard];
         [self flipCard];
-    }
-}
-
--(void) setPosition: (CGPoint)p {
-    // We cast x, y coordinates to whole integers to force Core Animation to render the image without any
-    // scaling blur.
-    CGFloat dx = p.x - self.position.x;
-    CGFloat dy = p.y - self.position.y;
-    [super setPosition: CGPointMake((int)p.x, (int)p.y)];
-    
-    if(self.nextCard) {
-        CGPoint oldPosition = self.nextCard.position;
-        self.nextCard.position = CGPointMake((int)(oldPosition.x + dx), (int)(oldPosition.y + dy));
-    }
-}
-
--(void) setZPosition: (CGFloat)value {
-    CGFloat delta = value - self.zPosition;
-    [super setZPosition: value];
-    
-    if(self.nextCard) {
-        CGFloat oldZPosition = self.nextCard.zPosition;
-        self.nextCard.zPosition = oldZPosition + delta;
     }
 }
 
@@ -151,10 +211,19 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
     self.flipped = !self.flipped;
     self.draggable = !self.flipped;
     
-    [CATransaction begin];
-    [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];
+    // Tell the undo manager how to undo this operation.
+    [[self.view undoManager] beginUndoGrouping];
+    [[[self.view undoManager] prepareWithInvocationTarget: self] flipCard];
+
+    // Keep score
+    if(![[self.view undoManager] isUndoing]) {
+        SolitaireGame* game = [self.view.controller game];
+        if([game keepsScore]) self.view.controller.scoreKeeper.score +=
+            [game scoreForCardFlipped: self];
+    }
+    [[self.view undoManager] endUndoGrouping];
+    
     [self setNeedsDisplay];
-    [CATransaction commit];
 }
 
 -(void) animateToPosition: (CGPoint)p afterDelay: (NSTimeInterval)delay {
@@ -213,6 +282,31 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
     return NSOrderedSame;
 }
 
+// Override default setPosition
+-(void) setPosition: (CGPoint)p {
+    // We cast x, y coordinates to whole integers to force Core Animation to render the image without any
+    // scaling blur.
+    CGFloat dx = p.x - self.position.x;
+    CGFloat dy = p.y - self.position.y;
+    [super setPosition: CGPointMake((int)p.x, (int)p.y)];
+    
+    if(self.nextCard) {
+        CGPoint oldPosition = self.nextCard.position;
+        self.nextCard.position = CGPointMake((int)(oldPosition.x + dx), (int)(oldPosition.y + dy));
+    }
+}
+
+// Override defauly setZPosition
+-(void) setZPosition: (CGFloat)value {
+    CGFloat delta = value - self.zPosition;
+    [super setZPosition: value];
+    
+    if(self.nextCard) {
+        CGFloat oldZPosition = self.nextCard.zPosition;
+        self.nextCard.zPosition = oldZPosition + delta;
+    }
+}
+
 -(id<CAAction>) actionForLayer:(CALayer *)layer forKey:(NSString *)key {
     if([key isEqualToString: @"position"]) {
         CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath: @"position"];
@@ -230,12 +324,5 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
 -(void) animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
     if(self.zPosition >= DRAGGING_LAYER) self.zPosition -= DRAGGING_LAYER;
 }
-
-@synthesize nextCard;
-@synthesize flipped;
-@synthesize draggable;
-@synthesize dragging;
-@synthesize container;
-@synthesize homeLocation;
 
 @end

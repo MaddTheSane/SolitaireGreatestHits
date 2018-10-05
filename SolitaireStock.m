@@ -36,39 +36,75 @@ extern NSImage* flippedCardImage;
 @interface NSObject (SolitaireStockDelegateMethods)
 -(void) onStock: (SolitaireStock*) stock clicked: (NSInteger)clickCount;
 -(void) onRefillStock: (SolitaireStock*)stock;
+-(BOOL) canRefillStock;
 @end
 
 @implementation SolitaireStock
 
-@synthesize text;
 @synthesize disableRestock;
 @synthesize reclickDelay;
 
--(id) initWithView: (SolitaireView*) gameView {
-    return [self initWithView: gameView withDeckCount: 1];
+-(id) init {
+    return [self initWithDeckCount: 1];
 }
 
--(id) initWithView: (SolitaireView*)gameView withDeckCount: (NSInteger)deckCount {
+-(id) initWithDeckCount: (NSInteger)deckCount {
     if(flippedCardImage == nil) flippedCardImage =
         [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"SolitaireCardBack" ofType:@"png"]];
 
-    if((self = [super initWithView: gameView]) != nil) {
+    if((self = [super init]) != nil) {
         delegate_ = nil;
         deckCount_ = deckCount;
         deck_ = [[NSMutableArray alloc] initWithCapacity: 52];
         blockReclick_ = NO;
         
-        self.text = @"";
         self.disableRestock = NO;
         self.reclickDelay = 0.2f;
-        self.bounds = CGRectMake(0.0f, 0.0f, CARD_WIDTH + 8.0f, CARD_HEIGHT + 8.0f);
+        self.hidden = NO;
+        self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth + 8.0f, kCardHeight + 8.0f);
         self.anchorPoint = CGPointMake(0.0f, 0.0f);
         self.shadowRadius = 5.0f;
         self.shadowOpacity = 1.0f;
         [self reset];
-
+        
+        // Load images
+        reloadImage_ = [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Reload" ofType:@"png"]];
+        emptyImage_ = [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Empty" ofType:@"png"]];
     }
     return self;
+}
+
+-(id) initWithCoder: (NSCoder*) decoder {
+    // Card image should already exist, so we won't load it.
+    if((self = [super init]) != nil) {
+        delegate_ = nil;
+        deckCount_ = [decoder decodeIntForKey: @"deckCount_"];
+        deck_ = [decoder decodeObjectForKey: @"deck_"];
+        blockReclick_ = NO;
+                
+        self.disableRestock = [decoder decodeBoolForKey: @"disableRestock"];
+        self.reclickDelay = [decoder decodeFloatForKey: @"reclickDelay"];
+        self.hidden = [decoder decodeBoolForKey: @"hidden"];
+        self.position = NSPointToCGPoint([decoder decodePointForKey: @"position"]);
+        self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth + 8.0f, kCardHeight + 8.0f);
+        self.anchorPoint = CGPointMake(0.0f, 0.0f);
+        self.shadowRadius = 5.0f;
+        self.shadowOpacity = 1.0f;
+        
+        // Load images
+        reloadImage_ = [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Reload" ofType:@"png"]];
+        emptyImage_ = [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Empty" ofType:@"png"]];
+    }
+    return self;
+}
+
+-(void) encodeWithCoder: (NSCoder*) encoder {
+    [encoder encodeInt: deckCount_ forKey: @"deckCount_"];
+    [encoder encodeObject: deck_ forKey: @"deck_"];
+    [encoder encodeBool: self.disableRestock forKey: @"disableRestock"];
+    [encoder encodeFloat: self.reclickDelay forKey: @"reclickDelay"];
+    [encoder encodeBool: self.hidden forKey: @"hidden"];
+    [encoder encodePoint: NSPointFromCGPoint(self.position) forKey: @"position"];
 }
 
 -(id) delegate {
@@ -102,11 +138,8 @@ extern NSImage* flippedCardImage;
     for(count = 0; count < deckCount_; count++){
         for(suit = 0; suit < 4; suit++) {
             for(value = 0; value < 13; value++) {
-                SolitaireCard* card = [[SolitaireCard alloc] initWithSuit: suit faceValue: value inView: self.view];
-                card.bounds = self.bounds;
+                SolitaireCard* card = [[SolitaireCard alloc] initWithSuit: suit faceValue: value];
                 [self addCard: card];
-                [self.view addSprite: card];
-                [card setNeedsDisplay];
             }
         }
     }
@@ -142,6 +175,8 @@ extern NSImage* flippedCardImage;
     card.container = nil;
     card.draggable = YES;
     [deck_ addObject: card];
+    
+    [self setNeedsDisplay];
 }
 
 -(void) removeCard: (SolitaireCard*)card {
@@ -158,37 +193,54 @@ extern NSImage* flippedCardImage;
         [borderColor setStroke];
         
         NSRect dstRect = NSRectFromCGRect(CGRectMake(self.bounds.origin.x + 2.0f,
-            self.bounds.origin.y + 2.0f, CARD_WIDTH, CARD_HEIGHT));
+            self.bounds.origin.y + 2.0f, kCardWidth, kCardHeight));
                     
         NSBezierPath* path = [NSBezierPath bezierPath];
         [path appendBezierPathWithRoundedRect: dstRect xRadius: 9.0f yRadius: 9.0f];
         [path setLineWidth: 2.0f];
         [path stroke];
         
-        // Write text
-        if(![self.text isEqualToString: @""]) {
-            NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
-            [style setAlignment: NSCenterTextAlignment];
-            NSDictionary *attributes = [[NSDictionary alloc] initWithObjectsAndKeys:
-                [NSFont fontWithName:@"Helvetica" size: 22], NSFontAttributeName,
-                borderColor, NSForegroundColorAttributeName, style, NSParagraphStyleAttributeName, nil];
-    
-            CGFloat newHeight = 4.0f * dstRect.size.height / 10.0f;
-            dstRect.size.height = newHeight;
-            dstRect.origin.y += (self.bounds.size.height - newHeight) / 2.5;
-        
-            [self.text drawInRect: dstRect withAttributes: attributes];
+        // Draw Image
+        if(!self.disableRestock && delegate_ && [delegate_ canRefillStock]) {
+            [reloadImage_ drawInRect: NSMakeRect((self.bounds.size.width - 54) / 2.0, (self.bounds.size.height - 54) / 2.0, 50, 50)
+                fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0f];
+        }
+        else {
+            [emptyImage_ drawInRect: NSMakeRect((self.bounds.size.width - 54) / 2.0, (self.bounds.size.height - 54) / 2.0, 50, 50)
+                fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0f];
         }
     }
     else {
         int i;
         CGFloat dx = -2.0f;
         CGFloat dy = 2.0f;
-        NSRect srcRect = NSMakeRect(1.0f, 3.0f, CARD_WIDTH, CARD_HEIGHT); 
+        NSRect srcRect = NSMakeRect(1.0f, 3.0f, kCardWidth, kCardHeight); 
         
         for(i = 2; i >= 0; i--) {
-            NSRect dstRect = NSMakeRect(6.0f - i * dx, (2-i) * dy, CARD_WIDTH, CARD_HEIGHT);
+            NSRect dstRect = NSMakeRect(6.0f - i * dx, (2-i) * dy, kCardWidth, kCardHeight);
             [flippedCardImage drawInRect: dstRect fromRect: srcRect operation: NSCompositeSourceOver fraction: 1.0f];
+        }
+        
+        // Draw card count indication.
+        if(self.selected) {
+            CGFloat ovalRadius = 30;
+            NSRect cardCountRect = NSMakeRect(2, 2, ovalRadius, ovalRadius);
+        
+            NSBezierPath* oval = [NSBezierPath bezierPathWithOvalInRect: cardCountRect];
+            [[NSColor whiteColor] setFill];
+            [oval fill];
+            [[NSColor redColor] setStroke];
+            [oval setLineWidth: 2.0];
+            [oval stroke];
+        
+            cardCountRect.size.height -= 5;
+            NSString* countString = [NSString stringWithFormat: @"%i", [self count]];
+            NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
+            [style setAlignment: NSCenterTextAlignment];
+            NSDictionary *attributes = [[NSDictionary alloc] initWithObjectsAndKeys:
+                [NSFont fontWithName: @"Helvetica" size: 15], NSFontAttributeName,
+                    [NSColor redColor], NSForegroundColorAttributeName, style, NSParagraphStyleAttributeName, nil];
+            [countString drawInRect: cardCountRect withAttributes: attributes];
         }
     }
 }
@@ -209,6 +261,13 @@ extern NSImage* flippedCardImage;
     [self performSelector: @selector(unblockReclick) withObject: nil afterDelay: self.reclickDelay];
 }
 
+-(void) onAddedToView: (SolitaireView*)gameView {
+    // We need to add our cards to the view.
+    for(SolitaireCard* card in deck_) {
+        [gameView addSprite: card];
+    }
+}
+
 -(SolitaireCard*) dealCard {
     SolitaireCard* card = [deck_ lastObject];
     [deck_ removeLastObject];
@@ -226,7 +285,6 @@ extern NSImage* flippedCardImage;
     card.zPosition = 1;
     [card setNeedsDisplay];
 
-    //[[self.view game] dropCard: card inTableau: tableau];
     [tableau addCard: card];    
 }
 
@@ -245,6 +303,8 @@ extern NSImage* flippedCardImage;
 
     [[self.view game] dropCard: card inTableau: tableau];
     if([self isEmpty]) [self setNeedsDisplay];
+    
+    [self setNeedsDisplay];
 }
 
 // Private methods

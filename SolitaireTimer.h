@@ -21,21 +21,25 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SolitaireSprite.h"
 
-@interface SolitaireTimer : SolitaireSprite {
+@class SolitaireController;
+
+@interface SolitaireTimer : NSObject {
 @private
     NSTimer* timer_;
-    NSInteger min_;
-    NSInteger sec_;
-    NSInteger hrs_;
+    NSInteger secs_;
+
+    IBOutlet NSTextField* timeField_;
 }
 
--(id) initWithView: (SolitaireView*)gameView;
--(void) drawSprite;
 -(void) startTimer;
 -(void) stopTimer;
 -(void) resetTimer;
 -(NSString*) timeString;
+
+-(NSInteger) secondsEllapsed;
+-(void) setSecondsEllapsed: (NSInteger)secs;
+
+-(void) updateTime;
 
 @end

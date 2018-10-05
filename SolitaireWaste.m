@@ -24,114 +24,303 @@
 #import "SolitaireStock.h"
 #import "SolitaireCard.h"
 
-// Private Methods
-@interface SolitaireWaste(NSObject)
--(void) hideVisibleCards;
--(void) fillWasteFromStock: (SolitaireStock*) stock makeCardsVisible: (NSMutableArray*)cards; // Used for Undo
--(void) returnVisibleCardsToStock: (SolitaireStock*)stock makeCardsVisible: (NSMutableArray*)cards; // Used for Undo
-@end
-
 @implementation SolitaireWaste
 
-@synthesize visibleCards;
+@synthesize acceptsDroppedCards;
 
--(id) initWithView: (SolitaireView*)gameView {
-    if((self = [super initWithView: gameView]) != nil) {
-        self.frame = CGRectMake(0.0f, 0.0f, CARD_WIDTH, CARD_HEIGHT);
-        visibleCards = nil;
+-(id) init {
+    if((self = [super init]) != nil) {
+        self.acceptsDroppedCards = NO;
     }
     return self;
 }
 
--(BOOL) acceptsDroppedCards {
+-(void) drawSprite {}
+
+-(void) onStock: (SolitaireStock*) stock clicked: (NSInteger)clickCount { [self doesNotRecognizeSelector: _cmd]; }
+-(void) onRefillStock: (SolitaireStock*)stock { [self doesNotRecognizeSelector: _cmd]; }
+
+-(BOOL) canRefillStock {
+    [self doesNotRecognizeSelector: _cmd];
     return NO;
 }
 
--(void) addCard: (SolitaireCard*) card { // Here we assume addCard is dropping a card into the current visible waste.
+
+@end
+
+// Private Methods
+@interface SolitaireSimpleWaste(NSObject)
+-(void) dealCardFromStock: (SolitaireStock*)stock;
+-(void) returnCard: (SolitaireCard*)card toStock: (SolitaireStock*)stock;
+-(void) fillStock: (SolitaireStock*)stock;
+-(void) fillWasteFromStock:(SolitaireStock*)stock;
+@end
+
+@implementation SolitaireSimpleWaste
+
+-(void) addCard: (SolitaireCard*) card {
+    NSInteger count = [cards_ count];
+    if(count > 1) {
+        SolitaireCard* hiddenCard = [cards_ objectAtIndex: count - 2];
+        hiddenCard.hidden = YES;
+    }
     [super addCard: card];
-    [cards_ addObject: card];
-    
-    [[self.visibleCards lastObject] setDraggable: YES];
-    [self.visibleCards addObject: card];
-    card.draggable = YES;
-    [self showCards: self.visibleCards animated: YES];
 }
 
 -(void) removeCard: (SolitaireCard*) card {
     [super removeCard: card];
-    [cards_ removeObject: card];
-    
-    if([self.visibleCards containsObject: card]) {
-        [self.visibleCards removeObject: card];
-        [[self.visibleCards lastObject] setDraggable: YES];
+    NSInteger count = [cards_ count];
+    if(count > 1) {
+        SolitaireCard* hiddenCard = [cards_ objectAtIndex: count - 2];
+        hiddenCard.hidden = NO;
     }
 }
 
--(void) showCards: (NSMutableArray*)cards animated: (BOOL)animated {
-    visibleCards = cards;
+// Stock delegate methods
+-(void) onStock: (SolitaireStock*) stock clicked: (NSInteger)clickCount {
+        [self dealCardFromStock: stock];
+}
 
-    [CATransaction begin];
-    if(animated) [CATransaction setValue: [NSNumber numberWithFloat: 1.0f] forKey: kCATransactionAnimationDuration];
-    else [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];            
+-(BOOL) canRefillStock {
+    return [self count] > 1;
+}
+
+-(void) onRefillStock: (SolitaireStock*)stock {    
+    [self fillStock: stock];
+}
+
+// Private Methods
+-(void) dealCardFromStock: (SolitaireStock*)stock {
+    SolitaireCard* card = [stock dealCard];
     
-    int pos = 0;
-    for(SolitaireCard* card in self.visibleCards) {
+    if(card) {
+        [CATransaction begin];
+        [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];
+        card.position = stock.position;
         card.hidden = NO;
-        card.draggable = NO;
+        [CATransaction commit];
+        [CATransaction flush];
         
-        CGPoint location = self.frame.origin;
-        location.x += pos * [self cardHorizSpacing];
-        card.homeLocation = location;
+        [self addCard: card];
         card.position = card.homeLocation;
-        card.zPosition = pos + 1;
-        pos++;
-    }
-    [CATransaction commit];
     
-    [[self.visibleCards lastObject] setDraggable: YES];
+        // Tell the undo manager how to undo this move.
+        [[[self.view undoManager] prepareWithInvocationTarget: self] returnCard: card toStock: stock];
+    }
+}
+
+-(void) returnCard: (SolitaireCard*)card toStock: (SolitaireStock*)stock {
+    [stock addCard: card];
+    
+    // Tell the undo manager how to undo this move.
+    [[[self.view undoManager] prepareWithInvocationTarget: self] dealCardFromStock: stock];
+}
+
+-(void) fillStock: (SolitaireStock*)stock {        
+    // Remove Cards
+    while([cards_ count] > 0) {
+        SolitaireCard* card = [cards_ lastObject];        
+        [super removeCard: card];
+        [stock addCard: card];
+    }
+    [stock setNeedsDisplay];
+    
+    // Tell the undo manager how to undo this move.
+    [[[self.view undoManager] prepareWithInvocationTarget: self] fillWasteFromStock: stock];
+}
+
+-(void) fillWasteFromStock:(SolitaireStock*)stock {
+    while([stock count] > 0) {
+        SolitaireCard* card = [stock dealCard];
+        [self addCard: card];
+        [CATransaction begin];
+        [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];
+        card.position = card.homeLocation;
+        [CATransaction commit];
+        if([stock count] <= 2) card.hidden = NO;
+    }
+    [stock setNeedsDisplay];
+    
+    // Tell the undo manager how to undo this move.
+    [[[self.view undoManager] prepareWithInvocationTarget: self] fillStock: stock];
+}
+
+@end
+
+// Private Methods
+@interface SolitaireMultiCardWaste(NSObject)
+-(void) hideVisibleCards;
+-(void) reorderCardSet: (NSArray*)cards;
+-(void) dealCardsFromStock: (SolitaireStock*)stock;
+-(void) returnVisibleCardsToStock: (SolitaireStock*)stock makeCardsVisible: (NSArray*)cards;
+-(void) fillStock: (SolitaireStock*)stock;
+-(void) fillWasteFromStock: (SolitaireStock*) stock makeCardsVisible: (NSArray*)cards;
+@end
+
+@implementation SolitaireMultiCardWaste
+
+@synthesize visibleCards;
+
+-(id) initWithDrawCount: (NSInteger)drawCount; {
+    if((self = [super init]) != nil) {
+        self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth, kCardHeight);
+        
+        drawCount_ = drawCount;
+        currentPos_ = -1;
+        visibleCards = [[NSMutableArray alloc] initWithCapacity: drawCount];
+    }
+    return self;
+}
+
+-(id) initWithCoder: (NSCoder*) decoder {
+    if((self = [super initWithCoder: decoder]) != nil) {
+        self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth, kCardHeight);
+
+        drawCount_ = [decoder decodeIntForKey: @"drawCount_"];
+        currentPos_ = [decoder decodeIntForKey: @"currentPos"];
+        visibleCards = [decoder decodeObjectForKey: @"visibleCards"];
+    }
+    return self;
+}
+
+-(void) encodeWithCoder: (NSCoder*) encoder {
+    [super encodeWithCoder: encoder];
+    [encoder encodeInt: drawCount_ forKey: @"drawCount_"];
+    [encoder encodeInt: currentPos_ forKey: @"currentPos_"];
+    [encoder encodeObject: self.visibleCards forKey: @"visibleCards"];
+}
+
+-(CGPoint) topLocation {
+    if(currentPos_ == -1) return self.position;
+    CGPoint location = self.position;
+    location.x += currentPos_ * [self cardHorizSpacing];
+    return location;
+}
+
+-(CGPoint) nextLocation {
+    NSInteger nextPos = (currentPos_ + 1) % drawCount_;
+    CGPoint location = self.position;
+    location.x += nextPos * [self cardHorizSpacing];
+    
+    return location;
+}
+
+-(void) addCard: (SolitaireCard*) card { // Here we assume addCard is dropping a card into the current visible waste.
+    if(currentPos_ >= drawCount_ - 1) [self hideVisibleCards];
+    
+    if([self topCard]) [self topCard].draggable = NO;
+    
+    [super addCard: card];
+    card.draggable = YES;
+    [self.visibleCards addObject: card];
+    
+    currentPos_ = (currentPos_ + 1) % drawCount_;
+}
+
+-(void) removeCard: (SolitaireCard*) card {
+    [super removeCard: card];
+    
+    [self topCard].draggable = YES;
+    if([self.visibleCards containsObject: card]) {
+        [self.visibleCards removeObject: card];
+    }
+    
+    currentPos_--;
+    currentPos_ %= drawCount_;
 }
 
 -(CGFloat) cardHorizSpacing {
-    return CARD_WIDTH / 3.0f;
+    return kCardWidth / 3.0f;
 }
 
 -(void) onStock: (SolitaireStock*) stock clicked: (NSInteger)clickCount {
-    
-    // Determine the message to be displayed at the bottom of the empty stock.
-    if([stock count] <= 3) {
-        if([cards_ count] == 0) stock.text = @"Empty";
-        else stock.text = @"Reload";
-    }
-    
-    // Tell the undo manager how to undo this move.
-    [[[self.view undoManager] prepareWithInvocationTarget: self] returnVisibleCardsToStock: stock makeCardsVisible: [self.visibleCards mutableCopy]];
-    
-    // Deal Cards to Waste.
-    NSMutableArray* newCards = [[NSMutableArray alloc] initWithCapacity: 3];
-    int i;
-    for(i = 0; i < 3 && ![stock isEmpty]; i++) {
-        SolitaireCard* card = [stock dealCard];
-        if(card) {
-            [CATransaction begin];
-            [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];            
-            card.position = stock.position;
-            card.hidden = NO;
-            [CATransaction commit];
-            [CATransaction flush];
-                                            
-            [super addCard: card];
-            [newCards addObject: card];
-        }
-    }
-    [cards_ addObjectsFromArray: newCards];
-    
-    [self hideVisibleCards];
-    [self showCards: newCards animated: YES];
+    [self dealCardsFromStock: stock];
+}
+
+-(BOOL) canRefillStock {
+    return [self count] > drawCount_;
 }
 
 -(void) onRefillStock: (SolitaireStock*)stock {
+    [self fillStock: stock];
+}
+
+// Private Methods
+-(void) hideVisibleCards {
+    if([self.visibleCards count] > 0) {
+        [CATransaction begin];
+        [CATransaction setValue: [NSNumber numberWithFloat: 1.0f] forKey: kCATransactionAnimationDuration];
+        for(SolitaireCard* card in self.visibleCards) {
+            card.hidden = YES;
+            card.draggable = NO;
+        }
+        [CATransaction commit];
+        [self.visibleCards removeAllObjects];
+    
+        currentPos_ = -1;
+    }
+}
+
+-(void) reorderCardSet: (NSArray*)cards {
+    int i;
+    for(i = 0; i < [cards count]; i++) {
+        currentPos_ = i - 1;
+        SolitaireCard* card = [cards objectAtIndex: i];
+        
+        if(i == [cards count] - 1) card.draggable = YES;
+        else card.draggable = NO;
+        
+        card.homeLocation = [self nextLocation];
+        [CATransaction begin];
+        [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];
+        card.position = card.homeLocation;
+        [CATransaction commit];
+    }
+}
+
+-(void) dealCardsFromStock: (SolitaireStock*)stock {
+    NSArray* oldVisibleCards = [self.visibleCards copy];
+    [self hideVisibleCards];
+    
+    int i;
+    for(i = 0; i < drawCount_; i++) {
+        if([stock isEmpty]) break;
+        SolitaireCard* card = [stock dealCard];
+        [CATransaction begin];
+        [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];
+        card.position = stock.position;
+        card.hidden = NO;
+        [CATransaction commit];
+        [CATransaction flush];
+
+        [self addCard: card];
+        card.position = card.homeLocation;
+    }
+    [stock display];
+    
     // Tell the undo manager how to undo this move.
-    [[[self.view undoManager] prepareWithInvocationTarget: self] fillWasteFromStock: stock makeCardsVisible: [self.visibleCards mutableCopy]];
+    [[[self.view undoManager] prepareWithInvocationTarget: self] returnVisibleCardsToStock: stock makeCardsVisible: oldVisibleCards];
+}
+
+-(void) returnVisibleCardsToStock: (SolitaireStock*)stock makeCardsVisible: (NSArray*)cards {
+    // Move visible cards into the stock    
+    for(SolitaireCard* card in [self.visibleCards reverseObjectEnumerator]) {
+            [self removeCard: card];
+            [stock addCard: card];
+    }
+    [stock setNeedsDisplay];
+
+    [self.visibleCards addObjectsFromArray: cards];
+    [self reorderCardSet: self.visibleCards];
+    for(SolitaireCard* card in self.visibleCards) card.hidden = NO;
+    currentPos_ = [self.visibleCards count] - 1;
+    
+    // Tell the undo manager how to undo this move.
+    [[[self.view undoManager] prepareWithInvocationTarget: self] dealCardsFromStock: stock];
+}
+
+-(void) fillStock: (SolitaireStock*)stock {
+    NSArray* oldVisibleCards = [self.visibleCards copy];
         
     // Remove Cards
     while([cards_ count] > 0) {
@@ -141,57 +330,29 @@
         [stock addCard: card];
     }
     [stock setNeedsDisplay];
+
+    currentPos_ = -1;
+    
+    // Tell the undo manager how to undo this move.
+    [[[self.view undoManager] prepareWithInvocationTarget: self] fillWasteFromStock: stock makeCardsVisible: oldVisibleCards];
 }
 
--(void) hideVisibleCards {    
-    [CATransaction begin];
-    [CATransaction setValue: [NSNumber numberWithFloat: 1.0f] forKey: kCATransactionAnimationDuration];
-    for(SolitaireCard* card in self.visibleCards) {
-        if(card) {
-            card.hidden = YES;
-            card.draggable = NO;
-            card.zPosition--;
-        }
-    }
-    [CATransaction commit];
-}
-
--(void) fillWasteFromStock: (SolitaireStock*) stock makeCardsVisible: (NSMutableArray*)cards {  
+-(void) fillWasteFromStock: (SolitaireStock*) stock makeCardsVisible: (NSArray*)cards {  
     // Fill waste.
     while(![stock isEmpty]) {
         SolitaireCard* card = [stock dealCard];
         [super addCard: card];
-        [cards_ addObject: card];
-    }
-    [stock setNeedsDisplay];
-        
-    // Make cards visible
-    [self showCards: cards animated: NO];
-}
-
--(void) returnVisibleCardsToStock: (SolitaireStock*)stock makeCardsVisible: (NSMutableArray*)cards {
-    [CATransaction begin];
-    [CATransaction setValue: [NSNumber numberWithFloat: 0.36f] forKey: kCATransactionAnimationDuration];
-    
-    NSMutableArray* stockArray = self.visibleCards;
-    
-    // Make cards visible
-    [self showCards: cards animated: NO];
-
-    // Move visible cards into the stock    
-    for(SolitaireCard* card in [stockArray reverseObjectEnumerator]) {
-        if(card) {
-            card.hidden = YES;
-            card.draggable = NO;
-            
-            [self removeCard: card];
-            [stock addCard: card];
-        }
     }
     [stock setNeedsDisplay];
     
-    [CATransaction commit];
+    [self.visibleCards removeAllObjects];
+    [self.visibleCards addObjectsFromArray: cards];
+    [self reorderCardSet: self.visibleCards];
+    for(SolitaireCard* card in self.visibleCards) card.hidden = NO;
+    currentPos_ = [self.visibleCards count] - 1;
+    
+    // Tell the undo manager how to undo this move.
+    [[[self.view undoManager] prepareWithInvocationTarget: self] fillStock: stock];
 }
-
 
 @end

@@ -25,33 +25,51 @@
 
 @class SolitaireView;
 @class SolitairePreferencesController;
+@class SolitaireTimer;
+@class SolitaireScoreKeeper;
 
 @interface SolitaireController : NSObject {
+@public
+    SolitairePreferencesController* preferences;
 
-SolitairePreferencesController* preferences;
+    IBOutlet NSWindow* window;
+    IBOutlet SolitaireView* view;
+    IBOutlet SolitaireTimer* timer;
+    IBOutlet SolitaireScoreKeeper* scoreKeeper;
 
 @private
-    IBOutlet NSWindow* window_;
-    IBOutlet SolitaireView* view_;
+    IBOutlet NSWindow* aboutWindow_;
 
-    IBOutlet NSMenuItem* klondikeGameItem_;
-    IBOutlet NSMenuItem* spiderGameItem_;
-    IBOutlet NSMenuItem* freeCellGameItem_;
-
+    NSMutableArray* gameRegistry_;
+    NSMutableDictionary* gameDictionary_;
     SolitaireGame* game_;
 }
 
-@property(assign) SolitairePreferencesController* preferences;
+@property NSWindow* window;
+@property SolitairePreferencesController* preferences;
+@property SolitaireView* view;
+@property SolitaireTimer* timer;
+@property SolitaireScoreKeeper* scoreKeeper;
 
--(void) awakeFromNib;
--(void) windowDidBecomeKey: (NSNotification *)notification;
+-(void) registerGames;
+-(void) registerGame: (SolitaireGame*)game; 
+-(NSArray*) availableGames;
+
 -(void) newGame;
--(IBAction) onNewGame: (id)sender;
--(IBAction) onPreferences: (id)sender;
+-(void) restartGame;
+-(void) saveGameWithFilename: (NSString*)filename;
+-(void) openGameWithFilename: (NSString*)filename;
 
--(IBAction) onKlondikeGame: (NSMenuItem*)sender;
--(IBAction) onFreeCellGame: (NSMenuItem*)sender;
--(IBAction) onSpiderGame: (NSMenuItem*)sender;
+-(IBAction) onNewGame: (id)sender;
+-(IBAction) onRestartGame: (id)sender;
+-(IBAction) onSaveGame: (id)sender;
+-(IBAction) onOpenGame: (id)sender;
+-(IBAction) onPreferences: (id)sender;
+-(IBAction) onChooseGame: (id)sender;
+-(IBAction) onAbout: (id)sender;
+-(IBAction) onGameSelected: (NSMenuItem*)sender;
+-(IBAction) onInstructions: (id)sender;
+-(IBAction) onAutoFinish: (id)sender;
 
 -(SolitaireGame*) game;
 

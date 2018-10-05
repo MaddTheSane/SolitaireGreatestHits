@@ -28,9 +28,10 @@
 @synthesize view;
 @synthesize selected;
 
--(id) initWithView: (SolitaireView*)gameView {
+-(id) init {
     if(self = [super init]) {
-        self.view = gameView;
+        self.view = nil;
+        self.selected = NO;
     }
     return self;
 }
@@ -44,5 +45,6 @@
 
 -(void) drawSprite {}
 -(void) spriteClicked: (NSUInteger)clickCount {}
+-(void) onAddedToView: (SolitaireView*)gameView {}
 
 @end
