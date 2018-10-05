@@ -28,7 +28,7 @@
 extern NSImage* flippedCardImage;
 
 // Private methods
-@interface SolitaireStock(NSObject)
+@interface SolitaireStock()
 -(void)unblockReclick;    
 @end
 
@@ -78,7 +78,7 @@ extern NSImage* flippedCardImage;
     // Card image should already exist, so we won't load it.
     if((self = [super init]) != nil) {
         delegate_ = nil;
-        deckCount_ = [decoder decodeIntForKey: @"deckCount_"];
+        deckCount_ = [decoder decodeIntegerForKey: @"deckCount_"];
         deck_ = [decoder decodeObjectForKey: @"deck_"];
         blockReclick_ = NO;
                 
@@ -99,7 +99,7 @@ extern NSImage* flippedCardImage;
 }
 
 -(void) encodeWithCoder: (NSCoder*) encoder {
-    [encoder encodeInt: deckCount_ forKey: @"deckCount_"];
+    [encoder encodeInteger: deckCount_ forKey: @"deckCount_"];
     [encoder encodeObject: deck_ forKey: @"deck_"];
     [encoder encodeBool: self.disableRestock forKey: @"disableRestock"];
     [encoder encodeFloat: self.reclickDelay forKey: @"reclickDelay"];
@@ -107,13 +107,7 @@ extern NSImage* flippedCardImage;
     [encoder encodePoint: NSPointFromCGPoint(self.position) forKey: @"position"];
 }
 
--(id) delegate {
-    return delegate_;
-}
-
--(void) setDelegate: (id)delegate {
-    delegate_ = delegate;
-}
+@synthesize stockDelegate=delegate_;
 
 -(NSInteger) count {
     return [deck_ count];
@@ -132,8 +126,8 @@ extern NSImage* flippedCardImage;
     [deck_ removeAllObjects];
     
     NSInteger count;
-    NSInteger suit;
-    NSInteger value;
+    int suit;
+    int value;
     
     for(count = 0; count < deckCount_; count++){
         for(suit = 0; suit < 4; suit++) {

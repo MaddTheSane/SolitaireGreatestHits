@@ -27,7 +27,7 @@
 #import "SolitaireScoreKeeper.h"
 
 // Private Methods
-@interface SolitaireGolfGame(NSObject)
+@interface SolitaireGolfGame() <SolitaireStockDelegate>
 -(void) dealCardFromStock: (SolitaireStock*)stock;
 -(void) returnCard: (SolitaireCard*)card toStock: (SolitaireStock*)stock;
 @end
@@ -45,7 +45,7 @@
     // Init Stock
     stock_ = [[SolitaireStock alloc] init];
     stock_.disableRestock = YES;
-    [stock_ setDelegate: self];
+    [stock_ setStockDelegate: self];
     [[self view] addSprite: stock_];
     
     // Init Foundation
@@ -143,7 +143,7 @@
 
     // Unarchive Stock
     stock_ = [gameImage unarchiveGameObjectForKey: @"stock_"];
-    [stock_ setDelegate: self];
+    [stock_ setStockDelegate: self];
     [[self view] addSprite: stock_];
     
     // Unarchive Foundations

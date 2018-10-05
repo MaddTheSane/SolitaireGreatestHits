@@ -64,7 +64,7 @@
     
     // Init Waste
     waste_ = [[SolitaireSimpleWaste alloc] init];
-    [stock_ setDelegate: waste_];
+    [stock_ setStockDelegate: waste_];
     [[self view] addSprite: waste_];
     
     // Init Tableau
@@ -181,7 +181,7 @@
     
     // Unarchive Waste
     waste_ = [gameImage unarchiveGameObjectForKey: @"waste_"];
-    [stock_ setDelegate: waste_];
+    [stock_ setStockDelegate: waste_];
     [[self view] addSprite: waste_];
     
     // Unarchive Foundations

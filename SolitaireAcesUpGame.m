@@ -29,7 +29,7 @@
 #import "SolitaireStock.h"
 
 // Private Methods
-@interface SolitaireAcesUpGame(NSObject)
+@interface SolitaireAcesUpGame() <SolitaireStockDelegate>
 -(void) dealMoreCardsFromStock: (SolitaireStock*)stock animated: (BOOL)animate;
 -(void) returnCards: (NSArray*)cards toStock: (SolitaireStock*)stock;
 @end
@@ -47,7 +47,7 @@
     // Init Stock
     stock_ = [[SolitaireStock alloc] init];
     stock_.reclickDelay = 1.0;
-    [stock_ setDelegate: self];
+    [stock_ setStockDelegate: self];
     [[self view] addSprite: stock_];
     
     // Init Foundation
@@ -145,7 +145,7 @@
     
     // Unarchive Stock
     stock_ = [gameImage unarchiveGameObjectForKey: @"stock_"];
-    [stock_ setDelegate: self];
+    [stock_ setStockDelegate: self];
     [[self view] addSprite: stock_];
         
     // Unarchive Foundation

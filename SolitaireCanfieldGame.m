@@ -42,7 +42,7 @@
     
     // Init Waste
     waste_ = [[SolitaireMultiCardWaste alloc] initWithDrawCount: 3];
-    [stock_ setDelegate: waste_];
+    [stock_ setStockDelegate: waste_];
     [[self view] addSprite: waste_];
     
     // Init Foundations
@@ -175,7 +175,7 @@
     
     // Unarchive Waste
     waste_ = [gameImage unarchiveGameObjectForKey: @"waste_"];
-    [stock_ setDelegate: waste_];
+    [stock_ setStockDelegate: waste_];
     [[self view] addSprite: waste_];
     
     // Unarchive Foundations

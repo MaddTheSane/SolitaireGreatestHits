@@ -38,7 +38,7 @@
     
     // Init Waste
     waste_ = [[SolitaireSimpleWaste alloc] init];
-    [stock_ setDelegate: waste_];
+    [stock_ setStockDelegate: waste_];
     [[self view] addSprite: waste_];
     
     // Init Foundations

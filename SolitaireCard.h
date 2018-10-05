@@ -25,30 +25,33 @@
 
 #import "SolitaireSprite.h"
 
-#define SolitaireSuitDiamonds 0
-#define SolitaireSuitHearts 1
-#define SolitaireSuitSpades 2
-#define SolitaireSuitClubs 3
-typedef int SolitaireSuit;
+typedef NS_ENUM(int, SolitaireSuit) {
+    SolitaireSuitDiamonds = 0,
+    SolitaireSuitHearts = 1,
+    SolitaireSuitSpades = 2,
+    SolitaireSuitClubs = 3
+};
 
-#define SolitaireValueAce 0
-#define SolitaireValue2 1
-#define SolitaireValue3 2
-#define SolitaireValue4 3
-#define SolitaireValue5 4
-#define SolitaireValue6 5
-#define SolitaireValue7 6
-#define SolitaireValue8 7
-#define SolitaireValue9 8
-#define SolitaireValue10 9
-#define SolitaireValueJack 10
-#define SolitaireValueQueen 11
-#define SolitaireValueKing 12
-typedef int SolitaireFaceValue;
+typedef NS_ENUM(int, SolitaireFaceValue) {
+    SolitaireValueAce = 0,
+    SolitaireValue2 = 1,
+    SolitaireValue3 = 2,
+    SolitaireValue4 = 3,
+    SolitaireValue5 = 4,
+    SolitaireValue6 = 5,
+    SolitaireValue7 = 6,
+    SolitaireValue8 = 7,
+    SolitaireValue9 = 8,
+    SolitaireValue10 = 9,
+    SolitaireValueJack = 10,
+    SolitaireValueQueen = 11,
+    SolitaireValueKing = 12
+};
 
-#define SolitaireRed 0
-#define SolitaireBlack 1;
-typedef int SolitaireSuitColor;
+typedef NS_ENUM(int, SolitaireSuitColor) {
+    SolitaireRed = 0,
+    SolitaireBlack = 1
+};
 
 #define kCardWidth 79
 #define kCardHeight 123

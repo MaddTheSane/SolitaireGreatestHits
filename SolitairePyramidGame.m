@@ -27,7 +27,7 @@
 #import "SolitaireWaste.h"
 
 // Private methods
-@interface SolitairePyramidGame(NSObject)
+@interface SolitairePyramidGame() <SolitaireStockDelegate>
 -(NSInteger) rowForCard: (SolitaireCard*)card;
 -(NSArray*) cardsInRow: (NSInteger)row;
 -(NSArray*) cardsCoveringCard: (SolitaireCard*)card;
@@ -52,7 +52,7 @@
     // Init Wastes
     waste_[0] = [[SolitaireSimpleWaste alloc] init];
     waste_[0].acceptsDroppedCards = YES;
-    [stock_ setDelegate: self];
+    [stock_ setStockDelegate: self];
     [[self view] addSprite: waste_[0]];
     
     waste_[1] = [[SolitaireSimpleWaste alloc] init];
@@ -183,7 +183,7 @@
 
     // Unarchive Stock
     stock_ = [gameImage unarchiveGameObjectForKey: @"stock_"];
-    [stock_ setDelegate: self];
+    [stock_ setStockDelegate: self];
     [[self view] addSprite: stock_];
         
     // Unarchive Foundation

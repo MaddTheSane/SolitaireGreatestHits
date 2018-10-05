@@ -28,7 +28,8 @@
 @class SolitaireTableau;
 @class SolitaireStock;
 
-@protocol SolitaireStockDelegate
+@protocol SolitaireStockDelegate <NSObject>
+@optional
 -(void) onStock: (SolitaireStock*) stock clicked: (NSInteger)clickCount;
 -(void) onRefillStock: (SolitaireStock*)stock;
 -(BOOL) canRefillStock;
@@ -43,7 +44,6 @@
     NSMutableArray* deck_;
     NSInteger deckCount_;
     BOOL blockReclick_;
-    id delegate_;
     
     NSImage* reloadImage_;
     NSImage* emptyImage_;
@@ -57,8 +57,7 @@
 -(id) initWithCoder: (NSCoder*) decoder;
 -(void) encodeWithCoder: (NSCoder*) encoder;
 
--(id) delegate;
--(void) setDelegate: (id)delegate;
+@property (weak) id<SolitaireStockDelegate> stockDelegate;
 -(BOOL) isEmpty;
 -(NSInteger) count;
 -(NSArray*) cards;

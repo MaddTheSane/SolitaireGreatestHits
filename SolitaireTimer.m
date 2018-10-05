@@ -24,7 +24,7 @@
 #import "SolitaireController.h"
 
 // Private methods
-@interface SolitaireTimer(NSObject)
+@interface SolitaireTimer()
 -(void) timerFired;
 @end
 
@@ -41,7 +41,10 @@
 }
 
 -(void) stopTimer {
-    if(timer_ != nil) [timer_ invalidate];
+    if(timer_ != nil) {
+        [timer_ invalidate];
+        timer_ = nil;
+    }
 }
 
 -(void) resetTimer {

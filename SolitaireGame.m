@@ -33,7 +33,7 @@
 #import "SolitaireScoreKeeper.h"
 
 // Private methods
-@interface SolitaireGame(NSObject)
+@interface SolitaireGame()
 -(void) victoryAnimationForCard: (SolitaireCard*)card;
 @end
 

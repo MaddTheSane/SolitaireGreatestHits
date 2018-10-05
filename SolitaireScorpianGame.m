@@ -26,7 +26,7 @@
 #import "SolitaireScoreKeeper.h"
 
 // Private Methods
-@interface SolitaireScorpianGame(NSObject)
+@interface SolitaireScorpianGame() <SolitaireStockDelegate>
 -(void) dealMoreCardsFromStock: (SolitaireStock*)stock animated: (BOOL)animate;
 -(void) returnCards: (NSArray*)cards toStock: (SolitaireStock*)stock;
 @end
@@ -45,7 +45,7 @@
     stock_ = [[SolitaireStock alloc] init];
     stock_.disableRestock = YES;
     stock_.reclickDelay = 1.5f;
-    [stock_ setDelegate: self];
+    [stock_ setStockDelegate: self];
     [[self view] addSprite: stock_];
         
     // Init Tableau
@@ -140,7 +140,7 @@
 
     // Unarchive Stock
     stock_ = [gameImage unarchiveGameObjectForKey: @"stock_"];
-    [stock_ setDelegate: self];
+    [stock_ setStockDelegate: self];
     [[self view] addSprite: stock_];
         
     // Unarchive Tableau

@@ -35,9 +35,9 @@
     if((self = [super init]) != nil) {
         gameName_ = [decoder decodeObjectForKey: @"gameName_"];
         gameData_ = [decoder decodeObjectForKey: @"gameData_"];
-        gameScore_ = [decoder decodeIntForKey: @"gameScore_"];
-        gameTime_ = [decoder decodeIntForKey: @"gameTime_"];
-        gameSeed_ = [decoder decodeIntForKey: @"gameSeed_"];
+        gameScore_ = [decoder decodeIntegerForKey: @"gameScore_"];
+        gameTime_ = [decoder decodeIntegerForKey: @"gameTime_"];
+        gameSeed_ = [decoder decodeIntegerForKey: @"gameSeed_"];
     }
     return self;
 }
@@ -45,9 +45,9 @@
 -(void) encodeWithCoder: (NSCoder*) encoder {
     [encoder encodeObject: gameName_ forKey: @"gameName_"];
     [encoder encodeObject: gameData_ forKey: @"gameData_"];
-    [encoder encodeInt: gameScore_ forKey: @"gameScore_"];
-    [encoder encodeInt: gameTime_ forKey: @"gameTime_"];
-    [encoder encodeInt: gameSeed_ forKey: @"gameSeed_"];
+    [encoder encodeInteger: gameScore_ forKey: @"gameScore_"];
+    [encoder encodeInteger: gameTime_ forKey: @"gameTime_"];
+    [encoder encodeInteger: gameSeed_ forKey: @"gameSeed_"];
 }
 
 -(NSString*) gameName {

@@ -30,7 +30,7 @@
 #import "SolitaireScoreKeeper.h"
 
 // Private Methods
-@interface SolitaireSpiderGame(NSObject)
+@interface SolitaireSpiderGame() <SolitaireStockDelegate>
 -(void) dealMoreCardsFromStock: (SolitaireStock*)stock animated: (BOOL)animate;
 -(void) returnCards: (NSArray*)cards toStock: (SolitaireStock*)stock;
 @end
@@ -48,7 +48,7 @@
     // Init Stock
     stock_ = [[SolitaireStock alloc] initWithDeckCount: 2];
     stock_.reclickDelay = 2.5f;
-    [stock_ setDelegate: self];
+    [stock_ setStockDelegate: self];
     [[self view] addSprite: stock_];
     
     // Init Foundations
@@ -163,7 +163,7 @@
 
     // Unarchive Stock
     stock_ = [gameImage unarchiveGameObjectForKey: @"stock_"];
-    [stock_ setDelegate: self];
+    [stock_ setStockDelegate: self];
     [[self view] addSprite: stock_];
     
     // Unarchive Foundations
