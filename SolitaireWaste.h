@@ -27,7 +27,7 @@
 
 @class SolitaireCard;
 
-// Abstract base class
+//! Abstract base class
 @interface SolitaireWaste : SolitaireCardContainer <SolitaireStockDelegate> {
     BOOL acceptsDroppedCards;
 }
@@ -40,7 +40,7 @@
 
 @end
 
-// Simple Waste is a single card waste.
+//! Simple Waste is a single card waste.
 @interface SolitaireSimpleWaste : SolitaireWaste
 
 -(void) addCard: (SolitaireCard*) card;
@@ -50,7 +50,7 @@
 
 @end
 
-// Multi-Card Waste draws multiple cards but hides previously visible cards.
+//! Multi-Card Waste draws multiple cards but hides previously visible cards.
 @interface SolitaireMultiCardWaste : SolitaireWaste {    
 @public
     NSMutableArray* visibleCards;

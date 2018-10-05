@@ -49,7 +49,7 @@
 @end
 
 // Private Methods
-@interface SolitaireSimpleWaste(NSObject)
+@interface SolitaireSimpleWaste()
 -(void) dealCardFromStock: (SolitaireStock*)stock;
 -(void) returnCard: (SolitaireCard*)card toStock: (SolitaireStock*)stock;
 -(void) fillStock: (SolitaireStock*)stock;
@@ -148,7 +148,7 @@
 @end
 
 // Private Methods
-@interface SolitaireMultiCardWaste(NSObject)
+@interface SolitaireMultiCardWaste()
 -(void) hideVisibleCards;
 -(void) reorderCardSet: (NSArray*)cards;
 -(void) dealCardsFromStock: (SolitaireStock*)stock;
