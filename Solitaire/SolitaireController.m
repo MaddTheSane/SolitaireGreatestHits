@@ -106,15 +106,15 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [toolbar setSizeMode: NSToolbarSizeModeRegular];
     toolbar.delegate = self;
     [self.window setToolbar: toolbar];
-        
+    
     // Register Games
     gameRegistry_ = [[NSMutableArray alloc] initWithCapacity: 16];
     gameDictionary_ = [[NSMutableDictionary alloc] initWithCapacity: 16];
     [self registerGames];
     
     // Load selected game
-    NSNumber* selectedGameIndex = [[NSUserDefaults standardUserDefaults] objectForKey: @"selectedGameIndex"];
-    [self selectGameWithRegistryIndex: [selectedGameIndex intValue]];
+    NSInteger selectedGameIndex = [[NSUserDefaults standardUserDefaults] integerForKey: @"selectedGameIndex"];
+    [self selectGameWithRegistryIndex: selectedGameIndex];
 }
 
 -(void) windowDidBecomeKey: (NSNotification *)notification {

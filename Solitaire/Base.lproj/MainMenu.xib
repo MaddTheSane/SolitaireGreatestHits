@@ -336,7 +336,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="900" height="625"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="487" customClass="SolitaireView">
+                    <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="487" userLabel="Solitaire View" customClass="SolitaireView">
                         <rect key="frame" x="0.0" y="22" width="900" height="603"/>
                         <connections>
                             <outlet property="controller" destination="441" id="510"/>
@@ -366,9 +366,9 @@
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="495" secondAttribute="trailing" constant="20" symbolic="YES" id="Xc9-rX-o1p"/>
                     <constraint firstItem="487" firstAttribute="leading" secondItem="372" secondAttribute="leading" id="dXG-ka-SLs"/>
                     <constraint firstItem="495" firstAttribute="firstBaseline" secondItem="493" secondAttribute="firstBaseline" id="dee-df-Cm8"/>
-                    <constraint firstItem="493" firstAttribute="top" secondItem="487" secondAttribute="bottom" constant="3" id="gXo-Id-9Bo"/>
                     <constraint firstAttribute="bottom" secondItem="493" secondAttribute="bottom" constant="2" id="l7E-YX-Ope"/>
                     <constraint firstAttribute="trailing" secondItem="487" secondAttribute="trailing" id="qc7-Sx-f8N"/>
+                    <constraint firstAttribute="bottom" secondItem="487" secondAttribute="bottom" constant="22" id="uLk-n0-EBV"/>
                 </constraints>
             </view>
             <connections>
@@ -524,7 +524,7 @@ Gw
                         <rect key="frame" x="20" y="20" width="550" height="393"/>
                         <clipView key="contentView" drawsBackground="NO" id="YSr-EF-kGM">
                             <rect key="frame" x="1" y="1" width="548" height="391"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" id="p0y-qf-zXI">
                                     <rect key="frame" x="0.0" y="0.0" width="548" height="391"/>

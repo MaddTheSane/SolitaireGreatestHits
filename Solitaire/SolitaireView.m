@@ -39,12 +39,12 @@
     backgroundImage_ = nil;
     currentBackgroundColor_ = nil;
     selectedCard_ = nil;
-        
+    
     self.wantsLayer = YES;
     self.layer.frame = NSRectToCGRect(self.bounds);
     self.layer.delegate = self;
     self.layer.needsDisplayOnBoundsChange = YES;
-        
+    
     NSData* colorAsData = [[NSUserDefaults standardUserDefaults] objectForKey: @"backgroundColor"];
     NSColor* backgroundColor = [NSKeyedUnarchiver unarchiveObjectWithData: colorAsData];
     [self setTableBackground: backgroundColor];
@@ -54,7 +54,6 @@
 
 -(void) reset {
     self.layer = [CALayer layer];
-    self.layer.frame = NSRectToCGRect(self.bounds);
     self.layer.delegate = self;
     self.layer.needsDisplayOnBoundsChange = YES;
     [[self undoManager] removeAllActions];    
