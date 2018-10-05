@@ -37,8 +37,7 @@
 -(void) resetTimer;
 -(NSString*) timeString;
 
--(NSInteger) secondsEllapsed;
--(void) setSecondsEllapsed: (NSInteger)secs;
+@property (nonatomic) NSInteger secondsEllapsed;
 
 -(void) updateTime;
 

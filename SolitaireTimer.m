@@ -55,6 +55,7 @@
 }
 
 -(NSString*) timeString {
+    // TODO: use NSDateFormatter?
     NSInteger hrs = secs_ / 3600;
     NSInteger mins = (secs_ - hrs * 3600) / 60;
     NSInteger secs = secs_ - hrs * 3600 - mins * 60;
@@ -65,9 +66,7 @@
     return time;  
 }
 
--(NSInteger) secondsEllapsed {
-    return secs_;
-}
+@synthesize secondsEllapsed=secs_;
 
 -(void) setSecondsEllapsed: (NSInteger)secs {
     secs_ = secs;
