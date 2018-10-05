@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Empty.png",
+      "filename" : "Redo_32x32.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Empty@2x.png",
+      "filename" : "Redo_32x32@2x.png",
       "scale" : "2x"
     },
     {

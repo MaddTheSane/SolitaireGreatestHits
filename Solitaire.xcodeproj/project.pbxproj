@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3707C9A61006B81100A497C3 /* SolitaireFortyThievesGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3707C9A51006B81100A497C3 /* SolitaireFortyThievesGame.m */; };
-		3712A865100E1ED00001F6C5 /* RestartIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3712A864100E1ED00001F6C5 /* RestartIcon.icns */; };
-		3712A874100E21C50001F6C5 /* SaveIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3712A873100E21C50001F6C5 /* SaveIcon.icns */; };
-		3712A876100E21D30001F6C5 /* OpenIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3712A875100E21D30001F6C5 /* OpenIcon.icns */; };
-		372CBAF5104A03C900D9BB11 /* AutoIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 372CBAF4104A03C900D9BB11 /* AutoIcon.icns */; };
 		37302452104CADF800B81460 /* Solitaire.help in Resources */ = {isa = PBXBuildFile; fileRef = 3730242C104CADF800B81460 /* Solitaire.help */; };
 		373293770FFC13F90058C186 /* SolitaireTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 373293760FFC13F90058C186 /* SolitaireTimer.m */; };
 		373F97820E490766006A7BC9 /* SolitaireWaste.m in Sources */ = {isa = PBXBuildFile; fileRef = 373F97810E490766006A7BC9 /* SolitaireWaste.m */; };
@@ -36,11 +32,9 @@
 		378CB0EC0E4774F900D95193 /* SolitaireController.m in Sources */ = {isa = PBXBuildFile; fileRef = 378CB0EB0E4774F900D95193 /* SolitaireController.m */; };
 		378CB1080E47777600D95193 /* SolitaireKlondikeGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 378CB1070E47777600D95193 /* SolitaireKlondikeGame.m */; };
 		379CAAA10FD19512009A760B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 379CAA9F0FD19512009A760B /* MainMenu.xib */; };
-		379CAAC60FD1A433009A760B /* UndoIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 379CAAC50FD1A433009A760B /* UndoIcon.icns */; };
 		37AAB746100FF9630003CBE5 /* SolitaireSavedGameImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AAB745100FF9630003CBE5 /* SolitaireSavedGameImage.m */; };
 		37CB1ACF10151E6E0076A591 /* SolitairePyramidGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CB1ACE10151E6E0076A591 /* SolitairePyramidGame.m */; };
 		37D499CF100BAD2D00591FB8 /* ChooseGame.icns in Resources */ = {isa = PBXBuildFile; fileRef = 37D499CE100BAD2D00591FB8 /* ChooseGame.icns */; };
-		37DC2DAF100D11E100504D65 /* RedoIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 37DC2DAE100D11E100504D65 /* RedoIcon.icns */; };
 		37E0102810330A8D004196F6 /* SolitaireCanfieldGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E0102710330A8D004196F6 /* SolitaireCanfieldGame.m */; };
 		37ECE627103216B800AF20BB /* SolitaireGolfGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ECE626103216B800AF20BB /* SolitaireGolfGame.m */; };
 		37ECE6B0103232A900AF20BB /* SolitaireScorpianGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ECE6AF103232A900AF20BB /* SolitaireScorpianGame.m */; };
@@ -52,8 +46,6 @@
 		925E696118F4A4FE0074BF00 /* SolitaireCards.png in Resources */ = {isa = PBXBuildFile; fileRef = 925E696318F4A4FE0074BF00 /* SolitaireCards.png */; };
 		92C5A1C318FF2ECA001AFE0D /* Info.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 92C5A1C118FF2ECA001AFE0D /* Info.rtf */; };
 		92DF2AD219070BED0049377D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92DF2AD119070BED0049377D /* Images.xcassets */; };
-		92DF2AD6190719740049377D /* HelpIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 92DF2AD3190719740049377D /* HelpIcon.icns */; };
-		92DF2AD8190719740049377D /* SettingsIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 92DF2AD5190719740049377D /* SettingsIcon.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,10 +58,6 @@
 		32CA4F630368D1EE00C91783 /* Solitaire_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Solitaire_Prefix.pch; sourceTree = "<group>"; };
 		3707C9A41006B81100A497C3 /* SolitaireFortyThievesGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireFortyThievesGame.h; sourceTree = "<group>"; };
 		3707C9A51006B81100A497C3 /* SolitaireFortyThievesGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireFortyThievesGame.m; sourceTree = "<group>"; };
-		3712A864100E1ED00001F6C5 /* RestartIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = RestartIcon.icns; sourceTree = "<group>"; };
-		3712A873100E21C50001F6C5 /* SaveIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = SaveIcon.icns; sourceTree = "<group>"; };
-		3712A875100E21D30001F6C5 /* OpenIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = OpenIcon.icns; sourceTree = "<group>"; };
-		372CBAF4104A03C900D9BB11 /* AutoIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AutoIcon.icns; sourceTree = "<group>"; };
 		3730242C104CADF800B81460 /* Solitaire.help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Solitaire.help; sourceTree = "<group>"; };
 		373293750FFC13F90058C186 /* SolitaireTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireTimer.h; sourceTree = "<group>"; };
 		373293760FFC13F90058C186 /* SolitaireTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireTimer.m; sourceTree = "<group>"; };
@@ -115,13 +103,11 @@
 		378CB1060E47777600D95193 /* SolitaireKlondikeGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireKlondikeGame.h; sourceTree = "<group>"; };
 		378CB1070E47777600D95193 /* SolitaireKlondikeGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireKlondikeGame.m; sourceTree = "<group>"; };
 		379CAAA00FD19512009A760B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		379CAAC50FD1A433009A760B /* UndoIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = UndoIcon.icns; sourceTree = "<group>"; };
 		37AAB744100FF9630003CBE5 /* SolitaireSavedGameImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireSavedGameImage.h; sourceTree = "<group>"; };
 		37AAB745100FF9630003CBE5 /* SolitaireSavedGameImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireSavedGameImage.m; sourceTree = "<group>"; };
 		37CB1ACD10151E6E0076A591 /* SolitairePyramidGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitairePyramidGame.h; sourceTree = "<group>"; };
 		37CB1ACE10151E6E0076A591 /* SolitairePyramidGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitairePyramidGame.m; sourceTree = "<group>"; };
 		37D499CE100BAD2D00591FB8 /* ChooseGame.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ChooseGame.icns; sourceTree = "<group>"; };
-		37DC2DAE100D11E100504D65 /* RedoIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = RedoIcon.icns; sourceTree = "<group>"; };
 		37E0102610330A8D004196F6 /* SolitaireCanfieldGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireCanfieldGame.h; sourceTree = "<group>"; };
 		37E0102710330A8D004196F6 /* SolitaireCanfieldGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireCanfieldGame.m; sourceTree = "<group>"; };
 		37ECE625103216B800AF20BB /* SolitaireGolfGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireGolfGame.h; sourceTree = "<group>"; };
@@ -140,8 +126,6 @@
 		92C5A1C418FF2ED3001AFE0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = de.lproj/Info.rtf; sourceTree = "<group>"; };
 		92DD744518E4DA4300FFB2F8 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		92DF2AD119070BED0049377D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		92DF2AD3190719740049377D /* HelpIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = HelpIcon.icns; sourceTree = "<group>"; };
-		92DF2AD5190719740049377D /* SettingsIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = SettingsIcon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,7 +215,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				556821002167E95F00402D96 /* Icons */,
+				37D499CE100BAD2D00591FB8 /* ChooseGame.icns */,
 				92DF2AD119070BED0049377D /* Images.xcassets */,
 				3730242C104CADF800B81460 /* Solitaire.help */,
 				92C5A1C118FF2ECA001AFE0D /* Info.rtf */,
@@ -326,22 +310,6 @@
 			path = Solitaire;
 			sourceTree = "<group>";
 		};
-		556821002167E95F00402D96 /* Icons */ = {
-			isa = PBXGroup;
-			children = (
-				372CBAF4104A03C900D9BB11 /* AutoIcon.icns */,
-				92DF2AD3190719740049377D /* HelpIcon.icns */,
-				92DF2AD5190719740049377D /* SettingsIcon.icns */,
-				3712A875100E21D30001F6C5 /* OpenIcon.icns */,
-				3712A873100E21C50001F6C5 /* SaveIcon.icns */,
-				3712A864100E1ED00001F6C5 /* RestartIcon.icns */,
-				37DC2DAE100D11E100504D65 /* RedoIcon.icns */,
-				37D499CE100BAD2D00591FB8 /* ChooseGame.icns */,
-				379CAAC50FD1A433009A760B /* UndoIcon.icns */,
-			);
-			path = Icons;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -397,17 +365,9 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				925E696118F4A4FE0074BF00 /* SolitaireCards.png in Resources */,
 				379CAAA10FD19512009A760B /* MainMenu.xib in Resources */,
-				379CAAC60FD1A433009A760B /* UndoIcon.icns in Resources */,
 				92C5A1C318FF2ECA001AFE0D /* Info.rtf in Resources */,
-				92DF2AD8190719740049377D /* SettingsIcon.icns in Resources */,
 				37D499CF100BAD2D00591FB8 /* ChooseGame.icns in Resources */,
-				37DC2DAF100D11E100504D65 /* RedoIcon.icns in Resources */,
-				3712A865100E1ED00001F6C5 /* RestartIcon.icns in Resources */,
-				3712A874100E21C50001F6C5 /* SaveIcon.icns in Resources */,
-				3712A876100E21D30001F6C5 /* OpenIcon.icns in Resources */,
 				92DF2AD219070BED0049377D /* Images.xcassets in Resources */,
-				372CBAF5104A03C900D9BB11 /* AutoIcon.icns in Resources */,
-				92DF2AD6190719740049377D /* HelpIcon.icns in Resources */,
 				37302452104CADF800B81460 /* Solitaire.help in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
