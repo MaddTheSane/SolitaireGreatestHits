@@ -27,31 +27,25 @@
 
 extern NSImage* flippedCardImage;
 
+// Private methods
+@interface SolitaireStock(NSObject)
+-(void)unblockReclick;    
+@end
+
 // Specify delegate methods
 @interface NSObject (SolitaireStockDelegateMethods)
-    -(void) onStock: (SolitaireStock*) stock clicked: (NSInteger)clickCount;
-    -(void) onRefillStock: (SolitaireStock*)stock;
+-(void) onStock: (SolitaireStock*) stock clicked: (NSInteger)clickCount;
+-(void) onRefillStock: (SolitaireStock*)stock;
 @end
 
 @implementation SolitaireStock
 
 @synthesize text;
+@synthesize disableRestock;
+@synthesize reclickDelay;
 
 -(id) initWithView: (SolitaireView*) gameView {
-    if(flippedCardImage == nil) flippedCardImage =
-        [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"SolitaireCardBack" ofType:@"png"]];
-
-    if((self = [super initWithView: gameView]) != nil) {
-        delegate_ = nil;
-        deckCount_ = 1;
-        deck_ = [[NSMutableArray alloc] initWithCapacity: 52];
-        self.bounds = CGRectMake(0.0f, 0.0f, CARD_WIDTH + 8.0f, CARD_HEIGHT + 8.0f);
-        self.anchorPoint = CGPointMake(0.0f, 0.0f);
-        self.shadowRadius = 5.0f;
-        self.shadowOpacity = 1.0f;
-        [self reset];
-    }
-    return self;
+    return [self initWithView: gameView withDeckCount: 1];
 }
 
 -(id) initWithView: (SolitaireView*)gameView withDeckCount: (NSInteger)deckCount {
@@ -62,7 +56,11 @@ extern NSImage* flippedCardImage;
         delegate_ = nil;
         deckCount_ = deckCount;
         deck_ = [[NSMutableArray alloc] initWithCapacity: 52];
+        blockReclick_ = NO;
+        
         self.text = @"";
+        self.disableRestock = NO;
+        self.reclickDelay = 0.2f;
         self.bounds = CGRectMake(0.0f, 0.0f, CARD_WIDTH + 8.0f, CARD_HEIGHT + 8.0f);
         self.anchorPoint = CGPointMake(0.0f, 0.0f);
         self.shadowRadius = 5.0f;
@@ -106,9 +104,9 @@ extern NSImage* flippedCardImage;
             for(value = 0; value < 13; value++) {
                 SolitaireCard* card = [[SolitaireCard alloc] initWithSuit: suit faceValue: value inView: self.view];
                 card.bounds = self.bounds;
-                card.hidden = YES;
+                [self addCard: card];
                 [self.view addSprite: card];
-                [deck_ addObject: card];
+                [card setNeedsDisplay];
             }
         }
     }
@@ -125,7 +123,7 @@ extern NSImage* flippedCardImage;
 }
 
 -(void) restock {
-    if([delegate_ respondsToSelector: @selector(onRefillStock:)])
+    if([delegate_ respondsToSelector: @selector(onRefillStock:)] && !self.disableRestock)
         [delegate_ onRefillStock: self];
 }
 
@@ -134,14 +132,24 @@ extern NSImage* flippedCardImage;
     [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];
     card.position = self.position;
     card.hidden = YES;
-    //card.zPosition = 1;
     card.nextCard = nil;
     card.selected = NO;
     card.flipped = NO;
+    [CATransaction commit];
+    [CATransaction flush];
+
+    if(card.container) [card.container removeCard: card];
     card.container = nil;
     card.draggable = YES;
     [deck_ addObject: card];
-    [CATransaction commit];
+}
+
+-(void) removeCard: (SolitaireCard*)card {
+    [deck_ removeObject: card];
+}
+
+-(void) removeCards: (NSArray*)cards {
+    [deck_ removeObjectsInArray: cards];
 }
 
 -(void) drawSprite {
@@ -186,15 +194,19 @@ extern NSImage* flippedCardImage;
 }
 
 -(void) spriteClicked: (NSUInteger)clickCount {
+    if(blockReclick_) return;
+    
     if(![self isEmpty]) {
         if([delegate_ respondsToSelector: @selector(onStock:clicked:)])
             [delegate_ onStock: self clicked: clickCount];
     }
     else {
         [self restock];
-        [self.view setNeedsDisplay: YES];
     }
     [self setNeedsDisplay];
+    
+    blockReclick_ = YES;
+    [self performSelector: @selector(unblockReclick) withObject: nil afterDelay: self.reclickDelay];
 }
 
 -(SolitaireCard*) dealCard {
@@ -212,6 +224,7 @@ extern NSImage* flippedCardImage;
     card.position = [tableau nextLocation];
     card.draggable = !flipped;
     card.zPosition = 1;
+    [card setNeedsDisplay];
 
     //[[self.view game] dropCard: card inTableau: tableau];
     [tableau addCard: card];    
@@ -232,6 +245,12 @@ extern NSImage* flippedCardImage;
 
     [[self.view game] dropCard: card inTableau: tableau];
     if([self isEmpty]) [self setNeedsDisplay];
+}
+
+// Private methods
+
+-(void)unblockReclick {
+    blockReclick_ = NO;
 }
 
 @end

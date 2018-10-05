@@ -49,6 +49,7 @@
     stock_ = [[SolitaireStock alloc] initWithView: [self view] withDeckCount: 2];
     stock_.position = CGPointMake(viewWidth / 25.0f, (viewHeight - CARD_HEIGHT) - viewHeight / 25.0f);
     stock_.text = @"Empty";
+    stock_.reclickDelay = 2.5;
     [stock_ setDelegate: self];
     [[self view] addSprite: stock_];
     

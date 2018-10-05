@@ -26,17 +26,29 @@
 @class SolitaireCard;
 @class SolitaireView;
 @class SolitaireTableau;
+@class SolitaireStock;
+
+@protocol SolitaireStockDelegate
+-(void) onStock: (SolitaireStock*) stock clicked: (NSInteger)clickCount;
+-(void) onRefillStock: (SolitaireStock*)stock;
+@end
 
 @interface SolitaireStock : SolitaireSprite {
-NSString* text;
+@public
+    NSString* text;
+    BOOL disableRestock;
+    NSTimeInterval reclickDelay;
 
 @private
     NSMutableArray* deck_;
     NSInteger deckCount_;
+    BOOL blockReclick_;
     id delegate_;
 }
 
 @property(readwrite, copy) NSString* text;
+@property(readwrite) BOOL disableRestock;
+@property(readwrite) NSTimeInterval reclickDelay;
 
 -(id) initWithView: (SolitaireView*)gameView;
 -(id) initWithView: (SolitaireView*)gameView withDeckCount: (NSInteger)deckCount;
@@ -49,6 +61,8 @@ NSString* text;
 -(void) shuffle;
 -(void) restock;
 -(void) addCard: (SolitaireCard*)card;
+-(void) removeCard: (SolitaireCard*)card;
+-(void) removeCards: (NSArray*)cards;
 -(void) drawSprite;
 -(void) spriteClicked: (NSUInteger)clickCount;
 
