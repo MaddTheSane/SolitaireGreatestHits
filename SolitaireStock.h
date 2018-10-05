@@ -32,7 +32,8 @@
 @optional
 -(void) onStock: (SolitaireStock*) stock clicked: (NSInteger)clickCount;
 -(void) onRefillStock: (SolitaireStock*)stock;
--(BOOL) canRefillStock;
+//@required
+@property (readonly) BOOL canRefillStock;
 @end
 
 @interface SolitaireStock : SolitaireSprite <NSCoding> {
@@ -66,7 +67,7 @@
 -(void) restock;
 -(void) addCard: (SolitaireCard*)card;
 -(void) removeCard: (SolitaireCard*)card;
--(void) removeCards: (NSArray*)cards;
+-(void) removeCards: (NSArray<SolitaireCard*>*)cards;
 -(void) drawSprite;
 -(void) spriteClicked: (NSUInteger)clickCount;
 -(void) onAddedToView: (SolitaireView*)gameView;

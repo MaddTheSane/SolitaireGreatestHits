@@ -32,13 +32,6 @@ extern NSImage* flippedCardImage;
 -(void)unblockReclick;    
 @end
 
-// Specify delegate methods
-@interface NSObject (SolitaireStockDelegateMethods)
--(void) onStock: (SolitaireStock*) stock clicked: (NSInteger)clickCount;
--(void) onRefillStock: (SolitaireStock*)stock;
--(BOOL) canRefillStock;
-@end
-
 @implementation SolitaireStock
 
 @synthesize disableRestock;
