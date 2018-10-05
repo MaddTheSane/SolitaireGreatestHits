@@ -213,7 +213,7 @@
         }
         
         [CATransaction begin];
-        [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];
+        [CATransaction setValue: @YES forKey: kCATransactionDisableActions];
         CGPoint delta = [self.layer convertPoint: NSPointToCGPoint(NSMakePoint([theEvent deltaX], [theEvent deltaY])) fromLayer: self.layer];
         selectedCard_.position = CGPointMake(selectedCard_.position.x + delta.x, selectedCard_.position.y - delta.y);
         [CATransaction commit];

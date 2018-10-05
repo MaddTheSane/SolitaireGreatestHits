@@ -53,7 +53,7 @@
 
 -(void) registerGames;
 -(void) registerGame: (SolitaireGame*)game; 
--(NSArray*) availableGames;
+-(NSArray<__kindof SolitaireGame*>*) availableGames;
 
 -(void) newGame;
 -(void) restartGame;
