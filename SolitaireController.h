@@ -30,15 +30,6 @@
 
 @interface SolitaireController : NSObject <NSApplicationDelegate, NSToolbarDelegate>
 {
-@public
-
-    IBOutlet SolitairePreferencesController* preferences;
-
-    IBOutlet NSWindow* __weak window;
-    IBOutlet SolitaireView* __weak view;
-    IBOutlet SolitaireTimer* __weak timer;
-    IBOutlet SolitaireScoreKeeper* __weak scoreKeeper;
-
 @private
 	IBOutlet NSWindow* aboutWindow_;
 	IBOutlet NSTextView *infoView_;
@@ -48,11 +39,11 @@
     SolitaireGame* game_;
 }
 
-@property (weak) NSWindow* window;
-@property (strong) SolitairePreferencesController* preferences;
-@property (weak) SolitaireView* view;
-@property (weak) SolitaireTimer* timer;
-@property (weak) SolitaireScoreKeeper* scoreKeeper;
+@property (weak) IBOutlet NSWindow* window;
+@property (strong) IBOutlet SolitairePreferencesController* preferences;
+@property (weak) IBOutlet SolitaireView* view;
+@property (weak) IBOutlet SolitaireTimer* timer;
+@property (weak) IBOutlet SolitaireScoreKeeper* scoreKeeper;
 
 -(void) registerGames;
 -(void) registerGame: (SolitaireGame*)game; 
