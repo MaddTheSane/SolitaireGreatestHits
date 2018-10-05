@@ -43,7 +43,7 @@
 }
 
 -(void) updateScore {
-    if(!hideScore_) [scoreField_ setStringValue: [NSString stringWithFormat: Localized(@"Score: %li"), (long)score]];
+    if(!hideScore_) [scoreField_ setStringValue: [NSString stringWithFormat: NSLocalizedString(@"Score: %li", @"Score: %li"), (long)score]];
 }
 
 // Custom setter and getter method for score

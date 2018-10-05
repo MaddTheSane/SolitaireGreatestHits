@@ -74,7 +74,7 @@
 }
 
 -(void) updateTime {
-    [timeField_ setStringValue: [NSString stringWithFormat: Localized(@"Time: %@"), [self timeString]]];
+    [timeField_ setStringValue: [NSString stringWithFormat: NSLocalizedString(@"Time: %@", @"Time: %@"), [self timeString]]];
 }
 
 -(void) timerFired {

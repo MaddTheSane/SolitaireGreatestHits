@@ -174,11 +174,11 @@
 
 -(void) showWinSheet {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle:Localized(@"Start new game")];
-    [alert setMessageText:Localized(@"You won!")];
+    [alert addButtonWithTitle:NSLocalizedString(@"Start new game", @"Start new game")];
+    [alert setMessageText:NSLocalizedString(@"You won!", @"You won!")];
     
-    NSString* info = [NSString stringWithFormat: Localized(@"Your time was %@"), [self.controller.timer timeString]];
-    if([[self game] keepsScore]) info = [NSString stringWithFormat: Localized(@"%@\nYour score was %li"), info, (long)self.controller.scoreKeeper.score];
+    NSString* info = [NSString stringWithFormat: NSLocalizedString(@"Your time was %@", @"Your time was %@"), [self.controller.timer timeString]];
+    if([[self game] keepsScore]) info = [NSString stringWithFormat: NSLocalizedString(@"%@\nYour score was %li", @"%@\nYour score was %li"), info, (long)self.controller.scoreKeeper.score];
     
     [alert setInformativeText: info];
     [alert setAlertStyle: NSInformationalAlertStyle];

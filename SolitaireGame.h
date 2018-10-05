@@ -23,8 +23,6 @@
 #import <Cocoa/Cocoa.h>
 #import "SolitaireCardContainer.h"
 
-NSString* Localized(NSString *key);
-
 @class SolitaireController;
 @class SolitaireView;
 @class SolitaireSavedGameImage;

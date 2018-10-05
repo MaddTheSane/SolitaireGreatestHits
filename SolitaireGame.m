@@ -58,7 +58,7 @@
 }
 
 -(NSString*) localizedName {
-    return Localized([self name]);
+    return [NSBundle.mainBundle localizedStringForKey:[self name] value:@"" table:nil];
 }
 
 -(NSUInteger) gameSeed {

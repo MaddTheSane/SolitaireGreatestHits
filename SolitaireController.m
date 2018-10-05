@@ -44,11 +44,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-NSString* Localized(NSString *key)
-{
-	return [[NSBundle mainBundle] localizedStringForKey:key value:@"" table:nil];
-}
-
 // Private methods
 @interface SolitaireController()
 -(void) requestDonation;
@@ -59,16 +54,16 @@ NSString* Localized(NSString *key)
 @end
 
 // Toolbar Item Identifier strings
-static NSString* SolitaireNewGameToolbarItemIdentifier = @"Solitaire New Game Toolbar Item";
-static NSString* SolitaireRestartGameToolbarItemIdentifier = @"Solitaire Restart Game Toolbar Item";
-static NSString* SolitaireSaveGameToolbarItemIdentifier = @"Solitaire Save Game Toolbar Item";
-static NSString* SolitaireOpenGameToolbarItemIdentifier = @"Solitaire Open Game Toolbar Item";
-static NSString* SolitairePreferencesToolbarItemIdentifier = @"Solitaire Preferences Toolbar Item";
-static NSString* SolitaireChooseGameToolbarItemIdentifier = @"Solitaire Choose Game Toolbar Item";
-static NSString* SolitaireAutoToolbarItemIdentifier = @"Solitaire Auto Toolbar Item";
-static NSString* SolitaireUndoToolbarItemIdentifier = @"Solitaire Undo Toolbar Item";
-static NSString* SolitaireRedoToolbarItemIdentifier = @"Solitaire Redo Toolbar Item";
-static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instructions Toolbar Item";
+static NSToolbarItemIdentifier const SolitaireNewGameToolbarItemIdentifier = @"Solitaire New Game Toolbar Item";
+static NSToolbarItemIdentifier const SolitaireRestartGameToolbarItemIdentifier = @"Solitaire Restart Game Toolbar Item";
+static NSToolbarItemIdentifier const SolitaireSaveGameToolbarItemIdentifier = @"Solitaire Save Game Toolbar Item";
+static NSToolbarItemIdentifier const SolitaireOpenGameToolbarItemIdentifier = @"Solitaire Open Game Toolbar Item";
+static NSToolbarItemIdentifier const SolitairePreferencesToolbarItemIdentifier = @"Solitaire Preferences Toolbar Item";
+static NSToolbarItemIdentifier const SolitaireChooseGameToolbarItemIdentifier = @"Solitaire Choose Game Toolbar Item";
+static NSToolbarItemIdentifier const SolitaireAutoToolbarItemIdentifier = @"Solitaire Auto Toolbar Item";
+static NSToolbarItemIdentifier const SolitaireUndoToolbarItemIdentifier = @"Solitaire Undo Toolbar Item";
+static NSToolbarItemIdentifier const SolitaireRedoToolbarItemIdentifier = @"Solitaire Redo Toolbar Item";
+static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instructions Toolbar Item";
 
 @implementation SolitaireController
 
@@ -153,7 +148,7 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     NSMenuItem* gameItem = [[NSMenuItem alloc] initWithTitle: [game localizedName] action: @selector(onGameSelected:) keyEquivalent: @""];
 
     NSMenu* mainMenu = [[NSApplication sharedApplication] mainMenu];
-    NSMenu* gameMenu = [[mainMenu itemWithTitle: Localized(@"Game")] submenu];
+    NSMenu* gameMenu = [[mainMenu itemWithTitle: NSLocalizedString(@"Game", @"Game")] submenu];
     [gameMenu addItem: gameItem];
 
     [gameItem setState: NSOffState]; 
@@ -256,10 +251,10 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
 
 -(IBAction) onNewGame: (id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle: Localized(@"Yes")];
-    [alert addButtonWithTitle: Localized(@"Cancel")];
-    [alert setMessageText: Localized(@"New game")];
-    [alert setInformativeText: Localized(@"RestartQuestion")];
+    [alert addButtonWithTitle: NSLocalizedString(@"Yes", @"Yes")];
+    [alert addButtonWithTitle: NSLocalizedString(@"Cancel", @"Cancel")];
+    [alert setMessageText: NSLocalizedString(@"New game", @"New game")];
+    [alert setInformativeText: NSLocalizedString(@"RestartQuestion", @"Restart question")];
     [alert setAlertStyle: NSWarningAlertStyle];
  
     [alert beginSheetModalForWindow:self.window completionHandler:
@@ -272,10 +267,10 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
 
 -(IBAction) onRestartGame: (id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle: Localized(@"Yes")];
-    [alert addButtonWithTitle: Localized(@"Cancel")];
-    [alert setMessageText: Localized(@"Restart game")];
-    [alert setInformativeText: Localized(@"ReloadQuestion")];
+    [alert addButtonWithTitle: NSLocalizedString(@"Yes", @"Yes")];
+    [alert addButtonWithTitle: NSLocalizedString(@"Cancel", @"Cancel")];
+    [alert setMessageText: NSLocalizedString(@"Restart game", @"Restart game")];
+    [alert setInformativeText: NSLocalizedString(@"ReloadQuestion", @"Reload question")];
     [alert setAlertStyle: NSWarningAlertStyle];
     
     [alert beginSheetModalForWindow:self.window completionHandler:
@@ -289,7 +284,7 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
 -(IBAction) onSaveGame: (id)sender
 {
     NSSavePanel* savePanel = [NSSavePanel savePanel];
-    [savePanel setTitle: Localized(@"Save Game")];
+    [savePanel setTitle: NSLocalizedString(@"Save Game", @"Save Game")];
     [savePanel setExtensionHidden: YES];
     [savePanel setAllowedFileTypes: [NSArray arrayWithObject:@"sgh"]];
 
@@ -307,9 +302,8 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
 -(IBAction) onOpenGame: (id)sender
 {
     NSOpenPanel* openPanel = [NSOpenPanel openPanel];
-    [openPanel setTitle: Localized(@"Open Game")];
+    [openPanel setTitle: NSLocalizedString(@"Open Game", @"Open Game")];
     [openPanel setExtensionHidden: YES];
-    //[openPanel setDirectoryURL:[NSURL fileURLWithPath:documentsDirectory]];
     [openPanel setCanChooseFiles: YES];
     [openPanel setCanChooseDirectories: NO];
     [openPanel setAllowsMultipleSelection: NO];
@@ -348,7 +342,7 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
 
     // Create a matrix of radio buttons
     NSButtonCell *prototype = [[NSButtonCell alloc] init];
-    [prototype setTitle: Localized(@"ChooseGame")];
+    [prototype setTitle: NSLocalizedString(@"ChooseGame", @"Choose Game")];
     [prototype setButtonType: NSRadioButton];
     NSRect matrixRect = NSMakeRect(0.0, 0.0, 300.0, 240.0);
     NSMatrix* matrix = [[NSMatrix alloc] initWithFrame: matrixRect
@@ -371,10 +365,10 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
 
     // Create an alert sheet.
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle: Localized(@"Play this game")];
-    [alert addButtonWithTitle: Localized(@"Cancel")];
-    [alert setMessageText: Localized(@"ChooseDifferent")];
-    [alert setInformativeText: Localized(@"RestartQuestion")];
+    [alert addButtonWithTitle: NSLocalizedString(@"Play this game", @"Play this game")];
+    [alert addButtonWithTitle: NSLocalizedString(@"Cancel", @"Cancel")];
+    [alert setMessageText: NSLocalizedString(@"ChooseDifferent", @"Choose Different")];
+    [alert setInformativeText: NSLocalizedString(@"RestartQuestion", @"Restart question")];
     [alert setAccessoryView: matrix];
     [alert setAlertStyle: NSInformationalAlertStyle];
     
@@ -401,7 +395,7 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
 -(IBAction) onGameSelected: (NSMenuItem*)sender {
     // Uncheck current game item.
     NSMenu* mainMenu = [[NSApplication sharedApplication] mainMenu];
-    NSMenu* gameMenu = [[mainMenu itemWithTitle: Localized(@"Game")] submenu];
+    NSMenu* gameMenu = [[mainMenu itemWithTitle: NSLocalizedString(@"Game", @"Game")] submenu];
     
     [self selectGameWithRegistryIndex: [gameMenu indexOfItem: sender]];
     [self newGame];
@@ -468,9 +462,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     NSToolbarItem* toolbarItem = nil; 
     if([itemIdentifier isEqualTo: SolitaireNewGameToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: Localized(@"New game")];
+        [toolbarItem setLabel: NSLocalizedString(@"New game", @"New game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: Localized(@"Start a new game")];
+        [toolbarItem setToolTip: NSLocalizedString(@"Start a new game", @"Start a new game")];
         [toolbarItem setImage: [NSImage imageNamed:NSImageNameApplicationIcon]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onNewGame:)];
@@ -478,9 +472,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if([itemIdentifier isEqualTo: SolitaireRestartGameToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: Localized(@"Restart game")];
+        [toolbarItem setLabel: NSLocalizedString(@"Restart game", @"Restart game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: Localized(@"Restart this game")];
+        [toolbarItem setToolTip: NSLocalizedString(@"Restart this game", @"Restart this game")];
         [toolbarItem setImage: [NSImage imageNamed:@"RestartIcon"]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onRestartGame:)];
@@ -488,9 +482,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if([itemIdentifier isEqualTo: SolitaireSaveGameToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: Localized(@"Save game")];
+        [toolbarItem setLabel: NSLocalizedString(@"Save game", @"Save game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: Localized(@"Save your current game")];
+        [toolbarItem setToolTip: NSLocalizedString(@"Save your current game", @"Save your current game")];
         [toolbarItem setImage: [NSImage imageNamed:@"SaveIcon"]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onSaveGame:)];
@@ -498,9 +492,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if([itemIdentifier isEqualTo: SolitaireOpenGameToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: Localized(@"Open game")];
+        [toolbarItem setLabel: NSLocalizedString(@"Open game", @"Open game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: Localized(@"Open a previous game")];
+        [toolbarItem setToolTip: NSLocalizedString(@"Open a previous game", @"Open a previous game")];
         [toolbarItem setImage: [NSImage imageNamed:@"OpenIcon"]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onOpenGame:)];
@@ -508,9 +502,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if ([itemIdentifier isEqualTo: SolitairePreferencesToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: Localized(@"Preferences")];
+        [toolbarItem setLabel: NSLocalizedString(@"Preferences", @"Preferences")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: Localized(@"Change game preferences")];
+        [toolbarItem setToolTip: NSLocalizedString(@"Change game preferences", @"Change game preferences")];
         [toolbarItem setImage: [NSImage imageNamed: @"SettingsIcon"]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onPreferences:)];
@@ -518,9 +512,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if ([itemIdentifier isEqualTo: SolitaireChooseGameToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: Localized(@"Choose game")];
+        [toolbarItem setLabel: NSLocalizedString(@"Choose game", @"Choose game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: Localized(@"Choose a different game to play")];
+        [toolbarItem setToolTip: NSLocalizedString(@"Choose a different game to play", @"Choose a different game to play")];
         [toolbarItem setImage: [NSImage imageNamed:@"ChooseGame"]];;
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onChooseGame:)];
@@ -528,9 +522,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if ([itemIdentifier isEqualTo: SolitaireAutoToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: Localized(@"Auto finish")];
+        [toolbarItem setLabel: NSLocalizedString(@"Auto finish", @"Auto finish")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: Localized(@"Auto finish this game")];
+        [toolbarItem setToolTip: NSLocalizedString(@"Auto finish this game", @"Auto finish this game")];
         [toolbarItem setImage: [NSImage imageNamed:@"AutoIcon"]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onAutoFinish:)];
@@ -538,9 +532,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if ([itemIdentifier isEqualTo: SolitaireUndoToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: Localized(@"Undo")];
+        [toolbarItem setLabel: NSLocalizedString(@"Undo", @"Undo")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: Localized(@"Undo last move")];
+        [toolbarItem setToolTip: NSLocalizedString(@"Undo last move", @"Undo last move")];
         [toolbarItem setImage: [NSImage imageNamed:@"UndoIcon"]];
         [toolbarItem setTarget: [self.view undoManager]];
         [toolbarItem setAction: @selector(undo)];
@@ -548,9 +542,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if ([itemIdentifier isEqualTo: SolitaireRedoToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: Localized(@"Redo")];
+        [toolbarItem setLabel: NSLocalizedString(@"Redo", @"Redo")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: Localized(@"Redo move")];
+        [toolbarItem setToolTip: NSLocalizedString(@"Redo move", @"Redo move")];
         [toolbarItem setImage: [NSImage imageNamed:@"RedoIcon"]];
         [toolbarItem setTarget: [self.view undoManager]];
         [toolbarItem setAction: @selector(redo)];
@@ -558,9 +552,9 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
     }
     else if ([itemIdentifier isEqualTo: SolitaireInstructionsToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
-        [toolbarItem setLabel: Localized(@"How to play")];
+        [toolbarItem setLabel: NSLocalizedString(@"How to play", @"How to play")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
-        [toolbarItem setToolTip: Localized(@"Instructions on how to play this game")];
+        [toolbarItem setToolTip: NSLocalizedString(@"Instructions on how to play this game", @"Instructions on how to play this game")];
         [toolbarItem setImage: [NSImage imageNamed: @"HelpIcon"]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onInstructions:)];
@@ -608,7 +602,7 @@ static NSString* SolitaireInstructionsToolbarItemIdentifier = @"Solitaire Instru
 
 -(void) selectGameWithRegistryIndex: (NSInteger)index {
     NSMenu* mainMenu = [[NSApplication sharedApplication] mainMenu];
-    NSMenu* gameMenu = [[mainMenu itemWithTitle: Localized(@"Game")] submenu];
+    NSMenu* gameMenu = [[mainMenu itemWithTitle: NSLocalizedString(@"Game", @"Game")] submenu];
     
     // Clear the check from the old game.
     if(game_ != nil) {

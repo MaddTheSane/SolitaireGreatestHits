@@ -31,7 +31,7 @@
 @implementation SolitaireBakersGame
 
 -(NSString*) name {
-    return Localized(@"Baker's Game");
+    return NSLocalizedString(@"Baker's Game", @"Baker's Game");
 }
 
 -(void) dealNewGame {
