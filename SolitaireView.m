@@ -196,7 +196,7 @@
     if(selectedCard_ == nil) return;
         
     // If the card is double clicked, move it into a foundation.
-    if([theEvent clickCount] >= 2 && selectedCard_.nextCard == nil) {
+    if([theEvent clickCount] == 2 && selectedCard_.nextCard == nil) {
         SolitaireFoundation* foundation = [[controller_ game] findFoundationForCard: selectedCard_];
         if(foundation != nil) {
             [[[self undoManager] prepareWithInvocationTarget: [controller_ game]] dropCard: selectedCard_ inContainer: selectedCard_.container];

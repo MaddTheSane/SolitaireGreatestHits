@@ -75,12 +75,11 @@
     return [cards_ count];
 }
 
--(void) addCard: (SolitaireCard*) card {    
+-(void) addCard: (SolitaireCard*) card {
     // Remove card from previous container.
     if(card.container) [card.container removeCard: card];
     
     if([self topCard] != nil) [self topCard].nextCard = card;
-    
     card.zPosition = [cards_ count] + 1;
     card.homeLocation = [self nextLocation];
     card.container = self;

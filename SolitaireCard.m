@@ -228,7 +228,7 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
 }
 
 -(void) animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
-    self.zPosition -= DRAGGING_LAYER;
+    if(self.zPosition >= DRAGGING_LAYER) self.zPosition -= DRAGGING_LAYER;
 }
 
 @synthesize nextCard;
