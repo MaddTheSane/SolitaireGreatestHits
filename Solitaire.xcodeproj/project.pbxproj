@@ -25,7 +25,6 @@
 		376BFD510E456D60008B5923 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376BFD500E456D60008B5923 /* QuartzCore.framework */; };
 		376BFD5D0E457114008B5923 /* SolitaireSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 376BFD5C0E457114008B5923 /* SolitaireSprite.m */; };
 		376BFD620E457157008B5923 /* SolitaireCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 376BFD610E457157008B5923 /* SolitaireCard.m */; };
-		376BFD680E4573D6008B5923 /* CardBack1.png in Resources */ = {isa = PBXBuildFile; fileRef = 376BFD660E4573D6008B5923 /* CardBack1.png */; };
 		377E77C90FD1D3D5002EFBCC /* SolitairePreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 377E77C80FD1D3D5002EFBCC /* SolitairePreferencesController.m */; };
 		3781E3FB1003AE6C00B421E0 /* SolitaireAcesUpGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3781E3FA1003AE6C00B421E0 /* SolitaireAcesUpGame.m */; };
 		3781E4241003D73C00B421E0 /* SolitaireBakersGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3781E4231003D73C00B421E0 /* SolitaireBakersGame.m */; };
@@ -46,11 +45,9 @@
 		37ECE627103216B800AF20BB /* SolitaireGolfGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ECE626103216B800AF20BB /* SolitaireGolfGame.m */; };
 		37ECE6B0103232A900AF20BB /* SolitaireScorpianGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ECE6AF103232A900AF20BB /* SolitaireScorpianGame.m */; };
 		37ECE70B1032469F00AF20BB /* SolitaireYukonGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ECE70A1032469F00AF20BB /* SolitaireYukonGame.m */; };
-		5597D4E2216727AA00629C45 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5597D4E1216727AA00629C45 /* Media.xcassets */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		9221364019086C2D00935400 /* CardBack2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9221363F19086C2D00935400 /* CardBack2.png */; };
 		925E695D18F496010074BF00 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 925E695F18F496010074BF00 /* Localizable.strings */; };
 		925E696118F4A4FE0074BF00 /* SolitaireCards.png in Resources */ = {isa = PBXBuildFile; fileRef = 925E696318F4A4FE0074BF00 /* SolitaireCards.png */; };
 		92C5A1C318FF2ECA001AFE0D /* Info.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 92C5A1C118FF2ECA001AFE0D /* Info.rtf */; };
@@ -60,7 +57,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -97,7 +94,6 @@
 		376BFD5C0E457114008B5923 /* SolitaireSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireSprite.m; sourceTree = "<group>"; };
 		376BFD600E457157008B5923 /* SolitaireCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireCard.h; sourceTree = "<group>"; };
 		376BFD610E457157008B5923 /* SolitaireCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireCard.m; sourceTree = "<group>"; };
-		376BFD660E4573D6008B5923 /* CardBack1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CardBack1.png; sourceTree = "<group>"; };
 		377E77C70FD1D3D5002EFBCC /* SolitairePreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitairePreferencesController.h; sourceTree = "<group>"; };
 		377E77C80FD1D3D5002EFBCC /* SolitairePreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitairePreferencesController.m; sourceTree = "<group>"; };
 		3781E3F91003AE6C00B421E0 /* SolitaireAcesUpGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireAcesUpGame.h; sourceTree = "<group>"; };
@@ -134,12 +130,10 @@
 		37ECE6AF103232A900AF20BB /* SolitaireScorpianGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireScorpianGame.m; sourceTree = "<group>"; };
 		37ECE7091032469F00AF20BB /* SolitaireYukonGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireYukonGame.h; sourceTree = "<group>"; };
 		37ECE70A1032469F00AF20BB /* SolitaireYukonGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireYukonGame.m; sourceTree = "<group>"; };
-		5597D4E1216727AA00629C45 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Solitaire Greatest Hits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Solitaire Greatest Hits.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9221363F19086C2D00935400 /* CardBack2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CardBack2.png; sourceTree = "<group>"; };
-		925E695E18F496010074BF00 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		925E696018F496070074BF00 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		925E695E18F496010074BF00 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		925E696018F496070074BF00 /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		925E696218F4A4FE0074BF00 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/SolitaireCards.png; sourceTree = "<group>"; };
 		925E696418F4A5030074BF00 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/SolitaireCards.png; sourceTree = "<group>"; };
 		92C5A1C218FF2ECA001AFE0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Info.rtf; sourceTree = "<group>"; };
@@ -253,12 +247,9 @@
 				92C5A1C118FF2ECA001AFE0D /* Info.rtf */,
 				379CAA9F0FD19512009A760B /* MainMenu.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
-				376BFD660E4573D6008B5923 /* CardBack1.png */,
-				9221363F19086C2D00935400 /* CardBack2.png */,
 				925E696318F4A4FE0074BF00 /* SolitaireCards.png */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				925E695F18F496010074BF00 /* Localizable.strings */,
-				5597D4E1216727AA00629C45 /* Media.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -388,14 +379,11 @@
 			files = (
 				925E695D18F496010074BF00 /* Localizable.strings in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
-				5597D4E2216727AA00629C45 /* Media.xcassets in Resources */,
-				376BFD680E4573D6008B5923 /* CardBack1.png in Resources */,
 				925E696118F4A4FE0074BF00 /* SolitaireCards.png in Resources */,
 				379CAAA10FD19512009A760B /* MainMenu.xib in Resources */,
 				379CAAC60FD1A433009A760B /* UndoIcon.icns in Resources */,
 				92C5A1C318FF2ECA001AFE0D /* Info.rtf in Resources */,
 				92DF2AD8190719740049377D /* SettingsIcon.icns in Resources */,
-				9221364019086C2D00935400 /* CardBack2.png in Resources */,
 				37D499CF100BAD2D00591FB8 /* ChooseGame.icns in Resources */,
 				37DC2DAF100D11E100504D65 /* RedoIcon.icns in Resources */,
 				3712A865100E1ED00001F6C5 /* RestartIcon.icns in Resources */,

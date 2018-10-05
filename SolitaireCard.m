@@ -36,9 +36,9 @@ void LoadFlippedCardImage(BOOL reload)
         if (cardBack == nil)
             cardBack = @"CardBack1";
     
-        flippedCardImage = [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource:cardBack ofType:@"png"]];
+        flippedCardImage = [NSImage imageNamed:cardBack];
     }
-    return flippedCardImage;
+    //return flippedCardImage;
 }
 
 

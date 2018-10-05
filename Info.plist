@@ -28,7 +28,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleHelpBookFolder</key>
-	<string>SolitaireHelp</string>
+	<string>Solitaire.help</string>
 	<key>CFBundleHelpBookName</key>
 	<string>Solitaire Greatest Hits Help</string>
 	<key>CFBundleIdentifier</key>
