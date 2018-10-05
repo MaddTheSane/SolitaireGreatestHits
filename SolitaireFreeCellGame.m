@@ -214,7 +214,7 @@
 }
 
 -(void) dealNewGame {
-    int pos = 0;
+    NSInteger pos = 0;
     while(![stock_ isEmpty]) {
         [stock_ dealCardToTableau: tableau_[pos] faceDown: NO];
         pos++;
@@ -223,7 +223,7 @@
     
     int i;
     for(i = 0; i < 8; i++) {
-        int pos = [tableau_[i] count] - 2;
+        NSInteger pos = [tableau_[i] count] - 2;
         while(pos >= 0) {
             SolitaireCard* card = [tableau_[i] cardAtPosition: pos];
             if(([card.nextCard faceValue] != [card faceValue] - 1) ||
@@ -287,7 +287,7 @@
 -(void) dropCard: (SolitaireCard*) card inTableau: (SolitaireTableau*) tableau {
     [super dropCard: card inTableau: tableau];
         
-    int pos = [tableau count] - 2;
+    NSInteger pos = [tableau count] - 2;
     while(pos >= 0) {
         SolitaireCard* card = [tableau cardAtPosition: pos];
         if(([card.nextCard faceValue] == [card faceValue] - 1) &&
@@ -299,7 +299,7 @@
 }
 
 -(void) onCard: (SolitaireCard*) card removedFromTableau: (SolitaireTableau*) tableau {
-    int pos = [tableau count] - 2;
+    NSInteger pos = [tableau count] - 2;
     while(pos >= 0) {
         SolitaireCard* card = [tableau cardAtPosition: pos];
         if(([card.nextCard faceValue] == [card faceValue] - 1) &&

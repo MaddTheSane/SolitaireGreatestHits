@@ -228,7 +228,7 @@ extern NSImage* flippedCardImage;
             [oval stroke];
         
             cardCountRect.size.height -= 5;
-            NSString* countString = [NSString stringWithFormat: @"%i", [self count]];
+            NSString* countString = [NSString stringWithFormat: @"%li", (long)[self count]];
             NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
             [style setAlignment: NSCenterTextAlignment];
             NSDictionary *attributes = [[NSDictionary alloc] initWithObjectsAndKeys:

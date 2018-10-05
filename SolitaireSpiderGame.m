@@ -220,7 +220,7 @@
     card.hidden = NO;
     [super dropCard: card inTableau: tableau];
     
-    int pos = [tableau count] - 2;
+    NSInteger pos = [tableau count] - 2;
     while(pos >= 0) {
         SolitaireCard* card = [tableau cardAtPosition: pos];
         if(([card.nextCard faceValue] != [card faceValue] - 1)  ||
@@ -238,7 +238,7 @@
 }
 
 -(void) onCard: (SolitaireCard*) card removedFromTableau: (SolitaireTableau*) tableau {
-    int pos = [tableau count] - 2;
+    NSInteger pos = [tableau count] - 2;
     while(pos >= 0) {
         SolitaireCard* stackedCard = [tableau cardAtPosition: pos];
         if(([stackedCard.nextCard faceValue] == [stackedCard faceValue] - 1) &&

@@ -176,8 +176,8 @@
     if((self = [super initWithCoder: decoder]) != nil) {
         self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth, kCardHeight);
 
-        drawCount_ = [decoder decodeIntForKey: @"drawCount_"];
-        currentPos_ = [decoder decodeIntForKey: @"currentPos"];
+        drawCount_ = [decoder decodeIntegerForKey: @"drawCount_"];
+        currentPos_ = [decoder decodeIntegerForKey: @"currentPos"];
         visibleCards = [decoder decodeObjectForKey: @"visibleCards"];
     }
     return self;
@@ -185,8 +185,8 @@
 
 -(void) encodeWithCoder: (NSCoder*) encoder {
     [super encodeWithCoder: encoder];
-    [encoder encodeInt: drawCount_ forKey: @"drawCount_"];
-    [encoder encodeInt: currentPos_ forKey: @"currentPos_"];
+    [encoder encodeInteger: drawCount_ forKey: @"drawCount_"];
+    [encoder encodeInteger: currentPos_ forKey: @"currentPos_"];
     [encoder encodeObject: self.visibleCards forKey: @"visibleCards"];
 }
 

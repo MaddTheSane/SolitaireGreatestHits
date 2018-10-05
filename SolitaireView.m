@@ -161,7 +161,7 @@
     [alert setMessageText:@"You Won!"];
     
     NSString* info = [NSString stringWithFormat: @"Your time was %@", [self.controller.timer timeString]];
-    if([[self game] keepsScore]) info = [NSString stringWithFormat: @"%@\nYour score was %i", info, self.controller.scoreKeeper.score];
+    if([[self game] keepsScore]) info = [NSString stringWithFormat: @"%@\nYour score was %li", info, (long)self.controller.scoreKeeper.score];
     
     [alert setInformativeText: info];
     [alert setAlertStyle: NSInformationalAlertStyle];

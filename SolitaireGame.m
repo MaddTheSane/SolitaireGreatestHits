@@ -62,7 +62,7 @@
 }
 
 -(void) gameWithSeed: (NSUInteger)seed {
-    srand(seed);
+    srand(seed & 0x7fffffff);
     gameSeed_ = seed;
 }
 

@@ -240,7 +240,7 @@
     int i;
     for(i = 0; i < 10; i++) {
         [tableau_[i] cardAtPosition: [tableau_[i] count] - 1].draggable = YES;
-        int pos = [tableau_[i] count] - 2;
+        NSInteger pos = [tableau_[i] count] - 2;
         while(pos >= 0) {
             SolitaireCard* card = [tableau_[i] cardAtPosition: pos];
             card.draggable = NO;
