@@ -39,7 +39,7 @@
     for (NSString *filename in cardBackFiles_)
     {
         [_backgroundPopup addItemWithTitle:@""];
-        NSImage *image = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource: filename ofType:@"png"]];
+        NSImage *image = [NSImage imageNamed:filename];
         [[_backgroundPopup itemAtIndex:index] setImage:image];
         ++index;
     }
@@ -62,7 +62,7 @@
     NSString *cardBack          = [defaults objectForKey:@"cardBack"];
                                    
     [colorWell setColor:color];
-    int index = [cardBackFiles_ indexOfObject:cardBack];
+    NSInteger index = [cardBackFiles_ indexOfObject:cardBack];
     [_backgroundPopup selectItemAtIndex:index];
 }
 
