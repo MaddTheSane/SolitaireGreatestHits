@@ -34,7 +34,7 @@
     BOOL hideScore_;
 }
 
-@property(readwrite) NSInteger score;
+@property (nonatomic, readwrite) NSInteger score;
 
 -(void) setInitialScore: (NSInteger)value;
 -(void) hideScore: (BOOL)value;

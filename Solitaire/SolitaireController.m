@@ -48,6 +48,7 @@
 @interface SolitaireController()
 -(void) requestDonation;
 -(void) selectGameWithRegistryIndex: (NSInteger)index;
+- (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls;
 
 // Sheet callbacks
 -(void) preferencesSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
@@ -237,18 +238,6 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     return YES;
 }
 
--(void) saveGameWithFilename: (NSString*)filename {
-    if (![self saveGameToURL:[NSURL fileURLWithPath:filename] error:NULL]) {
-        NSBeep();
-    }
-}
-
--(void) openGameWithFilename: (NSString*)filename {
-    if (![self openGameFromURL:[NSURL fileURLWithPath:filename] error:NULL]) {
-        NSBeep();
-    }
-}
-
 -(IBAction) onNewGame: (id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle: NSLocalizedString(@"Yes", @"Yes")];
@@ -293,8 +282,11 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     {
 		 if (result == NSFileHandlingPanelOKButton)
 		 {
-			 NSString *file = [[savePanel URL] path];
-			 [self saveGameWithFilename:file];
+             NSURL *url = [savePanel URL];
+             NSError *err;
+             if (![self saveGameToURL:url error:&err]) {
+                 [NSApp presentError:err];
+             }
 		 }
     }];
 }
@@ -314,8 +306,11 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     {
 	    if (result == NSFileHandlingPanelOKButton)
 	    {
-		    NSString *file = [[openPanel URL] path];
-		    [self openGameWithFilename:file];
+            NSURL *url = [openPanel URL];
+            NSError *err;
+            if (![self openGameFromURL:url error:&err]) {
+                [NSApp presentError:err];
+            }
 	    }
     }];
 }
@@ -417,6 +412,32 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
 	return YES;
 }
 
+- (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename
+{
+    if ([[filename pathExtension] compare:@"sgh"] != NSOrderedSame) {
+        return NO;
+    }
+    
+    [self application:sender openURLs:@[[NSURL fileURLWithPath:filename]]];
+    return YES;
+}
+
+- (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls
+{
+    for (NSURL *url in urls) {
+        if (!url.fileURL) {
+            continue;
+        }
+        // Only load one url passed in.
+        NSError *err;
+        if (![self openGameFromURL:url error:&err]) {
+            [NSApp presentError:err];
+        } else {
+            break;
+        }
+    }
+}
+
 @synthesize game=game_;
 
 // Toolbar delegate methods
@@ -458,7 +479,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
 - (NSToolbarItem*)toolbar:(NSToolbar*)toolbar itemForItemIdentifier:(NSString*)itemIdentifier willBeInsertedIntoToolbar: (BOOL)flag {
     
     NSToolbarItem* toolbarItem = nil; 
-    if([itemIdentifier isEqualTo: SolitaireNewGameToolbarItemIdentifier]) {
+    if([itemIdentifier isEqualToString: SolitaireNewGameToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
         [toolbarItem setLabel: NSLocalizedString(@"New game", @"New game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
@@ -468,7 +489,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         [toolbarItem setAction: @selector(onNewGame:)];
         [toolbarItem setEnabled: YES];
     }
-    else if([itemIdentifier isEqualTo: SolitaireRestartGameToolbarItemIdentifier]) {
+    else if([itemIdentifier isEqualToString: SolitaireRestartGameToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
         [toolbarItem setLabel: NSLocalizedString(@"Restart game", @"Restart game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
@@ -478,7 +499,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         [toolbarItem setAction: @selector(onRestartGame:)];
         [toolbarItem setEnabled: YES];
     }
-    else if([itemIdentifier isEqualTo: SolitaireSaveGameToolbarItemIdentifier]) {
+    else if([itemIdentifier isEqualToString: SolitaireSaveGameToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
         [toolbarItem setLabel: NSLocalizedString(@"Save game", @"Save game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
@@ -488,7 +509,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         [toolbarItem setAction: @selector(onSaveGame:)];
         [toolbarItem setEnabled: YES];
     }
-    else if([itemIdentifier isEqualTo: SolitaireOpenGameToolbarItemIdentifier]) {
+    else if([itemIdentifier isEqualToString: SolitaireOpenGameToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
         [toolbarItem setLabel: NSLocalizedString(@"Open game", @"Open game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
@@ -498,7 +519,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         [toolbarItem setAction: @selector(onOpenGame:)];
         [toolbarItem setEnabled: YES];
     }
-    else if ([itemIdentifier isEqualTo: SolitairePreferencesToolbarItemIdentifier]) {
+    else if ([itemIdentifier isEqualToString: SolitairePreferencesToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
         [toolbarItem setLabel: NSLocalizedString(@"Preferences", @"Preferences")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
@@ -508,7 +529,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         [toolbarItem setAction: @selector(onPreferences:)];
         [toolbarItem setEnabled: YES];
     }
-    else if ([itemIdentifier isEqualTo: SolitaireChooseGameToolbarItemIdentifier]) {
+    else if ([itemIdentifier isEqualToString: SolitaireChooseGameToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
         [toolbarItem setLabel: NSLocalizedString(@"Choose game", @"Choose game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
@@ -518,7 +539,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         [toolbarItem setAction: @selector(onChooseGame:)];
         [toolbarItem setEnabled: YES];
     }
-    else if ([itemIdentifier isEqualTo: SolitaireAutoToolbarItemIdentifier]) {
+    else if ([itemIdentifier isEqualToString: SolitaireAutoToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
         [toolbarItem setLabel: NSLocalizedString(@"Auto finish", @"Auto finish")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
@@ -528,7 +549,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         [toolbarItem setAction: @selector(onAutoFinish:)];
         [toolbarItem setEnabled: YES];
     }
-    else if ([itemIdentifier isEqualTo: SolitaireUndoToolbarItemIdentifier]) {
+    else if ([itemIdentifier isEqualToString: SolitaireUndoToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
         [toolbarItem setLabel: NSLocalizedString(@"Undo", @"Undo")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
@@ -538,7 +559,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         [toolbarItem setAction: @selector(undo)];
         [toolbarItem setEnabled: YES];
     }
-    else if ([itemIdentifier isEqualTo: SolitaireRedoToolbarItemIdentifier]) {
+    else if ([itemIdentifier isEqualToString: SolitaireRedoToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
         [toolbarItem setLabel: NSLocalizedString(@"Redo", @"Redo")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
@@ -548,7 +569,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         [toolbarItem setAction: @selector(redo)];
         [toolbarItem setEnabled: YES];
     }
-    else if ([itemIdentifier isEqualTo: SolitaireInstructionsToolbarItemIdentifier]) {
+    else if ([itemIdentifier isEqualToString: SolitaireInstructionsToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
         [toolbarItem setLabel: NSLocalizedString(@"How to play", @"How to play")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
@@ -562,7 +583,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
 }
 
 -(BOOL) validateToolbarItem:(NSToolbarItem *) item {
-    if([item itemIdentifier] == SolitaireAutoToolbarItemIdentifier) {
+    if([[item itemIdentifier] isEqualToString:SolitaireAutoToolbarItemIdentifier]) {
         if(![game_ supportsAutoFinish]) return NO;
     }
     return YES;

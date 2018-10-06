@@ -53,8 +53,6 @@
     [self updateScore];
 }
 
--(NSInteger) score {
-    return score;
-}
+@synthesize score;
 
 @end

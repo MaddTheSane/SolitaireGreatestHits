@@ -34,8 +34,8 @@
 	IBOutlet NSWindow* aboutWindow_;
 	IBOutlet NSTextView *infoView_;
 
-    NSMutableArray* gameRegistry_;
-    NSMutableDictionary* gameDictionary_;
+    NSMutableArray<__kindof SolitaireGame*>* gameRegistry_;
+    NSMutableDictionary<NSString*,__kindof SolitaireGame*>* gameDictionary_;
     SolitaireGame* game_;
 }
 
@@ -47,14 +47,12 @@
 
 -(void) registerGames;
 -(void) registerGame: (SolitaireGame*)game; 
--(NSArray<__kindof SolitaireGame*>*) availableGames;
+@property (readonly, copy) NSArray<__kindof SolitaireGame*> *availableGames;
 
 -(void) newGame;
 -(void) restartGame;
 -(BOOL) saveGameToURL:(NSURL*)filename error:(NSError**)error;
 -(BOOL) openGameFromURL:(NSURL*)filename error:(NSError**)error;
--(void) saveGameWithFilename: (NSString*)filename;
--(void) openGameWithFilename: (NSString*)filename;
 
 -(IBAction) onNewGame: (id)sender;
 -(IBAction) onRestartGame: (id)sender;
