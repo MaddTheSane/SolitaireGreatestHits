@@ -28,12 +28,12 @@
 @interface SolitaireFoundation : SolitaireCardContainer
 
 -(id) init;
--(BOOL) acceptsDroppedCards;
--(CGPoint) nextLocation;
+@property (readonly) BOOL acceptsDroppedCards;
+@property (readonly) CGPoint nextLocation;
 -(void) addCard: (SolitaireCard*) card;
 -(void) removeCard: (SolitaireCard*) card;
 
--(BOOL) isEmpty;
--(BOOL) isFilled;
+@property (readonly) BOOL isEmpty;
+@property (readonly,getter=isFilled) BOOL filled;
 
 @end

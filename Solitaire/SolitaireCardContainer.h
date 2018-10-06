@@ -23,6 +23,8 @@
 #import <Cocoa/Cocoa.h>
 #import "SolitaireSprite.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class SolitaireView;
 @class SolitaireCard;
 
@@ -33,26 +35,28 @@
     NSMutableArray* cards_;
 }
 
-@property(nonatomic, copy) NSString* text;
+@property(nonatomic, copy, nullable) NSString* text;
 
--(id) init;
--(id) initWithCoder: (NSCoder*) decoder;
+-(instancetype) init NS_DESIGNATED_INITIALIZER;
+-(nullable instancetype) initWithCoder: (NSCoder*) decoder;
 -(void) encodeWithCoder: (NSCoder*) encoder;
 
--(NSArray*) cards;
+@property (readonly, copy) NSArray<SolitaireCard*> *cards;
 
--(BOOL) acceptsDroppedCards;
--(SolitaireCard*) topCard;
--(CGPoint) topLocation;
--(CGPoint) nextLocation;
--(CGRect) topRect;
--(NSInteger) count;
+@property (readonly) BOOL acceptsDroppedCards;
+@property (readonly, nullable) SolitaireCard *topCard;
+@property (readonly) CGPoint topLocation;
+@property (readonly) CGPoint nextLocation;
+@property (readonly) CGRect topRect;
+@property (readonly) NSInteger count;
 -(void) addCard: (SolitaireCard*) card;
 -(void) removeCard: (SolitaireCard*) card;
 -(BOOL) containsCard: (SolitaireCard*) card;
--(CGFloat) cardVertSpacing;
--(CGFloat) cardHorizSpacing;
+@property (readonly) CGFloat cardVertSpacing;
+@property (readonly) CGFloat cardHorizSpacing;
 
 -(void) onAddedToView: (SolitaireView*)gameView;
 
 @end
+
+NS_ASSUME_NONNULL_END

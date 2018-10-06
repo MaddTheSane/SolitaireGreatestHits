@@ -77,12 +77,12 @@
 }
 
 -(CGFloat) cardVertSpacing {
-    CGFloat spacing = kCardHeight / 5.0f;
+    CGFloat spacing = kCardHeight / 5.0;
     return spacing;
 }
 
 -(CGFloat) cardFlippedVertSpacing {
-    CGFloat spacing = kCardHeight / 7.0f;
+    CGFloat spacing = kCardHeight / 7.0;
     return spacing;
 }
 

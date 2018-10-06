@@ -23,6 +23,8 @@
 #import <Cocoa/Cocoa.h>
 #import "SolitaireCardContainer.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class SolitaireView; 
 @class SolitaireCard;
 
@@ -32,16 +34,18 @@
 
 @property(readwrite) BOOL acceptsDroppedCards;
 
--(id) init;
--(id) initWithCoder: (NSCoder*) decoder;
+-(instancetype) init;
+-(nullable instancetype) initWithCoder: (NSCoder*) decoder;
 -(void) encodeWithCoder: (NSCoder*) encoder;
 
--(BOOL) isEmpty;
--(CGPoint) topLocation;
--(CGPoint) nextLocation;
--(CGFloat) cardVertSpacing;
--(CGFloat) cardFlippedVertSpacing;
+@property (readonly) BOOL isEmpty;
+@property (readonly) CGPoint topLocation;
+@property (readonly) CGPoint nextLocation;
+@property (readonly) CGFloat cardVertSpacing;
+@property (readonly) CGFloat cardFlippedVertSpacing;
 
 -(SolitaireCard*) cardAtPosition: (NSInteger) index;
 
 @end
+
+NS_ASSUME_NONNULL_END

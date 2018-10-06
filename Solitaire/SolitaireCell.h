@@ -23,6 +23,8 @@
 #import <Cocoa/Cocoa.h>
 #import "SolitaireCardContainer.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class SolitaireCard;
 
 @interface SolitaireCell : SolitaireCardContainer
@@ -32,6 +34,8 @@
 -(void) addCard: (SolitaireCard*) card;
 -(void) removeCard: (SolitaireCard*) card;
 
--(BOOL) isEmpty;
+@property (readonly) BOOL isEmpty;
 
 @end
+
+NS_ASSUME_NONNULL_END

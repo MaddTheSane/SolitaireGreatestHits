@@ -146,13 +146,8 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
     [encoder encodeConditionalObject: self.nextCard forKey: @"nextCard"];    
 }
 
--(SolitaireFaceValue) faceValue {
-    return faceValue_;
-}
-
--(SolitaireSuit) suit {
-    return suit_;
-}
+@synthesize faceValue=faceValue_;
+@synthesize suit=suit_;
 
 -(SolitaireSuitColor) suitColor {
     return (suit_ == SolitaireSuitHearts) || (suit_ == SolitaireSuitDiamonds);

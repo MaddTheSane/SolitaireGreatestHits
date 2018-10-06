@@ -150,11 +150,11 @@
 // Private Methods
 @interface SolitaireMultiCardWaste()
 -(void) hideVisibleCards;
--(void) reorderCardSet: (NSArray*)cards;
+-(void) reorderCardSet: (NSArray<SolitaireCard*>*)cards;
 -(void) dealCardsFromStock: (SolitaireStock*)stock;
--(void) returnVisibleCardsToStock: (SolitaireStock*)stock makeCardsVisible: (NSArray*)cards;
+-(void) returnVisibleCardsToStock: (SolitaireStock*)stock makeCardsVisible: (NSArray<SolitaireCard*>*)cards;
 -(void) fillStock: (SolitaireStock*)stock;
--(void) fillWasteFromStock: (SolitaireStock*) stock makeCardsVisible: (NSArray*)cards;
+-(void) fillWasteFromStock: (SolitaireStock*) stock makeCardsVisible: (NSArray<SolitaireCard*>*)cards;
 @end
 
 @implementation SolitaireMultiCardWaste

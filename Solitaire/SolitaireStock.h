@@ -23,6 +23,8 @@
 #import <Cocoa/Cocoa.h>
 #import "SolitaireSprite.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class SolitaireCard;
 @class SolitaireView;
 @class SolitaireTableau;
@@ -54,14 +56,14 @@
 @property(readwrite) NSTimeInterval reclickDelay;
 
 -(id) init;
--(id) initWithDeckCount: (NSInteger)deckCount;
--(id) initWithCoder: (NSCoder*) decoder;
+-(id) initWithDeckCount: (NSInteger)deckCount NS_DESIGNATED_INITIALIZER;
+-(nullable id) initWithCoder: (NSCoder*) decoder NS_DESIGNATED_INITIALIZER;
 -(void) encodeWithCoder: (NSCoder*) encoder;
 
 @property (weak) id<SolitaireStockDelegate> stockDelegate;
--(BOOL) isEmpty;
--(NSInteger) count;
--(NSArray*) cards;
+@property (readonly) BOOL isEmpty;
+@property (readonly) NSInteger count;
+@property (readonly, copy) NSArray<SolitaireCard*> *cards;
 -(void) reset;
 -(void) shuffle;
 -(void) restock;
@@ -72,8 +74,10 @@
 -(void) spriteClicked: (NSUInteger)clickCount;
 -(void) onAddedToView: (SolitaireView*)gameView;
 
--(SolitaireCard*) dealCard;
+-(nullable SolitaireCard*) dealCard;
 -(void) dealCardToTableau: (SolitaireTableau*) tableau faceDown: (BOOL) flipped;
 -(void) animateCardToTableau: (SolitaireTableau*) tableau;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -25,6 +25,8 @@
 
 #import "SolitaireSprite.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef NS_ENUM(int, SolitaireSuit) {
     SolitaireSuitDiamonds = 0,
     SolitaireSuitHearts = 1,
@@ -76,22 +78,24 @@ void LoadFlippedCardImage(BOOL reload);
     NSImage* frontImage_;
 }
 
+//! pointer to the card stacked on top of this one.
 @property(readwrite, weak) SolitaireCard* nextCard;
+//! This variable indicates if the card is flipped to display its back side.
 @property(readwrite) BOOL flipped;
 @property(readwrite) BOOL draggable;
 @property(readwrite) BOOL dragging;
 @property(readwrite, weak) SolitaireCardContainer* container;
 @property(readwrite) CGPoint homeLocation;
 
--(id) initWithSuit: (SolitaireSuit)suit faceValue: (SolitaireFaceValue)faceValue;
--(id) initWithCoder: (NSCoder*) decoder;
+-(instancetype) initWithSuit: (SolitaireSuit)suit faceValue: (SolitaireFaceValue)faceValue;
+-(nullable instancetype) initWithCoder: (NSCoder*) decoder;
 -(void) encodeWithCoder: (NSCoder*) encoder;
 
--(SolitaireFaceValue) faceValue;
--(SolitaireSuit) suit;
--(SolitaireSuitColor) suitColor;
+@property (readonly) SolitaireFaceValue faceValue;
+@property (readonly) SolitaireSuit suit;
+@property (readonly) SolitaireSuitColor suitColor;
 -(NSString*) name;
--(NSString*) faceValueAbbreviation;
+@property (readonly, copy) NSString *faceValueAbbreviation;
 
 -(void) drawSprite;
 -(void) spriteClicked: (NSUInteger)clickCount;
@@ -104,3 +108,5 @@ void LoadFlippedCardImage(BOOL reload);
 
 
 @end
+
+NS_ASSUME_NONNULL_END

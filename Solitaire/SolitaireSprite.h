@@ -23,6 +23,8 @@
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class SolitaireView;
 
 @interface SolitaireSprite : CALayer {
@@ -33,9 +35,11 @@ BOOL selected;
 @property(weak) SolitaireView* view;
 @property(readwrite) BOOL selected;
 
--(id) init;
+-(instancetype) init NS_DESIGNATED_INITIALIZER;
 -(void) drawSprite;
 -(void) spriteClicked: (NSUInteger)clickCount;
 -(void) onAddedToView: (SolitaireView*)gameView;
 
 @end
+
+NS_ASSUME_NONNULL_END

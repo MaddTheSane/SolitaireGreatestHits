@@ -25,6 +25,8 @@
 #import "SolitaireView.h"
 #import "SolitaireStock.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class SolitaireCard;
 
 //! Abstract base class
@@ -53,26 +55,28 @@
 //! Multi-Card Waste draws multiple cards but hides previously visible cards.
 @interface SolitaireMultiCardWaste : SolitaireWaste {    
 @public
-    NSMutableArray* visibleCards;
+    NSMutableArray<SolitaireCard*>* visibleCards;
     
 @private
     NSInteger drawCount_;
     NSInteger currentPos_;
 }
 
-@property(copy, readonly) NSMutableArray* visibleCards;
+@property(copy, readonly) NSMutableArray<SolitaireCard*>* visibleCards;
 
--(id) initWithDrawCount: (NSInteger)drawCount;
--(id) initWithCoder: (NSCoder*) decoder;
+-(instancetype) initWithDrawCount: (NSInteger)drawCount;
+-(nullable instancetype) initWithCoder: (NSCoder*) decoder;
 -(void) encodeWithCoder: (NSCoder*) encoder;
 
--(CGPoint) topLocation;
--(CGPoint) nextLocation;
+@property (readonly) CGPoint topLocation;
+@property (readonly) CGPoint nextLocation;
 -(void) addCard: (SolitaireCard*) card;
 -(void) removeCard: (SolitaireCard*) card;
--(CGFloat) cardHorizSpacing;
+@property (readonly) CGFloat cardHorizSpacing;
 
 -(void) onStock: (SolitaireStock*) stock clicked: (NSInteger)clickCount;
 -(void) onRefillStock: (SolitaireStock*)stock;
 
 @end
+
+NS_ASSUME_NONNULL_END
