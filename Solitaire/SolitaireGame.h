@@ -45,7 +45,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(weak) SolitaireController* controller;
 
--(id) initWithController: (SolitaireController*)gameController;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
+-(instancetype) initWithController: (SolitaireController*)gameController NS_DESIGNATED_INITIALIZER;
 @property (readonly, nullable) SolitaireView *view;
 @property (readonly) NSString *name;
 @property (readonly) NSString *localizedName;
@@ -67,8 +68,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSInteger) scoreForCardFlipped: (SolitaireCard*)card;
 
 // Saving and loading game
--(SolitaireSavedGameImage*) generateSavedGameImage;
--(void) loadSavedGameImage: (SolitaireSavedGameImage*)gameImage;
+-(SolitaireSavedGameImage*) generateSavedGameImage NS_REQUIRES_SUPER;
+-(void) loadSavedGameImage: (SolitaireSavedGameImage*)gameImage NS_REQUIRES_SUPER;
 
 // Auto-finish
 @property (readonly) BOOL supportsAutoFinish;
