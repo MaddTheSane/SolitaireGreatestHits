@@ -35,19 +35,19 @@ typedef NS_ENUM(int, SolitaireSuit) {
 };
 
 typedef NS_ENUM(int, SolitaireFaceValue) {
-    SolitaireValueAce = 0,
-    SolitaireValue2 = 1,
-    SolitaireValue3 = 2,
-    SolitaireValue4 = 3,
-    SolitaireValue5 = 4,
-    SolitaireValue6 = 5,
-    SolitaireValue7 = 6,
-    SolitaireValue8 = 7,
-    SolitaireValue9 = 8,
-    SolitaireValue10 = 9,
-    SolitaireValueJack = 10,
-    SolitaireValueQueen = 11,
-    SolitaireValueKing = 12
+    SolitaireValueAce NS_SWIFT_NAME(ace) = 0,
+    SolitaireValue2 NS_SWIFT_NAME(two) = 1,
+    SolitaireValue3 NS_SWIFT_NAME(three) = 2,
+    SolitaireValue4 NS_SWIFT_NAME(four) = 3,
+    SolitaireValue5 NS_SWIFT_NAME(five) = 4,
+    SolitaireValue6 NS_SWIFT_NAME(six) = 5,
+    SolitaireValue7 NS_SWIFT_NAME(seven) = 6,
+    SolitaireValue8 NS_SWIFT_NAME(eight) = 7,
+    SolitaireValue9 NS_SWIFT_NAME(nine) = 8,
+    SolitaireValue10 NS_SWIFT_NAME(ten) = 9,
+    SolitaireValueJack NS_SWIFT_NAME(jack) = 10,
+    SolitaireValueQueen NS_SWIFT_NAME(queen) = 11,
+    SolitaireValueKing NS_SWIFT_NAME(king) = 12
 };
 
 typedef NS_ENUM(int, SolitaireSuitColor) {
