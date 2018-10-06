@@ -4,3 +4,5 @@
 
 #import "SolitaireGame.h"
 #import "SolitaireController.h"
+#import "SolitaireCard.h"
+#import "SolitaireStock.h"
