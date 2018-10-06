@@ -201,7 +201,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         // Fallback on earlier versions
         dat = [NSKeyedArchiver archivedDataWithRootObject:gameImage];
     }
-    return [dat writeToURL:filename options:0 error:error];
+    return [dat writeToURL:filename options:NSDataWritingAtomic error:error];
 }
 
 -(BOOL) openGameFromURL:(NSURL*)filename error:(NSError**)error
@@ -211,7 +211,8 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         return NO;
     }
     SolitaireSavedGameImage* gameImage;
-    if (@available(macOS 10.13, *)) {
+    if (/*@available(macOS 10.13, *)*//* DISABLES CODE */ (NO)) {
+        // SolitaireSavedGameImage must conform to NSSecureCoding before we can do this!
         gameImage = [NSKeyedUnarchiver unarchivedObjectOfClass:[SolitaireSavedGameImage class] fromData:localData error:error];
         if (!gameImage) {
             return NO;
@@ -220,6 +221,9 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         // Fallback on earlier versions
         gameImage = [NSKeyedUnarchiver unarchiveObjectWithData:localData];
         if (!gameImage) {
+            if (error) {
+                *error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:nil];
+            }
             return NO;
         }
     }
@@ -275,7 +279,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     NSSavePanel* savePanel = [NSSavePanel savePanel];
     [savePanel setTitle: NSLocalizedString(@"Save Game", @"Save Game")];
     [savePanel setExtensionHidden: YES];
-    [savePanel setAllowedFileTypes: [NSArray arrayWithObject:@"sgh"]];
+    [savePanel setAllowedFileTypes: @[@"fontaine.Solitaire2.saveGame"]];
 
     [savePanel beginSheetModalForWindow:self.window completionHandler:
 	 ^(NSInteger result)
@@ -299,7 +303,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [openPanel setCanChooseFiles: YES];
     [openPanel setCanChooseDirectories: NO];
     [openPanel setAllowsMultipleSelection: NO];
-    [openPanel setAllowedFileTypes: @[@"sgh"]];
+    [openPanel setAllowedFileTypes: @[@"fontaine.Solitaire2.saveGame"]];
 
     [openPanel beginSheetModalForWindow:self.window completionHandler:
      	^(NSInteger result)
