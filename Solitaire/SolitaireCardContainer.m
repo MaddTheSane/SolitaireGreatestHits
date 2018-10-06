@@ -42,6 +42,11 @@
     return self;
 }
 
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
 -(id) initWithCoder: (NSCoder*) decoder {
     if((self = [self init]) != nil) {
         self.position = NSPointToCGPoint([decoder decodePointForKey: @"position"]);
@@ -50,8 +55,8 @@
         self.zPosition = [decoder decodeIntForKey: @"zPosition"];
         self.hidden = [decoder decodeIntForKey: @"hidden"];
 
-        cards_ = [decoder decodeObjectForKey: @"cards_"];
-        self.text = [decoder decodeObjectForKey: @"text"];
+        cards_ = [decoder decodeObjectOfClasses:[NSSet setWithObjects:[NSMutableArray class], [SolitaireCard class], nil] forKey: @"cards_"];
+        self.text = [decoder decodeObjectOfClass:[NSString class] forKey: @"text"];
     }
     return self;
 }

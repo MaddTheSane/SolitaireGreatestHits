@@ -18,12 +18,14 @@
 //
 
 #import "SolitaireSavedGameImage.h"
+#import "SolitaireFoundation.h"
+#import "SolitaireStock.h"
 
 @implementation SolitaireSavedGameImage
 
 -(id) initWithGameName: (NSString*)name {
     if((self = [super init]) != nil) {
-        gameName_ = name;
+        gameName_ = [name copy];
         gameData_ = [[NSMutableDictionary alloc] initWithCapacity: 32];
         gameScore_ = 0;
         gameTime_ = 0;
@@ -31,10 +33,15 @@
     return self;
 }
 
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
 -(id) initWithCoder: (NSCoder*) decoder {
     if((self = [super init]) != nil) {
-        gameName_ = [decoder decodeObjectForKey: @"gameName_"];
-        gameData_ = [decoder decodeObjectForKey: @"gameData_"];
+        gameName_ = [decoder decodeObjectOfClass:[NSString class] forKey:@"gameName_"];
+        gameData_ = [decoder decodeObjectOfClasses:[NSSet setWithObjects:[NSMutableDictionary class], [SolitaireCardContainer class], [SolitaireStock class], nil] forKey: @"gameData_"];
         gameScore_ = [decoder decodeIntegerForKey: @"gameScore_"];
         gameTime_ = [decoder decodeIntegerForKey: @"gameTime_"];
         gameSeed_ = [decoder decodeIntegerForKey: @"gameSeed_"];
@@ -50,9 +57,7 @@
     [encoder encodeInteger: gameSeed_ forKey: @"gameSeed_"];
 }
 
--(NSString*) gameName {
-    return gameName_;
-}
+@synthesize gameName=gameName_;
 
 -(void) archiveGameScore: (NSInteger)value {
     gameScore_ = value;

@@ -63,7 +63,7 @@ void LoadFlippedCardImage(BOOL reload);
 @class SolitaireView;
 @class SolitaireCardContainer;
 
-@interface SolitaireCard : SolitaireSprite <NSCoding, CAAnimationDelegate, CALayerDelegate> {
+@interface SolitaireCard : SolitaireSprite <NSSecureCoding, CAAnimationDelegate, CALayerDelegate> {
 @public
     __weak SolitaireCard* nextCard;        // pointer to the card stacked on top of this one.
     BOOL flipped;                   // This variable indicates if the card is flipped to display its back side.

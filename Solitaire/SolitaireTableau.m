@@ -36,6 +36,11 @@
     return self;
 }
 
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
 -(id) initWithCoder: (NSCoder*) decoder {
     if((self = [super initWithCoder: decoder]) != nil) {
         self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth + 4, kCardHeight + 4);

@@ -66,16 +66,21 @@ extern NSImage* flippedCardImage;
     return self;
 }
 
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
 -(id) initWithCoder: (NSCoder*) decoder {
     // Card image should already exist, so we won't load it.
     if((self = [super init]) != nil) {
         delegate_ = nil;
         deckCount_ = [decoder decodeIntegerForKey: @"deckCount_"];
-        deck_ = [decoder decodeObjectForKey: @"deck_"];
+        deck_ = [decoder decodeObjectOfClasses:[NSSet setWithObjects:[NSMutableArray class], [SolitaireCard class], nil] forKey: @"deck_"];
         blockReclick_ = NO;
                 
         self.disableRestock = [decoder decodeBoolForKey: @"disableRestock"];
-        self.reclickDelay = [decoder decodeFloatForKey: @"reclickDelay"];
+        self.reclickDelay = [decoder decodeDoubleForKey: @"reclickDelay"];
         self.hidden = [decoder decodeBoolForKey: @"hidden"];
         self.position = NSPointToCGPoint([decoder decodePointForKey: @"position"]);
         self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth + 8.0f, kCardHeight + 8.0f);
@@ -94,7 +99,7 @@ extern NSImage* flippedCardImage;
     [encoder encodeInteger: deckCount_ forKey: @"deckCount_"];
     [encoder encodeObject: deck_ forKey: @"deck_"];
     [encoder encodeBool: self.disableRestock forKey: @"disableRestock"];
-    [encoder encodeFloat: self.reclickDelay forKey: @"reclickDelay"];
+    [encoder encodeDouble: self.reclickDelay forKey: @"reclickDelay"];
     [encoder encodeBool: self.hidden forKey: @"hidden"];
     [encoder encodePoint: NSPointFromCGPoint(self.position) forKey: @"position"];
 }

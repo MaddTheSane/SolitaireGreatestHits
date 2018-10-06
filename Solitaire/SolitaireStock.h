@@ -38,13 +38,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly) BOOL canRefillStock;
 @end
 
-@interface SolitaireStock : SolitaireSprite <NSCoding> {
+@interface SolitaireStock : SolitaireSprite <NSSecureCoding> {
 @public
     BOOL disableRestock;
     NSTimeInterval reclickDelay;
 
 @private
-    NSMutableArray* deck_;
+    NSMutableArray<SolitaireCard*>* deck_;
     NSInteger deckCount_;
     BOOL blockReclick_;
     

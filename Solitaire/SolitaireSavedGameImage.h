@@ -21,7 +21,7 @@
 
 @class SolitaireCardContainer;
 
-@interface SolitaireSavedGameImage : NSObject <NSCoding> {
+@interface SolitaireSavedGameImage : NSObject <NSSecureCoding> {
 @private
     NSString* gameName_;
     NSInteger gameSeed_;
@@ -34,7 +34,7 @@
 -(id) initWithCoder: (NSCoder*) decoder;
 -(void) encodeWithCoder: (NSCoder*) encoder;
 
--(NSString*) gameName;
+@property (readonly, copy) NSString *gameName;
 
 -(void) archiveGameScore: (NSInteger)value;
 -(NSInteger) unarchiveGameScore;

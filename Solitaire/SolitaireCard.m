@@ -96,6 +96,11 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
     return self;
 }
 
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
 -(id) initWithCoder: (NSCoder*) decoder {
 
     // Card images should already be loaded.
@@ -107,10 +112,10 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
         self.position = self.homeLocation;
         self.flipped = [decoder decodeBoolForKey: @"flipped"];
         self.draggable = [decoder decodeBoolForKey: @"draggable"];
-        self.container = [decoder decodeObjectForKey: @"container"];
+        self.container = [decoder decodeObjectOfClass:[SolitaireCardContainer class] forKey: @"container"];
         self.zPosition = [decoder decodeIntForKey: @"zPosition"];
         self.hidden = [decoder decodeBoolForKey: @"hidden"];
-        self.nextCard = [decoder decodeObjectForKey: @"nextCard"];
+        self.nextCard = [decoder decodeObjectOfClass:[SolitaireCard class] forKey: @"nextCard"];
         
         self.dragging = NO;
         self.anchorPoint = CGPointMake(0.0f, 0.0f);

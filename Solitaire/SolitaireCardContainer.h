@@ -28,11 +28,11 @@ NS_ASSUME_NONNULL_BEGIN
 @class SolitaireView;
 @class SolitaireCard;
 
-@interface SolitaireCardContainer : SolitaireSprite <NSCoding> {
+@interface SolitaireCardContainer : SolitaireSprite <NSSecureCoding> {
     NSString* text;
 
 @protected
-    NSMutableArray* cards_;
+    NSMutableArray<SolitaireCard*>* cards_;
 }
 
 @property(nonatomic, copy, nullable) NSString* text;

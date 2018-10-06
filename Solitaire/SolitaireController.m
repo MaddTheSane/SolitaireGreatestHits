@@ -211,7 +211,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         return NO;
     }
     SolitaireSavedGameImage* gameImage;
-    if (/*@available(macOS 10.13, *)*//* DISABLES CODE */ (NO)) {
+    if (@available(macOS 10.13, *)) {
         // SolitaireSavedGameImage must conform to NSSecureCoding before we can do this!
         gameImage = [NSKeyedUnarchiver unarchivedObjectOfClass:[SolitaireSavedGameImage class] fromData:localData error:error];
         if (!gameImage) {
