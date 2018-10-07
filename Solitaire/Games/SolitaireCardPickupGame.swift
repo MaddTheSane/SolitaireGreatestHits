@@ -23,6 +23,14 @@ class SolitaireCardPickupGame: SolitaireGame {
         stock = SolitaireStock()
     }
     
+    override var didLose: Bool {
+        return false
+    }
+    
+    override var didWin: Bool {
+        return false
+    }
+    
     override func layoutGameComponents() {
         
     }
@@ -32,6 +40,22 @@ class SolitaireCardPickupGame: SolitaireGame {
     }
     
     override func autoFinish() {
+        
+    }
+    
+    override func reset() {
+        
+    }
+    
+    override func generateSavedGameImage() -> SolitaireSavedGameImage {
+        let saveGame = super.generateSavedGameImage()
+        
+        return saveGame
+    }
+    
+    override func load(_ gameImage: SolitaireSavedGameImage) {
+        super.load(gameImage)
+        
         
     }
     
