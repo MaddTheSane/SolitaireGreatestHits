@@ -30,10 +30,10 @@
 "73.title" = "Close";
 
 /* Class = "NSMenuItem"; title = "Save Game..."; ObjectID = "75"; */
-"75.title" = "Save Game...";
+"75.title" = "Save Game…";
 
 /* Class = "NSMenuItem"; title = "Page Setup..."; ObjectID = "77"; */
-"77.title" = "Page Setup...";
+"77.title" = "Page Setup…";
 
 /* Class = "NSMenuItem"; title = "Print…"; ObjectID = "78"; */
 "78.title" = "Print…";
