@@ -487,6 +487,7 @@ Gw
                     </textField>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="eBn-ra-5So" firstAttribute="top" secondItem="eQL-4P-d7C" secondAttribute="bottom" constant="4" id="1TD-lg-Ag9"/>
                     <constraint firstItem="EBt-dx-rxd" firstAttribute="leading" secondItem="aJ8-KI-YsA" secondAttribute="leading" constant="16" id="1uE-GA-F4V"/>
                     <constraint firstItem="jam-bt-gHA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EBt-dx-rxd" secondAttribute="trailing" constant="12" symbolic="YES" id="2FB-0M-cXG"/>
                     <constraint firstItem="ZU5-ta-JHL" firstAttribute="width" secondItem="jam-bt-gHA" secondAttribute="width" id="2ds-zv-D9Q"/>
@@ -504,7 +505,6 @@ Gw
                     <constraint firstItem="eQL-4P-d7C" firstAttribute="top" secondItem="aJ8-KI-YsA" secondAttribute="top" constant="20" symbolic="YES" id="np0-e3-evi"/>
                     <constraint firstItem="sJn-9Q-wuR" firstAttribute="leading" secondItem="aJ8-KI-YsA" secondAttribute="leading" constant="20" symbolic="YES" id="wPS-ia-AED"/>
                     <constraint firstAttribute="trailing" secondItem="ZU5-ta-JHL" secondAttribute="trailing" constant="20" symbolic="YES" id="x94-Ad-3lx"/>
-                    <constraint firstItem="b12-66-Yxg" firstAttribute="top" secondItem="sJn-9Q-wuR" secondAttribute="bottom" constant="8" symbolic="YES" id="xMn-dq-nMh"/>
                 </constraints>
             </view>
             <connections>
@@ -524,7 +524,7 @@ Gw
                         <rect key="frame" x="20" y="20" width="550" height="393"/>
                         <clipView key="contentView" drawsBackground="NO" id="YSr-EF-kGM">
                             <rect key="frame" x="1" y="1" width="548" height="391"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" id="p0y-qf-zXI">
                                     <rect key="frame" x="0.0" y="0.0" width="548" height="391"/>
