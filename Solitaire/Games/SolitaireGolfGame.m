@@ -69,16 +69,16 @@
     CGFloat viewHeight = [self view].layer.frame.size.height;
     
     // Layout Stock
-    stock_.position = CGPointMake(viewWidth / 25.0f, viewHeight / 25.0f);
+    stock_.position = CGPointMake(viewWidth / 25.0, viewHeight / 25.0);
     
     // Layout Foundation
-    foundation_.position = CGPointMake(viewWidth / 25.0f + 2 * kCardWidth, viewHeight / 25.0f);
+    foundation_.position = CGPointMake(viewWidth / 25.0 + 2 * kCardWidth, viewHeight / 25.0);
     
     // Layout Tableau
     int i;
-    CGFloat tableauX = viewWidth / 25.0f;
-    CGFloat tableauY = viewHeight - 4.0f/ 3.0f * kCardHeight;
-    CGFloat tableauSpacing = (viewWidth - 7 * kCardWidth - 2 * (viewWidth / 25.0f)) / 6.0f;
+    CGFloat tableauX = viewWidth / 25.0;
+    CGFloat tableauY = viewHeight - 4.0 / 3.0 * kCardHeight;
+    CGFloat tableauSpacing = (viewWidth - 7 * kCardWidth - 2 * (viewWidth / 25.0)) / 6.0;
 
     for(i = 0; i < 7; i++) {
         tableau_[i].position = CGPointMake(tableauX + i * (kCardWidth + tableauSpacing), tableauY);
@@ -223,7 +223,7 @@
 
 -(void) returnCard: (SolitaireCard*)card toStock: (SolitaireStock*)stock {
     [CATransaction begin];
-    [CATransaction setValue: [NSNumber numberWithFloat: 1.0f] forKey: kCATransactionAnimationDuration];
+    [CATransaction setValue: @1.0 forKey: kCATransactionAnimationDuration];
     [stock addCard: card];
     [CATransaction commit];
     [stock setNeedsDisplay];

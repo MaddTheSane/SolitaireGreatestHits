@@ -65,7 +65,7 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
     if((self = [super init]) != nil) {
         suit_ = suit;
         faceValue_ = faceValue;
-        self.homeLocation = CGPointMake(0.0f, 0.0f);
+        self.homeLocation = CGPointMake(0.0, 0.0);
         self.position = homeLocation;
         self.flipped = NO;
         self.draggable = YES;
@@ -75,12 +75,12 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
         self.nextCard = nil;
         
         self.dragging = NO;
-        self.anchorPoint = CGPointMake(0.0f, 0.0f);
+        self.anchorPoint = CGPointMake(0.0, 0.0);
         self.needsDisplayOnBoundsChange = YES;
         self.bounds = CGRectMake(0, 0, kCardWidth, kCardHeight);
         self.doubleSided = NO;
-        self.shadowRadius = 6.0f;
-        self.shadowOpacity = 0.75f;
+        self.shadowRadius = 6.0;
+        self.shadowOpacity = 0.75;
         
          // Create image.
         frontImage_ = [[NSImage alloc] initWithSize: NSMakeSize(kCardWidth, kCardHeight)];
@@ -118,12 +118,12 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
         self.nextCard = [decoder decodeObjectOfClass:[SolitaireCard class] forKey: @"nextCard"];
         
         self.dragging = NO;
-        self.anchorPoint = CGPointMake(0.0f, 0.0f);
+        self.anchorPoint = CGPointMake(0.0, 0.0);
         self.needsDisplayOnBoundsChange = YES;
         self.bounds = CGRectMake(0, 0, kCardWidth, kCardHeight);
         self.doubleSided = NO;
-        self.shadowRadius = 6.0f;
-        self.shadowOpacity = 0.75f;
+        self.shadowRadius = 6.0;
+        self.shadowOpacity = 0.75;
         
          // Create image.
         frontImage_ = [[NSImage alloc] initWithSize: NSMakeSize(kCardWidth, kCardHeight)];
@@ -187,24 +187,24 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
    
     // Draw Card
     if(!flipped) {
-        [frontImage_ drawInRect: dstRect fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0f];
+        [frontImage_ drawInRect: dstRect fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0];
     }
     else {
-        [flippedCardImage drawInRect: dstRect fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0f];
+        [flippedCardImage drawInRect: dstRect fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0];
     }
     
     // Highlight card.
     if(self.selected && self.draggable) {
         NSBezierPath* path = [NSBezierPath bezierPath];
-        [path setLineWidth: 3.0f];
+        [path setLineWidth: 3.0];
         NSRect highlightRect = NSMakeRect(self.bounds.origin.x, self.bounds.origin.x, self.bounds.size.width, self.bounds.size.height);//NSMakeRect(5, 5, kCardWidth - 4.0f, kCardHeight - 4.0f);
-        [path appendBezierPathWithRoundedRect: highlightRect xRadius: 12.0f yRadius: 12.0f];
+        [path appendBezierPathWithRoundedRect: highlightRect xRadius: 12.0 yRadius: 12.0];
         
-        NSColor* fillColor = [NSColor colorWithCalibratedRed: 1.0f green: 1.0f blue: 1.0f alpha: 0.25f];
+        NSColor* fillColor = [NSColor colorWithCalibratedWhite: 1.0 alpha: 0.25];
         [fillColor setFill];
         [path fill];
         
-        NSColor* borderColor = [NSColor colorWithCalibratedRed: 0.9f green: 0.92f blue: 0.54f alpha: 1.0f];
+        NSColor* borderColor = [NSColor colorWithCalibratedRed: 0.9 green: 0.92 blue: 0.54 alpha: 1.0];
         [borderColor setStroke];
         [path stroke];
     }
@@ -320,7 +320,7 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
     if([key isEqualToString: @"position"]) {
         CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath: @"position"];
         anim.delegate = self; //to get the animationDidStop:finished: message
-        anim.duration = 0.2f;
+        anim.duration = 0.2;
         return anim;
     }
     return [CABasicAnimation defaultValueForKey: key];

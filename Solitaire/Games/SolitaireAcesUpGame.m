@@ -69,7 +69,7 @@
 -(void) layoutGameComponents {
     CGFloat viewWidth = [[self view] frame].size.width;
     CGFloat viewHeight = [[self view] frame].size.height;
-    CGFloat cardSpacing = (viewWidth - 8 * kCardWidth - 2 * (viewWidth / 25.0f)) / 7.0f;
+    CGFloat cardSpacing = (viewWidth - 8 * kCardWidth - 2 * (viewWidth / 25.0)) / 7.0;
 
     // Layout Stock
     stock_.position = CGPointMake((viewWidth - 6 * kCardWidth - 5 * cardSpacing) / 2.0, (viewHeight - 1.25 * kCardHeight));
@@ -242,7 +242,7 @@
 
 -(void) returnCards: (NSArray*)cards toStock: (SolitaireStock*)stock {
     [CATransaction begin];
-    [CATransaction setValue: [NSNumber numberWithFloat: 1.0f] forKey: kCATransactionAnimationDuration];
+    [CATransaction setValue: @1.0 forKey: kCATransactionAnimationDuration];
     for(SolitaireCard* card in cards) {
         [stock_ addCard: card];
     }

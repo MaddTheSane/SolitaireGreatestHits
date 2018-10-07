@@ -30,9 +30,9 @@
 
 -(id) init {
     if((self = [super init]) != nil) {
-        self.position = CGPointMake(0.0f, 0.0f);
-        self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth, kCardHeight);
-        self.anchorPoint = CGPointMake(0.0f, 0.0f);
+        self.position = CGPointMake(0.0, 0.0);
+        self.bounds = CGRectMake(0.0, 0.0, kCardWidth, kCardHeight);
+        self.anchorPoint = CGPointMake(0.0, 0.0);
         self.zPosition = 0;
         self.hidden = NO;
 
@@ -50,8 +50,8 @@
 -(id) initWithCoder: (NSCoder*) decoder {
     if((self = [self init]) != nil) {
         self.position = NSPointToCGPoint([decoder decodePointForKey: @"position"]);
-        self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth, kCardHeight);
-        self.anchorPoint = CGPointMake(0.0f, 0.0f);
+        self.bounds = CGRectMake(0.0, 0.0, kCardWidth, kCardHeight);
+        self.anchorPoint = CGPointMake(0.0, 0.0);
         self.zPosition = [decoder decodeIntForKey: @"zPosition"];
         self.hidden = [decoder decodeIntForKey: @"hidden"];
 
@@ -78,15 +78,15 @@
             self.bounds.origin.y + 2, kCardWidth - 2, kCardHeight - 2));
     
         NSBezierPath* path = [NSBezierPath bezierPath];
-        [path setLineWidth: 2.0f];
-        [path appendBezierPathWithRoundedRect: dstRect xRadius: 9.0f yRadius: 9.0f];
+        [path setLineWidth: 2.0];
+        [path appendBezierPathWithRoundedRect: dstRect xRadius: 9.0 yRadius: 9.0];
         
-        NSColor* borderColor = [NSColor colorWithCalibratedRed: 0.85f green: 0.85f blue: 0.85f alpha: 0.5f];
+        NSColor* borderColor = [NSColor colorWithCalibratedWhite: 0.85 alpha: 0.5];
         [borderColor setStroke];
         [path stroke];
         
         if(self.selected) {
-            NSColor* backgroundColor = [NSColor colorWithCalibratedRed: 0.85f green: 0.85f blue: 0.85f alpha: 0.15f];
+            NSColor* backgroundColor = [NSColor colorWithCalibratedWhite: 0.85 alpha: 0.15];
             [backgroundColor setFill];
             [path fill];
         }
@@ -94,11 +94,12 @@
         if(self.text != nil) {
             NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
             [style setAlignment: NSCenterTextAlignment];
-            NSDictionary *attributes = [[NSDictionary alloc] initWithObjectsAndKeys:
-                [NSFont fontWithName:@"Helvetica" size: 48], NSFontAttributeName,
-                borderColor, NSForegroundColorAttributeName, style, NSParagraphStyleAttributeName, nil];
+            NSDictionary *attributes = @{
+                                         NSFontAttributeName: [NSFont fontWithName:@"Helvetica" size: 48],
+                                         NSForegroundColorAttributeName: borderColor,
+                                         NSParagraphStyleAttributeName: style};
     
-            CGFloat newHeight = 4.0f * dstRect.size.height / 10.0f;
+            CGFloat newHeight = 4.0 * dstRect.size.height / 10.0;
             dstRect.size.height = newHeight;
             dstRect.origin.y += newHeight;
         

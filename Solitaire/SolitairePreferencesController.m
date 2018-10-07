@@ -79,7 +79,7 @@
 }
 
 -(IBAction) onDefaultClicked: (id)sender {
-    [colorWell setColor:[NSColor colorWithCalibratedRed: 0.12f green: 0.64f blue: 0.33f alpha: 1.0f]];
+    [colorWell setColor:[NSColor colorWithCalibratedRed: 0.12 green: 0.64 blue: 0.33 alpha: 1.0]];
     [_backgroundPopup selectItemAtIndex:0];
 }
 

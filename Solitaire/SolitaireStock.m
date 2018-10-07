@@ -51,12 +51,12 @@ extern NSImage* flippedCardImage;
         blockReclick_ = NO;
         
         self.disableRestock = NO;
-        self.reclickDelay = 0.2f;
+        self.reclickDelay = 0.2;
         self.hidden = NO;
-        self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth + 8.0f, kCardHeight + 8.0f);
-        self.anchorPoint = CGPointMake(0.0f, 0.0f);
-        self.shadowRadius = 5.0f;
-        self.shadowOpacity = 1.0f;
+        self.bounds = CGRectMake(0.0, 0.0, kCardWidth + 8.0, kCardHeight + 8.0);
+        self.anchorPoint = CGPointMake(0.0, 0.0);
+        self.shadowRadius = 5.0;
+        self.shadowOpacity = 1.0;
         [self reset];
         
         // Load images
@@ -83,10 +83,10 @@ extern NSImage* flippedCardImage;
         self.reclickDelay = [decoder decodeDoubleForKey: @"reclickDelay"];
         self.hidden = [decoder decodeBoolForKey: @"hidden"];
         self.position = NSPointToCGPoint([decoder decodePointForKey: @"position"]);
-        self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth + 8.0f, kCardHeight + 8.0f);
-        self.anchorPoint = CGPointMake(0.0f, 0.0f);
-        self.shadowRadius = 5.0f;
-        self.shadowOpacity = 1.0f;
+        self.bounds = CGRectMake(0.0, 0.0, kCardWidth + 8.0, kCardHeight + 8.0);
+        self.anchorPoint = CGPointMake(0.0, 0.0);
+        self.shadowRadius = 5.0;
+        self.shadowOpacity = 1.0;
         
         // Load images
         reloadImage_ = [NSImage imageNamed:@"Reload"];
@@ -180,36 +180,36 @@ extern NSImage* flippedCardImage;
 
 -(void) drawSprite {
     if([self isEmpty]) {
-        NSColor* borderColor = [NSColor colorWithCalibratedRed: 0.85f green: 0.85f blue: 0.85f alpha: 0.5f];
+        NSColor* borderColor = [NSColor colorWithCalibratedWhite: 0.85 alpha: 0.5];
         [borderColor setStroke];
         
-        NSRect dstRect = NSRectFromCGRect(CGRectMake(self.bounds.origin.x + 2.0f,
-            self.bounds.origin.y + 2.0f, kCardWidth, kCardHeight));
+        NSRect dstRect = NSRectFromCGRect(CGRectMake(self.bounds.origin.x + 2.0,
+            self.bounds.origin.y + 2.0, kCardWidth, kCardHeight));
                     
         NSBezierPath* path = [NSBezierPath bezierPath];
-        [path appendBezierPathWithRoundedRect: dstRect xRadius: 9.0f yRadius: 9.0f];
-        [path setLineWidth: 2.0f];
+        [path appendBezierPathWithRoundedRect: dstRect xRadius: 9.0 yRadius: 9.0];
+        [path setLineWidth: 2.0];
         [path stroke];
         
         // Draw Image
         if(!self.disableRestock && delegate_ && [delegate_ canRefillStock]) {
             [reloadImage_ drawInRect: NSMakeRect((self.bounds.size.width - 54) / 2.0, (self.bounds.size.height - 54) / 2.0, 50, 50)
-                fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0f];
+                fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0];
         }
         else {
             [emptyImage_ drawInRect: NSMakeRect((self.bounds.size.width - 54) / 2.0, (self.bounds.size.height - 54) / 2.0, 50, 50)
-                fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0f];
+                fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0];
         }
     }
     else {
         int i;
-        CGFloat dx = -2.0f;
-        CGFloat dy = 2.0f;
-        NSRect srcRect = NSMakeRect(1.0f, 3.0f, kCardWidth, kCardHeight); 
+        CGFloat dx = -2.0;
+        CGFloat dy = 2.0;
+        NSRect srcRect = NSMakeRect(1.0, 3.0, kCardWidth, kCardHeight);
         
         for(i = 2; i >= 0; i--) {
-            NSRect dstRect = NSMakeRect(6.0f - i * dx, (2-i) * dy, kCardWidth, kCardHeight);
-            [flippedCardImage drawInRect: dstRect fromRect: srcRect operation: NSCompositeSourceOver fraction: 1.0f];
+            NSRect dstRect = NSMakeRect(6.0 - i * dx, (2-i) * dy, kCardWidth, kCardHeight);
+            [flippedCardImage drawInRect: dstRect fromRect: srcRect operation: NSCompositeSourceOver fraction: 1.0];
         }
         
         // Draw card count indication.

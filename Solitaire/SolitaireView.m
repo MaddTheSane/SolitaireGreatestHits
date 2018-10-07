@@ -66,7 +66,7 @@
     backgroundImage_ = [[NSImage alloc] initWithSize: NSSizeFromCGSize(self.layer.bounds.size)];
     [backgroundImage_ lockFocus];
     
-    NSRect rect = NSMakeRect(0.0f, 0.0f, [backgroundImage_ size].width, [backgroundImage_ size].height);
+    NSRect rect = NSMakeRect(0.0, 0.0, [backgroundImage_ size].width, [backgroundImage_ size].height);
     [color set];
     [NSBezierPath fillRect: rect];
     
@@ -88,7 +88,7 @@
     for(k = 0; k < grainCount; k++) {
         // Set grain color
         CGFloat r = 1.0 + (0.1 - 0.2 * (CGFloat)rand()/RAND_MAX); // Color variation
-        [[NSColor colorWithCalibratedRed: ourColor.redComponent * r green: ourColor.greenComponent * r blue: ourColor.blueComponent * r alpha: 1.0f] set];
+        [[NSColor colorWithCalibratedRed: ourColor.redComponent * r green: ourColor.greenComponent * r blue: ourColor.blueComponent * r alpha: 1.0] set];
         
         // Pick grain position
         int grainX = (int)((CGFloat)rand()/RAND_MAX * w);
@@ -100,8 +100,8 @@
     }
     
     // Paint Gradient
-    NSGradient* gradient = [[NSGradient alloc] initWithStartingColor: [NSColor colorWithCalibratedRed: 1.0f green: 1.0f blue: 1.0f alpha: 0.5f]
-        endingColor: [NSColor colorWithCalibratedRed: 0.0f green: 0.0f blue: 0.0f alpha: 0.5f]];
+    NSGradient* gradient = [[NSGradient alloc] initWithStartingColor: [NSColor colorWithCalibratedRed: 1.0 green: 1.0 blue: 1.0 alpha: 0.5]
+        endingColor: [NSColor colorWithCalibratedRed: 0.0 green: 0.0 blue: 0.0 alpha: 0.5]];
     [gradient drawInRect: rect relativeCenterPosition: NSZeroPoint];
     
     [backgroundImage_ unlockFocus];
@@ -273,7 +273,7 @@
 
 -(SolitaireCardContainer*) findContainerIntersectingCard: (SolitaireCard*)card {
     SolitaireCardContainer* intersectingContainer = nil;
-    CGFloat maxDist = 0.0f;
+    CGFloat maxDist = 0.0;
     NSRect cardRect = NSRectFromCGRect(card.frame);
 
     for(SolitaireCardContainer* container in [self containers]) {

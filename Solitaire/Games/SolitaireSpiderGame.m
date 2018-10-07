@@ -47,7 +47,7 @@
 -(void) initializeGame {    
     // Init Stock
     stock_ = [[SolitaireStock alloc] initWithDeckCount: 2];
-    stock_.reclickDelay = 2.5f;
+    stock_.reclickDelay = 2.5;
     [stock_ setStockDelegate: self];
     [[self view] addSprite: stock_];
     
@@ -72,26 +72,26 @@
 
 -(void) layoutGameComponents {
     CGFloat viewWidth = [self view].frame.size.width;
-    if(viewWidth < 11.0f * kCardWidth) viewWidth = 11.0f * kCardWidth;
+    if(viewWidth < 11.0 * kCardWidth) viewWidth = 11.0 * kCardWidth;
     
     CGFloat viewHeight = [self view].frame.size.height;
     
     // Layout Stock
-    stock_.position = CGPointMake(viewWidth / 25.0f, (viewHeight - kCardHeight) - viewHeight / 25.0f);
+    stock_.position = CGPointMake(viewWidth / 25.0, (viewHeight - kCardHeight) - viewHeight / 25.0);
     
     // Layout Foundations
     int i;
-    CGFloat foundationX = viewWidth - kCardWidth - viewWidth / 25.0f;
-    CGFloat foundationY = (viewHeight - kCardHeight) - viewHeight / 25.0f;
+    CGFloat foundationX = viewWidth - kCardWidth - viewWidth / 25.0;
+    CGFloat foundationY = (viewHeight - kCardHeight) - viewHeight / 25.0;
 
     for(i = 7; i >= 0; i--) {
-        foundation_[i].position = CGPointMake(foundationX - i * (8.0f / 7.0f * kCardWidth), foundationY);
+        foundation_[i].position = CGPointMake(foundationX - i * (8.0 / 7.0 * kCardWidth), foundationY);
     }
     
     // Layout Tableau
-    CGFloat tableauX = viewWidth / 75.0f;
-    CGFloat tableauY = foundationY - (5.0f / 4.0f * kCardHeight);
-    CGFloat tableauSpacing = (viewWidth - 10 * kCardWidth - 2 * (viewWidth / 75.0f)) / 9.0f;
+    CGFloat tableauX = viewWidth / 75.0;
+    CGFloat tableauY = foundationY - (5.0 / 4.0 * kCardHeight);
+    CGFloat tableauSpacing = (viewWidth - 10 * kCardWidth - 2 * (viewWidth / 75.0)) / 9.0;
 
     for(i = 0; i < 10; i++) {
         tableau_[i].position = CGPointMake(tableauX + i * (kCardWidth + tableauSpacing), tableauY);
@@ -284,7 +284,7 @@
 
 -(void) returnCards: (NSArray*)cards toStock: (SolitaireStock*)stock {
     [CATransaction begin];
-    [CATransaction setValue: [NSNumber numberWithFloat: 1.0f] forKey: kCATransactionAnimationDuration];
+    [CATransaction setValue: @1.0 forKey: kCATransactionAnimationDuration];
     for(SolitaireCard* card in cards) {
         [stock_ addCard: card];
     }

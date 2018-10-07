@@ -163,7 +163,7 @@
 
 -(id) initWithDrawCount: (NSInteger)drawCount; {
     if((self = [super init]) != nil) {
-        self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth, kCardHeight);
+        self.bounds = CGRectMake(0.0, 0.0, kCardWidth, kCardHeight);
         
         drawCount_ = drawCount;
         currentPos_ = -1;
@@ -179,7 +179,7 @@
 
 -(id) initWithCoder: (NSCoder*) decoder {
     if((self = [super initWithCoder: decoder]) != nil) {
-        self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth, kCardHeight);
+        self.bounds = CGRectMake(0.0, 0.0, kCardWidth, kCardHeight);
 
         drawCount_ = [decoder decodeIntegerForKey: @"drawCount_"];
         currentPos_ = [decoder decodeIntegerForKey: @"currentPos"];
@@ -235,7 +235,7 @@
 }
 
 -(CGFloat) cardHorizSpacing {
-    return kCardWidth / 3.0f;
+    return kCardWidth / 3.0;
 }
 
 -(void) onStock: (SolitaireStock*) stock clicked: (NSInteger)clickCount {
@@ -254,7 +254,7 @@
 -(void) hideVisibleCards {
     if([self.visibleCards count] > 0) {
         [CATransaction begin];
-        [CATransaction setValue: [NSNumber numberWithFloat: 1.0f] forKey: kCATransactionAnimationDuration];
+        [CATransaction setValue: @1.0 forKey: kCATransactionAnimationDuration];
         for(SolitaireCard* card in self.visibleCards) {
             card.hidden = YES;
             card.draggable = NO;

@@ -79,12 +79,12 @@
     CGFloat viewWidth = [[self view] frame].size.width;
     CGFloat viewHeight = [[self view] frame].size.height;
     
-    CGFloat foundationSpacing = (viewWidth - 10 * kCardWidth) / 11.0f;
+    CGFloat foundationSpacing = (viewWidth - 10 * kCardWidth) / 11.0;
     
     // Layout Foundations
     int i;
     CGFloat foundationX = foundationSpacing;
-    CGFloat foundationY = (viewHeight - kCardHeight) - viewHeight / 25.0f;
+    CGFloat foundationY = (viewHeight - kCardHeight) - viewHeight / 25.0;
 
     for(i = 0; i < 4; i++) {
         foundation_[i].position = CGPointMake(foundationX + i * (kCardWidth + foundationSpacing), foundationY);
@@ -102,9 +102,9 @@
 
     
     // Layout Tableau
-    CGFloat tableauX = viewWidth / 75.0f;
-    CGFloat tableauY = foundationY - (5.0f / 4.0f * kCardHeight);
-    CGFloat tableauSpacing = (viewWidth - 10 * kCardWidth - 2 * (viewWidth / 75.0f)) / 9.0f;
+    CGFloat tableauX = viewWidth / 75.0;
+    CGFloat tableauY = foundationY - (5.0 / 4.0 * kCardHeight);
+    CGFloat tableauSpacing = (viewWidth - 10 * kCardWidth - 2 * (viewWidth / 75.0)) / 9.0;
 
     for(i = 0; i < 10; i++) {
         tableau_[i].position = CGPointMake(tableauX + i * (kCardWidth + tableauSpacing), tableauY);
@@ -213,7 +213,7 @@
         if(foundation != nil) {
             if(card.flipped) card.flipped = NO;
             [self dropCard: card inContainer: foundation];
-            [self performSelector: @selector(autoFinishGame) withObject: nil afterDelay: 0.2f];
+            [self performSelector: @selector(autoFinishGame) withObject: nil afterDelay: 0.2];
             return;
         }
     }
@@ -223,7 +223,7 @@
     SolitaireFoundation* foundation = [self findFoundationForCard: card];
     if(foundation != nil) {
         [self dropCard: card inContainer: foundation];
-        [self performSelector: @selector(autoFinishGame) withObject: nil afterDelay: 0.2f];
+        [self performSelector: @selector(autoFinishGame) withObject: nil afterDelay: 0.2];
         return;
     }
 }

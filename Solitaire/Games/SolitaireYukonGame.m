@@ -69,17 +69,17 @@
     
     // Layout Foundations
     int i;
-    CGFloat foundationX = viewWidth - kCardWidth - viewWidth / 25.0f;
-    CGFloat foundationY = (viewHeight - kCardHeight) - viewHeight / 25.0f;
+    CGFloat foundationX = viewWidth - kCardWidth - viewWidth / 25.0;
+    CGFloat foundationY = (viewHeight - kCardHeight) - viewHeight / 25.0;
 
     for(i = 3; i >= 0; i--) {
-        foundation_[i].position = CGPointMake(foundationX - i * (3.0f / 2.0f * kCardWidth), foundationY);
+        foundation_[i].position = CGPointMake(foundationX - i * (3.0 / 2.0 * kCardWidth), foundationY);
     }
     
     // Layout Tableau
-    CGFloat tableauX = viewWidth / 25.0f;
-    CGFloat tableauY = foundationY - (5.0f / 4.0f * kCardHeight);
-    CGFloat tableauSpacing = (viewWidth - 7 * kCardWidth - 2 * (viewWidth / 25.0f)) / 6.0f;
+    CGFloat tableauX = viewWidth / 25.0;
+    CGFloat tableauY = foundationY - (5.0 / 4.0 * kCardHeight);
+    CGFloat tableauSpacing = (viewWidth - 7 * kCardWidth - 2 * (viewWidth / 25.0)) / 6.0;
     
     for(i = 0; i < 7; i++) {
         tableau_[i].position = CGPointMake(tableauX + i * (kCardWidth + tableauSpacing), tableauY);
@@ -181,7 +181,7 @@
         if(foundation != nil) {
             if(card.flipped) card.flipped = NO;
             [self dropCard: card inContainer: foundation];
-            [self performSelector: @selector(autoFinishGame) withObject: nil afterDelay: 0.2f];
+            [self performSelector: @selector(autoFinishGame) withObject: nil afterDelay: 0.2];
             return;
         }
     }

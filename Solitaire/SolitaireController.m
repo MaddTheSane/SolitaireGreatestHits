@@ -82,7 +82,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [defaultValues setObject:@0 forKey: @"selectedGameIndex"];
 
     NSData* colorAsData = [NSKeyedArchiver archivedDataWithRootObject: 
-        [NSColor colorWithCalibratedRed: 0.12f green: 0.64f blue: 0.33f alpha: 1.0f]];
+        [NSColor colorWithCalibratedRed: 0.12 green: 0.64 blue: 0.33 alpha: 1.0]];
         
     [defaultValues setObject: colorAsData forKey: @"backgroundColor"];
     [defaultValues setObject:@"CardBack1" forKey: @"cardBack"];

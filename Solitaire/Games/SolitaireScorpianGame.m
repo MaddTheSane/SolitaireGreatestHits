@@ -44,7 +44,7 @@
     // Init Stock
     stock_ = [[SolitaireStock alloc] init];
     stock_.disableRestock = YES;
-    stock_.reclickDelay = 1.5f;
+    stock_.reclickDelay = 1.5;
     [stock_ setStockDelegate: self];
     [[self view] addSprite: stock_];
         
@@ -66,12 +66,12 @@
     CGFloat viewHeight = [self view].layer.frame.size.height;
     
     // Layout Stock
-    stock_.position = CGPointMake(viewWidth / 25.0f, viewHeight / 25.0f);
+    stock_.position = CGPointMake(viewWidth / 25.0, viewHeight / 25.0);
         
     int i;
-    CGFloat tableauX = viewWidth / 75.0f;
-    CGFloat tableauY = viewHeight - 4.0f/ 3.0f * kCardHeight;
-    CGFloat tableauSpacing = (viewWidth - 8 * kCardWidth - 2 * (viewWidth / 75.0f)) / 7.0f;
+    CGFloat tableauX = viewWidth / 75.0;
+    CGFloat tableauY = viewHeight - 4.0 / 3.0 * kCardHeight;
+    CGFloat tableauSpacing = (viewWidth - 8 * kCardWidth - 2 * (viewWidth / 75.0)) / 7.0;
 
     // Layout Stock
     stock_.position = CGPointMake(tableauX, tableauY);
@@ -218,7 +218,7 @@
 
 -(void) returnCards: (NSArray*)cards toStock: (SolitaireStock*)stock {
     [CATransaction begin];
-    [CATransaction setValue: [NSNumber numberWithFloat: 1.0f] forKey: kCATransactionAnimationDuration];
+    [CATransaction setValue: @1.0 forKey: kCATransactionAnimationDuration];
     for(SolitaireCard* card in cards) {
         [stock_ addCard: card];
     }

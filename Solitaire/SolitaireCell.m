@@ -27,7 +27,7 @@
 
 -(id) init {
     if((self = [super init]) != nil) {
-        self.bounds = CGRectMake(0.0f, 0.0f, kCardWidth + 4, kCardHeight + 4);
+        self.bounds = CGRectMake(0.0, 0.0, kCardWidth + 4, kCardHeight + 4);
     }
     return self;
 }

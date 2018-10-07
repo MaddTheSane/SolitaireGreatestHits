@@ -87,25 +87,25 @@
     CGFloat viewHeight = [[self view] frame].size.height;
 
     // Layout Stock
-    stock_.position = CGPointMake(kCardWidth / 3.0f, kCardHeight / 3.0f);
+    stock_.position = CGPointMake(kCardWidth / 3.0, kCardHeight / 3.0);
     
     // Layout Wastes
-    waste_[0].position = CGPointMake(stock_.position.x + 2.0f * kCardWidth, stock_.position.y);
-    waste_[1].position = CGPointMake(stock_.position.x + 3.5f * kCardWidth, stock_.position.y);
+    waste_[0].position = CGPointMake(stock_.position.x + 2.0 * kCardWidth, stock_.position.y);
+    waste_[1].position = CGPointMake(stock_.position.x + 3.5 * kCardWidth, stock_.position.y);
     
     // Layout Foundation
-    foundation_.position = CGPointMake(viewWidth - 1.333 * kCardWidth, kCardHeight / 3.0f);
+    foundation_.position = CGPointMake(viewWidth - 1.333 * kCardWidth, kCardHeight / 3.0);
         
     // Layout Tableau
-    CGFloat tableauX = viewWidth / 2.0f - kCardWidth / 2.0f;
-    CGFloat tableauY = viewHeight - 5.0f / 4.0f * kCardHeight;
+    CGFloat tableauX = viewWidth / 2.0 - kCardWidth / 2.0;
+    CGFloat tableauY = viewHeight - 5.0 / 4.0 * kCardHeight;
 
     int i, j;
     int index = 0;
     for(j = 1; j <= 7; j++) {
         for(i = 0; i < j; i++) {
-            tableau_[index].position = CGPointMake(tableauX - (j - 1) * (2.0f/ 3.0f * kCardWidth) + i * (4.0f / 3.0f * kCardWidth),
-                tableauY - (j - 1) * 1.0f / 3.0f * kCardHeight);
+            tableau_[index].position = CGPointMake(tableauX - (j - 1) * (2.0 / 3.0 * kCardWidth) + i * (4.0 / 3.0 * kCardWidth),
+                tableauY - (j - 1) * 1.0 / 3.0 * kCardHeight);
             tableau_[index].zPosition = j;
             index++;
         }
