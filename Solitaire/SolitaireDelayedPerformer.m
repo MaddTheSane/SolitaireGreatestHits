@@ -22,7 +22,7 @@
 @implementation SolitaireDelayedPerformer
 
 - (id) initWithTarget: (id)target {
-    if((self = [super init]) != nil) {
+    if (self = [super init]) {
         target_ = target;
     }
     return self;

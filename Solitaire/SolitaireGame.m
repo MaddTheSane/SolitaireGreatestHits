@@ -42,7 +42,7 @@
 @synthesize controller;
 
 -(id) initWithController: (SolitaireController*)gameController {
-    if((self = [super init]) != nil) {
+    if (self = [super init]) {
         controller = gameController;
     }
     return self;

@@ -62,7 +62,7 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
     
     LoadFlippedCardImage(NO);
     
-    if((self = [super init]) != nil) {
+    if (self = [super init]) {
         suit_ = suit;
         faceValue_ = faceValue;
         self.homeLocation = CGPointMake(0.0, 0.0);
@@ -105,7 +105,7 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
 
     // Card images should already be loaded.
 
-    if((self = [super init]) != nil) {
+    if (self = [super init]) {
         suit_ = [decoder decodeIntForKey: @"suit_"];
         faceValue_ = [decoder decodeIntForKey: @"faceValue_"];
         self.homeLocation = NSPointToCGPoint([decoder decodePointForKey: @"homeLocation"]);

@@ -26,7 +26,7 @@
 @implementation SolitaireCell
 
 -(id) init {
-    if((self = [super init]) != nil) {
+    if (self = [super init]) {
         self.bounds = CGRectMake(0.0, 0.0, kCardWidth + 4, kCardHeight + 4);
     }
     return self;

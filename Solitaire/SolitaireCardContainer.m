@@ -29,7 +29,7 @@
 @synthesize text;
 
 -(id) init {
-    if((self = [super init]) != nil) {
+    if (self = [super init]) {
         self.position = CGPointMake(0.0, 0.0);
         self.bounds = CGRectMake(0.0, 0.0, kCardWidth, kCardHeight);
         self.anchorPoint = CGPointMake(0.0, 0.0);
@@ -48,7 +48,7 @@
 }
 
 -(id) initWithCoder: (NSCoder*) decoder {
-    if((self = [self init]) != nil) {
+    if (self = [self init]) {
         self.position = NSPointToCGPoint([decoder decodePointForKey: @"position"]);
         self.bounds = CGRectMake(0.0, 0.0, kCardWidth, kCardHeight);
         self.anchorPoint = CGPointMake(0.0, 0.0);

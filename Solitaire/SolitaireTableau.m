@@ -29,7 +29,7 @@
 @synthesize acceptsDroppedCards;
 
 -(id) init {
-    if((self = [super init]) != nil) {
+    if (self = [super init]) {
         self.bounds = CGRectMake(0.0, 0.0, kCardWidth + 4, kCardHeight + 4);
         self.acceptsDroppedCards = YES;
     }
@@ -42,7 +42,7 @@
 }
 
 -(id) initWithCoder: (NSCoder*) decoder {
-    if((self = [super initWithCoder: decoder]) != nil) {
+    if (self = [super initWithCoder: decoder]) {
         self.bounds = CGRectMake(0.0, 0.0, kCardWidth + 4, kCardHeight + 4);
         self.acceptsDroppedCards = [decoder decodeBoolForKey: @"acceptsDroppedCards"];
     }

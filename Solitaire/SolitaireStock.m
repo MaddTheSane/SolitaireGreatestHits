@@ -44,7 +44,7 @@ extern NSImage* flippedCardImage;
 -(id) initWithDeckCount: (NSInteger)deckCount {
     LoadFlippedCardImage(YES);
 
-    if((self = [super init]) != nil) {
+    if (self = [super init]) {
         delegate_ = nil;
         deckCount_ = deckCount;
         deck_ = [[NSMutableArray alloc] initWithCapacity: 52];
@@ -73,7 +73,7 @@ extern NSImage* flippedCardImage;
 
 -(id) initWithCoder: (NSCoder*) decoder {
     // Card image should already exist, so we won't load it.
-    if((self = [super init]) != nil) {
+    if (self = [super init]) {
         delegate_ = nil;
         deckCount_ = [decoder decodeIntegerForKey: @"deckCount_"];
         deck_ = [decoder decodeObjectOfClasses:[NSSet setWithObjects:[NSMutableArray class], [SolitaireCard class], nil] forKey: @"deck_"];

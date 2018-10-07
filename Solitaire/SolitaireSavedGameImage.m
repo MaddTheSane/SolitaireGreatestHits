@@ -24,7 +24,7 @@
 @implementation SolitaireSavedGameImage
 
 -(id) initWithGameName: (NSString*)name {
-    if((self = [super init]) != nil) {
+    if (self = [super init]) {
         gameName_ = [name copy];
         gameData_ = [[NSMutableDictionary alloc] initWithCapacity: 32];
         gameScore_ = 0;
@@ -39,7 +39,7 @@
 }
 
 -(id) initWithCoder: (NSCoder*) decoder {
-    if((self = [super init]) != nil) {
+    if (self = [super init]) {
         gameName_ = [decoder decodeObjectOfClass:[NSString class] forKey:@"gameName_"];
         gameData_ = [decoder decodeObjectOfClasses:[NSSet setWithObjects:[NSMutableDictionary class], [SolitaireSprite class], nil] forKey: @"gameData_"];
         gameScore_ = [decoder decodeIntegerForKey: @"gameScore_"];

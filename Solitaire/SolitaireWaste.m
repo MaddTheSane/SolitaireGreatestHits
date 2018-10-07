@@ -29,7 +29,7 @@
 @synthesize acceptsDroppedCards;
 
 -(id) init {
-    if((self = [super init]) != nil) {
+    if (self = [super init]) {
         self.acceptsDroppedCards = NO;
     }
     return self;
@@ -162,7 +162,7 @@
 @synthesize visibleCards;
 
 -(id) initWithDrawCount: (NSInteger)drawCount; {
-    if((self = [super init]) != nil) {
+    if (self = [super init]) {
         self.bounds = CGRectMake(0.0, 0.0, kCardWidth, kCardHeight);
         
         drawCount_ = drawCount;
@@ -178,7 +178,7 @@
 }
 
 -(id) initWithCoder: (NSCoder*) decoder {
-    if((self = [super initWithCoder: decoder]) != nil) {
+    if (self = [super initWithCoder: decoder]) {
         self.bounds = CGRectMake(0.0, 0.0, kCardWidth, kCardHeight);
 
         drawCount_ = [decoder decodeIntegerForKey: @"drawCount_"];

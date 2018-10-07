@@ -34,7 +34,7 @@
 @implementation SolitaireScorpianGame
 
 -(id) initWithController: (SolitaireController*)gameController {
-    if((self = [super initWithController: gameController]) != nil) {
+    if (self = [super initWithController: gameController]) {
         [self reset];
     }
     return self;
