@@ -41,7 +41,7 @@
 -(id) initWithCoder: (NSCoder*) decoder {
     if((self = [super init]) != nil) {
         gameName_ = [decoder decodeObjectOfClass:[NSString class] forKey:@"gameName_"];
-        gameData_ = [decoder decodeObjectOfClasses:[NSSet setWithObjects:[NSMutableDictionary class], [SolitaireCardContainer class], [SolitaireStock class], nil] forKey: @"gameData_"];
+        gameData_ = [decoder decodeObjectOfClasses:[NSSet setWithObjects:[NSMutableDictionary class], [SolitaireSprite class], nil] forKey: @"gameData_"];
         gameScore_ = [decoder decodeIntegerForKey: @"gameScore_"];
         gameTime_ = [decoder decodeIntegerForKey: @"gameTime_"];
         gameSeed_ = [decoder decodeIntegerForKey: @"gameSeed_"];

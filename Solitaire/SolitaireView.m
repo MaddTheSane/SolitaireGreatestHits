@@ -100,8 +100,8 @@
     }
     
     // Paint Gradient
-    NSGradient* gradient = [[NSGradient alloc] initWithStartingColor: [NSColor colorWithCalibratedRed: 1.0 green: 1.0 blue: 1.0 alpha: 0.5]
-        endingColor: [NSColor colorWithCalibratedRed: 0.0 green: 0.0 blue: 0.0 alpha: 0.5]];
+    NSGradient* gradient = [[NSGradient alloc] initWithStartingColor: [NSColor colorWithCalibratedWhite: 1.0 alpha: 0.5]
+        endingColor: [NSColor colorWithCalibratedWhite: 0.0 alpha: 0.5]];
     [gradient drawInRect: rect relativeCenterPosition: NSZeroPoint];
     
     [backgroundImage_ unlockFocus];

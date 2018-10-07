@@ -282,7 +282,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [savePanel setAllowedFileTypes: @[@"fontaine.Solitaire2.saveGame"]];
 
     [savePanel beginSheetModalForWindow:self.window completionHandler:
-	 ^(NSInteger result)
+	 ^(NSModalResponse result)
     {
 		 if (result == NSFileHandlingPanelOKButton)
 		 {
@@ -306,7 +306,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [openPanel setAllowedFileTypes: @[@"fontaine.Solitaire2.saveGame"]];
 
     [openPanel beginSheetModalForWindow:self.window completionHandler:
-     	^(NSInteger result)
+     	^(NSModalResponse result)
     {
 	    if (result == NSFileHandlingPanelOKButton)
 	    {
