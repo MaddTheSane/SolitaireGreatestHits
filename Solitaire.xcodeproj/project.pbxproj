@@ -119,6 +119,8 @@
 		556821012168128400402D96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		55EC9DE021695569004EB183 /* Solitaire-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Solitaire-Bridging-Header.h"; sourceTree = "<group>"; };
 		55EC9DE12169556A004EB183 /* SolitaireCardPickupGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolitaireCardPickupGame.swift; sourceTree = "<group>"; };
+		55ECE08B216A9AC900943261 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		55ECE08C216A9AFF00943261 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Solitaire Greatest Hits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Solitaire Greatest Hits.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		925E695E18F496010074BF00 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -127,7 +129,6 @@
 		925E696418F4A5030074BF00 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/SolitaireCards.png; sourceTree = "<group>"; };
 		92C5A1C218FF2ECA001AFE0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Info.rtf; sourceTree = "<group>"; };
 		92C5A1C418FF2ED3001AFE0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = de.lproj/Info.rtf; sourceTree = "<group>"; };
-		92DD744518E4DA4300FFB2F8 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		92DF2AD119070BED0049377D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -437,8 +438,9 @@
 		379CAA9F0FD19512009A760B /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				92DD744518E4DA4300FFB2F8 /* de */,
 				556821012168128400402D96 /* Base */,
+				55ECE08B216A9AC900943261 /* en */,
+				55ECE08C216A9AFF00943261 /* de */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
