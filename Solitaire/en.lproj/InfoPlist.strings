@@ -1,3 +1,4 @@
 /* Localized versions of Info.plist keys */
 
 NSHumanReadableCopyright = "© Daniel Fontaine, 2009";
+CFBundleHelpBookName = "Solitaire Greatest Hits Help";
