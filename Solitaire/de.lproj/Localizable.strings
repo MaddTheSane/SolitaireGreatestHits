@@ -31,6 +31,7 @@
 "Restart game" = "Spiel neu starten";
 "Restart this game" = "Dieses Spiel von vorne beginnen";
 "RestartQuestion" = "Möchtest Du das Spiel beenden und ein neues starten?";
+//"Retry game" = "Retry game";
 "Save game" = "Spiel speichern";
 "Save your current game" = "Das laufende Spiel speichern";
 "Score: %li" = "Punkte: %li";
@@ -40,6 +41,7 @@
 "Undo last move" = "Letzen Zug zurücknehmen";
 "Undo" = "Zurücknehmen";
 "Yes"	= "Ja";
+//"You lost" = "You lost";
 "You won!" = "Du hast gewonnen!";
 "Your time was %@" = "Deine Zeit: %@";
 "%@\nYour score was %li" = "%@\nDeine Punkte: %li";

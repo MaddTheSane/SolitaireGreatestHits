@@ -185,6 +185,36 @@
         didEndSelector: @selector(newGame) contextInfo: nil];
 }
 
+- (void)showLostSheet
+{
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:NSLocalizedString(@"Start new game", @"Start new game")];
+    [alert addButtonWithTitle:NSLocalizedString(@"Retry game", @"Retry game")];
+    alert.messageText = NSLocalizedString(@"You lost", @"You lost");
+    
+    NSString* info = [NSString stringWithFormat: NSLocalizedString(@"Your time was %@", @"Your time was %@"), [self.controller.timer timeString]];
+    if ([[self game] keepsScore]) {
+        info = [NSString stringWithFormat: NSLocalizedString(@"%@\nYour score was %li", @"%@\nYour score was %li"), info, (long)self.controller.scoreKeeper.score];
+    }
+
+    alert.informativeText = info;
+    alert.alertStyle = NSAlertStyleInformational;
+    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+        switch (returnCode) {
+            case NSAlertFirstButtonReturn:
+                [self.controller newGame];
+                break;
+                
+            case NSAlertSecondButtonReturn:
+                [self.controller restartGame];
+                break;
+
+            default:
+                break;
+        }
+    }];
+}
+
 - (void)mouseDown:(NSEvent *)theEvent {
     selectedCard_ = nil;
 

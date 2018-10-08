@@ -31,6 +31,7 @@
 "Restart game" = "Restart game";
 "Restart this game" = "Restart this game";
 "RestartQuestion" = "Do you want to end the current game and start a new one?";
+"Retry game" = "Retry game";
 "Save game" = "Save game";
 "Save your current game" = "Save your current game";
 "Score: %li" = "Score: %li";
@@ -40,6 +41,7 @@
 "Undo last move" = "Undo last move";
 "Undo" = "Undo";
 "Yes"	= "Yes";
+"You lost" = "You lost";
 "You won!" = "You won!";
 "Your time was %@" = "Your time was %@";
 "%@\nYour score was %li" = "%@\nYour score was %li";

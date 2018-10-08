@@ -50,6 +50,7 @@
 -(NSArray*) sprites;
 -(SolitaireGame*) game;
 -(void) showWinSheet;
+- (void)showLostSheet;
 
 -(SolitaireCardContainer*) findContainerIntersectingCard: (SolitaireCard*)card;
 

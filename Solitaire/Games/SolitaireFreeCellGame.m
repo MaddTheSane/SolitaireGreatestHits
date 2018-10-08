@@ -112,7 +112,56 @@
 }
 
 -(BOOL) didLose {
-    return NO;
+    for (int i = 0; i < SolitaireFreeCellCells; i++) {
+        SolitaireCell *currentCell = cell_[i];
+        if (currentCell.topCard == nil) {
+            return NO;
+        }
+    }
+    
+    for (int i = 0; i < SolitaireFreeCellCells; i++) {
+        SolitaireCell *currentCell = cell_[i];
+        SolitaireCard *card = [currentCell topCard];
+        
+        for (int j = 0; j < SolitaireFreeCellFoundations; j++) {
+            SolitaireFoundation *currentFoundation = foundation_[j];
+            
+            if ([self canDropCard:card inFoundation:currentFoundation]) {
+                return NO;
+            }
+        }
+        
+        for (int j = 0; j < SolitaireFreeCellTableus; j++) {
+            SolitaireTableau *currentTableu = tableau_[j];
+            
+            if ([self canDropCard:card inTableau:currentTableu]) {
+                return NO;
+            }
+        }
+    }
+    
+    for (int i = 0; i < SolitaireFreeCellTableus; i++) {
+        SolitaireTableau *currentTableu = tableau_[i];
+        SolitaireCard *card = [currentTableu topCard];
+        
+        for (int j = 0; j < SolitaireFreeCellFoundations; j++) {
+            SolitaireFoundation *currentFoundation = foundation_[j];
+            
+            if ([self canDropCard:card inFoundation:currentFoundation]) {
+                return NO;
+            }
+        }
+        
+        for (int j = 0; j < SolitaireFreeCellTableus; j++) {
+            SolitaireTableau *otherTableu = tableau_[j];
+            
+            if ([self canDropCard:card inTableau:otherTableu]) {
+                return NO;
+            }
+        }
+    }
+
+    return YES;
 }
 
 -(void) reset {

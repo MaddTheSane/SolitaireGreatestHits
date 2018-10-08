@@ -193,6 +193,7 @@
     
     [self onCard: card removedFromContainer: oldContainer];
     if([self didWin]) [self onGameWon];
+    else if([self didLose]) [self onGameLost];
 }
 
 -(void) dropCard: (SolitaireCard*) card inTableau: (SolitaireTableau*) tableau {
@@ -250,6 +251,13 @@
         }
     }
     [[self view] performSelector: @selector(showWinSheet) withObject: nil afterDelay: (cardCount + 5) * 0.1];
+}
+
+-(void) onGameLost
+{
+    [self.controller.timer stopTimer];
+
+    [self.view showLostSheet];
 }
 
 -(void) victoryAnimationForCard: (SolitaireCard*)card {

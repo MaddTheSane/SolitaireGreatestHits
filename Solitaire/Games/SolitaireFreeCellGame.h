@@ -30,12 +30,18 @@
 @class SolitaireFoundation;
 @class SolitaireCell;
 
+NS_ENUM(NSInteger) {
+    SolitaireFreeCellTableus = 8,
+    SolitaireFreeCellFoundations = 4,
+    SolitaireFreeCellCells = 4,
+};
+
 @interface SolitaireFreeCellGame : SolitaireGame {
 @protected
     SolitaireStock* stock_;
-    SolitaireTableau* tableau_[8];
-    SolitaireFoundation* foundation_[4];
-    SolitaireCell* cell_[4];
+    SolitaireTableau* tableau_[SolitaireFreeCellTableus];
+    SolitaireFoundation* foundation_[SolitaireFreeCellFoundations];
+    SolitaireCell* cell_[SolitaireFreeCellCells];
 }
 
 -(id) initWithController: (SolitaireController*)gameController;

@@ -97,6 +97,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void) onCard: (SolitaireCard*) card removedFromCell: (SolitaireCell*) cell; 
 
 -(void) onGameWon;
+-(void) onGameLost;
 
 -(nullable SolitaireFoundation*) findFoundationForCard: (SolitaireCard*) card;
 
