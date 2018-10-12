@@ -84,12 +84,10 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
         
          // Create image.
         frontImage_ = [[NSImage alloc] initWithSize: NSMakeSize(kCardWidth, kCardHeight)];
-        [cardsImage lockFocus];
+        [frontImage_ lockFocus];
         NSRect srcRect = NSMakeRect(faceValue_ * kCardWidth, suit_ * kCardHeight, kCardWidth, kCardHeight);
-        NSBitmapImageRep* bitmap = [[NSBitmapImageRep alloc] initWithFocusedViewRect: srcRect];
-        [cardsImage unlockFocus];
-    
-        [frontImage_ addRepresentation: bitmap];
+        [cardsImage drawAtPoint:NSZeroPoint fromRect:srcRect operation:NSCompositingOperationCopy fraction:1];
+        [frontImage_ unlockFocus];
         
         self.delegate = self;
     }
@@ -127,13 +125,11 @@ id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9
         
          // Create image.
         frontImage_ = [[NSImage alloc] initWithSize: NSMakeSize(kCardWidth, kCardHeight)];
-        [cardsImage lockFocus];
+        [frontImage_ lockFocus];
         NSRect srcRect = NSMakeRect(faceValue_ * kCardWidth, suit_ * kCardHeight, kCardWidth, kCardHeight);
-        NSBitmapImageRep* bitmap = [[NSBitmapImageRep alloc] initWithFocusedViewRect: srcRect];
-        [cardsImage unlockFocus];
-    
-        [frontImage_ addRepresentation: bitmap];
-        
+        [cardsImage drawAtPoint:NSZeroPoint fromRect:srcRect operation:NSCompositingOperationCopy fraction:1];
+        [frontImage_ unlockFocus];
+
         self.delegate = self;
     }
     return self;
