@@ -155,6 +155,7 @@
         [self.layer addSublayer: sprite];
         sprite.view = self;
         [sprite onAddedToView: self];
+        sprite.contentsScale = self.window.backingScaleFactor;
         [sprite setNeedsDisplay];
     }
     else {
