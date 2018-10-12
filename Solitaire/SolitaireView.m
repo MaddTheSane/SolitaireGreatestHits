@@ -28,9 +28,50 @@
 #import "SolitaireTimer.h"
 #import "SolitaireScoreKeeper.h"
 
+@interface SolitaireView ()
+- (void)_updateContentScale;
+@end
+
 @implementation SolitaireView
 
 @synthesize controller;
+
+- (void)_updateContentScale
+{
+    if (![self window]) return;
+    
+    CALayer *layer = self.layer;
+    if ([layer respondsToSelector:@selector(setContentsScale:)]) {
+        CGFloat scale = [[self window] backingScaleFactor];
+        [layer setContentsScale:scale];
+        for (CALayer* layer in self.layer.sublayers) {
+            layer.contentsScale = scale;
+        }
+    }
+}
+
+- (void)scaleDidChange:(NSNotification *)n
+{
+    [self _updateContentScale];
+}
+
+- (void)viewDidMoveToWindow
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(scaleDidChange:)
+                                                 name:NSWindowDidChangeBackingPropertiesNotification
+                                               object:[self window]];
+    
+    // immediately update scale after the view has been added to a window
+    [self _updateContentScale];
+    [super viewDidMoveToWindow];
+}
+
+- (void)removeFromSuperview
+{
+    [super removeFromSuperview];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidChangeBackingPropertiesNotification object:[self window]];
+}
 
 -(void) awakeFromNib {
     [[self window] makeFirstResponder:self];
