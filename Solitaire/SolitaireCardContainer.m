@@ -53,7 +53,7 @@
         self.bounds = CGRectMake(0.0, 0.0, kCardWidth, kCardHeight);
         self.anchorPoint = CGPointMake(0.0, 0.0);
         self.zPosition = [decoder decodeIntForKey: @"zPosition"];
-        self.hidden = [decoder decodeIntForKey: @"hidden"];
+        self.hidden = [decoder decodeBoolForKey: @"hidden"];
 
         cards_ = [decoder decodeObjectOfClasses:[NSSet setWithObjects:[NSMutableArray class], [SolitaireCard class], nil] forKey: @"cards_"];
         self.text = [decoder decodeObjectOfClass:[NSString class] forKey: @"text"];
@@ -65,7 +65,7 @@
     [encoder encodeObject: cards_ forKey: @"cards_"];
     [encoder encodeObject: self.text forKey: @"text"];
     [encoder encodePoint: NSPointFromCGPoint(self.position) forKey: @"position"];
-    [encoder encodeInt: self.hidden forKey: @"hidden"];
+    [encoder encodeBool: self.hidden forKey: @"hidden"];
     [encoder encodeInt: self.zPosition forKey: @"zPosition"];
 }
 
