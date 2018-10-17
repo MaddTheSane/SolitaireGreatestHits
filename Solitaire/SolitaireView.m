@@ -180,7 +180,7 @@
     [super setFrameSize: newSize];
     
     [CATransaction begin];
-    [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];
+    [CATransaction setValue: @YES forKey: kCATransactionDisableActions];
     [[self game] layoutGameComponents];
     [CATransaction commit];
 }

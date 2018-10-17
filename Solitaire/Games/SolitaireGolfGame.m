@@ -207,7 +207,7 @@
     
     if(card) {
         [CATransaction begin];
-        [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];
+        [CATransaction setValue: @YES forKey: kCATransactionDisableActions];
         card.position = stock.position;
         card.hidden = NO;
         [CATransaction commit];

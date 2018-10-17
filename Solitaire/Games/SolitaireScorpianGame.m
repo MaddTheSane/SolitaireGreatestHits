@@ -204,7 +204,7 @@
                 SolitaireCard* card = [stock dealCard];
                 
                 [CATransaction begin];
-                [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];
+                [CATransaction setValue: @YES forKey: kCATransactionDisableActions];
                 card.position = [tableau_[i] nextLocation];
                 [CATransaction commit];
                 [CATransaction flush];

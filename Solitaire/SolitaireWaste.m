@@ -95,7 +95,7 @@
     
     if(card) {
         [CATransaction begin];
-        [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];
+        [CATransaction setValue: @YES forKey: kCATransactionDisableActions];
         card.position = stock.position;
         card.hidden = NO;
         [CATransaction commit];
@@ -134,7 +134,7 @@
         SolitaireCard* card = [stock dealCard];
         [self addCard: card];
         [CATransaction begin];
-        [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];
+        [CATransaction setValue: @YES forKey: kCATransactionDisableActions];
         card.position = card.homeLocation;
         [CATransaction commit];
         if([stock count] <= 2) card.hidden = NO;
@@ -277,7 +277,7 @@
         
         card.homeLocation = [self nextLocation];
         [CATransaction begin];
-        [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];
+        [CATransaction setValue: @YES forKey: kCATransactionDisableActions];
         card.position = card.homeLocation;
         [CATransaction commit];
     }
@@ -292,7 +292,7 @@
         if([stock isEmpty]) break;
         SolitaireCard* card = [stock dealCard];
         [CATransaction begin];
-        [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];
+        [CATransaction setValue: @YES forKey: kCATransactionDisableActions];
         card.position = stock.position;
         card.hidden = NO;
         [CATransaction commit];

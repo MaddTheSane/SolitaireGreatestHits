@@ -153,7 +153,7 @@ extern NSImage* flippedCardImage;
 
 -(void) addCard: (SolitaireCard*)card {
     [CATransaction begin];
-    [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];
+    [CATransaction setValue: @YES forKey: kCATransactionDisableActions];
     card.position = self.position;
     card.hidden = YES;
     card.nextCard = nil;
@@ -284,7 +284,7 @@ extern NSImage* flippedCardImage;
     [deck_ removeLastObject];
     
     [CATransaction begin];
-    [CATransaction setValue: [NSNumber numberWithBool:YES] forKey: kCATransactionDisableActions];            
+    [CATransaction setValue: @YES forKey: kCATransactionDisableActions];            
     card.flipped = NO;
     card.position = self.position;
     card.hidden = NO;
