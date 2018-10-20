@@ -37,9 +37,9 @@
     BOOL playerDroppingCardInWaste_;
 }
 
--(id) initWithController: (SolitaireController*)gameController;
+-(instancetype) initWithController: (SolitaireController*)gameController;
 -(void) initializeGame;
--(NSString*) name;
+@property (readonly) NSString *name;
 -(void) layoutGameComponents;
 -(BOOL) didWin;
 -(BOOL) didLose;

@@ -30,8 +30,8 @@
     SolitaireTableau* tableau_[7];
 }
 
--(id) initWithController: (SolitaireController*)gameController;
--(NSString*) name;
+-(instancetype) initWithController: (SolitaireController*)gameController;
+@property (readonly) NSString *name;
 -(void) initializeGame;
 -(void) layoutGameComponents;
 -(BOOL) didWin;

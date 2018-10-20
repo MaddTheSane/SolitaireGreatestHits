@@ -25,7 +25,7 @@
 
 @interface SolitaireBakersGame : SolitaireFreeCellGame
 
--(NSString*) name;
+@property (readonly) NSString *name;
 -(void) dealNewGame;
 -(BOOL) canDropCard: (SolitaireCard*) card inTableau: (SolitaireTableau*) tableau;
 -(void) dropCard: (SolitaireCard*) card inTableau: (SolitaireTableau*) tableau;

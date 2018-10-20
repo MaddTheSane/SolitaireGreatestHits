@@ -26,6 +26,6 @@
 @interface SolitaireSingleCardKlondikeGame : SolitaireKlondikeGame
 
 -(void) initializeGame;
--(NSString*) name;
+@property (readonly) NSString *name;
 
 @end
