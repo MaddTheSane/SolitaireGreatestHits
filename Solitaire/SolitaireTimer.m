@@ -55,15 +55,10 @@
 }
 
 -(NSString*) timeString {
-    // TODO: use NSDateFormatter?
-    NSInteger hrs = secs_ / 3600;
-    NSInteger mins = (secs_ - hrs * 3600) / 60;
-    NSInteger secs = secs_ - hrs * 3600 - mins * 60;
-    
-    NSString* time;
-    if(hrs == 0) time = [NSString stringWithFormat: @"%ld:%02ld", (long)mins, (long)secs];
-    else time = [NSString stringWithFormat: @"%ld:%02ld:%02ld", (long)hrs, (long)mins, (long)secs];
-    return time;  
+    NSDateComponentsFormatter *formatter = [[NSDateComponentsFormatter alloc] init];
+    formatter.zeroFormattingBehavior = NSDateComponentsFormatterZeroFormattingBehaviorDropLeading | NSDateComponentsFormatterZeroFormattingBehaviorPad;
+    formatter.allowedUnits = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    return [formatter stringFromTimeInterval:secs_];
 }
 
 @synthesize secondsEllapsed=secs_;
