@@ -12,7 +12,7 @@
 				<string>sgh</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ChooseGame</string>
+			<string>SavedGame</string>
 			<key>CFBundleTypeName</key>
 			<string>Saved Solitaire Game</string>
 			<key>CFBundleTypeRole</key>
@@ -61,7 +61,7 @@
 			<key>UTTypeDescription</key>
 			<string>Saved Solitaire Game</string>
 			<key>UTTypeIconFile</key>
-			<string>ChooseGame</string>
+			<string>SavedGame</string>
 			<key>UTTypeIdentifier</key>
 			<string>fontaine.Solitaire2.saveGame</string>
 			<key>UTTypeTagSpecification</key>
