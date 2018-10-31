@@ -610,12 +610,13 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     
     // Ask for donation once every four weeks.
     if([todaysDate timeIntervalSinceDate: lastDonateDate] > 4 * secsInWeek) {
-        
-        NSString* message = @"A great deal of effort goes into creating free software. If you enjoy Solitaire Greatest Hits then please support its continued development by making a small donation through Paypal. Thanks.";
-        NSAlert* donateAlert = [NSAlert alertWithMessageText: @"Support this Software" defaultButton: @"Donate"
-                alternateButton: @"No Thanks" otherButton: nil informativeTextWithFormat: message, nil];
+        NSAlert *donateAlert = [[NSAlert alloc] init];
+        donateAlert.messageText = NSLocalizedString(@"Support this Software", @"Support this Software");
+        donateAlert.informativeText = NSLocalizedString(@"A great deal of effort goes into creating free software. If you enjoy Solitaire Greatest Hits then please support its continued development by making a small donation through Paypal. Thanks.", @"Please donate");
+        [donateAlert addButtonWithTitle:NSLocalizedString(@"Donate", @"Donate")];
+        [donateAlert addButtonWithTitle:NSLocalizedString(@"No Thanks", @"No Thanks")];
         NSInteger clickedButton = [donateAlert runModal];
-        if(clickedButton == NSAlertDefaultReturn)
+        if(clickedButton == NSAlertFirstButtonReturn)
             [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6662868"]];
             
         // Let defaults know we requested donation today.
