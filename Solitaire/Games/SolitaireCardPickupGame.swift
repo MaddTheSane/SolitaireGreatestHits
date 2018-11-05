@@ -59,6 +59,10 @@ class SolitaireCardPickupGame: SolitaireGame {
         
     }
     
+    override func canDrop(_ card: SolitaireCard, in foundation: SolitaireFoundation) -> Bool {
+        return true
+    }
+    
     /// Override so that the cards aren't thrown everywhere, defeating
     /// the purpose of picking them up.
     @objc(victoryAnimationForCard:)
