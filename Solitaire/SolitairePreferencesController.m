@@ -67,15 +67,11 @@
 }
 
 -(IBAction) onOkayClicked: (id)sender {
-    // From OSX 10.9:
-    // [[preferencesPanel sheetParent] endSheet:preferencesPanel returnCode:NSModalResponseOK];    
-    [NSApp endSheet: self.preferencesPanel returnCode: NSOKButton];
+    [[preferencesPanel sheetParent] endSheet:preferencesPanel returnCode:NSModalResponseOK];
 }
 
 -(IBAction) onCancelClicked: (id)sender {
-    // From OSX 10.9:
-    // [[preferencesPanel sheetParent] endSheet:preferencesPanel returnCode:NSModalResponseCancel];
-    [NSApp endSheet: self.preferencesPanel returnCode: NSCancelButton];
+    [[preferencesPanel sheetParent] endSheet:preferencesPanel returnCode:NSModalResponseCancel];
 }
 
 -(IBAction) onDefaultClicked: (id)sender {

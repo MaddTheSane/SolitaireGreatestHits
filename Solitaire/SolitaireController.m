@@ -50,8 +50,6 @@
 -(void) selectGameWithRegistryIndex: (NSInteger)index;
 - (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls;
 
-// Sheet callbacks
--(void) preferencesSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 @end
 
 // Toolbar Item Identifier strings
@@ -323,17 +321,29 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
 {
     [preferences data2Controls];
 
-    // From OSX 10.9:
-    /*[self.window beginSheet:self.preferences.preferencesPanel completionHandler:^(NSModalResponse returnCode)
+    [self.window beginSheet:self.preferences.preferencesPanel completionHandler:^(NSModalResponse returnCode)
     {
         if (returnCode == NSOKButton)
         {
-            [self.view setTableBackground: [self.preferences.colorWell color]];
+            NSColor *color = [self.preferences selectedColor];
+            [self.view setTableBackground: color];
+            
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:color];
+            [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"backgroundColor"];
+            
+            NSString *cardBack = [self.preferences selectedCardBack];
+            if (![cardBack isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"cardBack"]])
+            {
+                [[NSUserDefaults standardUserDefaults] setObject:cardBack forKey:@"cardBack"];
+                LoadFlippedCardImage(YES);
+                
+                NSArray *sprites = [[self view] sprites];
+                for (SolitaireSprite *sprite in sprites)
+                    [sprite setNeedsDisplay];
+            }
             [self.view.layer setNeedsDisplay];
         }
-    }];*/
-    [NSApp beginSheet: self.preferences.preferencesPanel modalForWindow: self.window modalDelegate: self
-        didEndSelector: @selector(preferencesSheetDidEnd:returnCode:contextInfo:) contextInfo: nil];
+    }];
 }
 
 -(IBAction) onChooseGame: (id)sender {
@@ -647,31 +657,5 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [self.window setTitle: [NSString stringWithFormat: @"Solitaire Greatest Hits: %@", [game_ localizedName]]];
 }
 
-// Sheet Delegate methods
-- (void)preferencesSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
-    if(returnCode == NSOKButton)
-    {
-        NSColor *color = [self.preferences selectedColor];
-        [self.view setTableBackground: color];
-        
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:color];
-        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"backgroundColor"];
-
-        NSString *cardBack = [self.preferences selectedCardBack];
-        if (![cardBack isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"cardBack"]])
-        {
-            [[NSUserDefaults standardUserDefaults] setObject:cardBack forKey:@"cardBack"];
-            LoadFlippedCardImage(YES);
-
-            NSArray *sprites = [[self view] sprites];
-            for (SolitaireSprite *sprite in sprites)
-                [sprite setNeedsDisplay];
-        }
-
-        [self.view.layer setNeedsDisplay];
-    }
-    
-    [sheet orderOut: self];
-}
 
 @end
