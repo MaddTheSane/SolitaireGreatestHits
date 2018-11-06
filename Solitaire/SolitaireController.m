@@ -198,6 +198,12 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     } else {
         // Fallback on earlier versions
         dat = [NSKeyedArchiver archivedDataWithRootObject:gameImage];
+        if (!dat) {
+            if (error) {
+                *error = [NSError errorWithDomain:NSCocoaErrorDomain code:-1 userInfo:nil];
+            }
+            return NO;
+        }
     }
     return [dat writeToURL:filename options:NSDataWritingAtomic error:error];
 }
@@ -220,7 +226,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         gameImage = [NSKeyedUnarchiver unarchiveObjectWithData:localData];
         if (!gameImage) {
             if (error) {
-                *error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:nil];
+                *error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:@{NSURLErrorKey: filename}];
             }
             return NO;
         }
@@ -428,7 +434,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
 
 - (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename
 {
-    if ([[filename pathExtension] compare:@"sgh"] != NSOrderedSame) {
+    if ([[filename pathExtension] compare:@"sgh" options:NSCaseInsensitiveSearch] != NSOrderedSame) {
         return NO;
     }
     
