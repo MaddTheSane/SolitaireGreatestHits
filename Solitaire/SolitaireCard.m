@@ -42,8 +42,8 @@ void LoadFlippedCardImage(BOOL reload)
 }
 
 
-id suitStringTable__[] = {@"Diamonds", @"Hearts", @"Spades", @"Clubs"};
-id valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"Jack", @"Queen", @"King"};
+NSString *suitStringTable__[] = {@"Diamonds", @"Hearts", @"Spades", @"Clubs"};
+NSString *valueStringTable__[] = {@"Ace", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"Jack", @"Queen", @"King"};
 
 @implementation SolitaireCard
 
