@@ -63,6 +63,11 @@ class SolitaireCardPickupGame: SolitaireGame {
         return true
     }
     
+    override func onGameWon() {
+        controller?.timer?.stop()
+        view?.showWinSheet()
+    }
+    
     /// Override so that the cards aren't thrown everywhere, defeating
     /// the purpose of picking them up.
     @objc(victoryAnimationForCard:)

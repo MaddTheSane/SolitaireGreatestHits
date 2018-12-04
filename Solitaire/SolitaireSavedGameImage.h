@@ -19,6 +19,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class SolitaireCardContainer;
 
 @interface SolitaireSavedGameImage : NSObject <NSSecureCoding> {
@@ -30,8 +32,9 @@
     NSMutableDictionary* gameData_;
 }
 
--(id) initWithGameName: (NSString*)name;
--(id) initWithCoder: (NSCoder*) decoder;
+-(instancetype) init UNAVAILABLE_ATTRIBUTE;
+-(instancetype) initWithGameName: (NSString*)name NS_DESIGNATED_INITIALIZER;
+-(nullable instancetype) initWithCoder: (NSCoder*) decoder NS_DESIGNATED_INITIALIZER;
 -(void) encodeWithCoder: (NSCoder*) encoder;
 
 @property (readonly, copy) NSString *gameName;
@@ -45,7 +48,12 @@
 -(void) archiveGameSeed: (NSInteger)seed;
 -(NSInteger) unarchiveGameSeed;
 
--(void) archiveGameObject: (id)obj forKey: (NSString*)key;
--(id) unarchiveGameObjectForKey: (NSString*)key;
+-(void) archiveGameObject: (nullable id)obj forKey: (NSString*)key;
+-(nullable id) unarchiveGameObjectForKey: (NSString*)key;
+
+- (void)setObject:(nullable id)obj forKeyedSubscript:(NSString*)key;
+- (nullable id)objectForKeyedSubscript:(NSString*)key;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -94,7 +94,7 @@ void LoadFlippedCardImage(BOOL reload);
 @property (readonly) SolitaireFaceValue faceValue;
 @property (readonly) SolitaireSuit suit;
 @property (readonly) SolitaireSuitColor suitColor;
--(NSString*) name;
+//-(NSString*) name;
 @property (readonly, copy) NSString *faceValueAbbreviation;
 
 -(void) drawSprite;
