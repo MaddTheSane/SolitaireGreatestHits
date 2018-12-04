@@ -118,6 +118,7 @@
 		552B1E172176C90E0062E4CC /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		556821012168128400402D96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		55BA4AF82170230100C0172A /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/SolitaireCards@2x.png"; sourceTree = "<group>"; };
+		55BD080321B737B600A8DD5F /* randWrap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = randWrap.h; sourceTree = "<group>"; };
 		55EC9DE021695569004EB183 /* Solitaire-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Solitaire-Bridging-Header.h"; sourceTree = "<group>"; };
 		55EC9DE12169556A004EB183 /* SolitaireCardPickupGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolitaireCardPickupGame.swift; sourceTree = "<group>"; };
 		55ECE08B216A9AC900943261 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
@@ -202,6 +203,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				55BD080321B737B600A8DD5F /* randWrap.h */,
 				55EC9DE021695569004EB183 /* Solitaire-Bridging-Header.h */,
 				32CA4F630368D1EE00C91783 /* Solitaire_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,

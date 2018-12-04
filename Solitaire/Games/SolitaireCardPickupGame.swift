@@ -34,7 +34,10 @@ class SolitaireCardPickupGame: SolitaireGame {
         // no cells
         
         // Init Tableau
-        tableus = [SolitaireTableau](repeating: SolitaireTableau(), count: 52)
+        tableus.reserveCapacity(52)
+        for _ in 0 ..< 52 {
+            tableus.append(SolitaireTableau())
+        }
     }
     
     override var didLose: Bool {
@@ -62,7 +65,9 @@ class SolitaireCardPickupGame: SolitaireGame {
         foundation?.position = CGPoint(x: foundationX, y: foundationY)
         
         for tableu in tableus {
-            _=tableu.position
+            let yPos = Int(randSwiftWrap()) % Int(viewHeight - CGFloat(kCardHeight))
+            let xPos = Int(randSwiftWrap()) % Int(viewWidth - CGFloat(kCardWidth))
+            tableu.position = CGPoint(x: xPos, y: yPos)
         }
     }
     
@@ -71,7 +76,14 @@ class SolitaireCardPickupGame: SolitaireGame {
     }
     
     override func autoFinish() {
-        
+        for tableu in tableus {
+            guard let card = tableu.topCard else {
+                continue
+            }
+            drop(card, in: foundation)
+            perform(#selector(SolitaireCardPickupGame.autoFinish), with: nil, afterDelay: 0.2)
+            return
+        }
     }
     
     override func reset() {

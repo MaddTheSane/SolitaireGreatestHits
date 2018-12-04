@@ -139,7 +139,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [self registerGame: [[SolitaireGolfGame alloc] initWithController: self]];
     [self registerGame: [[SolitaireScorpianGame alloc] initWithController: self]];
     [self registerGame: [[SolitaireYukonGame alloc] initWithController: self]];
-    //[self registerGame: [[SolitaireCardPickupGame alloc] initWithController: self]];
+    [self registerGame: [[SolitaireCardPickupGame alloc] initWithController: self]];
 }
 
 -(void) registerGame: (SolitaireGame*)game {
