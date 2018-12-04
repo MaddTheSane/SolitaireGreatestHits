@@ -293,11 +293,11 @@ static NSString const * const valueStringTable__[] = {@"Ace", @"2", @"3", @"4", 
     // scaling blur.
     CGFloat dx = p.x - self.position.x;
     CGFloat dy = p.y - self.position.y;
-    [super setPosition: CGPointMake((int)p.x, (int)p.y)];
+    [super setPosition: CGPointMake(floor(p.x), floor(p.y))];
     
     if(self.nextCard) {
         CGPoint oldPosition = self.nextCard.position;
-        self.nextCard.position = CGPointMake((int)(oldPosition.x + dx), (int)(oldPosition.y + dy));
+        self.nextCard.position = CGPointMake(floor(oldPosition.x + dx), floor(oldPosition.y + dy));
     }
 }
 
