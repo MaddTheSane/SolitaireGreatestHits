@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
     __weak SolitaireController* controller;
     
 @private
-    NSUInteger gameSeed_;
+    unsigned gameSeed_;
 }
 
 @property(weak) SolitaireController* controller;
@@ -50,8 +50,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nullable) SolitaireView *view;
 @property (readonly) NSString *name;
 @property (readonly) NSString *localizedName;
-@property (readonly) NSUInteger gameSeed;
--(void) gameWithSeed: (NSUInteger)seed;
+@property (readonly) unsigned gameSeed;
+-(void) gameWithSeed: (unsigned)seed;
 -(void) initializeGame;
 -(void) layoutGameComponents;
 -(void) startGame;
@@ -77,13 +77,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void) dealNewGame;
 
--(BOOL) canDropCard: (SolitaireCard*) card inContainer: (SolitaireCardContainer*) container;
+-(BOOL) canDropCard: (SolitaireCard*) card inContainer: (nullable SolitaireCardContainer*) container;
 -(BOOL) canDropCard: (SolitaireCard*) card inTableau: (SolitaireTableau*) tableau;
 -(BOOL) canDropCard: (SolitaireCard*) card inFoundation: (SolitaireFoundation*) foundation;
 -(BOOL) canDropCard: (SolitaireCard*) card inCell: (SolitaireCell*) cell;
 -(BOOL) canDropCard: (SolitaireCard*) card inWaste: (SolitaireWaste*) waste;
 
--(void) dropCard: (SolitaireCard*) card inContainer: (SolitaireCardContainer*) container;
+-(void) dropCard: (SolitaireCard*) card inContainer: (nullable SolitaireCardContainer*) container;
 -(void) dropCard: (SolitaireCard*) card inTableau: (SolitaireTableau*) tableau;
 -(void) dropCard: (SolitaireCard*) card inFoundation: (SolitaireFoundation*) foundation;
 -(void) dropCard: (SolitaireCard*) card inCell: (SolitaireCell*) cell;
@@ -99,7 +99,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void) onGameWon;
 -(void) onGameLost;
 
--(nullable SolitaireFoundation*) findFoundationForCard: (SolitaireCard*) card;
+-(nullable SolitaireFoundation*) findFoundationForCard: (nullable SolitaireCard*) card;
 
 @end
 

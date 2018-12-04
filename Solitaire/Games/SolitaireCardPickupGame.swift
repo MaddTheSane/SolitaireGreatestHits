@@ -9,6 +9,8 @@ import Cocoa
 
 class SolitaireCardPickupGame: SolitaireGame {
     private var stock: SolitaireStock?
+    private var foundation: SolitaireFoundation?
+    private var tableus = [SolitaireTableau]()
     
     override init(controller gameController: SolitaireController) {
         super.init(controller: gameController)
@@ -21,6 +23,18 @@ class SolitaireCardPickupGame: SolitaireGame {
     
     override func initializeGame() {
         stock = SolitaireStock()
+        // Called explicitly since we don't actually add the stock to the view,
+        // but we still want its cards added to the view.
+        stock?.onAdded(to: view!)
+        
+        // Init Foundations
+        foundation = SolitaireFoundation()
+        view?.addSprite(foundation)
+        
+        // no cells
+        
+        // Init Tableau
+        tableus = [SolitaireTableau](repeating: SolitaireTableau(), count: 52)
     }
     
     override var didLose: Bool {
@@ -28,11 +42,28 @@ class SolitaireCardPickupGame: SolitaireGame {
     }
     
     override var didWin: Bool {
+        if let aCount = foundation?.cards.count {
+            return aCount == 52
+        }
         return false
     }
     
     override func layoutGameComponents() {
+        var viewWidth = view!.frame.size.width;
+        if viewWidth < 9.0 * CGFloat(kCardWidth) {
+            viewWidth = 9.0 * CGFloat(kCardWidth)
+        }
         
+        let viewHeight = view!.frame.size.height;
+        
+        // Layout Foundations
+        let foundationX = viewWidth - CGFloat(kCardWidth) - viewWidth / 25.0;
+        let foundationY = (viewHeight - CGFloat(kCardHeight)) - viewHeight / 25.0;
+        foundation?.position = CGPoint(x: foundationX, y: foundationY)
+        
+        for tableu in tableus {
+            _=tableu.position
+        }
     }
     
     override var supportsAutoFinish: Bool {
@@ -63,15 +94,23 @@ class SolitaireCardPickupGame: SolitaireGame {
         return true
     }
     
-    override func onGameWon() {
-        controller?.timer?.stop()
-        view?.showWinSheet()
+    override func dealNewGame() {
+        for i in 0 ..< 52 {
+            stock?.dealCard(to: tableus[i], faceDown: false)
+        }
+    }
+    
+    override func findFoundation(for card: SolitaireCard?) -> SolitaireFoundation? {
+        if card == nil {
+            return nil
+        }
+        return foundation
     }
     
     /// Override so that the cards aren't thrown everywhere, defeating
     /// the purpose of picking them up.
-    @objc(victoryAnimationForCard:)
-    private func victoryAnimation(for card: SolitaireCard) {
-        
+    override func onGameWon() {
+        controller?.timer?.stop()
+        view?.showWinSheet()
     }
 }

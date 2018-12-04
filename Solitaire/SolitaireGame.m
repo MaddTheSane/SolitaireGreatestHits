@@ -61,12 +61,10 @@
     return [NSBundle.mainBundle localizedStringForKey:[self name] value:@"" table:nil];
 }
 
--(NSUInteger) gameSeed {
-    return gameSeed_;
-}
+@synthesize gameSeed=gameSeed_;
 
--(void) gameWithSeed: (NSUInteger)seed {
-    srand(seed & 0x7fffffff);
+-(void) gameWithSeed: (unsigned)seed {
+    srand(seed);
     gameSeed_ = seed;
 }
 

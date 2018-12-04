@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SolitaireSavedGameImage : NSObject <NSSecureCoding> {
 @private
     NSString* gameName_;
-    NSInteger gameSeed_;
+    unsigned gameSeed_;
     NSInteger gameScore_;
     NSInteger gameTime_;
     NSMutableDictionary* gameData_;
@@ -45,8 +45,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void) archiveGameTime: (NSInteger)time;
 -(NSInteger) unarchiveGameTime;
 
--(void) archiveGameSeed: (NSInteger)seed;
--(NSInteger) unarchiveGameSeed;
+-(void) archiveGameSeed: (unsigned)seed;
+-(unsigned) unarchiveGameSeed;
 
 -(void) archiveGameObject: (nullable id)obj forKey: (NSString*)key;
 -(nullable id) unarchiveGameObjectForKey: (NSString*)key;

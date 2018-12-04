@@ -44,7 +44,7 @@
         gameData_ = [decoder decodeObjectForKey: @"gameData_"];
         gameScore_ = [decoder decodeIntegerForKey: @"gameScore_"];
         gameTime_ = [decoder decodeIntegerForKey: @"gameTime_"];
-        gameSeed_ = [decoder decodeIntegerForKey: @"gameSeed_"];
+        gameSeed_ = [decoder decodeIntForKey: @"gameSeed_"];
     }
     return self;
 }
@@ -54,7 +54,7 @@
     [encoder encodeObject: gameData_ forKey: @"gameData_"];
     [encoder encodeInteger: gameScore_ forKey: @"gameScore_"];
     [encoder encodeInteger: gameTime_ forKey: @"gameTime_"];
-    [encoder encodeInteger: gameSeed_ forKey: @"gameSeed_"];
+    [encoder encodeInt: gameSeed_ forKey: @"gameSeed_"];
 }
 
 @synthesize gameName=gameName_;
@@ -75,11 +75,11 @@
     return gameTime_;
 }
 
--(void) archiveGameSeed: (NSInteger)seed {
+-(void) archiveGameSeed: (unsigned)seed {
     gameSeed_ = seed;
 }
 
--(NSInteger) unarchiveGameSeed {
+-(unsigned) unarchiveGameSeed {
     return gameSeed_;
 }
 

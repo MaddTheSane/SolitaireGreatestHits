@@ -39,6 +39,7 @@
 #import "SolitaireGolfGame.h"
 #import "SolitaireScorpianGame.h"
 #import "SolitaireYukonGame.h"
+#import "Solitaire_Greatest_Hits-Swift.h"
 
 
 #include <stdlib.h>
@@ -138,6 +139,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [self registerGame: [[SolitaireGolfGame alloc] initWithController: self]];
     [self registerGame: [[SolitaireScorpianGame alloc] initWithController: self]];
     [self registerGame: [[SolitaireYukonGame alloc] initWithController: self]];
+    //[self registerGame: [[SolitaireCardPickupGame alloc] initWithController: self]];
 }
 
 -(void) registerGame: (SolitaireGame*)game {
@@ -161,7 +163,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [self.view reset];
     
     [game_ reset];
-    [game_ gameWithSeed: time(0)];
+    [game_ gameWithSeed: 0xffffffff & time(0)];
     [game_ initializeGame];
     [game_ layoutGameComponents];
     [game_ startGame];
@@ -495,7 +497,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         SolitaireInstructionsToolbarItemIdentifier];
 }
 
-- (NSToolbarItem*)toolbar:(NSToolbar*)toolbar itemForItemIdentifier:(NSString*)itemIdentifier willBeInsertedIntoToolbar: (BOOL)flag {
+- (NSToolbarItem*)toolbar:(NSToolbar*)toolbar itemForItemIdentifier:(NSToolbarItemIdentifier)itemIdentifier willBeInsertedIntoToolbar: (BOOL)flag {
     
     NSToolbarItem* toolbarItem = nil; 
     if([itemIdentifier isEqualToString: SolitaireNewGameToolbarItemIdentifier]) {
