@@ -92,14 +92,30 @@ class SolitaireCardPickupGame: SolitaireGame {
     
     override func generateSavedGameImage() -> SolitaireSavedGameImage {
         let saveGame = super.generateSavedGameImage()
+        saveGame["stock_"] = stock
+        saveGame["foundation_"] = foundation
         
+        for (i, tableu) in tableus.enumerated() {
+            saveGame["tableu_\(i)"] = tableu
+        }
         return saveGame
     }
     
     override func load(_ gameImage: SolitaireSavedGameImage) {
         super.load(gameImage)
+        stock = (gameImage["stock_"] as! SolitaireStock)
+        self.view?.addSprite(stock)
         
+        foundation = (gameImage["foundation_"] as! SolitaireFoundation)
+        view?.addSprite(foundation)
         
+        tableus.removeAll(keepingCapacity: true)
+        
+        for i in 0 ..< 52 {
+            let tableu = gameImage["tableu_\(i)"] as! SolitaireTableau
+            tableus.append(tableu)
+            view?.addSprite(tableu)
+        }
     }
     
     override func canDrop(_ card: SolitaireCard, in foundation: SolitaireFoundation) -> Bool {
