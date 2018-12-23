@@ -29,7 +29,7 @@ class SolitaireCardPickupGame: SolitaireGame {
         
         // Init Foundations
         foundation = SolitaireFoundation()
-        view?.addSprite(foundation)
+        view?.addSprite(foundation!)
         
         // no cells
         
@@ -104,10 +104,10 @@ class SolitaireCardPickupGame: SolitaireGame {
     override func load(_ gameImage: SolitaireSavedGameImage) {
         super.load(gameImage)
         stock = (gameImage["stock_"] as! SolitaireStock)
-        self.view?.addSprite(stock)
+        self.view?.addSprite(stock!)
         
         foundation = (gameImage["foundation_"] as! SolitaireFoundation)
-        view?.addSprite(foundation)
+        view?.addSprite(foundation!)
         
         tableus.removeAll(keepingCapacity: true)
         

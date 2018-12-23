@@ -25,6 +25,8 @@
 
 #import "SolitaireController.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 #define DRAGGING_LAYER 100
 
 @class SolitaireSprite;
@@ -45,13 +47,15 @@
 -(void) setTableBackground: (NSColor*)color;
 -(void) addSprite: (SolitaireSprite*)sprite;
 -(void) removeSprite: (SolitaireSprite*)sprite;
--(NSArray*) containers;
--(NSArray*) cards;
--(NSArray*) sprites;
--(SolitaireGame*) game;
+@property (readonly, copy) NSArray<SolitaireCardContainer*> *containers;
+@property (readonly, copy) NSArray<SolitaireCard*> *cards;
+@property (readonly, copy) NSArray<SolitaireSprite*> *sprites;
+@property (readonly, strong) SolitaireGame *game;
 -(void) showWinSheet;
-- (void)showLostSheet;
+-(void) showLostSheet;
 
--(SolitaireCardContainer*) findContainerIntersectingCard: (SolitaireCard*)card;
+-(nullable SolitaireCardContainer*) findContainerIntersectingCard: (SolitaireCard*)card NS_SWIFT_NAME(findContainer(intersecting:));
 
 @end
+
+NS_ASSUME_NONNULL_END
