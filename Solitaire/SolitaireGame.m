@@ -31,6 +31,7 @@
 #import "SolitaireWaste.h"
 #import "SolitaireTimer.h"
 #import "SolitaireScoreKeeper.h"
+#include <math.h>
 
 // Private methods
 @interface SolitaireGame()
@@ -267,8 +268,8 @@
     [card.container removeCard: card];
     card.container = nil;
 
-    CGPoint location = CGPointMake(width * rand() / (float)RAND_MAX, height * rand() / (float)RAND_MAX);
-    CATransform3D transform = CATransform3DMakeRotation(3.14159 * rand() / (float)RAND_MAX, 0, 0, 1);
+    CGPoint location = CGPointMake(width * rand() / (CGFloat)RAND_MAX, height * rand() / (CGFloat)RAND_MAX);
+    CATransform3D transform = CATransform3DMakeRotation(M_PI * rand() / (CGFloat)RAND_MAX, 0, 0, 1);
     [card animateToPosition: location andTransform: transform afterDelay: 0.2];
 }
 
