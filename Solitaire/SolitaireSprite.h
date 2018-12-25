@@ -28,8 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 @class SolitaireView;
 
 @interface SolitaireSprite : CALayer {
-__weak SolitaireView* view;
-BOOL selected;
+    __weak SolitaireView* view;
+    BOOL selected;
 }
 
 @property(weak) SolitaireView* view;

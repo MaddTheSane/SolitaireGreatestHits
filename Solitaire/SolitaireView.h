@@ -50,7 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, copy) NSArray<SolitaireCardContainer*> *containers;
 @property (readonly, copy) NSArray<SolitaireCard*> *cards;
 @property (readonly, copy) NSArray<SolitaireSprite*> *sprites;
-@property (readonly, strong) SolitaireGame *game;
+@property (readonly, strong, nullable) SolitaireGame *game;
 -(void) showWinSheet;
 -(void) showLostSheet;
 
