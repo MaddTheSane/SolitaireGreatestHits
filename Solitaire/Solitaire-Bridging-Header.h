@@ -15,3 +15,4 @@
 #import "SolitaireTableau.h"
 #import "SolitaireScoreKeeper.h"
 #import "SolitaireTimer.h"
+#import "SolitaireCell.h"

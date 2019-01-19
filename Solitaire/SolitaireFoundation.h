@@ -23,6 +23,8 @@
 #import <Cocoa/Cocoa.h>
 #import "SolitaireCardContainer.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class SolitaireCard;
 
 @interface SolitaireFoundation : SolitaireCardContainer
@@ -37,3 +39,5 @@
 @property (readonly,getter=isFilled) BOOL filled;
 
 @end
+
+NS_ASSUME_NONNULL_END
