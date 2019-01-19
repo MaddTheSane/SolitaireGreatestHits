@@ -208,8 +208,9 @@
 
     // Unarchive Stock
     stock_ = [gameImage unarchiveGameObjectForKey: @"stock_"];
-    [[self view] addSprite: stock_];
-        
+    [stock_ onAddedToView: [self view]]; // Called explicitly since we don't actually add the stock to the view,
+                                         // but we still want its cards added to the view.
+
     // Unarchive Foundations
     int i;
     for(i = 0; i < 4; i++) {
