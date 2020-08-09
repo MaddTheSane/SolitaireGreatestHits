@@ -38,7 +38,7 @@
 
 - (void)drawInContext:(CGContextRef)context {
     [NSGraphicsContext saveGraphicsState];
-    [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithGraphicsPort:context flipped:NO]];
+    [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithCGContext:context flipped:NO]];
     [self drawSprite];
     [NSGraphicsContext restoreGraphicsState];
 }

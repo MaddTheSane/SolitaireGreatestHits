@@ -10,7 +10,7 @@
 "Auto finish game" = "Spiel automatisch beenden";
 "Auto finish this game" = "Dieses Spiel automatisch beenden";
 "Auto finish" = "Automatisch beenden";
-"Cancel"	= "Abbrechen";
+"Cancel" = "Abbrechen";
 "Change game preferences" = "Einstellungen ändern";
 "Choose a different game to play" = "Wähle ein anderes Spiel aus";
 "Choose game" = "Spiel auswählen";
@@ -20,7 +20,7 @@
 "How to play" = "Spielanleitung";
 "Instructions on how to play this game" = "Anleitung für dieses Spiel";
 "New game" = "Neues Spiel";
-"No"	= "Nein";
+"No" = "Nein";
 "Open a previous game" = "Ein gespeichertes Spiel laden";
 "Open game"	= "Spiel laden";
 "Play this game" = "Dieses Spiel spielen";
@@ -40,7 +40,7 @@
 "Time: %@" = "Zeit: %@";
 "Undo last move" = "Letzen Zug zurücknehmen";
 "Undo" = "Zurücknehmen";
-"Yes"	= "Ja";
+"Yes" = "Ja";
 //"You lost" = "You lost";
 "You won!" = "Du hast gewonnen!";
 "Your time was %@" = "Deine Zeit: %@";

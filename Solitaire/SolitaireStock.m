@@ -194,11 +194,11 @@ extern NSImage* flippedCardImage;
         // Draw Image
         if(!self.disableRestock && delegate_ && [delegate_ canRefillStock]) {
             [reloadImage_ drawInRect: NSMakeRect((self.bounds.size.width - 54) / 2.0, (self.bounds.size.height - 54) / 2.0, 50, 50)
-                fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0];
+                            fromRect: NSZeroRect operation: NSCompositingOperationSourceOver fraction: 1.0];
         }
         else {
             [emptyImage_ drawInRect: NSMakeRect((self.bounds.size.width - 54) / 2.0, (self.bounds.size.height - 54) / 2.0, 50, 50)
-                fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0];
+                           fromRect: NSZeroRect operation: NSCompositingOperationSourceOver fraction: 1.0];
         }
     }
     else {
@@ -209,7 +209,7 @@ extern NSImage* flippedCardImage;
         
         for(i = 2; i >= 0; i--) {
             NSRect dstRect = NSMakeRect(6.0 - i * dx, (2-i) * dy, kCardWidth, kCardHeight);
-            [flippedCardImage drawInRect: dstRect fromRect: srcRect operation: NSCompositeSourceOver fraction: 1.0];
+            [flippedCardImage drawInRect: dstRect fromRect: srcRect operation: NSCompositingOperationSourceOver fraction: 1.0];
         }
         
         // Draw card count indication.
@@ -227,7 +227,7 @@ extern NSImage* flippedCardImage;
             cardCountRect.size.height -= 5;
             NSString* countString = [NSString stringWithFormat: @"%li", (long)[self count]];
             NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
-            [style setAlignment: NSCenterTextAlignment];
+            [style setAlignment: NSTextAlignmentCenter];
             NSDictionary *attributes = [[NSDictionary alloc] initWithObjectsAndKeys:
                 [NSFont fontWithName: @"Helvetica" size: 15], NSFontAttributeName,
                     [NSColor redColor], NSForegroundColorAttributeName, style, NSParagraphStyleAttributeName, nil];

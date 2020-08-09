@@ -93,7 +93,7 @@
     
         if(self.text != nil) {
             NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
-            [style setAlignment: NSCenterTextAlignment];
+            [style setAlignment: NSTextAlignmentCenter];
             NSDictionary *attributes = @{
                                          NSFontAttributeName: [NSFont fontWithName:@"Helvetica" size: 48],
                                          NSForegroundColorAttributeName: borderColor,

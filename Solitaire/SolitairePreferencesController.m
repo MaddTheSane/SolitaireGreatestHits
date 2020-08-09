@@ -40,7 +40,7 @@
     {
         [_backgroundPopup addItemWithTitle:@""];
         NSImage *image = [NSImage imageNamed:filename];
-        [[_backgroundPopup itemAtIndex:index] setImage:image];
+        [_backgroundPopup itemAtIndex:index].image = image;
         ++index;
     }
     
@@ -58,9 +58,9 @@
 {
     NSUserDefaults *defaults    = [NSUserDefaults standardUserDefaults];
     NSData *colorAsData         = [defaults dataForKey:@"backgroundColor"];
-    NSColor *color              = [NSKeyedUnarchiver unarchiveObjectWithData:colorAsData];
+    NSColor *color              = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSColor class] fromData:colorAsData error:nil];
     NSString *cardBack          = [defaults objectForKey:@"cardBack"];
-                                   
+    
     [colorWell setColor:color];
     NSInteger index = [cardBackFiles_ indexOfObject:cardBack];
     [_backgroundPopup selectItemAtIndex:index];

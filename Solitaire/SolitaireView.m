@@ -87,7 +87,7 @@
     self.layer.needsDisplayOnBoundsChange = YES;
     
     NSData* colorAsData = [[NSUserDefaults standardUserDefaults] objectForKey: @"backgroundColor"];
-    NSColor* backgroundColor = [NSKeyedUnarchiver unarchiveObjectWithData: colorAsData];
+    NSColor* backgroundColor = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSColor class] fromData:colorAsData error:NULL];
     [self setTableBackground: backgroundColor];
     
     [self.layer setNeedsDisplay];
@@ -169,9 +169,9 @@
 
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)context {
     [NSGraphicsContext saveGraphicsState];
-    [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithGraphicsPort:context flipped:NO]];
+    [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithCGContext:context flipped:NO]];
     if(layer == self.layer) { // draw background
-        [backgroundImage_ drawInRect: NSRectFromCGRect(CGContextGetClipBoundingBox(context)) fromRect: NSZeroRect operation: NSCompositeCopy fraction:1.0];
+        [backgroundImage_ drawInRect: NSRectFromCGRect(CGContextGetClipBoundingBox(context)) fromRect: NSZeroRect operation: NSCompositingOperationCopy fraction:1.0];
     }
     [NSGraphicsContext restoreGraphicsState];
 }
@@ -222,9 +222,10 @@
     if([[self game] keepsScore]) info = [NSString stringWithFormat: NSLocalizedString(@"%@\nYour score was %li", @"%@\nYour score was %li"), info, (long)self.controller.scoreKeeper.score];
     
     [alert setInformativeText: info];
-    [alert setAlertStyle: NSInformationalAlertStyle];
-    [alert beginSheetModalForWindow: [self window] modalDelegate: self.controller
-        didEndSelector: @selector(newGame) contextInfo: nil];
+    [alert setAlertStyle: NSAlertStyleInformational];
+    [alert beginSheetModalForWindow: self.window completionHandler:^(NSModalResponse returnCode) {
+        [self.controller newGame];
+    }];
 }
 
 - (void)showLostSheet

@@ -77,16 +77,16 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     // Setup the defaults system.
     NSMutableDictionary* defaultValues = [[NSMutableDictionary alloc] initWithCapacity: 8];
 
-    [defaultValues setObject:@(NSOffState) forKey: @"showScoreAndTime"];
+    [defaultValues setObject:@(NSControlStateValueOff) forKey: @"showScoreAndTime"];
     [defaultValues setObject:@0 forKey: @"selectedGameIndex"];
 
     NSData* colorAsData = [NSKeyedArchiver archivedDataWithRootObject: 
-        [NSColor colorWithCalibratedRed: 0.12 green: 0.64 blue: 0.33 alpha: 1.0]];
+        [NSColor colorWithCalibratedRed: 0.12 green: 0.64 blue: 0.33 alpha: 1.0] requiringSecureCoding: YES error: NULL];
         
     [defaultValues setObject: colorAsData forKey: @"backgroundColor"];
     [defaultValues setObject:@"CardBack1" forKey: @"cardBack"];
 
-    NSData* dateAsData = [NSKeyedArchiver archivedDataWithRootObject: [NSDate distantPast]];
+    NSData* dateAsData = [NSKeyedArchiver archivedDataWithRootObject: [NSDate distantPast] requiringSecureCoding: YES error: NULL];
     [defaultValues setObject: dateAsData forKey: @"lastDonateDate"];
 
     [[NSUserDefaults standardUserDefaults] registerDefaults: defaultValues];
@@ -152,7 +152,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     NSMenu* gameMenu = [[mainMenu itemWithTitle: NSLocalizedString(@"Game", @"Game")] submenu];
     [gameMenu addItem: gameItem];
 
-    [gameItem setState: NSOffState]; 
+    [gameItem setState: NSControlStateValueOff];
 }
 
 -(NSArray*) availableGames {
@@ -191,21 +191,9 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [gameImage archiveGameTime: [self.timer secondsEllapsed]];
     if([game_ keepsScore]) [gameImage archiveGameScore: [self.scoreKeeper score]];
 
-    NSData *dat;
-    if (@available(macOS 10.13, *)) {
-        dat = [NSKeyedArchiver archivedDataWithRootObject:gameImage requiringSecureCoding:NO error:error];
-        if (!dat) {
-            return NO;
-        }
-    } else {
-        // Fallback on earlier versions
-        dat = [NSKeyedArchiver archivedDataWithRootObject:gameImage];
-        if (!dat) {
-            if (error) {
-                *error = [NSError errorWithDomain:NSCocoaErrorDomain code:-1 userInfo:nil];
-            }
-            return NO;
-        }
+    NSData *dat = [NSKeyedArchiver archivedDataWithRootObject:gameImage requiringSecureCoding:NO error:error];
+    if (!dat) {
+        return NO;
     }
     return [dat writeToURL:filename options:NSDataWritingAtomic error:error];
 }
@@ -216,21 +204,9 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     if (!localData) {
         return NO;
     }
-    SolitaireSavedGameImage* gameImage;
-    if (@available(macOS 10.13, *)) {
-        gameImage = [NSKeyedUnarchiver unarchivedObjectOfClass:[SolitaireSavedGameImage class] fromData:localData error:error];
-        if (!gameImage) {
-            return NO;
-        }
-    } else {
-        // Fallback on earlier versions
-        gameImage = [NSKeyedUnarchiver unarchiveObjectWithData:localData];
-        if (!gameImage) {
-            if (error) {
-                *error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:@{NSURLErrorKey: filename}];
-            }
-            return NO;
-        }
+    SolitaireSavedGameImage* gameImage = [NSKeyedUnarchiver unarchivedObjectOfClass:[SolitaireSavedGameImage class] fromData:localData error:error];
+    if (!gameImage) {
+        return NO;
     }
     SolitaireGame* newGame = [gameDictionary_ objectForKey: [gameImage gameName]];
     if(newGame != nil) {
@@ -253,7 +229,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [alert addButtonWithTitle: NSLocalizedString(@"Cancel", @"Cancel")];
     [alert setMessageText: NSLocalizedString(@"New game", @"New game")];
     [alert setInformativeText: NSLocalizedString(@"RestartQuestion", @"Restart question")];
-    [alert setAlertStyle: NSWarningAlertStyle];
+    [alert setAlertStyle: NSAlertStyleWarning];
  
     [alert beginSheetModalForWindow:self.window completionHandler:
      ^(NSInteger result)
@@ -269,7 +245,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [alert addButtonWithTitle: NSLocalizedString(@"Cancel", @"Cancel")];
     [alert setMessageText: NSLocalizedString(@"Restart game", @"Restart game")];
     [alert setInformativeText: NSLocalizedString(@"ReloadQuestion", @"Reload question")];
-    [alert setAlertStyle: NSWarningAlertStyle];
+    [alert setAlertStyle: NSAlertStyleWarning];
     
     [alert beginSheetModalForWindow:self.window completionHandler:
      ^(NSInteger result)
@@ -289,7 +265,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [savePanel beginSheetModalForWindow:self.window completionHandler:
 	 ^(NSModalResponse result)
     {
-		 if (result == NSFileHandlingPanelOKButton)
+        if (result == NSModalResponseOK)
 		 {
              NSURL *url = [savePanel URL];
              NSError *err;
@@ -313,7 +289,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [openPanel beginSheetModalForWindow:self.window completionHandler:
      	^(NSModalResponse result)
     {
-	    if (result == NSFileHandlingPanelOKButton)
+        if (result == NSModalResponseOK)
 	    {
             NSURL *url = [openPanel URL];
             NSError *err;
@@ -330,12 +306,12 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
 
     [self.window beginSheet:self.preferences.preferencesPanel completionHandler:^(NSModalResponse returnCode)
     {
-        if (returnCode == NSOKButton)
+        if (returnCode == NSModalResponseOK)
         {
             NSColor *color = [self.preferences selectedColor];
             [self.view setTableBackground: color];
             
-            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:color];
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:color requiringSecureCoding:YES error:NULL];
             [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"backgroundColor"];
             
             NSString *cardBack = [self.preferences selectedCardBack];
@@ -359,7 +335,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     // Create a matrix of radio buttons
     NSButtonCell *prototype = [[NSButtonCell alloc] init];
     [prototype setTitle: NSLocalizedString(@"ChooseGame", @"Choose Game")];
-    [prototype setButtonType: NSRadioButton];
+    [prototype setButtonType: NSButtonTypeRadio];
     NSRect matrixRect = NSMakeRect(0.0, 0.0, 300.0, 240.0);
     NSMatrix* matrix = [[NSMatrix alloc] initWithFrame: matrixRect
                                                     mode: NSRadioModeMatrix
@@ -386,7 +362,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [alert setMessageText: NSLocalizedString(@"ChooseDifferent", @"Choose Different")];
     [alert setInformativeText: NSLocalizedString(@"RestartQuestion", @"Restart question")];
     [alert setAccessoryView: matrix];
-    [alert setAlertStyle: NSInformationalAlertStyle];
+    [alert setAlertStyle: NSAlertStyleInformational];
     
     [alert beginSheetModalForWindow:self.window completionHandler:
      ^(NSInteger result)
@@ -621,7 +597,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
 
 -(void) requestDonation {
     NSData* dateAsData = [[NSUserDefaults standardUserDefaults] objectForKey: @"lastDonateDate"];
-    NSDate* lastDonateDate = [NSKeyedUnarchiver unarchiveObjectWithData: dateAsData];
+    NSDate* lastDonateDate = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSDate class] fromData:dateAsData error:NULL];
     NSDate* todaysDate = [NSDate date];
     const NSTimeInterval secsInWeek = 604800;
     
@@ -637,7 +613,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
             [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6662868"]];
             
         // Let defaults know we requested donation today.
-        [[NSUserDefaults standardUserDefaults] setObject: [NSKeyedArchiver archivedDataWithRootObject: todaysDate] forKey: @"lastDonateDate"];
+        [[NSUserDefaults standardUserDefaults] setObject: [NSKeyedArchiver archivedDataWithRootObject: todaysDate requiringSecureCoding: YES error: NULL] forKey: @"lastDonateDate"];
     }
 }
 
@@ -648,12 +624,12 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     // Clear the check from the old game.
     if(game_ != nil) {
         NSMenuItem* currentGameItem = [gameMenu itemWithTitle: [game_ localizedName]];
-        [currentGameItem setState: NSOffState];
+        [currentGameItem setState: NSControlStateValueOff];
     }
     
     // Set the new game as the active game.
     NSMenuItem* newGameItem = [gameMenu itemAtIndex: index];
-    [newGameItem setState: NSOnState];
+    [newGameItem setState: NSControlStateValueOn];
 
     game_ = [gameRegistry_ objectAtIndex: index];
     

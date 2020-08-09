@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SolitaireCell : SolitaireCardContainer
 
--(id) init;
+-(instancetype) init;
 -(BOOL) acceptsDroppedCards;
 -(void) addCard: (SolitaireCard*) card;
 -(void) removeCard: (SolitaireCard*) card;

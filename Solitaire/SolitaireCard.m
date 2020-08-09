@@ -183,10 +183,10 @@ static NSString const * const valueStringTable__[] = {@"Ace", @"2", @"3", @"4", 
    
     // Draw Card
     if(!flipped) {
-        [frontImage_ drawInRect: dstRect fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0];
+        [frontImage_ drawInRect: dstRect fromRect: NSZeroRect operation: NSCompositingOperationSourceOver fraction: 1.0];
     }
     else {
-        [flippedCardImage drawInRect: dstRect fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0];
+        [flippedCardImage drawInRect: dstRect fromRect: NSZeroRect operation: NSCompositingOperationSourceOver fraction: 1.0];
     }
     
     // Highlight card.

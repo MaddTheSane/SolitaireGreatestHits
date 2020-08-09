@@ -23,9 +23,10 @@
       "scale" : "2x"
     },
     {
+      "locale" : "de",
       "idiom" : "universal",
-      "scale" : "2x",
-      "locale" : "de"
+      "filename" : "SolitaireCards-de@2x.png",
+      "scale" : "2x"
     },
     {
       "locale" : "en",
