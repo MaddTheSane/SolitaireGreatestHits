@@ -59,7 +59,7 @@
 }
 
 -(NSString*) localizedName {
-    return [NSBundle.mainBundle localizedStringForKey:[self name] value:@"" table:nil];
+    return [NSBundle.mainBundle localizedStringForKey:[self name] value:[self name] table:nil];
 }
 
 @synthesize gameSeed=gameSeed_;

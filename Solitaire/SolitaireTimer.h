@@ -28,6 +28,8 @@
 @private
     NSTimer* timer_;
     NSInteger secs_;
+    NSDate *startTime;
+    NSDateComponentsFormatter *timeFormatter;
 
     IBOutlet NSTextField* timeField_;
 }
@@ -37,8 +39,9 @@
 -(void) resetTimer;
 -(NSString*) timeString;
 
-@property (nonatomic) NSInteger secondsEllapsed;
+@property (nonatomic) NSInteger secondsElapsed;
 
 -(void) updateTime;
 
+@property (nonatomic, readonly) NSTimeInterval accurateSecondsElapsed;
 @end

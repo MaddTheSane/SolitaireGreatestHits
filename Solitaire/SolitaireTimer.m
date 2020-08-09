@@ -25,10 +25,22 @@
 
 // Private methods
 @interface SolitaireTimer()
--(void) timerFired;
+-(void) timerFired:(NSTimer *)timer;
 @end
 
 @implementation SolitaireTimer
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        timeFormatter = [[NSDateComponentsFormatter alloc] init];
+        timeFormatter.zeroFormattingBehavior = NSDateComponentsFormatterZeroFormattingBehaviorDropLeading | NSDateComponentsFormatterZeroFormattingBehaviorPad;
+        timeFormatter.allowedUnits = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+
+    }
+    return self;
+}
 
 -(void) awakeFromNib {
     timer_ = nil;
@@ -45,25 +57,24 @@
         [timer_ invalidate];
         timer_ = nil;
     }
+    startTime = nil;
 }
 
 -(void) resetTimer {
     secs_ = 0;
     [self stopTimer];
-    
-    timer_ = [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self selector: @selector(timerFired) userInfo: nil repeats: YES];
+    startTime = [NSDate date];
+
+    timer_ = [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self selector: @selector(timerFired:) userInfo: nil repeats: YES];
 }
 
 -(NSString*) timeString {
-    NSDateComponentsFormatter *formatter = [[NSDateComponentsFormatter alloc] init];
-    formatter.zeroFormattingBehavior = NSDateComponentsFormatterZeroFormattingBehaviorDropLeading | NSDateComponentsFormatterZeroFormattingBehaviorPad;
-    formatter.allowedUnits = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
-    return [formatter stringFromTimeInterval:secs_];
+    return [timeFormatter stringFromTimeInterval:secs_];
 }
 
-@synthesize secondsEllapsed=secs_;
+@synthesize secondsElapsed=secs_;
 
--(void) setSecondsEllapsed: (NSInteger)secs {
+-(void) setSecondsElapsed: (NSInteger)secs {
     secs_ = secs;
     [self updateTime];
 }
@@ -72,9 +83,13 @@
     [timeField_ setStringValue: [NSString stringWithFormat: NSLocalizedString(@"Time: %@", @"Time: %@"), [self timeString]]];
 }
 
--(void) timerFired {
+-(void) timerFired:(NSTimer *)timer {
     secs_++;
     [self updateTime];
+}
+
+- (NSTimeInterval)accurateSecondsElapsed {
+    return [[NSDate date] timeIntervalSinceDate:startTime];
 }
 
 @end

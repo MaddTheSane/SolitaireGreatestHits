@@ -32,7 +32,7 @@ typedef NS_ENUM(int, SolitaireSuit) {
     SolitaireSuitHearts = 1,
     SolitaireSuitSpades = 2,
     SolitaireSuitClubs = 3
-};
+} NS_SWIFT_NAME(SolitaireCard.Suit);
 
 typedef NS_ENUM(int, SolitaireFaceValue) {
     SolitaireValueAce NS_SWIFT_NAME(ace) = 0,
@@ -48,12 +48,12 @@ typedef NS_ENUM(int, SolitaireFaceValue) {
     SolitaireValueJack NS_SWIFT_NAME(jack) = 10,
     SolitaireValueQueen NS_SWIFT_NAME(queen) = 11,
     SolitaireValueKing NS_SWIFT_NAME(king) = 12
-};
+} NS_SWIFT_NAME(SolitaireCard.FaceValue);
 
 typedef NS_ENUM(int, SolitaireSuitColor) {
     SolitaireRed = 0,
     SolitaireBlack = 1
-};
+} NS_SWIFT_NAME(SolitaireCard.SuitColor);
 
 #define kCardWidth 79
 #define kCardHeight 123

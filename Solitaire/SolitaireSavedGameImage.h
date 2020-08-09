@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
     unsigned gameSeed_;
     NSInteger gameScore_;
     NSInteger gameTime_;
-    NSMutableDictionary* gameData_;
+    NSMutableDictionary<NSString*,id<NSCoding>>* gameData_;
 }
 
 -(instancetype) init UNAVAILABLE_ATTRIBUTE;
@@ -51,8 +51,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void) archiveGameObject: (nullable id)obj forKey: (NSString*)key;
 -(nullable id) unarchiveGameObjectForKey: (NSString*)key;
 
-- (void)setObject:(nullable id)obj forKeyedSubscript:(NSString*)key;
-- (nullable id)objectForKeyedSubscript:(NSString*)key;
+- (void)setObject:(nullable id<NSCoding>)obj forKeyedSubscript:(NSString*)key;
+- (nullable id<NSCoding>)objectForKeyedSubscript:(NSString*)key;
 
 @end
 

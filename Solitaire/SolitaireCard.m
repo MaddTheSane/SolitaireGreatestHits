@@ -151,7 +151,7 @@ static NSString const * const valueStringTable__[] = {@"Ace", @"2", @"3", @"4", 
 @synthesize suit=suit_;
 
 -(SolitaireSuitColor) suitColor {
-    return (suit_ == SolitaireSuitHearts) || (suit_ == SolitaireSuitDiamonds);
+    return ((suit_ == SolitaireSuitHearts) || (suit_ == SolitaireSuitDiamonds)) ? SolitaireBlack : SolitaireRed;
 }
 
 -(NSString*) name {

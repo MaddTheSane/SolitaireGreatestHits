@@ -74,37 +74,37 @@
 }
 
 -(void) drawSprite {
-        NSRect dstRect = NSRectFromCGRect(CGRectMake(self.bounds.origin.x + 2,
-            self.bounds.origin.y + 2, kCardWidth - 2, kCardHeight - 2));
+    NSRect dstRect = NSRectFromCGRect(CGRectMake(self.bounds.origin.x + 2,
+                                                 self.bounds.origin.y + 2, kCardWidth - 2, kCardHeight - 2));
     
-        NSBezierPath* path = [NSBezierPath bezierPath];
-        [path setLineWidth: 2.0];
-        [path appendBezierPathWithRoundedRect: dstRect xRadius: 9.0 yRadius: 9.0];
-        
-        NSColor* borderColor = [NSColor colorWithCalibratedWhite: 0.85 alpha: 0.5];
-        [borderColor setStroke];
-        [path stroke];
-        
-        if(self.selected) {
-            NSColor* backgroundColor = [NSColor colorWithCalibratedWhite: 0.85 alpha: 0.15];
-            [backgroundColor setFill];
-            [path fill];
-        }
+    NSBezierPath* path = [NSBezierPath bezierPath];
+    [path setLineWidth: 2.0];
+    [path appendBezierPathWithRoundedRect: dstRect xRadius: 9.0 yRadius: 9.0];
     
-        if(self.text != nil) {
-            NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
-            [style setAlignment: NSTextAlignmentCenter];
-            NSDictionary *attributes = @{
-                                         NSFontAttributeName: [NSFont fontWithName:@"Helvetica" size: 48],
-                                         NSForegroundColorAttributeName: borderColor,
-                                         NSParagraphStyleAttributeName: style};
+    NSColor* borderColor = [NSColor colorWithCalibratedWhite: 0.85 alpha: 0.5];
+    [borderColor setStroke];
+    [path stroke];
     
-            CGFloat newHeight = 4.0 * dstRect.size.height / 10.0;
-            dstRect.size.height = newHeight;
-            dstRect.origin.y += newHeight;
+    if (self.selected) {
+        NSColor* backgroundColor = [NSColor colorWithCalibratedWhite: 0.85 alpha: 0.15];
+        [backgroundColor setFill];
+        [path fill];
+    }
+    
+    if (self.text != nil) {
+        NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
+        [style setAlignment: NSTextAlignmentCenter];
+        NSDictionary *attributes = @{
+            NSFontAttributeName: [NSFont fontWithName:@"Helvetica" size: 48],
+            NSForegroundColorAttributeName: borderColor,
+            NSParagraphStyleAttributeName: style};
         
-            [self.text drawInRect: dstRect withAttributes: attributes];
-        }
+        CGFloat newHeight = 4.0 * dstRect.size.height / 10.0;
+        dstRect.size.height = newHeight;
+        dstRect.origin.y += newHeight;
+        
+        [self.text drawInRect: dstRect withAttributes: attributes];
+    }
 }
 
 -(BOOL) acceptsDroppedCards {
@@ -184,16 +184,16 @@
     // scaling blur.
     CGFloat dx = p.x - self.position.x;
     CGFloat dy = p.y - self.position.y;
-    [super setPosition: CGPointMake((int)p.x, (int)p.y)];
+    [super setPosition: CGPointMake(floor(p.x), floor(p.y))];
     
     if([cards_ count] > 0) {
         SolitaireCard* bottomCard = [cards_ objectAtIndex: 0];
         CGPoint oldPosition = bottomCard.position;
-        bottomCard.position = CGPointMake((int)(oldPosition.x + dx), (int)(oldPosition.y + dy));
+        bottomCard.position = CGPointMake(floor(oldPosition.x + dx), floor(oldPosition.y + dy));
     }
     
     for(SolitaireCard* card in cards_) {
-        card.homeLocation = CGPointMake((int)(card.homeLocation.x + dx), (int)(card.homeLocation.y + dy));
+        card.homeLocation = CGPointMake(floor(card.homeLocation.x + dx), floor(card.homeLocation.y + dy));
     }
 }
 
