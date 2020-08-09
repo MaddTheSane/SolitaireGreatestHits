@@ -1,0 +1,58 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "SolitaireCards.png",
+      "scale" : "1x"
+    },
+    {
+      "locale" : "de",
+      "idiom" : "universal",
+      "filename" : "SolitaireCards-de.png",
+      "scale" : "1x"
+    },
+    {
+      "locale" : "en",
+      "idiom" : "universal",
+      "filename" : "SolitaireCards.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "SolitaireCards@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "locale" : "de"
+    },
+    {
+      "locale" : "en",
+      "idiom" : "universal",
+      "filename" : "SolitaireCards@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "locale" : "de"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "locale" : "en"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "localizable" : true
+  }
+}

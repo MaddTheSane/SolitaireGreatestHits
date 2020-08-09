@@ -38,13 +38,12 @@
 		37ECE627103216B800AF20BB /* SolitaireGolfGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ECE626103216B800AF20BB /* SolitaireGolfGame.m */; };
 		37ECE6B0103232A900AF20BB /* SolitaireScorpianGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ECE6AF103232A900AF20BB /* SolitaireScorpianGame.m */; };
 		37ECE70B1032469F00AF20BB /* SolitaireYukonGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ECE70A1032469F00AF20BB /* SolitaireYukonGame.m */; };
-		55BA4AF72170230100C0172A /* SolitaireCards@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55BA4AF92170230100C0172A /* SolitaireCards@2x.png */; };
+		5590AD0121F3C1AA0080591F /* SolitaireFreeCellGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5590AD0021F3C1AA0080591F /* SolitaireFreeCellGame.swift */; };
 		55BD080021B7186900A8DD5F /* SolitaireCardPickupGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC9DE12169556A004EB183 /* SolitaireCardPickupGame.swift */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		925E695D18F496010074BF00 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 925E695F18F496010074BF00 /* Localizable.strings */; };
-		925E696118F4A4FE0074BF00 /* SolitaireCards.png in Resources */ = {isa = PBXBuildFile; fileRef = 925E696318F4A4FE0074BF00 /* SolitaireCards.png */; };
 		92C5A1C318FF2ECA001AFE0D /* Info.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 92C5A1C118FF2ECA001AFE0D /* Info.rtf */; };
 		92DF2AD219070BED0049377D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92DF2AD119070BED0049377D /* Images.xcassets */; };
 /* End PBXBuildFile section */
@@ -117,7 +116,7 @@
 		37ECE70A1032469F00AF20BB /* SolitaireYukonGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireYukonGame.m; sourceTree = "<group>"; };
 		552B1E172176C90E0062E4CC /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		556821012168128400402D96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		55BA4AF82170230100C0172A /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/SolitaireCards@2x.png"; sourceTree = "<group>"; };
+		5590AD0021F3C1AA0080591F /* SolitaireFreeCellGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolitaireFreeCellGame.swift; sourceTree = "<group>"; };
 		55BD080321B737B600A8DD5F /* randWrap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = randWrap.h; sourceTree = "<group>"; };
 		55EC9DE021695569004EB183 /* Solitaire-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Solitaire-Bridging-Header.h"; sourceTree = "<group>"; };
 		55EC9DE12169556A004EB183 /* SolitaireCardPickupGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolitaireCardPickupGame.swift; sourceTree = "<group>"; };
@@ -127,8 +126,6 @@
 		8D1107320486CEB800E47090 /* Solitaire Greatest Hits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Solitaire Greatest Hits.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		925E695E18F496010074BF00 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		925E696018F496070074BF00 /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		925E696218F4A4FE0074BF00 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/SolitaireCards.png; sourceTree = "<group>"; };
-		925E696418F4A5030074BF00 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/SolitaireCards.png; sourceTree = "<group>"; };
 		92C5A1C218FF2ECA001AFE0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Info.rtf; sourceTree = "<group>"; };
 		92C5A1C418FF2ED3001AFE0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = de.lproj/Info.rtf; sourceTree = "<group>"; };
 		92DF2AD119070BED0049377D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -219,8 +216,6 @@
 				92C5A1C118FF2ECA001AFE0D /* Info.rtf */,
 				379CAA9F0FD19512009A760B /* MainMenu.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
-				925E696318F4A4FE0074BF00 /* SolitaireCards.png */,
-				55BA4AF92170230100C0172A /* SolitaireCards@2x.png */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				925E695F18F496010074BF00 /* Localizable.strings */,
 			);
@@ -248,6 +243,7 @@
 				3759D48F0E55DE71003B9CB8 /* SolitaireSpiderGame.m */,
 				3759D4660E55DB98003B9CB8 /* SolitaireFreeCellGame.h */,
 				3759D4670E55DB98003B9CB8 /* SolitaireFreeCellGame.m */,
+				5590AD0021F3C1AA0080591F /* SolitaireFreeCellGame.swift */,
 				3781E3F91003AE6C00B421E0 /* SolitaireAcesUpGame.h */,
 				3781E3FA1003AE6C00B421E0 /* SolitaireAcesUpGame.m */,
 				3781E4221003D73C00B421E0 /* SolitaireBakersGame.h */,
@@ -370,8 +366,6 @@
 			files = (
 				925E695D18F496010074BF00 /* Localizable.strings in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
-				55BA4AF72170230100C0172A /* SolitaireCards@2x.png in Resources */,
-				925E696118F4A4FE0074BF00 /* SolitaireCards.png in Resources */,
 				379CAAA10FD19512009A760B /* MainMenu.xib in Resources */,
 				92C5A1C318FF2ECA001AFE0D /* Info.rtf in Resources */,
 				92DF2AD219070BED0049377D /* Images.xcassets in Resources */,
@@ -402,6 +396,7 @@
 				3759D4680E55DB98003B9CB8 /* SolitaireFreeCellGame.m in Sources */,
 				3759D4900E55DE71003B9CB8 /* SolitaireSpiderGame.m in Sources */,
 				377E77C90FD1D3D5002EFBCC /* SolitairePreferencesController.m in Sources */,
+				5590AD0121F3C1AA0080591F /* SolitaireFreeCellGame.swift in Sources */,
 				55BD080021B7186900A8DD5F /* SolitaireCardPickupGame.swift in Sources */,
 				373293770FFC13F90058C186 /* SolitaireTimer.m in Sources */,
 				3781E3FB1003AE6C00B421E0 /* SolitaireAcesUpGame.m in Sources */,
@@ -441,14 +436,6 @@
 			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
-		55BA4AF92170230100C0172A /* SolitaireCards@2x.png */ = {
-			isa = PBXVariantGroup;
-			children = (
-				55BA4AF82170230100C0172A /* en */,
-			);
-			name = "SolitaireCards@2x.png";
-			sourceTree = "<group>";
-		};
 		925E695F18F496010074BF00 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -456,15 +443,6 @@
 				925E696018F496070074BF00 /* de */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		925E696318F4A4FE0074BF00 /* SolitaireCards.png */ = {
-			isa = PBXVariantGroup;
-			children = (
-				925E696218F4A4FE0074BF00 /* en */,
-				925E696418F4A5030074BF00 /* de */,
-			);
-			name = SolitaireCards.png;
 			sourceTree = "<group>";
 		};
 		92C5A1C118FF2ECA001AFE0D /* Info.rtf */ = {
