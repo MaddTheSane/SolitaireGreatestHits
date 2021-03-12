@@ -75,19 +75,19 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
 
 +(void) initialize {
     // Setup the defaults system.
-    NSMutableDictionary* defaultValues = [[NSMutableDictionary alloc] initWithCapacity: 8];
+    NSMutableDictionary<NSString*,id>* defaultValues = [[NSMutableDictionary alloc] initWithCapacity: 8];
 
-    [defaultValues setObject:@(NSControlStateValueOff) forKey: @"showScoreAndTime"];
-    [defaultValues setObject:@0 forKey: @"selectedGameIndex"];
+    defaultValues[@"showScoreAndTime"] = @(NSControlStateValueOff);
+    defaultValues[@"selectedGameIndex"] = @0;
 
     NSData* colorAsData = [NSKeyedArchiver archivedDataWithRootObject: 
         [NSColor colorWithCalibratedRed: 0.12 green: 0.64 blue: 0.33 alpha: 1.0] requiringSecureCoding: YES error: NULL];
         
-    [defaultValues setObject: colorAsData forKey: @"backgroundColor"];
-    [defaultValues setObject:@"CardBack1" forKey: @"cardBack"];
+    defaultValues[@"backgroundColor"] = colorAsData;
+    defaultValues[@"cardBack"] = @"CardBack1";
 
     NSData* dateAsData = [NSKeyedArchiver archivedDataWithRootObject: [NSDate distantPast] requiringSecureCoding: YES error: NULL];
-    [defaultValues setObject: dateAsData forKey: @"lastDonateDate"];
+    defaultValues[@"lastDonateDate"] = dateAsData;
 
     [[NSUserDefaults standardUserDefaults] registerDefaults: defaultValues];
 }
@@ -315,7 +315,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
             [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"backgroundColor"];
             
             NSString *cardBack = [self.preferences selectedCardBack];
-            if (![cardBack isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"cardBack"]])
+            if (![cardBack isEqualToString:[[NSUserDefaults standardUserDefaults] stringForKey:@"cardBack"]])
             {
                 [[NSUserDefaults standardUserDefaults] setObject:cardBack forKey:@"cardBack"];
                 LoadFlippedCardImage(YES);

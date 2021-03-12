@@ -27,7 +27,7 @@
                             <menuItem isSeparatorItem="YES" id="236">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Preferences…" keyEquivalent="," id="129" userLabel="121">
+                            <menuItem title="Preferences…" keyEquivalent="," id="129">
                                 <connections>
                                     <action selector="onPreferences:" target="441" id="518"/>
                                 </connections>
@@ -60,7 +60,7 @@
                             <menuItem isSeparatorItem="YES" id="149">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Quit Solitaire Greatest Hits" keyEquivalent="q" id="136" userLabel="1111">
+                            <menuItem title="Quit Solitaire Greatest Hits" keyEquivalent="q" id="136">
                                 <connections>
                                     <action selector="terminate:" target="-1" id="369"/>
                                 </connections>
@@ -71,7 +71,7 @@
                 <menuItem title="File" id="83">
                     <menu key="submenu" title="File" id="81">
                         <items>
-                            <menuItem title="New Game" keyEquivalent="n" id="82" userLabel="9">
+                            <menuItem title="New Game" keyEquivalent="n" id="82">
                                 <connections>
                                     <action selector="onNewGame:" target="441" id="450"/>
                                 </connections>
@@ -97,29 +97,29 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="79" userLabel="7">
+                            <menuItem isSeparatorItem="YES" id="79">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Close" keyEquivalent="w" id="73" userLabel="1">
+                            <menuItem title="Close" keyEquivalent="w" id="73">
                                 <connections>
                                     <action selector="performClose:" target="-1" id="193"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save Game..." keyEquivalent="s" id="75" userLabel="3">
+                            <menuItem title="Save Game..." keyEquivalent="s" id="75">
                                 <connections>
                                     <action selector="onSaveGame:" target="441" id="513"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="74" userLabel="2">
+                            <menuItem isSeparatorItem="YES" id="74">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Page Setup..." keyEquivalent="P" id="77" userLabel="5">
+                            <menuItem title="Page Setup..." keyEquivalent="P" id="77">
                                 <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
                                 <connections>
                                     <action selector="runPageLayout:" target="-1" id="87"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Print…" keyEquivalent="p" id="78" userLabel="6">
+                            <menuItem title="Print…" keyEquivalent="p" id="78">
                                 <connections>
                                     <action selector="print:" target="-1" id="86"/>
                                 </connections>
@@ -310,8 +310,8 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Help" id="103" userLabel="1">
-                    <menu key="submenu" title="Help" id="106" userLabel="2">
+                <menuItem title="Help" id="103">
+                    <menu key="submenu" title="Help" id="106">
                         <items>
                             <menuItem title="Solitaire Help" keyEquivalent="?" id="111">
                                 <connections>
@@ -410,7 +410,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="eQL-4P-d7C">
-                        <rect key="frame" x="137" y="253" width="44" height="23"/>
+                        <rect key="frame" x="137" y="257" width="44" height="23"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="44" id="7Kv-aW-itj"/>
                             <constraint firstAttribute="height" constant="23" id="Ywq-DW-U8S"/>
@@ -418,7 +418,7 @@
                         <color key="color" red="0.12156863" green="0.63921570999999999" blue="0.32941176999999999" alpha="1" colorSpace="calibratedRGB"/>
                     </colorWell>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sJn-9Q-wuR">
-                        <rect key="frame" x="18" y="257" width="113" height="16"/>
+                        <rect key="frame" x="18" y="260" width="113" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Game board color" id="HYC-j4-4Q8">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -452,7 +452,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EBt-dx-rxd">
-                        <rect key="frame" x="9" y="13" width="132" height="32"/>
+                        <rect key="frame" x="13" y="13" width="132" height="32"/>
                         <buttonCell key="cell" type="push" title="Factory settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Icd-ws-qpV">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -465,7 +465,7 @@ Gw
                         </connections>
                     </button>
                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eBn-ra-5So">
-                        <rect key="frame" x="134" y="225" width="194" height="25"/>
+                        <rect key="frame" x="134" y="227" width="194" height="25"/>
                         <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="2HV-oY-IKs" id="4aC-gB-Uhn">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
@@ -479,7 +479,7 @@ Gw
                         </popUpButtonCell>
                     </popUpButton>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b12-66-Yxg">
-                        <rect key="frame" x="18" y="232" width="113" height="16"/>
+                        <rect key="frame" x="18" y="234" width="113" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Card background" id="bws-Cv-xiF">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -488,22 +488,23 @@ Gw
                     </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="eBn-ra-5So" firstAttribute="top" secondItem="eQL-4P-d7C" secondAttribute="bottom" constant="4" id="1TD-lg-Ag9"/>
-                    <constraint firstItem="EBt-dx-rxd" firstAttribute="leading" secondItem="aJ8-KI-YsA" secondAttribute="leading" constant="16" id="1uE-GA-F4V"/>
+                    <constraint firstItem="eBn-ra-5So" firstAttribute="top" secondItem="eQL-4P-d7C" secondAttribute="bottom" constant="6" id="1TD-lg-Ag9"/>
+                    <constraint firstItem="EBt-dx-rxd" firstAttribute="leading" secondItem="aJ8-KI-YsA" secondAttribute="leading" constant="20" symbolic="YES" id="1uE-GA-F4V"/>
                     <constraint firstItem="jam-bt-gHA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EBt-dx-rxd" secondAttribute="trailing" constant="12" symbolic="YES" id="2FB-0M-cXG"/>
                     <constraint firstItem="ZU5-ta-JHL" firstAttribute="width" secondItem="jam-bt-gHA" secondAttribute="width" id="2ds-zv-D9Q"/>
                     <constraint firstItem="EBt-dx-rxd" firstAttribute="baseline" secondItem="jam-bt-gHA" secondAttribute="baseline" id="34h-Yh-3Sh"/>
                     <constraint firstItem="sJn-9Q-wuR" firstAttribute="centerY" secondItem="eQL-4P-d7C" secondAttribute="centerY" id="3Ua-Oq-F0W"/>
+                    <constraint firstItem="sJn-9Q-wuR" firstAttribute="top" secondItem="aJ8-KI-YsA" secondAttribute="top" constant="20" symbolic="YES" id="6vX-Oh-W8v"/>
                     <constraint firstAttribute="bottom" secondItem="EBt-dx-rxd" secondAttribute="bottom" constant="20" symbolic="YES" id="Ahh-Yx-ADv"/>
                     <constraint firstAttribute="trailing" secondItem="eBn-ra-5So" secondAttribute="trailing" constant="68" id="CJp-zq-9g0"/>
                     <constraint firstItem="b12-66-Yxg" firstAttribute="trailing" secondItem="sJn-9Q-wuR" secondAttribute="trailing" id="Dj4-KP-PK8"/>
                     <constraint firstItem="ZU5-ta-JHL" firstAttribute="leading" secondItem="jam-bt-gHA" secondAttribute="trailing" constant="12" symbolic="YES" id="Fne-yI-gvX"/>
                     <constraint firstItem="eBn-ra-5So" firstAttribute="leading" secondItem="b12-66-Yxg" secondAttribute="trailing" constant="8" symbolic="YES" id="Fsi-in-Czz"/>
                     <constraint firstItem="jam-bt-gHA" firstAttribute="baseline" secondItem="ZU5-ta-JHL" secondAttribute="baseline" id="Gc0-RJ-zgq"/>
+                    <constraint firstItem="ZU5-ta-JHL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eBn-ra-5So" secondAttribute="bottom" constant="8" symbolic="YES" id="Ltv-iU-xe9"/>
                     <constraint firstItem="eQL-4P-d7C" firstAttribute="leading" secondItem="eBn-ra-5So" secondAttribute="leading" id="M2k-B1-SKi"/>
                     <constraint firstItem="b12-66-Yxg" firstAttribute="leading" secondItem="aJ8-KI-YsA" secondAttribute="leading" constant="20" symbolic="YES" id="RSf-9r-aFv"/>
                     <constraint firstItem="eBn-ra-5So" firstAttribute="firstBaseline" secondItem="b12-66-Yxg" secondAttribute="firstBaseline" id="bDx-ly-N6K"/>
-                    <constraint firstItem="eQL-4P-d7C" firstAttribute="top" secondItem="aJ8-KI-YsA" secondAttribute="top" constant="20" symbolic="YES" id="np0-e3-evi"/>
                     <constraint firstItem="sJn-9Q-wuR" firstAttribute="leading" secondItem="aJ8-KI-YsA" secondAttribute="leading" constant="20" symbolic="YES" id="wPS-ia-AED"/>
                     <constraint firstAttribute="trailing" secondItem="ZU5-ta-JHL" secondAttribute="trailing" constant="20" symbolic="YES" id="x94-Ad-3lx"/>
                 </constraints>

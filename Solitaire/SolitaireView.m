@@ -86,7 +86,7 @@
     self.layer.delegate = self;
     self.layer.needsDisplayOnBoundsChange = YES;
     
-    NSData* colorAsData = [[NSUserDefaults standardUserDefaults] objectForKey: @"backgroundColor"];
+    NSData* colorAsData = [[NSUserDefaults standardUserDefaults] dataForKey: @"backgroundColor"];
     NSColor* backgroundColor = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSColor class] fromData:colorAsData error:NULL];
     [self setTableBackground: backgroundColor];
     

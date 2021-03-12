@@ -32,7 +32,7 @@ void LoadFlippedCardImage(BOOL reload)
 {
     if (flippedCardImage == nil || reload)
     {
-        NSString *cardBack = [[NSUserDefaults standardUserDefaults] objectForKey:@"cardBack"];
+        NSString *cardBack = [[NSUserDefaults standardUserDefaults] stringForKey:@"cardBack"];
         if (cardBack == nil)
             cardBack = @"CardBack1";
     
