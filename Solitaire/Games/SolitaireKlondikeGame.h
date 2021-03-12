@@ -39,7 +39,7 @@
 }
 
 -(instancetype) initWithController: (SolitaireController*)gameController;
-@property (readonly) NSString *name;
+@property (readonly, copy) NSString *name;
 -(void) initializeGame;
 -(void) layoutGameComponents;
 -(BOOL) didWin;

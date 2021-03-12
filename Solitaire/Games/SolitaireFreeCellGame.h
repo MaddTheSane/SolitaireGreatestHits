@@ -46,7 +46,7 @@ NS_ENUM(NSInteger) {
 
 -(instancetype) initWithController: (SolitaireController*)gameController;
 -(void) initializeGame;
-@property (readonly) NSString *name;
+@property (readonly, copy) NSString *name;
 -(void) layoutGameComponents;
 -(BOOL) didWin;
 -(BOOL) didLose;

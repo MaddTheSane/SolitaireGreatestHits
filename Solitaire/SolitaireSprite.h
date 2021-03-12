@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 @property(weak) SolitaireView* view;
-@property(readwrite) BOOL selected;
+@property(readwrite, getter=isSelected) BOOL selected;
 
 -(instancetype) init NS_DESIGNATED_INITIALIZER;
 -(void) drawSprite;

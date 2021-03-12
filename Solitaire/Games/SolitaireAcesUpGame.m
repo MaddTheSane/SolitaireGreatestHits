@@ -111,8 +111,9 @@
     return YES;
 }
 
--(NSInteger) scoreForCard: (SolitaireCard*)card movedFromContainer: (SolitaireCardContainer*) fromContainer
-    toContainer: (SolitaireCardContainer*)toContainer {
+-(NSInteger) scoreForCard: (SolitaireCard*)card
+       movedFromContainer: (SolitaireCardContainer*) fromContainer
+              toContainer: (SolitaireCardContainer*)toContainer {
     if([toContainer isKindOfClass: [SolitaireFoundation class]]) return 5;
     return 0;
 }

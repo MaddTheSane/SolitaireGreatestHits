@@ -236,10 +236,14 @@
 }
 
 -(void) dealNewGame {
-    int i, j;
-    for(j = 1; j < 7; j++)
-        for(i = j; i < 7; i++) [stock_ dealCardToTableau: tableau_[i] faceDown: YES];
-    for(i = 0; i < 7; i++) [stock_ dealCardToTableau: tableau_[i] faceDown: NO];
+    for (int j = 1; j < 7; j++) {
+        for (int i = j; i < 7; i++) {
+            [stock_ dealCardToTableau: tableau_[i] faceDown: YES];
+        }
+    }
+    for (int i = 0; i < 7; i++) {
+        [stock_ dealCardToTableau: tableau_[i] faceDown: NO];
+    }
 }
 
 

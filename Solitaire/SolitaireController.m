@@ -473,9 +473,11 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         SolitaireInstructionsToolbarItemIdentifier];
 }
 
-- (NSToolbarItem*)toolbar:(NSToolbar*)toolbar itemForItemIdentifier:(NSToolbarItemIdentifier)itemIdentifier willBeInsertedIntoToolbar: (BOOL)flag {
-    
-    NSToolbarItem* toolbarItem = nil; 
+- (NSToolbarItem*)toolbar:(NSToolbar*)toolbar
+    itemForItemIdentifier:(NSToolbarItemIdentifier)itemIdentifier
+willBeInsertedIntoToolbar: (BOOL)flag
+{
+    NSToolbarItem* toolbarItem = nil;
     if([itemIdentifier isEqualToString: SolitaireNewGameToolbarItemIdentifier]) {
         toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdentifier];
         [toolbarItem setLabel: NSLocalizedString(@"New game", @"New game")];

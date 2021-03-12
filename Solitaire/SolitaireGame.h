@@ -48,8 +48,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(instancetype) init UNAVAILABLE_ATTRIBUTE;
 -(instancetype) initWithController: (SolitaireController*)gameController NS_DESIGNATED_INITIALIZER;
 @property (readonly, nullable) SolitaireView *view;
-@property (readonly) NSString *name;
-@property (readonly) NSString *localizedName;
+@property (readonly, copy) NSString *name;
+@property (readonly, copy) NSString *localizedName;
 @property (readonly) unsigned gameSeed;
 -(void) gameWithSeed: (unsigned)seed;
 -(void) initializeGame;
@@ -63,8 +63,9 @@ NS_ASSUME_NONNULL_BEGIN
 // Scoring
 @property (readonly) BOOL keepsScore;
 @property (readonly) NSInteger initialScore;
--(NSInteger) scoreForCard: (SolitaireCard*)card movedFromContainer: (SolitaireCardContainer*) fromContainer
-    toContainer: (SolitaireCardContainer*)toContainer;
+-(NSInteger) scoreForCard: (SolitaireCard*)card
+       movedFromContainer: (SolitaireCardContainer*) fromContainer
+              toContainer: (SolitaireCardContainer*)toContainer;
 -(NSInteger) scoreForCardFlipped: (SolitaireCard*)card;
 
 // Saving and loading game
