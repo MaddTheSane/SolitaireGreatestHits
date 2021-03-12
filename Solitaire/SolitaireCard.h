@@ -81,7 +81,7 @@ void LoadFlippedCardImage(BOOL reload);
 //! pointer to the card stacked on top of this one.
 @property(readwrite, weak) SolitaireCard* nextCard;
 //! This variable indicates if the card is flipped to display its back side.
-@property(readwrite) BOOL flipped;
+@property(readwrite, getter=isFlipped) BOOL flipped;
 @property(readwrite) BOOL draggable;
 @property(readwrite) BOOL dragging;
 @property(readwrite, weak) SolitaireCardContainer* container;

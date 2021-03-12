@@ -310,7 +310,7 @@ class SolitaireFreeCellGame2: SolitaireGame {
         }
         
         let topCard = tableau.topCard
-        if let aTop = topCard, aTop.flipped {
+        if let aTop = topCard, aTop.isFlipped {
             return false
         }
         

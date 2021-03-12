@@ -20,6 +20,8 @@
 #import "SolitaireSavedGameImage.h"
 #import "SolitaireFoundation.h"
 #import "SolitaireStock.h"
+#import "SolitaireCard.h"
+#import "SolitaireWaste.h"
 
 @implementation SolitaireSavedGameImage
 
@@ -41,7 +43,7 @@
 -(id) initWithCoder: (NSCoder*) decoder {
     if (self = [super init]) {
         gameName_ = [decoder decodeObjectOfClass:[NSString class] forKey:@"gameName_"];
-        gameData_ = [decoder decodeObjectForKey: @"gameData_"];
+        gameData_ = [decoder decodeObjectOfClasses:[NSSet setWithObjects:[NSString class], [NSDictionary class], [SolitaireStock class], [SolitaireCard class], [SolitaireCardContainer class], [SolitaireWaste class], nil] forKey: @"gameData_"];
         gameScore_ = [decoder decodeIntegerForKey: @"gameScore_"];
         gameTime_ = [decoder decodeIntegerForKey: @"gameTime_"];
         gameSeed_ = [decoder decodeIntForKey: @"gameSeed_"];
