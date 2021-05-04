@@ -188,8 +188,8 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
 -(BOOL) saveGameToURL:(NSURL*)filename error:(NSError**)error
 {
     SolitaireSavedGameImage* gameImage = [game_ generateSavedGameImage];
-    [gameImage archiveGameTime: [self.timer secondsElapsed]];
-    if([game_ keepsScore]) [gameImage archiveGameScore: [self.scoreKeeper score]];
+    [gameImage setGameTime: [self.timer secondsElapsed]];
+    if([game_ keepsScore]) [gameImage setGameScore: [self.scoreKeeper score]];
 
     NSData *dat = [NSKeyedArchiver archivedDataWithRootObject:gameImage requiringSecureCoding:NO error:error];
     if (!dat) {
@@ -215,8 +215,8 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         [game_ reset];
         
         [game_ loadSavedGameImage: gameImage];
-        [self.timer setSecondsElapsed: [gameImage unarchiveGameTime]];
-        if([game_ keepsScore]) [self.scoreKeeper setInitialScore: [gameImage unarchiveGameScore]];
+        [self.timer setSecondsElapsed: [gameImage gameTime]];
+        if([game_ keepsScore]) [self.scoreKeeper setInitialScore: [gameImage gameScore]];
         
         [game_ layoutGameComponents];
     }

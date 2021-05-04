@@ -118,12 +118,12 @@
 // Saving and loading game
 -(SolitaireSavedGameImage*) generateSavedGameImage {
     SolitaireSavedGameImage* gameImage = [[SolitaireSavedGameImage alloc] initWithGameName: [self name]];
-    [gameImage archiveGameSeed: [self gameSeed]];
+    [gameImage setGameSeed: [self gameSeed]];
     return gameImage;
 }
 
 -(void) loadSavedGameImage: (SolitaireSavedGameImage*)gameImage {
-    gameSeed_ = [gameImage unarchiveGameSeed];
+    gameSeed_ = [gameImage gameSeed];
 }
 
 // Auto-finish

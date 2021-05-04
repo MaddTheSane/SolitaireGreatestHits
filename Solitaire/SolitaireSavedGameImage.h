@@ -38,15 +38,9 @@ NS_ASSUME_NONNULL_BEGIN
 -(void) encodeWithCoder: (NSCoder*) encoder;
 
 @property (readonly, copy) NSString *gameName;
-
--(void) archiveGameScore: (NSInteger)value;
--(NSInteger) unarchiveGameScore;
-
--(void) archiveGameTime: (NSInteger)time;
--(NSInteger) unarchiveGameTime;
-
--(void) archiveGameSeed: (unsigned)seed;
--(unsigned) unarchiveGameSeed;
+@property NSInteger gameScore;
+@property NSInteger gameTime;
+@property unsigned gameSeed;
 
 -(void) archiveGameObject: (nullable id)obj forKey: (NSString*)key;
 -(nullable id) unarchiveGameObjectForKey: (NSString*)key;

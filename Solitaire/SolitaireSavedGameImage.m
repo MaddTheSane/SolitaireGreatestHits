@@ -60,30 +60,9 @@
 }
 
 @synthesize gameName=gameName_;
-
--(void) archiveGameScore: (NSInteger)value {
-    gameScore_ = value;
-}
-
--(NSInteger) unarchiveGameScore {
-    return gameScore_;
-}
-
--(void) archiveGameTime: (NSInteger)time {
-    gameTime_ = time;
-}
-
--(NSInteger) unarchiveGameTime {
-    return gameTime_;
-}
-
--(void) archiveGameSeed: (unsigned)seed {
-    gameSeed_ = seed;
-}
-
--(unsigned) unarchiveGameSeed {
-    return gameSeed_;
-}
+@synthesize gameScore=gameScore_;
+@synthesize gameSeed=gameSeed_;
+@synthesize gameTime=gameTime_;
 
 -(void) archiveGameObject: (id)obj forKey: (NSString*)key {
     [gameData_ setObject: obj forKey: key];
