@@ -263,7 +263,9 @@
 
     // Find which sprite was clicked.
     NSPoint location = [self convertPoint: [theEvent locationInWindow] fromView: [[self window] contentView]];
-    CALayer* layer = [self.layer hitTest: NSPointToCGPoint(location)];
+    CGPoint touchPoint = NSPointToCGPoint(location);
+    touchPoint = [self.layer convertPoint: touchPoint toLayer: self.layer.superlayer];
+    CALayer* layer = [self.layer hitTest: touchPoint];
     if([layer isKindOfClass: [SolitaireSprite class]]) {
         SolitaireSprite* sprite = (SolitaireSprite*)layer;
         [sprite spriteClicked: [theEvent clickCount]];
@@ -320,7 +322,9 @@
 - (void)mouseMoved:(NSEvent *)theEvent {
     static SolitaireSprite* hoveringSprite = nil;
     NSPoint location = [self convertPoint: [theEvent locationInWindow] fromView: [[self window] contentView]];
-    CALayer* layer = [self.layer hitTest: NSPointToCGPoint(location)];
+    CGPoint touchPoint = NSPointToCGPoint(location);
+    touchPoint = [self.layer convertPoint: touchPoint toLayer: self.layer.superlayer];
+    CALayer* layer = [self.layer hitTest: touchPoint];
     if([layer isKindOfClass: [SolitaireSprite class]]) {
         SolitaireSprite* sprite = (SolitaireSprite*)layer;
         if(sprite == hoveringSprite) return;
