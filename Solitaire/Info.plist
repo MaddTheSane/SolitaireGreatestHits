@@ -13,16 +13,20 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>SavedGame</string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<true/>
 			<key>CFBundleTypeName</key>
 			<string>Saved Solitaire Game</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>fontaine.Solitaire2.saveGame</string>
 			</array>
 			<key>LSTypeIsPackage</key>
-			<integer>0</integer>
+			<false/>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
@@ -62,6 +66,13 @@
 			<string>Saved Solitaire Game</string>
 			<key>UTTypeIconFile</key>
 			<string>SavedGame</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>SavedGame</string>
+				<key>UTTypeIconText</key>
+				<string>Save</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>fontaine.Solitaire2.saveGame</string>
 			<key>UTTypeTagSpecification</key>
