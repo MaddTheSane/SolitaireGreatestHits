@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
+	<string>en</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -71,7 +71,7 @@
 				<key>UTTypeIconBadgeName</key>
 				<string>SavedGame</string>
 				<key>UTTypeIconText</key>
-				<string>Save</string>
+				<string>Game</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>fontaine.Solitaire2.saveGame</string>
