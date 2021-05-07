@@ -35,15 +35,14 @@ NS_ASSUME_NONNULL_BEGIN
 -(instancetype) init UNAVAILABLE_ATTRIBUTE;
 -(instancetype) initWithGameName: (NSString*)name NS_DESIGNATED_INITIALIZER;
 -(nullable instancetype) initWithCoder: (NSCoder*) decoder NS_DESIGNATED_INITIALIZER;
--(void) encodeWithCoder: (NSCoder*) encoder;
 
 @property (readonly, copy) NSString *gameName;
 @property NSInteger gameScore;
 @property NSInteger gameTime;
 @property unsigned gameSeed;
 
--(void) archiveGameObject: (nullable id)obj forKey: (NSString*)key;
--(nullable id) unarchiveGameObjectForKey: (NSString*)key;
+-(void) archiveGameObject: (nullable id<NSCoding>)obj forKey: (NSString*)key;
+-(nullable __kindof id<NSCoding>) unarchiveGameObjectForKey: (NSString*)key;
 
 - (void)setObject:(nullable id<NSCoding>)obj forKeyedSubscript:(NSString*)key;
 - (nullable id<NSCoding>)objectForKeyedSubscript:(NSString*)key;
