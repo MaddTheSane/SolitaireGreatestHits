@@ -83,44 +83,7 @@ static NSString const * const valueStringTable__[] = {@"Ace", @"2", @"3", @"4", 
         self.shadowOpacity = 0.75;
         
          // Create image.
-        frontImage_ = [[NSImage alloc] initWithSize: NSMakeSize(kCardWidth, kCardHeight)];
-        NSBitmapImageRep *imgRep1;
-        NSBitmapImageRep *imgRep2;
-        {
-            CGColorSpaceRef colorRef = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
-            CGContextRef ctx1 = CGBitmapContextCreate(NULL, kCardWidth, kCardHeight, 8, kCardWidth * 4, colorRef, kCGBitmapByteOrder32Host | kCGImageAlphaPremultipliedLast);
-            CGContextRef ctx2 = CGBitmapContextCreate(NULL, kCardWidth * 2, kCardHeight * 2, 8, kCardWidth * 2 * 4, colorRef, kCGBitmapByteOrder32Host | kCGImageAlphaPremultipliedLast);
-            NSRect srcRect = NSMakeRect(faceValue_ * kCardWidth, suit_ * kCardHeight, kCardWidth, kCardHeight);
-            CGColorSpaceRelease(colorRef);
-            {
-                [NSGraphicsContext saveGraphicsState];
-                [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithCGContext:ctx1 flipped:NO]];
-                [cardsImage drawAtPoint:NSZeroPoint fromRect:srcRect operation:NSCompositingOperationCopy fraction:1];
-                [NSGraphicsContext restoreGraphicsState];
-                CGContextFlush(ctx1);
-                
-                CGImageRef img1 = CGBitmapContextCreateImage(ctx1);
-                CGContextRelease(ctx1);
-                imgRep1 = [[NSBitmapImageRep alloc] initWithCGImage:img1];
-                CGImageRelease(img1);
-            }
-            
-            {
-                [NSGraphicsContext saveGraphicsState];
-                [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithCGContext:ctx2 flipped:NO]];
-                [cardsImage drawInRect:NSMakeRect(0, 0, kCardWidth * 2, kCardHeight * 2) fromRect:srcRect operation:NSCompositingOperationCopy fraction:1];
-                [NSGraphicsContext restoreGraphicsState];
-                CGContextFlush(ctx2);
-                
-                CGImageRef img2 = CGBitmapContextCreateImage(ctx2);
-                CGContextRelease(ctx2);
-                imgRep2 = [[NSBitmapImageRep alloc] initWithCGImage:img2];
-                imgRep2.size = NSMakeSize(kCardWidth, kCardHeight);
-                CGImageRelease(img2);
-            }
-        }
-        [frontImage_ addRepresentations:@[imgRep1, imgRep2]];
-        
+        imageRect_ = NSMakeRect(faceValue_ * kCardWidth, suit_ * kCardHeight, kCardWidth, kCardHeight);
         self.delegate = self;
     }
     return self;
@@ -156,44 +119,7 @@ static NSString const * const valueStringTable__[] = {@"Ace", @"2", @"3", @"4", 
         self.shadowOpacity = 0.75;
         
          // Create image.
-        frontImage_ = [[NSImage alloc] initWithSize: NSMakeSize(kCardWidth, kCardHeight)];
-        NSBitmapImageRep *imgRep1;
-        NSBitmapImageRep *imgRep2;
-        {
-            CGColorSpaceRef colorRef = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
-            CGContextRef ctx1 = CGBitmapContextCreate(NULL, kCardWidth, kCardHeight, 8, kCardWidth * 4, colorRef, kCGBitmapByteOrder32Host | kCGImageAlphaPremultipliedLast);
-            CGContextRef ctx2 = CGBitmapContextCreate(NULL, kCardWidth * 2, kCardHeight * 2, 8, kCardWidth * 2 * 4, colorRef, kCGBitmapByteOrder32Host | kCGImageAlphaPremultipliedLast);
-            NSRect srcRect = NSMakeRect(faceValue_ * kCardWidth, suit_ * kCardHeight, kCardWidth, kCardHeight);
-            CGColorSpaceRelease(colorRef);
-            {
-                [NSGraphicsContext saveGraphicsState];
-                [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithCGContext:ctx1 flipped:NO]];
-                [cardsImage drawAtPoint:NSZeroPoint fromRect:srcRect operation:NSCompositingOperationCopy fraction:1];
-                [NSGraphicsContext restoreGraphicsState];
-                CGContextFlush(ctx1);
-                
-                CGImageRef img1 = CGBitmapContextCreateImage(ctx1);
-                CGContextRelease(ctx1);
-                imgRep1 = [[NSBitmapImageRep alloc] initWithCGImage:img1];
-                CGImageRelease(img1);
-            }
-            
-            {
-                [NSGraphicsContext saveGraphicsState];
-                [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithCGContext:ctx2 flipped:NO]];
-                [cardsImage drawInRect:NSMakeRect(0, 0, kCardWidth * 2, kCardHeight * 2) fromRect:srcRect operation:NSCompositingOperationCopy fraction:1];
-                [NSGraphicsContext restoreGraphicsState];
-                CGContextFlush(ctx2);
-                
-                CGImageRef img2 = CGBitmapContextCreateImage(ctx2);
-                CGContextRelease(ctx2);
-                imgRep2 = [[NSBitmapImageRep alloc] initWithCGImage:img2];
-                imgRep2.size = NSMakeSize(kCardWidth, kCardHeight);
-                CGImageRelease(img2);
-            }
-        }
-        [frontImage_ addRepresentations:@[imgRep1, imgRep2]];
-
+        imageRect_ = NSMakeRect(faceValue_ * kCardWidth, suit_ * kCardHeight, kCardWidth, kCardHeight);
         self.delegate = self;
     }
     return self;
@@ -247,7 +173,7 @@ static NSString const * const valueStringTable__[] = {@"Ace", @"2", @"3", @"4", 
    
     // Draw Card
     if(!flipped) {
-        [frontImage_ drawInRect: dstRect fromRect: NSZeroRect operation: NSCompositingOperationSourceOver fraction: 1.0];
+        [cardsImage drawInRect: dstRect fromRect: imageRect_ operation: NSCompositingOperationSourceOver fraction: 1.0];
     }
     else {
         [flippedCardImage drawInRect: dstRect fromRect: NSZeroRect operation: NSCompositingOperationSourceOver fraction: 1.0];

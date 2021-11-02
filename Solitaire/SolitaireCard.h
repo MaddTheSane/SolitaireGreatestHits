@@ -75,7 +75,7 @@ void LoadFlippedCardImage(BOOL reload);
 @private
     SolitaireSuit suit_;
     SolitaireFaceValue faceValue_;
-    NSImage* frontImage_;
+    NSRect imageRect_;
 }
 
 //! pointer to the card stacked on top of this one.
