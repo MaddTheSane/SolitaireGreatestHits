@@ -41,12 +41,10 @@
     if (![self window]) return;
     
     CALayer *layer = self.layer;
-    if ([layer respondsToSelector:@selector(setContentsScale:)]) {
-        CGFloat scale = [[self window] backingScaleFactor];
-        [layer setContentsScale:scale];
-        for (CALayer* layer in self.layer.sublayers) {
-            layer.contentsScale = scale;
-        }
+    CGFloat scale = [[self window] backingScaleFactor];
+    [layer setContentsScale:scale];
+    for (CALayer* layer in self.layer.sublayers) {
+        layer.contentsScale = scale;
     }
 }
 
