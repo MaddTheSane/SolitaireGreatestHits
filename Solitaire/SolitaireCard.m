@@ -65,7 +65,7 @@ static NSString const * const valueStringTable__[] = {@"Ace", @"2", @"3", @"4", 
     if (self = [super init]) {
         suit_ = suit;
         faceValue_ = faceValue;
-        self.homeLocation = CGPointMake(0.0, 0.0);
+        self.homeLocation = CGPointZero;
         self.position = homeLocation;
         self.flipped = NO;
         self.draggable = YES;
@@ -75,7 +75,7 @@ static NSString const * const valueStringTable__[] = {@"Ace", @"2", @"3", @"4", 
         self.nextCard = nil;
         
         self.dragging = NO;
-        self.anchorPoint = CGPointMake(0.0, 0.0);
+        self.anchorPoint = CGPointZero;
         self.needsDisplayOnBoundsChange = YES;
         self.bounds = CGRectMake(0, 0, kCardWidth, kCardHeight);
         self.doubleSided = NO;
@@ -84,10 +84,42 @@ static NSString const * const valueStringTable__[] = {@"Ace", @"2", @"3", @"4", 
         
          // Create image.
         frontImage_ = [[NSImage alloc] initWithSize: NSMakeSize(kCardWidth, kCardHeight)];
-        [frontImage_ lockFocus];
-        NSRect srcRect = NSMakeRect(faceValue_ * kCardWidth, suit_ * kCardHeight, kCardWidth, kCardHeight);
-        [cardsImage drawAtPoint:NSZeroPoint fromRect:srcRect operation:NSCompositingOperationCopy fraction:1];
-        [frontImage_ unlockFocus];
+        NSBitmapImageRep *imgRep1;
+        NSBitmapImageRep *imgRep2;
+        {
+            CGColorSpaceRef colorRef = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
+            CGContextRef ctx1 = CGBitmapContextCreate(NULL, kCardWidth, kCardHeight, 8, kCardWidth * 4, colorRef, kCGBitmapByteOrder32Host | kCGImageAlphaPremultipliedLast);
+            CGContextRef ctx2 = CGBitmapContextCreate(NULL, kCardWidth * 2, kCardHeight * 2, 8, kCardWidth * 2 * 4, colorRef, kCGBitmapByteOrder32Host | kCGImageAlphaPremultipliedLast);
+            NSRect srcRect = NSMakeRect(faceValue_ * kCardWidth, suit_ * kCardHeight, kCardWidth, kCardHeight);
+            CGColorSpaceRelease(colorRef);
+            {
+                [NSGraphicsContext saveGraphicsState];
+                [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithCGContext:ctx1 flipped:NO]];
+                [cardsImage drawAtPoint:NSZeroPoint fromRect:srcRect operation:NSCompositingOperationCopy fraction:1];
+                [NSGraphicsContext restoreGraphicsState];
+                CGContextFlush(ctx1);
+                
+                CGImageRef img1 = CGBitmapContextCreateImage(ctx1);
+                CGContextRelease(ctx1);
+                imgRep1 = [[NSBitmapImageRep alloc] initWithCGImage:img1];
+                CGImageRelease(img1);
+            }
+            
+            {
+                [NSGraphicsContext saveGraphicsState];
+                [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithCGContext:ctx2 flipped:NO]];
+                [cardsImage drawInRect:NSMakeRect(0, 0, kCardWidth * 2, kCardHeight * 2) fromRect:srcRect operation:NSCompositingOperationCopy fraction:1];
+                [NSGraphicsContext restoreGraphicsState];
+                CGContextFlush(ctx2);
+                
+                CGImageRef img2 = CGBitmapContextCreateImage(ctx2);
+                CGContextRelease(ctx2);
+                imgRep2 = [[NSBitmapImageRep alloc] initWithCGImage:img2];
+                imgRep2.size = NSMakeSize(kCardWidth, kCardHeight);
+                CGImageRelease(img2);
+            }
+        }
+        [frontImage_ addRepresentations:@[imgRep1, imgRep2]];
         
         self.delegate = self;
     }
