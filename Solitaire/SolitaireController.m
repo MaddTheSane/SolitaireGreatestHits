@@ -639,7 +639,11 @@ willBeInsertedIntoToolbar: (BOOL)flag
     [[NSUserDefaults standardUserDefaults] setInteger: index forKey: @"selectedGameIndex"];
     
     // Put the name of the game in the title of the window.
-    [self.window setTitle: [NSString stringWithFormat: @"Solitaire Greatest Hits: %@", [game_ localizedName]]];
+    if (@available(macOS 11.0, *)) {
+        self.window.subtitle = [game_ localizedName];
+    } else {
+        [self.window setTitle: [NSString stringWithFormat: @"Solitaire Greatest Hits: %@", [game_ localizedName]]];
+    }
 }
 
 
