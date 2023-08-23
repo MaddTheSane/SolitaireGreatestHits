@@ -102,48 +102,49 @@
 -(void) setTableBackground: (NSColor*)color {    
     if([currentBackgroundColor_ isEqual: color]) return;
     
-    backgroundImage_ = [[NSImage alloc] initWithSize: NSSizeFromCGSize(self.layer.bounds.size)];
-    [backgroundImage_ lockFocus];
-    
-    NSRect rect = NSMakeRect(0.0, 0.0, [backgroundImage_ size].width, [backgroundImage_ size].height);
-    [color set];
-    [NSBezierPath fillRect: rect];
-    
-    // Paint table grains
-    const int grainCount = 80000;
-    int w = backgroundImage_.size.width;
-    int h = backgroundImage_.size.height;
-    
-    int k;
-    NSColor *ourColor = color;
-    if (@available(macOS 10.13, *)) {
-        if (color.type != NSColorTypeComponentBased) {
-            NSColor *ourColor2 = [color colorUsingType:NSColorTypeComponentBased];
-            if (ourColor2) {
-                ourColor = ourColor2;
+    NSSize backSize = NSSizeFromCGSize(self.layer.bounds.size);
+    backgroundImage_ = [NSImage imageWithSize: backSize flipped:NO drawingHandler:^BOOL(NSRect dstRect) {
+        //TODO: make the image generated be the same through resizing of window.
+        NSRect rect = NSMakeRect(0.0, 0.0, backSize.width, backSize.height);
+        [color set];
+        [NSBezierPath fillRect: rect];
+        
+        // Paint table grains
+        const int grainCount = 80000;
+        int w = backSize.width;
+        int h = backSize.height;
+        
+        int k;
+        NSColor *ourColor = color;
+        if (@available(macOS 10.13, *)) {
+            if (color.type != NSColorTypeComponentBased) {
+                NSColor *ourColor2 = [color colorUsingType:NSColorTypeComponentBased];
+                if (ourColor2) {
+                    ourColor = ourColor2;
+                }
             }
         }
-    }
-    for(k = 0; k < grainCount; k++) {
-        // Set grain color
-        CGFloat r = 1.0 + (0.1 - 0.2 * (CGFloat)rand()/RAND_MAX); // Color variation
-        [[NSColor colorWithCalibratedRed: ourColor.redComponent * r green: ourColor.greenComponent * r blue: ourColor.blueComponent * r alpha: 1.0] set];
+        for(k = 0; k < grainCount; k++) {
+            // Set grain color
+            CGFloat r = 1.0 + (0.1 - 0.2 * (CGFloat)rand()/RAND_MAX); // Color variation
+            [[NSColor colorWithCalibratedRed: ourColor.redComponent * r green: ourColor.greenComponent * r blue: ourColor.blueComponent * r alpha: 1.0] set];
+            
+            // Pick grain position
+            int grainX = (int)((CGFloat)rand()/RAND_MAX * w);
+            int grainY = (int)((CGFloat)rand()/RAND_MAX * h);
+            NSBezierPath* path = [NSBezierPath bezierPath];
+            NSRect bounds = NSMakeRect(grainX, grainY, (CGFloat)rand()/RAND_MAX * 5, (CGFloat)rand()/RAND_MAX * 5);
+            [path appendBezierPathWithOvalInRect: bounds];
+            [path fill];
+        }
         
-        // Pick grain position
-        int grainX = (int)((CGFloat)rand()/RAND_MAX * w);
-        int grainY = (int)((CGFloat)rand()/RAND_MAX * h);
-        NSBezierPath* path = [NSBezierPath bezierPath];
-        NSRect bounds = NSMakeRect(grainX, grainY, (CGFloat)rand()/RAND_MAX * 5, (CGFloat)rand()/RAND_MAX * 5);
-        [path appendBezierPathWithOvalInRect: bounds];
-        [path fill];
-    }
-    
-    // Paint Gradient
-    NSGradient* gradient = [[NSGradient alloc] initWithStartingColor: [NSColor colorWithCalibratedWhite: 1.0 alpha: 0.5]
-        endingColor: [NSColor colorWithCalibratedWhite: 0.0 alpha: 0.5]];
-    [gradient drawInRect: rect relativeCenterPosition: NSZeroPoint];
-    
-    [backgroundImage_ unlockFocus];
+        // Paint Gradient
+        NSGradient* gradient = [[NSGradient alloc] initWithStartingColor: [NSColor colorWithCalibratedWhite: 1.0 alpha: 0.5]
+            endingColor: [NSColor colorWithCalibratedWhite: 0.0 alpha: 0.5]];
+        [gradient drawInRect: rect relativeCenterPosition: NSZeroPoint];
+        
+        return YES;
+    }];
     
     currentBackgroundColor_ = color;
 }

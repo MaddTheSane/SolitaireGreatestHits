@@ -29,6 +29,7 @@
 @class SolitaireTableau;
 @class SolitaireFoundation;
 @class SolitaireCell;
+@class SolitaireController;
 
 NS_ENUM(NSInteger) {
     SolitaireFreeCellTableus = 8,
