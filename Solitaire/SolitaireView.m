@@ -101,18 +101,18 @@
 
 -(void) setTableBackground: (NSColor*)color {    
     if([currentBackgroundColor_ isEqual: color]) return;
+    currentBackgroundColor_ = color;
     
-    NSSize backSize = NSSizeFromCGSize(self.layer.bounds.size);
-    backgroundImage_ = [NSImage imageWithSize: backSize flipped:NO drawingHandler:^BOOL(NSRect dstRect) {
+    backgroundImage_ = [NSImage imageWithSize: NSSizeFromCGSize(self.layer.bounds.size) flipped:NO drawingHandler:^BOOL(NSRect dstRect) {
         //TODO: make the image generated be the same through resizing of window.
-        NSRect rect = NSMakeRect(0.0, 0.0, backSize.width, backSize.height);
+        NSRect rect = dstRect;
         [color set];
         [NSBezierPath fillRect: rect];
         
         // Paint table grains
         const int grainCount = 80000;
-        int w = backSize.width;
-        int h = backSize.height;
+        int w = dstRect.size.width;
+        int h = dstRect.size.height;
         
         int k;
         NSColor *ourColor = color;
@@ -145,8 +145,6 @@
         
         return YES;
     }];
-    
-    currentBackgroundColor_ = color;
 }
 
 -(void) addSprite: (SolitaireSprite*)sprite {
