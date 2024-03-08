@@ -1,0 +1,678 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@\nYour score was %li" : {
+      "comment" : "%@\nYour score was %li",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@\nDeine Punkte: %li"
+          }
+        }
+      }
+    },
+    "52-card pickup" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abholung mit 52 Karten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "52-card pickup"
+          }
+        }
+      }
+    },
+    "A great deal of effort goes into creating free software. If you enjoy Solitaire Greatest Hits then please support its continued development by making a small donation through Paypal. Thanks." : {
+      "comment" : "Please donate"
+    },
+    "Aces Up" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aces Up"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aces Up"
+          }
+        }
+      }
+    },
+    "Auto finish" : {
+      "comment" : "Auto finish",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatisch beenden"
+          }
+        }
+      }
+    },
+    "Auto finish game" : {
+      "comment" : "Localizable.strings\n  Solitaire\n\n  Created by Sebi on 30.03.14.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiel automatisch beenden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto finish game"
+          }
+        }
+      }
+    },
+    "Auto finish this game" : {
+      "comment" : "Auto finish this game",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Spiel automatisch beenden"
+          }
+        }
+      }
+    },
+    "Baker's Game" : {
+      "comment" : "Baker's Game",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baker's Game"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "comment" : "Cancel",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        }
+      }
+    },
+    "Canfield" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canfield"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canfield"
+          }
+        }
+      }
+    },
+    "Change game preferences" : {
+      "comment" : "Change game preferences",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen ändern"
+          }
+        }
+      }
+    },
+    "Choose a different game to play" : {
+      "comment" : "Choose a different game to play",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle ein anderes Spiel aus"
+          }
+        }
+      }
+    },
+    "Choose game" : {
+      "comment" : "Choose game",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiel auswählen"
+          }
+        }
+      }
+    },
+    "ChooseDifferent" : {
+      "comment" : "Choose Different",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle ein anderes Solitaire-Spiel aus..."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a different Solitaire game…"
+          }
+        }
+      }
+    },
+    "ChooseGame" : {
+      "comment" : "Choose Game",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle ein Spiel aus..."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a game…"
+          }
+        }
+      }
+    },
+    "Classic Klondike" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klassiches Klondike"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Classic Klondike"
+          }
+        }
+      }
+    },
+    "Donate" : {
+      "comment" : "Donate"
+    },
+    "Forty Thieves" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forty Thieves"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forty Thieves"
+          }
+        }
+      }
+    },
+    "Free Cell" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free Cell"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free Cell"
+          }
+        }
+      }
+    },
+    "Game" : {
+      "comment" : "Game",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiel"
+          }
+        }
+      }
+    },
+    "Golf" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Golf"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Golf"
+          }
+        }
+      }
+    },
+    "How to play" : {
+      "comment" : "How to play",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spielanleitung"
+          }
+        }
+      }
+    },
+    "Instructions on how to play this game" : {
+      "comment" : "Instructions on how to play this game",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anleitung für dieses Spiel"
+          }
+        }
+      }
+    },
+    "New game" : {
+      "comment" : "New game",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neues Spiel"
+          }
+        }
+      }
+    },
+    "No" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nein"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        }
+      }
+    },
+    "No Thanks" : {
+      "comment" : "No Thanks"
+    },
+    "Open a previous game" : {
+      "comment" : "Open a previous game",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein gespeichertes Spiel laden"
+          }
+        }
+      }
+    },
+    "Open game" : {
+      "comment" : "Open game",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiel laden"
+          }
+        }
+      }
+    },
+    "Open Game" : {
+      "comment" : "Open Game"
+    },
+    "Play this game" : {
+      "comment" : "Play this game",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Spiel spielen"
+          }
+        }
+      }
+    },
+    "Preferences" : {
+      "comment" : "Preferences",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        }
+      }
+    },
+    "Pyramid" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyramide"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyramid"
+          }
+        }
+      }
+    },
+    "Redo" : {
+      "comment" : "Redo",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erneut ausführen"
+          }
+        }
+      }
+    },
+    "Redo move" : {
+      "comment" : "Redo move",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zug erneut ausführen"
+          }
+        }
+      }
+    },
+    "ReloadQuestion" : {
+      "comment" : "Reload question",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Möchtest Du das Spiel von vorne beginnen?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you want to start the current game from the beginning?"
+          }
+        }
+      }
+    },
+    "Restart game" : {
+      "comment" : "Restart game",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiel neu starten"
+          }
+        }
+      }
+    },
+    "Restart this game" : {
+      "comment" : "Restart this game",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Spiel von vorne beginnen"
+          }
+        }
+      }
+    },
+    "RestartQuestion" : {
+      "comment" : "Restart question",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Möchtest Du das Spiel beenden und ein neues starten?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you want to end the current game and start a new one?"
+          }
+        }
+      }
+    },
+    "Retry game" : {
+      "comment" : "Retry game"
+    },
+    "Save game" : {
+      "comment" : "Save game",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiel speichern"
+          }
+        }
+      }
+    },
+    "Save Game" : {
+      "comment" : "Save Game"
+    },
+    "Save your current game" : {
+      "comment" : "Save your current game",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das laufende Spiel speichern"
+          }
+        }
+      }
+    },
+    "Score: %li" : {
+      "comment" : "Score: %li",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Punkte: %li"
+          }
+        }
+      }
+    },
+    "Scorpian" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skorpion"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scorpian"
+          }
+        }
+      }
+    },
+    "Single Card Klondike" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einzelkarten-Klondike"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Single Card Klondike"
+          }
+        }
+      }
+    },
+    "Spider" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spider"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spider"
+          }
+        }
+      }
+    },
+    "Start a new game" : {
+      "comment" : "Start a new game",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein neues Spiel starten"
+          }
+        }
+      }
+    },
+    "Start new game" : {
+      "comment" : "Start new game",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neues Spiel starten"
+          }
+        }
+      }
+    },
+    "Support this Software" : {
+      "comment" : "Support this Software"
+    },
+    "Time: %@" : {
+      "comment" : "Time: %@",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeit: %@"
+          }
+        }
+      }
+    },
+    "Undo" : {
+      "comment" : "Undo",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zurücknehmen"
+          }
+        }
+      }
+    },
+    "Undo last move" : {
+      "comment" : "Undo last move",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letzen Zug zurücknehmen"
+          }
+        }
+      }
+    },
+    "Yes" : {
+      "comment" : "Yes",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ja"
+          }
+        }
+      }
+    },
+    "You lost" : {
+      "comment" : "You lost"
+    },
+    "You won!" : {
+      "comment" : "You won!",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du hast gewonnen!"
+          }
+        }
+      }
+    },
+    "Your time was %@" : {
+      "comment" : "Your time was %@",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Zeit: %@"
+          }
+        }
+      }
+    },
+    "Yukon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yukon"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yukon"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
