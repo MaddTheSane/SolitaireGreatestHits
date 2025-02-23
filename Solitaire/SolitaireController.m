@@ -40,6 +40,7 @@
 #import "SolitaireScorpianGame.h"
 #import "SolitaireYukonGame.h"
 #import "Solitaire_Greatest_Hits-Swift.h"
+#import "GeneratedAssetSymbols.h"
 
 
 #include <stdlib.h>
@@ -81,7 +82,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     defaultValues[@"selectedGameIndex"] = @0;
 
     NSData* colorAsData = [NSKeyedArchiver archivedDataWithRootObject: 
-        [NSColor colorWithCalibratedRed: 0.12 green: 0.64 blue: 0.33 alpha: 1.0] requiringSecureCoding: YES error: NULL];
+                           [NSColor colorNamed:ACColorNameDefaultFeltBackground] requiringSecureCoding: YES error: NULL];
         
     defaultValues[@"backgroundColor"] = colorAsData;
     defaultValues[@"cardBack"] = @"CardBack1";
@@ -106,6 +107,9 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [toolbar setSizeMode: NSToolbarSizeModeRegular];
     toolbar.delegate = self;
     [self.window setToolbar: toolbar];
+    if (@available(macOS 11.0, *)) {
+        self.window.toolbarStyle = NSWindowToolbarStyleExpanded;
+    }
     
     // Register Games
     gameRegistry_ = [[NSMutableArray alloc] initWithCapacity: 16];

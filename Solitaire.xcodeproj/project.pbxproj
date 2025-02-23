@@ -449,6 +449,7 @@
 				GCC_PREFIX_HEADER = Solitaire/Solitaire_Prefix.pch;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Solitaire/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Solitaire: Greatest Hits!";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.card-games";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -460,6 +461,7 @@
 				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = fontaine.Solitaire2;
 				PRODUCT_NAME = "Solitaire Greatest Hits";
+				STRINGS_FILE_OUTPUT_ENCODING = binary;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Solitaire/Solitaire-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -479,6 +481,7 @@
 				GCC_PREFIX_HEADER = Solitaire/Solitaire_Prefix.pch;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Solitaire/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Solitaire: Greatest Hits!";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.card-games";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -490,6 +493,7 @@
 				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = fontaine.Solitaire2;
 				PRODUCT_NAME = "Solitaire Greatest Hits";
+				STRINGS_FILE_OUTPUT_ENCODING = binary;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Solitaire/Solitaire-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

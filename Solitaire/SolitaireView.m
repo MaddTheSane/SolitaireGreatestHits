@@ -127,7 +127,7 @@
         for(k = 0; k < grainCount; k++) {
             // Set grain color
             CGFloat r = 1.0 + (0.1 - 0.2 * (CGFloat)rand()/RAND_MAX); // Color variation
-            [[NSColor colorWithCalibratedRed: ourColor.redComponent * r green: ourColor.greenComponent * r blue: ourColor.blueComponent * r alpha: 1.0] set];
+            [[NSColor colorWithSRGBRed: ourColor.redComponent * r green: ourColor.greenComponent * r blue: ourColor.blueComponent * r alpha: 1.0] set];
             
             // Pick grain position
             int grainX = (int)((CGFloat)rand()/RAND_MAX * w);

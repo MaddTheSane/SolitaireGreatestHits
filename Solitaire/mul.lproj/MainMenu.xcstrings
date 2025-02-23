@@ -1217,24 +1217,6 @@
         }
       }
     },
-    "Fm2-JP-Xg3.title" : {
-      "comment" : "Class = \"NSMenu\"; title = \"OtherViews\"; ObjectID = \"Fm2-JP-Xg3\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OtherViews"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "OtherViews"
-          }
-        }
-      }
-    },
     "hpf-v3-ZtN.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Item 3\"; ObjectID = \"hpf-v3-ZtN\";",
       "extractionState" : "extracted_with_value",

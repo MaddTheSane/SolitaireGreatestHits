@@ -1,6 +1,24 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "CFBundleDisplayName" : {
+      "comment" : "Bundle display name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Solitär: Größte Treffer!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Solitaire: Greatest Hits!"
+          }
+        }
+      }
+    },
     "CFBundleHelpBookName" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -22,6 +40,12 @@
       "comment" : "Bundle name",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Solitär Größte Treffer"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -37,19 +61,32 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "© Daniel Fontaine, 2009, C.W. “Madd the Sane” Betts, 2019-2021"
+            "value" : "© Daniel Fontaine, 2009, C.W. “Madd the Sane” Betts, 2019-2025"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "© Daniel Fontaine, 2009, C.W. “Madd the Sane” Betts, 2019-2021"
+            "value" : "© Daniel Fontaine, 2009, C.W. “Madd the Sane” Betts, 2019-2025"
           }
         }
       }
     },
     "Saved Solitaire Game" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Gespeichertes Solitaire-Spiel"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saved Solitaire Game"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

@@ -35,8 +35,9 @@
     self = [super init];
     if (self) {
         timeFormatter = [[NSDateComponentsFormatter alloc] init];
-        timeFormatter.zeroFormattingBehavior = NSDateComponentsFormatterZeroFormattingBehaviorDropLeading | NSDateComponentsFormatterZeroFormattingBehaviorPad;
-        timeFormatter.allowedUnits = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+        //TODO: only show hour place if we're over an hour
+        timeFormatter.zeroFormattingBehavior = 0;
+        timeFormatter.allowedUnits = NSCalendarUnitMinute | NSCalendarUnitSecond;
 
     }
     return self;

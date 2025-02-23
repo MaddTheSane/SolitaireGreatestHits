@@ -21,6 +21,7 @@
 //
 
 #import "SolitairePreferencesController.h"
+#import "GeneratedAssetSymbols.h"
 
 @implementation SolitairePreferencesController
 
@@ -75,7 +76,7 @@
 }
 
 -(IBAction) onDefaultClicked: (id)sender {
-    [colorWell setColor:[NSColor colorWithCalibratedRed: 0.12 green: 0.64 blue: 0.33 alpha: 1.0]];
+    [colorWell setColor:[NSColor colorNamed:ACColorNameDefaultFeltBackground]];
     [_backgroundPopup selectItemAtIndex:0];
 }
 
