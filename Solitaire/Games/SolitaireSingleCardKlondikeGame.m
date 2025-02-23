@@ -61,4 +61,10 @@
     return @"Single Card Klondike";
 }
 
+#if 0
+-(NSString*) localizedName {
+    return NSLocalizedString(@"Single Card Klondike", @"Single Card Klondike");
+}
+#endif
+
 @end

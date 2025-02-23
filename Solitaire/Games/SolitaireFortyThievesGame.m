@@ -42,7 +42,13 @@
     return @"Forty Thieves";
 }
 
--(void) initializeGame {    
+#if 0
+-(NSString*) localizedName {
+    return NSLocalizedString(@"Forty Thieves", @"Forty Thieves");
+}
+#endif
+
+-(void) initializeGame {
     // Init Foundations
     int i;
     for(i = 0; i < 4; i++) {

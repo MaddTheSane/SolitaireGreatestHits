@@ -61,6 +61,12 @@
     return @"Scorpian";
 }
 
+#if 0
+-(NSString*) localizedName {
+    return NSLocalizedString(@"Scorpian", @"Scorpian");
+}
+#endif
+
 -(void) layoutGameComponents {
     CGFloat viewWidth = [self view].layer.frame.size.width;
     CGFloat viewHeight = [self view].layer.frame.size.height;

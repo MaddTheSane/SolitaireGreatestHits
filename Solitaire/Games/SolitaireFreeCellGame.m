@@ -69,6 +69,12 @@
     return @"Free Cell";
 }
 
+#if 0
+-(NSString*) localizedName {
+    return NSLocalizedString(@"Free Cell", @"Free Cell");
+}
+#endif
+
 -(void) layoutGameComponents {
     CGFloat viewWidth = [self view].frame.size.width;
     if (viewWidth < 9.0 * kCardWidth) {

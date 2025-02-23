@@ -63,6 +63,12 @@
     return @"Yukon";
 }
 
+#if 0
+-(NSString*) localizedName {
+    return NSLocalizedString(@"Yukon", @"Yukon");
+}
+#endif
+
 -(void) layoutGameComponents {
     CGFloat viewWidth = [self view].layer.frame.size.width;
     CGFloat viewHeight = [self view].layer.frame.size.height;

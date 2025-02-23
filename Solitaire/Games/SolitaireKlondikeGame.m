@@ -70,6 +70,12 @@
     return @"Classic Klondike";
 }
 
+#if 0
+-(NSString*) localizedName {
+    return NSLocalizedString(@"Classic Klondike", @"Classic Klondike");
+}
+#endif
+
 -(void) layoutGameComponents {
     CGFloat viewWidth = [self view].frame.size.width;
     if(viewWidth < 9.0 * kCardWidth) viewWidth = 9.0 * kCardWidth;

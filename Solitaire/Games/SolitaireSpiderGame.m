@@ -70,6 +70,12 @@
     return @"Spider";
 }
 
+#if 0
+-(NSString*) localizedName {
+    return NSLocalizedString(@"Spider", @"Spider");
+}
+#endif
+
 -(void) layoutGameComponents {
     CGFloat viewWidth = [self view].frame.size.width;
     if(viewWidth < 11.0 * kCardWidth) viewWidth = 11.0 * kCardWidth;

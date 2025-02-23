@@ -64,6 +64,12 @@
     return @"Golf";
 }
 
+#if 0
+-(NSString*) localizedName {
+    return NSLocalizedString(@"Golf", @"Golf");
+}
+#endif
+
 -(void) layoutGameComponents {
     CGFloat viewWidth = [self view].layer.frame.size.width;
     CGFloat viewHeight = [self view].layer.frame.size.height;

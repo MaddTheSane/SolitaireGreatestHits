@@ -82,6 +82,12 @@
     return @"Pyramid";
 }
 
+#if 0
+-(NSString*) localizedName {
+    return NSLocalizedString(@"Pyramid", @"Pyramid");
+}
+#endif
+
 -(void) layoutGameComponents {
     CGFloat viewWidth = [[self view] frame].size.width;
     CGFloat viewHeight = [[self view] frame].size.height;
