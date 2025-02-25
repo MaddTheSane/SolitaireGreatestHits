@@ -190,8 +190,9 @@ class SolitaireFreeCellGame2: SolitaireGame {
         
         // Unarchive Stock
         stock = gameImage.unarchiveGameObject(forKey: "stock_") as? SolitaireStock
-        stock?.onAdded(to: view!) // Called explicitly since we don't actually add the stock to the view,
+        // Called explicitly since we don't actually add the stock to the view,
         // but we still want its cards added to the view.
+        stock?.onAdded(to: view!)
         
         // Unarchive Foundations
         foundations.removeAll(keepingCapacity: true)
@@ -234,8 +235,8 @@ class SolitaireFreeCellGame2: SolitaireGame {
                 continue
             }
             if let foundation = findFoundation(for: card) {
-                drop(card, in: foundation)
-                perform(#selector(SolitaireGame.autoFinish), with: nil, afterDelay: 0.2)
+                drop(card, in: foundation as SolitaireCardContainer)
+                self.perform(#selector(SolitaireGame.autoFinish), with: nil, afterDelay: 0.2)
                 return
             }
         }
@@ -246,8 +247,8 @@ class SolitaireFreeCellGame2: SolitaireGame {
                 continue
             }
             if let foundation = findFoundation(for: card) {
-                drop(card, in: foundation)
-                perform(#selector(SolitaireGame.autoFinish), with: nil, afterDelay: 0.2)
+                drop(card, in: foundation as SolitaireCardContainer)
+                self.perform(#selector(SolitaireGame.autoFinish), with: nil, afterDelay: 0.2)
                 return
             }
         }
