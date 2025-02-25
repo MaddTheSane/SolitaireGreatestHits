@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
     unsigned gameSeed_;
 }
 
-@property (weak) SolitaireController* controller;
+@property (readonly, weak) SolitaireController* controller;
 
 -(instancetype) init UNAVAILABLE_ATTRIBUTE;
 -(instancetype) initWithController: (SolitaireController*)gameController NS_DESIGNATED_INITIALIZER;

@@ -153,7 +153,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     NSMenuItem* gameItem = [[NSMenuItem alloc] initWithTitle: [game localizedName] action: @selector(onGameSelected:) keyEquivalent: @""];
 
     NSMenu* mainMenu = [[NSApplication sharedApplication] mainMenu];
-    NSMenu* gameMenu = [[mainMenu itemWithTitle: NSLocalizedString(@"Game", @"Game")] submenu];
+    NSMenu* gameMenu = [[mainMenu itemWithTitle: NSLocalizedStringWithDefaultValue(@"377.title", @"MainMenu", [NSBundle mainBundle], @"Game", @"Class = \"NSMenuItem\"; title = \"Game\"; ObjectID = \"377\";")] submenu];
     [gameMenu addItem: gameItem];
 
     [gameItem setState: NSControlStateValueOff];
@@ -497,7 +497,7 @@ willBeInsertedIntoToolbar: (BOOL)flag
         [toolbarItem setLabel: NSLocalizedString(@"Restart game", @"Restart game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: NSLocalizedString(@"Restart this game", @"Restart this game")];
-        [toolbarItem setImage: [NSImage imageNamed:@"RestartIcon"]];
+        [toolbarItem setImage: [NSImage imageNamed: ACImageNameRestartIcon]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onRestartGame:)];
         [toolbarItem setEnabled: YES];
@@ -507,7 +507,7 @@ willBeInsertedIntoToolbar: (BOOL)flag
         [toolbarItem setLabel: NSLocalizedString(@"Save game", @"Save game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: NSLocalizedString(@"Save your current game", @"Save your current game")];
-        [toolbarItem setImage: [NSImage imageNamed:@"SaveIcon"]];
+        [toolbarItem setImage: [NSImage imageNamed: ACImageNameSaveIcon]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onSaveGame:)];
         [toolbarItem setEnabled: YES];
@@ -517,7 +517,7 @@ willBeInsertedIntoToolbar: (BOOL)flag
         [toolbarItem setLabel: NSLocalizedString(@"Open game", @"Open game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: NSLocalizedString(@"Open a previous game", @"Open a previous game")];
-        [toolbarItem setImage: [NSImage imageNamed:@"OpenIcon"]];
+        [toolbarItem setImage: [NSImage imageNamed: ACImageNameOpenIcon]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onOpenGame:)];
         [toolbarItem setEnabled: YES];
@@ -527,7 +527,7 @@ willBeInsertedIntoToolbar: (BOOL)flag
         [toolbarItem setLabel: NSLocalizedString(@"Preferences", @"Preferences")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: NSLocalizedString(@"Change game preferences", @"Change game preferences")];
-        [toolbarItem setImage: [NSImage imageNamed: @"SettingsIcon"]];
+        [toolbarItem setImage: [NSImage imageNamed: ACImageNameSettingsIcon]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onPreferences:)];
         [toolbarItem setEnabled: YES];
@@ -537,7 +537,7 @@ willBeInsertedIntoToolbar: (BOOL)flag
         [toolbarItem setLabel: NSLocalizedString(@"Choose game", @"Choose game")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: NSLocalizedString(@"Choose a different game to play", @"Choose a different game to play")];
-        [toolbarItem setImage: [NSImage imageNamed:@"ChooseGame"]];;
+        [toolbarItem setImage: [NSImage imageNamed: ACImageNameChooseGame]];;
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onChooseGame:)];
         [toolbarItem setEnabled: YES];
@@ -547,7 +547,7 @@ willBeInsertedIntoToolbar: (BOOL)flag
         [toolbarItem setLabel: NSLocalizedString(@"Auto finish", @"Auto finish")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: NSLocalizedString(@"Auto finish this game", @"Auto finish this game")];
-        [toolbarItem setImage: [NSImage imageNamed:@"AutoIcon"]];
+        [toolbarItem setImage: [NSImage imageNamed: ACImageNameAutoIcon]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onAutoFinish:)];
         [toolbarItem setEnabled: YES];
@@ -557,7 +557,7 @@ willBeInsertedIntoToolbar: (BOOL)flag
         [toolbarItem setLabel: NSLocalizedString(@"Undo", @"Undo")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: NSLocalizedString(@"Undo last move", @"Undo last move")];
-        [toolbarItem setImage: [NSImage imageNamed:@"UndoIcon"]];
+        [toolbarItem setImage: [NSImage imageNamed: ACImageNameUndoIcon]];
         [toolbarItem setTarget: [self.view undoManager]];
         [toolbarItem setAction: @selector(undo)];
         [toolbarItem setEnabled: YES];
@@ -567,7 +567,7 @@ willBeInsertedIntoToolbar: (BOOL)flag
         [toolbarItem setLabel: NSLocalizedString(@"Redo", @"Redo")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: NSLocalizedString(@"Redo move", @"Redo move")];
-        [toolbarItem setImage: [NSImage imageNamed:@"RedoIcon"]];
+        [toolbarItem setImage: [NSImage imageNamed: ACImageNameRedoIcon]];
         [toolbarItem setTarget: [self.view undoManager]];
         [toolbarItem setAction: @selector(redo)];
         [toolbarItem setEnabled: YES];
@@ -577,7 +577,7 @@ willBeInsertedIntoToolbar: (BOOL)flag
         [toolbarItem setLabel: NSLocalizedString(@"How to play", @"How to play")];
         [toolbarItem setPaletteLabel: [toolbarItem label]];
         [toolbarItem setToolTip: NSLocalizedString(@"Instructions on how to play this game", @"Instructions on how to play this game")];
-        [toolbarItem setImage: [NSImage imageNamed: @"HelpIcon"]];
+        [toolbarItem setImage: [NSImage imageNamed: ACImageNameHelpIcon]];
         [toolbarItem setTarget: self];
         [toolbarItem setAction: @selector(onInstructions:)];
         [toolbarItem setEnabled: YES];
@@ -625,7 +625,7 @@ willBeInsertedIntoToolbar: (BOOL)flag
 
 -(void) selectGameWithRegistryIndex: (NSInteger)index {
     NSMenu* mainMenu = [[NSApplication sharedApplication] mainMenu];
-    NSMenu* gameMenu = [[mainMenu itemWithTitle: NSLocalizedString(@"Game", @"Game")] submenu];
+    NSMenu* gameMenu = [[mainMenu itemWithTitle: NSLocalizedStringWithDefaultValue(@"377.title", @"MainMenu", [NSBundle mainBundle], @"Game", @"Class = \"NSMenuItem\"; title = \"Game\"; ObjectID = \"377\";")] submenu];
     
     // Clear the check from the old game.
     if(game_ != nil) {
