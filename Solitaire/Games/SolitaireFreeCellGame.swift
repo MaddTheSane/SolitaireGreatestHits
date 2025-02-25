@@ -62,6 +62,12 @@ class SolitaireFreeCellGame2: SolitaireGame {
         return "Free Cell"
     }
     
+#if false
+    override var localizedName: String {
+        return NSLocalizedString("Free Cell", comment: "Free Cell")
+    }
+#endif
+    
     override func layoutGameComponents() {
         var viewWidth = view!.frame.width
         if viewWidth < CGFloat(9 * kCardWidth) {
