@@ -23,6 +23,7 @@
 #import "SolitaireCard.h"
 #import "SolitaireView.h"
 #import "SolitaireScoreKeeper.h"
+#import "GeneratedAssetSymbols.h"
 
 // Singleton copy of the cards image.
 NSImage* cardsImage = nil;
@@ -34,7 +35,7 @@ void LoadFlippedCardImage(BOOL reload)
     {
         NSString *cardBack = [[NSUserDefaults standardUserDefaults] stringForKey:@"cardBack"];
         if (cardBack == nil)
-            cardBack = @"CardBack1";
+            cardBack = ACImageNameCardBack1;
     
         flippedCardImage = [NSImage imageNamed:cardBack];
     }
@@ -58,7 +59,7 @@ static NSString const * const valueStringTable__[] = {@"Ace", @"2", @"3", @"4", 
     
     // Load singleton copies of the card images.
     if(cardsImage == nil) cardsImage =
-        [NSImage imageNamed:@"SolitaireCards"];
+        [NSImage imageNamed:ACImageNameSolitaireCards];
     
     LoadFlippedCardImage(NO);
     

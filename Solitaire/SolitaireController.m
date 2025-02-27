@@ -29,7 +29,6 @@
 
 #import "SolitaireKlondikeGame.h"
 #import "SolitaireSingleCardKlondikeGame.h"
-#import "SolitaireFreeCellGame.h"
 #import "SolitaireSpiderGame.h"
 #import "SolitaireAcesUpGame.h"
 #import "SolitaireBakersGame.h"

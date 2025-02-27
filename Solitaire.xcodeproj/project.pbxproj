@@ -38,6 +38,7 @@
 		37ECE627103216B800AF20BB /* SolitaireGolfGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ECE626103216B800AF20BB /* SolitaireGolfGame.m */; };
 		37ECE6B0103232A900AF20BB /* SolitaireScorpianGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ECE6AF103232A900AF20BB /* SolitaireScorpianGame.m */; };
 		37ECE70B1032469F00AF20BB /* SolitaireYukonGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ECE70A1032469F00AF20BB /* SolitaireYukonGame.m */; };
+		55672AC42D6F117E00A7F219 /* SolitaireBakersGame2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55672AC32D6F115700A7F219 /* SolitaireBakersGame2.swift */; };
 		557451E22B9AFC58009B144C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 557451E12B9AFC58009B144C /* Localizable.xcstrings */; };
 		557451E52B9AFC58009B144C /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 557451E42B9AFC58009B144C /* InfoPlist.xcstrings */; };
 		5590AD0121F3C1AA0080591F /* SolitaireFreeCellGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5590AD0021F3C1AA0080591F /* SolitaireFreeCellGame.swift */; };
@@ -113,6 +114,7 @@
 		37ECE6AF103232A900AF20BB /* SolitaireScorpianGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireScorpianGame.m; sourceTree = "<group>"; };
 		37ECE7091032469F00AF20BB /* SolitaireYukonGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireYukonGame.h; sourceTree = "<group>"; };
 		37ECE70A1032469F00AF20BB /* SolitaireYukonGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireYukonGame.m; sourceTree = "<group>"; };
+		55672AC32D6F115700A7F219 /* SolitaireBakersGame2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolitaireBakersGame2.swift; sourceTree = "<group>"; usesTabs = 1; };
 		556821012168128400402D96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		557451E12B9AFC58009B144C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		557451E32B9AFC58009B144C /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MainMenu.xcstrings; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				3781E3FA1003AE6C00B421E0 /* SolitaireAcesUpGame.m */,
 				3781E4221003D73C00B421E0 /* SolitaireBakersGame.h */,
 				3781E4231003D73C00B421E0 /* SolitaireBakersGame.m */,
+				55672AC32D6F115700A7F219 /* SolitaireBakersGame2.swift */,
 				3707C9A41006B81100A497C3 /* SolitaireFortyThievesGame.h */,
 				3707C9A51006B81100A497C3 /* SolitaireFortyThievesGame.m */,
 				37CB1ACD10151E6E0076A591 /* SolitairePyramidGame.h */,
@@ -389,6 +392,7 @@
 				378CB1080E47777600D95193 /* SolitaireKlondikeGame.m in Sources */,
 				378491580E47CFC600107526 /* SolitaireFoundation.m in Sources */,
 				373F97820E490766006A7BC9 /* SolitaireWaste.m in Sources */,
+				55672AC42D6F117E00A7F219 /* SolitaireBakersGame2.swift in Sources */,
 				375EB77D0E4DCA7400D66CFF /* SolitaireCell.m in Sources */,
 				3759D4680E55DB98003B9CB8 /* SolitaireFreeCellGame.m in Sources */,
 				3759D4900E55DE71003B9CB8 /* SolitaireSpiderGame.m in Sources */,

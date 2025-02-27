@@ -24,6 +24,7 @@
 #import "SolitaireView.h"
 #import "SolitaireTableau.h"
 #import "SolitaireCard.h"
+#import "GeneratedAssetSymbols.h"
 
 extern NSImage* flippedCardImage;
 
@@ -60,8 +61,8 @@ extern NSImage* flippedCardImage;
         [self reset];
         
         // Load images
-        reloadImage_ = [NSImage imageNamed:@"Reload"];
-        emptyImage_ = [NSImage imageNamed:@"Empty"];
+        reloadImage_ = [NSImage imageNamed:ACImageNameReload];
+        emptyImage_ = [NSImage imageNamed:ACImageNameEmpty];
     }
     return self;
 }

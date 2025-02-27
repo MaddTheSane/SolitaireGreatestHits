@@ -19,10 +19,10 @@ private var SolitaireFreeCellCells: Int {
 
 
 class SolitaireFreeCellGame2: SolitaireGame {
-    private var stock: SolitaireStock?
-    private var tableus = [SolitaireTableau]()
-    private var foundations = [SolitaireFoundation]()
-    private var cells = [SolitaireCell]()
+    var stock: SolitaireStock?
+    var tableaus = [SolitaireTableau]()
+    var foundations = [SolitaireFoundation]()
+    var cells = [SolitaireCell]()
     
     override init(controller gameController: SolitaireController) {
         super.init(controller: gameController)
@@ -54,7 +54,7 @@ class SolitaireFreeCellGame2: SolitaireGame {
         for _ in 0 ..< SolitaireFreeCellTableus {
             let tableu = SolitaireTableau()
             view?.addSprite(tableu)
-            tableus.append(tableu)
+            tableaus.append(tableu)
         }
     }
     
@@ -96,7 +96,7 @@ class SolitaireFreeCellGame2: SolitaireGame {
         let tableauY = foundationY - (5.0 / 4.0 * CGFloat(kCardHeight));
         let tableauSpacing = (viewWidth - 8 * CGFloat(kCardWidth) - 2 * (viewWidth / 25.0)) / 7.0;
 
-        for (i, tab) in tableus.enumerated() {
+        for (i, tab) in tableaus.enumerated() {
             tab.position = CGPoint(x: tableauX + CGFloat(i) * (CGFloat(kCardWidth) + tableauSpacing), y: tableauY)
         }
     }
@@ -127,14 +127,14 @@ class SolitaireFreeCellGame2: SolitaireGame {
                 }
             }
             
-            for currentTableu in tableus {
+            for currentTableu in tableaus {
                 if canDrop(card, in: currentTableu) {
                     return false
                 }
             }
         }
         
-        for currentTableu in tableus {
+        for currentTableu in tableaus {
             guard let card = currentTableu.topCard else {
                 continue
             }
@@ -145,7 +145,7 @@ class SolitaireFreeCellGame2: SolitaireGame {
                 }
             }
             
-            for otherTableu in tableus {
+            for otherTableu in tableaus {
                 if canDrop(card, in: otherTableu) {
                     return false
                 }
@@ -160,7 +160,7 @@ class SolitaireFreeCellGame2: SolitaireGame {
         
         foundations.removeAll(keepingCapacity: true)
         cells.removeAll(keepingCapacity: true)
-        tableus.removeAll(keepingCapacity: true)
+        tableaus.removeAll(keepingCapacity: true)
     }
     
     override var cardsInPlay: Int {
@@ -179,7 +179,7 @@ class SolitaireFreeCellGame2: SolitaireGame {
         }
         
         // Archive Tableau
-        for (i, found) in tableus.enumerated() {
+        for (i, found) in tableaus.enumerated() {
             gameImage.archiveGameObject(found, forKey: "tableau_\(i)")
         }
         
@@ -210,10 +210,10 @@ class SolitaireFreeCellGame2: SolitaireGame {
         }
         
         // Unarchive Tableau
-        tableus.removeAll(keepingCapacity: true)
+        tableaus.removeAll(keepingCapacity: true)
         for i in 0 ..< SolitaireFreeCellTableus {
             if let foundation = gameImage.unarchiveGameObject(forKey: "tableau_\(i)") as? SolitaireTableau {
-                tableus.append(foundation)
+                tableaus.append(foundation)
                 view?.addSprite(foundation)
             }
         }
@@ -226,7 +226,6 @@ class SolitaireFreeCellGame2: SolitaireGame {
                 view?.addSprite(foundation)
             }
         }
-
     }
     
     // Auto-finish
@@ -236,7 +235,7 @@ class SolitaireFreeCellGame2: SolitaireGame {
     
     override func autoFinish() {
         // Tableau
-        for tabl in tableus {
+        for tabl in tableaus {
             guard let card = tabl.topCard else {
                 continue
             }
@@ -263,7 +262,7 @@ class SolitaireFreeCellGame2: SolitaireGame {
     override func dealNewGame() {
         var pos = 0
         while !stock!.isEmpty {
-            stock!.dealCard(to: tableus[pos], faceDown: false)
+            stock!.dealCard(to: tableaus[pos], faceDown: false)
             pos += 1
             //if(pos > 7) pos = 0;
             if pos >= SolitaireFreeCellTableus {
@@ -271,7 +270,7 @@ class SolitaireFreeCellGame2: SolitaireGame {
             }
         }
         
-        for tabl in tableus {
+        for tabl in tableaus {
             var pos = tabl.count - 2
             while pos >= 0 {
                 let card = tabl.card(atPosition: pos)
@@ -283,7 +282,7 @@ class SolitaireFreeCellGame2: SolitaireGame {
         }
     }
     
-    private var freeCellCount: Int {
+    var freeCellCount: Int {
         var count = 0
         for cell in cells {
             if cell.isEmpty {
@@ -294,9 +293,9 @@ class SolitaireFreeCellGame2: SolitaireGame {
         return count
     }
     
-    private var freeTableuCount: Int {
+    var freeTableauCount: Int {
         var count = 0
-        for tabl in tableus {
+        for tabl in tableaus {
             if tabl.isEmpty {
                 count += 1
             }
@@ -306,9 +305,9 @@ class SolitaireFreeCellGame2: SolitaireGame {
     }
     
     override func canDrop(_ card: SolitaireCard, in tableau: SolitaireTableau) -> Bool {
-        if card.countCardsStackedOnTop() > freeCellCount + freeTableuCount {
+        if card.countCardsStackedOnTop() > freeCellCount + freeTableauCount {
             return false
-        } else if tableau.isEmpty, card.countCardsStackedOnTop() > freeCellCount + freeTableuCount - 1 {
+        } else if tableau.isEmpty, card.countCardsStackedOnTop() > freeCellCount + freeTableauCount - 1 {
             return false
         }
         
