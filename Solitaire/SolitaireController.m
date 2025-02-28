@@ -84,10 +84,9 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
                            [NSColor colorNamed:ACColorNameDefaultFeltBackground] requiringSecureCoding: YES error: NULL];
         
     defaultValues[@"backgroundColor"] = colorAsData;
-    defaultValues[@"cardBack"] = @"CardBack1";
+    defaultValues[@"cardBack"] = ACImageNameCardBack1;
 
-    NSData* dateAsData = [NSKeyedArchiver archivedDataWithRootObject: [NSDate distantPast] requiringSecureCoding: YES error: NULL];
-    defaultValues[@"lastDonateDate"] = dateAsData;
+    defaultValues[@"lastDonateDate"] = [NSDate distantPast];
 
     [[NSUserDefaults standardUserDefaults] registerDefaults: defaultValues];
 }
@@ -602,7 +601,13 @@ willBeInsertedIntoToolbar: (BOOL)flag
 
 -(void) requestDonation {
     NSData* dateAsData = [[NSUserDefaults standardUserDefaults] objectForKey: @"lastDonateDate"];
-    NSDate* lastDonateDate = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSDate class] fromData:dateAsData error:NULL];
+    NSDate* lastDonateDate;
+    if ([dateAsData isKindOfClass:[NSDate class]]) {
+        lastDonateDate = (NSDate*)dateAsData;
+    } else {
+        lastDonateDate = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSDate class] fromData:dateAsData error:NULL];
+        [[NSUserDefaults standardUserDefaults] setValue:lastDonateDate forKey:@"lastDonateDate"];
+    }
     NSDate* todaysDate = [NSDate date];
     const NSTimeInterval secsInWeek = 604800;
     
@@ -618,7 +623,7 @@ willBeInsertedIntoToolbar: (BOOL)flag
             [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6662868"]];
             
         // Let defaults know we requested donation today.
-        [[NSUserDefaults standardUserDefaults] setObject: [NSKeyedArchiver archivedDataWithRootObject: todaysDate requiringSecureCoding: YES error: NULL] forKey: @"lastDonateDate"];
+        [[NSUserDefaults standardUserDefaults] setObject: todaysDate forKey: @"lastDonateDate"];
     }
 }
 

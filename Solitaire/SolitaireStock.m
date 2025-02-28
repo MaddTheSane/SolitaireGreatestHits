@@ -90,8 +90,8 @@ extern NSImage* flippedCardImage;
         self.shadowOpacity = 1.0;
         
         // Load images
-        reloadImage_ = [NSImage imageNamed:@"Reload"];
-        emptyImage_ = [NSImage imageNamed:@"Empty"];
+        reloadImage_ = [NSImage imageNamed:ACImageNameReload];
+        emptyImage_ = [NSImage imageNamed:ACImageNameEmpty];
     }
     return self;
 }

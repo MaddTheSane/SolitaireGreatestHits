@@ -31,8 +31,8 @@
 -(void) awakeFromNib
 {
     cardBackFiles_ = [[NSArray alloc] initWithObjects:
-                      @"CardBack1",
-                      @"CardBack2",
+                      ACImageNameCardBack1,
+                      ACImageNameCardBack2,
         nil];
     
     [_backgroundPopup removeAllItems];

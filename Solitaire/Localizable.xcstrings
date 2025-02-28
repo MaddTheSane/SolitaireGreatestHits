@@ -638,7 +638,15 @@
       }
     },
     "You lost" : {
-      "comment" : "You lost"
+      "comment" : "You lost",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You lost."
+          }
+        }
+      }
     },
     "You won!" : {
       "comment" : "You won!",

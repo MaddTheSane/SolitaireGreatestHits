@@ -8,7 +8,7 @@
 class SolitaireBakersGame2 : SolitaireFreeCellGame2 {
     override var name: String { "Baker’s Game" }
     
-    override var localizedName: String { NSLocalizedString("Baker's Game", comment: "Baker's Game") }
+	override var localizedName: String { NSLocalizedString("Baker's Game", value: "Baker’s Game", comment: "Baker's Game") }
     
     override func dealNewGame() {
         var pos = 0
