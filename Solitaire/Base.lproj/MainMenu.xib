@@ -582,7 +582,7 @@ Gw
     <resources>
         <image name="SolitaireBanner" width="550" height="99"/>
         <namedColor name="DefaultFeltBackground">
-            <color red="0.122" green="0.63900000000000001" blue="0.32900000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.12200000137090683" green="0.63899999856948853" blue="0.32899999618530273" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
