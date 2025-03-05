@@ -31,7 +31,6 @@
 #import "SolitaireSingleCardKlondikeGame.h"
 #import "SolitaireSpiderGame.h"
 #import "SolitaireAcesUpGame.h"
-#import "SolitaireBakersGame.h"
 #import "SolitaireCanfieldGame.h"
 #import "SolitaireFortyThievesGame.h"
 #import "SolitairePyramidGame.h"
@@ -131,7 +130,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
 -(void) registerGames {
     [self registerGame: [[SolitaireKlondikeGame alloc] initWithController: self]];
     [self registerGame: [[SolitaireSingleCardKlondikeGame alloc] initWithController: self]];
-    [self registerGame: [[SolitaireFreeCellGame2 alloc] initWithController: self]];
+    [self registerGame: [[SolitaireFreeCellGame alloc] initWithController: self]];
     [self registerGame: [[SolitaireSpiderGame alloc] initWithController: self]];
     [self registerGame: [[SolitaireAcesUpGame alloc] initWithController: self]];
     [self registerGame: [[SolitaireBakersGame alloc] initWithController: self]];

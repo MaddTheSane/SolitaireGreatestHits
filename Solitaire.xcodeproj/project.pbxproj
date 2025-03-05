@@ -14,7 +14,6 @@
 		3744928E1008FAAA00BAC138 /* SolitaireSingleCardKlondikeGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3744928D1008FAAA00BAC138 /* SolitaireSingleCardKlondikeGame.m */; };
 		374493C610093D2900BAC138 /* SolitaireScoreKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 374493C510093D2900BAC138 /* SolitaireScoreKeeper.m */; };
 		3755A899104AD069006CB30B /* SolitaireDelayedPerformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3755A898104AD069006CB30B /* SolitaireDelayedPerformer.m */; };
-		3759D4680E55DB98003B9CB8 /* SolitaireFreeCellGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3759D4670E55DB98003B9CB8 /* SolitaireFreeCellGame.m */; };
 		3759D4900E55DE71003B9CB8 /* SolitaireSpiderGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3759D48F0E55DE71003B9CB8 /* SolitaireSpiderGame.m */; };
 		375EB77D0E4DCA7400D66CFF /* SolitaireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 375EB77C0E4DCA7400D66CFF /* SolitaireCell.m */; };
 		376BFD4F0E456C4C008B5923 /* SolitaireView.m in Sources */ = {isa = PBXBuildFile; fileRef = 376BFD4E0E456C4C008B5923 /* SolitaireView.m */; };
@@ -23,7 +22,6 @@
 		376BFD620E457157008B5923 /* SolitaireCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 376BFD610E457157008B5923 /* SolitaireCard.m */; };
 		377E77C90FD1D3D5002EFBCC /* SolitairePreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 377E77C80FD1D3D5002EFBCC /* SolitairePreferencesController.m */; };
 		3781E3FB1003AE6C00B421E0 /* SolitaireAcesUpGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3781E3FA1003AE6C00B421E0 /* SolitaireAcesUpGame.m */; };
-		3781E4241003D73C00B421E0 /* SolitaireBakersGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3781E4231003D73C00B421E0 /* SolitaireBakersGame.m */; };
 		378491580E47CFC600107526 /* SolitaireFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 378491570E47CFC600107526 /* SolitaireFoundation.m */; };
 		378CB0770E475EC300D95193 /* SolitaireCardContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 378CB0760E475EC300D95193 /* SolitaireCardContainer.m */; };
 		378CB0900E476B8000D95193 /* SolitaireStock.m in Sources */ = {isa = PBXBuildFile; fileRef = 378CB08D0E476B8000D95193 /* SolitaireStock.m */; };
@@ -38,7 +36,6 @@
 		37ECE627103216B800AF20BB /* SolitaireGolfGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ECE626103216B800AF20BB /* SolitaireGolfGame.m */; };
 		37ECE6B0103232A900AF20BB /* SolitaireScorpianGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ECE6AF103232A900AF20BB /* SolitaireScorpianGame.m */; };
 		37ECE70B1032469F00AF20BB /* SolitaireYukonGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ECE70A1032469F00AF20BB /* SolitaireYukonGame.m */; };
-		55672AC42D6F117E00A7F219 /* SolitaireBakersGame2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55672AC32D6F115700A7F219 /* SolitaireBakersGame2.swift */; };
 		557451E22B9AFC58009B144C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 557451E12B9AFC58009B144C /* Localizable.xcstrings */; };
 		557451E52B9AFC58009B144C /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 557451E42B9AFC58009B144C /* InfoPlist.xcstrings */; };
 		5590AD0121F3C1AA0080591F /* SolitaireFreeCellGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5590AD0021F3C1AA0080591F /* SolitaireFreeCellGame.swift */; };
@@ -69,8 +66,6 @@
 		374493C510093D2900BAC138 /* SolitaireScoreKeeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireScoreKeeper.m; sourceTree = "<group>"; };
 		3755A897104AD069006CB30B /* SolitaireDelayedPerformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireDelayedPerformer.h; sourceTree = "<group>"; };
 		3755A898104AD069006CB30B /* SolitaireDelayedPerformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireDelayedPerformer.m; sourceTree = "<group>"; };
-		3759D4660E55DB98003B9CB8 /* SolitaireFreeCellGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireFreeCellGame.h; sourceTree = "<group>"; };
-		3759D4670E55DB98003B9CB8 /* SolitaireFreeCellGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireFreeCellGame.m; sourceTree = "<group>"; };
 		3759D48E0E55DE71003B9CB8 /* SolitaireSpiderGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireSpiderGame.h; sourceTree = "<group>"; };
 		3759D48F0E55DE71003B9CB8 /* SolitaireSpiderGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireSpiderGame.m; sourceTree = "<group>"; };
 		375EB77B0E4DCA7400D66CFF /* SolitaireCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireCell.h; sourceTree = "<group>"; };
@@ -86,8 +81,6 @@
 		377E77C80FD1D3D5002EFBCC /* SolitairePreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitairePreferencesController.m; sourceTree = "<group>"; };
 		3781E3F91003AE6C00B421E0 /* SolitaireAcesUpGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireAcesUpGame.h; sourceTree = "<group>"; };
 		3781E3FA1003AE6C00B421E0 /* SolitaireAcesUpGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireAcesUpGame.m; sourceTree = "<group>"; };
-		3781E4221003D73C00B421E0 /* SolitaireBakersGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireBakersGame.h; sourceTree = "<group>"; };
-		3781E4231003D73C00B421E0 /* SolitaireBakersGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireBakersGame.m; sourceTree = "<group>"; };
 		378491560E47CFC600107526 /* SolitaireFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireFoundation.h; sourceTree = "<group>"; };
 		378491570E47CFC600107526 /* SolitaireFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireFoundation.m; sourceTree = "<group>"; };
 		378CB0750E475EC300D95193 /* SolitaireCardContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireCardContainer.h; sourceTree = "<group>"; };
@@ -114,7 +107,6 @@
 		37ECE6AF103232A900AF20BB /* SolitaireScorpianGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireScorpianGame.m; sourceTree = "<group>"; };
 		37ECE7091032469F00AF20BB /* SolitaireYukonGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolitaireYukonGame.h; sourceTree = "<group>"; };
 		37ECE70A1032469F00AF20BB /* SolitaireYukonGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolitaireYukonGame.m; sourceTree = "<group>"; };
-		55672AC32D6F115700A7F219 /* SolitaireBakersGame2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolitaireBakersGame2.swift; sourceTree = "<group>"; usesTabs = 1; };
 		556821012168128400402D96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		557451E12B9AFC58009B144C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		557451E32B9AFC58009B144C /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MainMenu.xcstrings; sourceTree = "<group>"; };
@@ -240,14 +232,9 @@
 				3744928D1008FAAA00BAC138 /* SolitaireSingleCardKlondikeGame.m */,
 				3759D48E0E55DE71003B9CB8 /* SolitaireSpiderGame.h */,
 				3759D48F0E55DE71003B9CB8 /* SolitaireSpiderGame.m */,
-				3759D4660E55DB98003B9CB8 /* SolitaireFreeCellGame.h */,
-				3759D4670E55DB98003B9CB8 /* SolitaireFreeCellGame.m */,
 				5590AD0021F3C1AA0080591F /* SolitaireFreeCellGame.swift */,
 				3781E3F91003AE6C00B421E0 /* SolitaireAcesUpGame.h */,
 				3781E3FA1003AE6C00B421E0 /* SolitaireAcesUpGame.m */,
-				3781E4221003D73C00B421E0 /* SolitaireBakersGame.h */,
-				3781E4231003D73C00B421E0 /* SolitaireBakersGame.m */,
-				55672AC32D6F115700A7F219 /* SolitaireBakersGame2.swift */,
 				3707C9A41006B81100A497C3 /* SolitaireFortyThievesGame.h */,
 				3707C9A51006B81100A497C3 /* SolitaireFortyThievesGame.m */,
 				37CB1ACD10151E6E0076A591 /* SolitairePyramidGame.h */,
@@ -393,16 +380,13 @@
 				378CB1080E47777600D95193 /* SolitaireKlondikeGame.m in Sources */,
 				378491580E47CFC600107526 /* SolitaireFoundation.m in Sources */,
 				373F97820E490766006A7BC9 /* SolitaireWaste.m in Sources */,
-				55672AC42D6F117E00A7F219 /* SolitaireBakersGame2.swift in Sources */,
 				375EB77D0E4DCA7400D66CFF /* SolitaireCell.m in Sources */,
-				3759D4680E55DB98003B9CB8 /* SolitaireFreeCellGame.m in Sources */,
 				3759D4900E55DE71003B9CB8 /* SolitaireSpiderGame.m in Sources */,
 				377E77C90FD1D3D5002EFBCC /* SolitairePreferencesController.m in Sources */,
 				5590AD0121F3C1AA0080591F /* SolitaireFreeCellGame.swift in Sources */,
 				55BD080021B7186900A8DD5F /* SolitaireCardPickupGame.swift in Sources */,
 				373293770FFC13F90058C186 /* SolitaireTimer.m in Sources */,
 				3781E3FB1003AE6C00B421E0 /* SolitaireAcesUpGame.m in Sources */,
-				3781E4241003D73C00B421E0 /* SolitaireBakersGame.m in Sources */,
 				3707C9A61006B81100A497C3 /* SolitaireFortyThievesGame.m in Sources */,
 				3744928E1008FAAA00BAC138 /* SolitaireSingleCardKlondikeGame.m in Sources */,
 				374493C610093D2900BAC138 /* SolitaireScoreKeeper.m in Sources */,
