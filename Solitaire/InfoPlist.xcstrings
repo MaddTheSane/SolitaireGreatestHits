@@ -54,6 +54,23 @@
         }
       }
     },
+    "fontaine.Solitaire2.saveGame" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Gespeichertes Solitaire-Spiel"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saved Solitaire Game"
+          }
+        }
+      }
+    },
     "NSHumanReadableCopyright" : {
       "comment" : "Localized versions of Info.plist keys",
       "extractionState" : "manual",

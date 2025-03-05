@@ -55,7 +55,11 @@
         self.zPosition = [decoder decodeIntForKey: @"zPosition"];
         self.hidden = [decoder decodeBoolForKey: @"hidden"];
 
-        cards_ = [decoder decodeObjectOfClasses:[NSSet setWithObjects:[NSMutableArray class], [SolitaireCard class], nil] forKey: @"cards_"];
+        if (@available(macOS 11.0, *)) {
+            cards_ = [[decoder decodeArrayOfObjectsOfClass:[SolitaireCard class] forKey:@"cards_"] mutableCopy];
+        } else {
+            cards_ = [decoder decodeObjectOfClasses:[NSSet setWithObjects:[NSMutableArray class], [SolitaireCard class], nil] forKey: @"cards_"];
+        }
         self.text = [decoder decodeObjectOfClass:[NSString class] forKey: @"text"];
     }
     return self;

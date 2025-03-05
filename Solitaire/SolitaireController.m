@@ -348,7 +348,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     cellSize.width = 200;
     [matrix setCellSize: cellSize];
                                                                               
-    int index = 0;
+    NSInteger index = 0;
     NSArray *cellArray = [matrix cells];
     for(SolitaireGame* game in games) {
         NSCell* cell = [cellArray objectAtIndex: index];
@@ -389,7 +389,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
 -(IBAction) onGameSelected: (NSMenuItem*)sender {
     // Uncheck current game item.
     NSMenu* mainMenu = [[NSApplication sharedApplication] mainMenu];
-    NSMenu* gameMenu = [[mainMenu itemWithTitle: NSLocalizedString(@"Game", @"Game")] submenu];
+    NSMenu* gameMenu = [[mainMenu itemWithTitle: NSLocalizedStringWithDefaultValue(@"377.title", @"MainMenu", [NSBundle mainBundle], @"Game", @"Class = \"NSMenuItem\"; title = \"Game\"; ObjectID = \"377\";")] submenu];
     
     [self selectGameWithRegistryIndex: [gameMenu indexOfItem: sender]];
     [self newGame];

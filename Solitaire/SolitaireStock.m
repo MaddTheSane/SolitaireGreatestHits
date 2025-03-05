@@ -77,7 +77,11 @@ extern NSImage* flippedCardImage;
     if (self = [super init]) {
         delegate_ = nil;
         deckCount_ = [decoder decodeIntegerForKey: @"deckCount_"];
-        deck_ = [decoder decodeObjectOfClasses:[NSSet setWithObjects:[NSMutableArray class], [SolitaireCard class], nil] forKey: @"deck_"];
+        if (@available(macOS 11.0, *)) {
+            deck_ = [[decoder decodeArrayOfObjectsOfClass:[SolitaireCard class] forKey:@"deck_"] mutableCopy];
+        } else {
+            deck_ = [decoder decodeObjectOfClasses:[NSSet setWithObjects:[NSMutableArray class], [SolitaireCard class], nil] forKey: @"deck_"];
+        }
         blockReclick_ = NO;
                 
         self.disableRestock = [decoder decodeBoolForKey: @"disableRestock"];

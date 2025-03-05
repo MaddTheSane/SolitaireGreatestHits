@@ -183,7 +183,11 @@
 
         drawCount_ = [decoder decodeIntegerForKey: @"drawCount_"];
         currentPos_ = [decoder decodeIntegerForKey: @"currentPos"];
-        visibleCards = [decoder decodeObjectOfClasses:[NSSet setWithObjects:[NSMutableArray class], [SolitaireCard class], nil] forKey: @"visibleCards"];
+        if (@available(macOS 11.0, *)) {
+            visibleCards = [[decoder decodeArrayOfObjectsOfClass:[SolitaireCard class] forKey: @"visibleCards"] mutableCopy];
+        } else {
+            visibleCards = [decoder decodeObjectOfClasses:[NSSet setWithObjects:[NSMutableArray class], [SolitaireCard class], nil] forKey: @"visibleCards"];
+        }
     }
     return self;
 }
