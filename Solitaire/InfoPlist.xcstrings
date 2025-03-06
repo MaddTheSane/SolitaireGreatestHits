@@ -72,7 +72,6 @@
       }
     },
     "NSHumanReadableCopyright" : {
-      "comment" : "Localized versions of Info.plist keys",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {

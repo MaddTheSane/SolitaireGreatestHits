@@ -19,18 +19,19 @@
       }
     },
     "52-card pickup" : {
+      "comment" : "52-card Pick-up",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abholung mit 52 Karten"
+            "value" : "52-Karten-Abholung"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "52-card pickup"
+            "value" : "52-card Pick-up"
           }
         }
       }

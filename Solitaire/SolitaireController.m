@@ -145,7 +145,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
 
 -(void) registerGame: (SolitaireGame*)game {
     [gameRegistry_ addObject: game];
-    [gameDictionary_ setObject: game forKey: [game name]];
+    gameDictionary_[[game name]] = game;
     
     NSMenuItem* gameItem = [[NSMenuItem alloc] initWithTitle: [game localizedName] action: @selector(onGameSelected:) keyEquivalent: @""];
 

@@ -21,6 +21,12 @@ class SolitaireCardPickupGame: SolitaireGame {
         return "52-card pickup"
     }
     
+#if false
+    override var localizedName: String {
+        return NSLocalizedString("52-card pickup", value: "52-card Pick-Up", comment: "52-card pickup")
+    }
+#endif
+    
     override func initializeGame() {
         stock = SolitaireStock()
         // Called explicitly since we don't actually add the stock to the view,
