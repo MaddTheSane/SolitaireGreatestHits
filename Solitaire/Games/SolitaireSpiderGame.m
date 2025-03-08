@@ -149,16 +149,16 @@
 
     int i;
     // Archive Stock
-    [gameImage archiveGameObject: stock_ forKey: @"stock_"];
+    gameImage[@"stock_"] = stock_;
     
     // Archive Foundations
     for(i = 0; i < 8; i++) {
-        [gameImage archiveGameObject: foundation_[i] forKey: [NSString stringWithFormat: @"foundation_%i", i]];
+        gameImage[[NSString stringWithFormat: @"foundation_%i", i]] = foundation_[i];
     }
     
     // Archive Tableau
     for(i = 0; i < 10; i++) {
-        [gameImage archiveGameObject: tableau_[i] forKey: [NSString stringWithFormat: @"tableau_%i", i]];
+        gameImage[[NSString stringWithFormat: @"tableau_%i", i]] = tableau_[i];
     }
     
     return gameImage;
@@ -168,7 +168,7 @@
     [super loadSavedGameImage: gameImage];
 
     // Unarchive Stock
-    stock_ = [gameImage unarchiveGameObjectForKey: @"stock_"];
+    stock_ = gameImage[@"stock_"];
     [stock_ setStockDelegate: self];
     [[self view] addSprite: stock_];
     
@@ -181,7 +181,7 @@
     
     // Unarchive Tableau
     for(i = 0; i < 10; i++) {
-        tableau_[i] = [gameImage unarchiveGameObjectForKey: [NSString stringWithFormat: @"tableau_%i", i]];
+        tableau_[i] = gameImage[[NSString stringWithFormat: @"tableau_%i", i]];
         [[self view] addSprite: tableau_[i]];
     }
 }

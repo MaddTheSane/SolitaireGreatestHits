@@ -39,6 +39,7 @@
 #import "SolitaireYukonGame.h"
 #import "Solitaire_Greatest_Hits-Swift.h"
 #import "GeneratedAssetSymbols.h"
+#import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
 
 
 #include <stdlib.h>
@@ -164,7 +165,7 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [self.view reset];
     
     [game_ reset];
-    [game_ gameWithSeed: 0xffffffff & time(0)];
+    [game_ gameWithSeed: 0xffffffff & time(NULL)];
     [game_ initializeGame];
     [game_ layoutGameComponents];
     [game_ startGame];
@@ -172,8 +173,6 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     // Hide or Display Score
     if(![game_ keepsScore]) [scoreKeeper hideScore: YES];
     else [scoreKeeper hideScore: NO];
-    
-    //
 }
 
 -(void) restartGame {
@@ -190,7 +189,9 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
 {
     SolitaireSavedGameImage* gameImage = [game_ generateSavedGameImage];
     [gameImage setGameTime: [self.timer secondsElapsed]];
-    if([game_ keepsScore]) [gameImage setGameScore: [self.scoreKeeper score]];
+    if([game_ keepsScore]) {
+        [gameImage setGameScore: [self.scoreKeeper score]];
+    }
 
     NSData *dat = [NSKeyedArchiver archivedDataWithRootObject:gameImage requiringSecureCoding:NO error:error];
     if (!dat) {
@@ -210,14 +211,16 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
         return NO;
     }
     SolitaireGame* newGame = [gameDictionary_ objectForKey: [gameImage gameName]];
-    if(newGame != nil) {
+    if (!newGame) {
         [self.view reset];
         [self selectGameWithRegistryIndex: [gameRegistry_ indexOfObject: newGame]];
         [game_ reset];
         
         [game_ loadSavedGameImage: gameImage];
         [self.timer setSecondsElapsed: [gameImage gameTime]];
-        if([game_ keepsScore]) [self.scoreKeeper setInitialScore: [gameImage gameScore]];
+        if ([game_ keepsScore]) {
+            [self.scoreKeeper setInitialScore: [gameImage gameScore]];
+        }
         
         [game_ layoutGameComponents];
     }
@@ -261,7 +264,11 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     NSSavePanel* savePanel = [NSSavePanel savePanel];
     [savePanel setTitle: NSLocalizedString(@"Save Game", @"Save Game")];
     [savePanel setExtensionHidden: YES];
-    [savePanel setAllowedFileTypes: @[@"fontaine.Solitaire2.saveGame"]];
+    if (@available(macOS 11.0, *)) {
+        savePanel.allowedContentTypes = @[[UTType exportedTypeWithIdentifier:@"fontaine.Solitaire2.saveGame"]];
+    } else {
+        [savePanel setAllowedFileTypes: @[@"fontaine.Solitaire2.saveGame"]];
+    }
 
     [savePanel beginSheetModalForWindow:self.window completionHandler:
 	 ^(NSModalResponse result)
@@ -285,7 +292,11 @@ static NSToolbarItemIdentifier const SolitaireInstructionsToolbarItemIdentifier 
     [openPanel setCanChooseFiles: YES];
     [openPanel setCanChooseDirectories: NO];
     [openPanel setAllowsMultipleSelection: NO];
-    [openPanel setAllowedFileTypes: @[@"fontaine.Solitaire2.saveGame"]];
+    if (@available(macOS 11.0, *)) {
+        openPanel.allowedContentTypes = @[[UTType exportedTypeWithIdentifier:@"fontaine.Solitaire2.saveGame"]];
+    } else {
+        [openPanel setAllowedFileTypes: @[@"fontaine.Solitaire2.saveGame"]];
+    }
 
     [openPanel beginSheetModalForWindow:self.window completionHandler:
      	^(NSModalResponse result)

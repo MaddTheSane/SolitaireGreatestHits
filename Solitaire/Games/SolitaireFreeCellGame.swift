@@ -175,17 +175,17 @@ class SolitaireFreeCellGame: SolitaireGame {
         gameImage.archiveGameObject(stock, forKey: "stock_")
         
         for (i, found) in foundations.enumerated() {
-            gameImage.archiveGameObject(found, forKey: "foundation_\(i)")
+            gameImage["foundation_\(i)"] = found
         }
         
         // Archive Tableau
         for (i, found) in tableaus.enumerated() {
-            gameImage.archiveGameObject(found, forKey: "tableau_\(i)")
+            gameImage["tableau_\(i)"] = found
         }
         
         // Archive Cells
         for (i, found) in cells.enumerated() {
-            gameImage.archiveGameObject(found, forKey: "cell_\(i)")
+            gameImage["cell_\(i)"] = found
         }
         
         return gameImage
@@ -203,7 +203,7 @@ class SolitaireFreeCellGame: SolitaireGame {
         // Unarchive Foundations
         foundations.removeAll(keepingCapacity: true)
         for i in 0 ..< SolitaireFreeCellFoundations {
-            if let foundation = gameImage.unarchiveGameObject(forKey: "foundation_\(i)") as? SolitaireFoundation {
+            if let foundation = gameImage["foundation_\(i)"] as? SolitaireFoundation {
                 foundations.append(foundation)
                 view?.addSprite(foundation)
             }
@@ -212,7 +212,7 @@ class SolitaireFreeCellGame: SolitaireGame {
         // Unarchive Tableau
         tableaus.removeAll(keepingCapacity: true)
         for i in 0 ..< SolitaireFreeCellTableus {
-            if let foundation = gameImage.unarchiveGameObject(forKey: "tableau_\(i)") as? SolitaireTableau {
+            if let foundation = gameImage["tableau_\(i)"] as? SolitaireTableau {
                 tableaus.append(foundation)
                 view?.addSprite(foundation)
             }
@@ -221,7 +221,7 @@ class SolitaireFreeCellGame: SolitaireGame {
         // Unarchive Cells
         cells.removeAll(keepingCapacity: true)
         for i in 0 ..< SolitaireFreeCellTableus {
-            if let foundation = gameImage.unarchiveGameObject(forKey: "cell_\(i)") as? SolitaireCell {
+            if let foundation = gameImage["cell_\(i)"] as? SolitaireCell {
                 cells.append(foundation)
                 view?.addSprite(foundation)
             }
@@ -418,11 +418,13 @@ class SolitaireFreeCellGame: SolitaireGame {
 class SolitaireBakersGame : SolitaireFreeCellGame {
     override var name: String { "Baker's Game" }
     
-    override var localizedName: String { NSLocalizedString("Baker's Game", value: "Baker’s Game", comment: "Baker's Game") }
+    override var localizedName: String {
+        NSLocalizedString("Baker's Game", value: "Baker’s Game", comment: "Baker's Game")
+    }
     
     override func dealNewGame() {
         var pos = 0
-        while !stock!.isEmpty {
+        while !(stock!.isEmpty) {
             stock!.dealCard(to: tableaus[pos], faceDown: false)
             pos += 1
             if pos > 7 {

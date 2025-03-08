@@ -133,7 +133,7 @@
     SolitaireSavedGameImage* gameImage = [super generateSavedGameImage]; 
          
     // Archive Stock
-    [gameImage archiveGameObject: stock_ forKey: @"stock_"];
+    gameImage[@"stock_"] = stock_;
     
     // Archive Foundation
     [gameImage archiveGameObject: foundation_ forKey: @"foundation_"];
@@ -141,7 +141,7 @@
     // Archive Tableau
     int i;
     for(i = 0; i < 4; i++) {
-        [gameImage archiveGameObject: tableau_[i] forKey: [NSString stringWithFormat: @"tableau_%i", i]];
+        gameImage[[NSString stringWithFormat: @"tableau_%i", i]] = tableau_[i];
     }
     
     return gameImage;
@@ -151,12 +151,12 @@
     [super loadSavedGameImage: gameImage];
     
     // Unarchive Stock
-    stock_ = [gameImage unarchiveGameObjectForKey: @"stock_"];
+    stock_ = gameImage[@"stock_"];
     [stock_ setStockDelegate: self];
     [[self view] addSprite: stock_];
         
     // Unarchive Foundation
-    foundation_ = [gameImage unarchiveGameObjectForKey: @"foundation_"];
+    foundation_ = gameImage[@"foundation_"];
     [[self view] addSprite: foundation_];
     printf("%f, %f\n", foundation_.position.x, foundation_.position.y);
     

@@ -128,8 +128,8 @@ extern NSImage* flippedCardImage;
     [deck_ removeAllObjects];
     
     NSInteger count;
-    int suit;
-    int value;
+    SolitaireSuit suit;
+    SolitaireFaceValue value;
     
     for(count = 0; count < deckCount_; count++){
         for(suit = 0; suit < 4; suit++) {

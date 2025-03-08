@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(nullable __kindof id<NSCoding>) unarchiveGameObjectForKey: (NSString*)key;
 
 - (void)setObject:(nullable id<NSCoding>)obj forKeyedSubscript:(NSString*)key;
-- (nullable id<NSCoding>)objectForKeyedSubscript:(NSString*)key;
+- (nullable __kindof id<NSCoding>)objectForKeyedSubscript:(NSString*)key;
 
 @end
 
